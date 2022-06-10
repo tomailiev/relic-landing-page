@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Box, CssBaseline } from '@mui/material';
 import Header from './components/Header';

@@ -1,5 +1,5 @@
-import { AppBar, Button, IconButton, Toolbar, Typography, MenuItem } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Toolbar, Typography, MenuItem } from "@mui/material";
+// import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = () => {
     const pages = ["Home", "Who we are", "Contact"]
