@@ -1,10 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import { Box, CssBaseline } from '@mui/material';
+import Header from './components/Header';
+import SubscribeForm from './components/SubscribeForm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Box height="100vh" display="flex" flexDirection="column">
+      <CssBaseline />
+        <Header />
+          <SubscribeForm />
+      </Box>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +25,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
