@@ -2,14 +2,16 @@ import './App.css';
 import { Box, CssBaseline } from '@mui/material';
 import Header from './components/Header';
 import SubscribeForm from './components/SubscribeForm';
+import Title from './components/Title';
 
 function App() {
   return (
     <div className="App">
-      <Box height="100vh" display="flex" flexDirection="column">
-      <CssBaseline />
+      <Box height="100vh" display="flex" flexDirection="column" alignItems={"center"}>
+        <CssBaseline />
         <Header />
-          <SubscribeForm />
+        <Title />
+        <SubscribeForm />
       </Box>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

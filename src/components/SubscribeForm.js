@@ -1,5 +1,6 @@
-import { Box, Button, TextField, Stack } from "@mui/material"
+import { Box, Button, TextField, Stack, Typography } from "@mui/material"
 import { useState } from "react";
+import uploadDoc from "../utils/firebase/firestore-funcs";
 
 const SubscribeForm = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -12,10 +13,12 @@ const SubscribeForm = () => {
             return;
         }
         setIsSubmitting(true);
-        setTimeout(() => setIsSubmitting(false), 1000);
         e.preventDefault();
-        console.log(userEmail);
-        setUserEmail("");
+        uploadDoc({email: userEmail}, "testEmail")
+            .then(() => {
+                setUserEmail("");
+                setIsSubmitting(false);
+            })
     }
 
     function handleInputChange(e) {
@@ -24,8 +27,11 @@ const SubscribeForm = () => {
 
 
     return (
-        <Box flex={1} sx={{ width: 200, m: 3 }}>
-            <Stack spacing={1}>
+        <Box flex={1} sx={{m: 3}}>
+            <Stack spacing={2}>
+            <Typography variant="h5">
+                Subscribe to our emails!
+            </Typography>
                 <TextField
                     error={hasError}
                     value={userEmail}
