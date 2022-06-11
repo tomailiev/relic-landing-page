@@ -27,8 +27,8 @@ const SubscribeForm = () => {
 
 
     return (
-        <Box flex={1} sx={{ m: 3 }}>
-            <Typography variant="h5">
+        <Box flex={1} sx={{ p: 3 }}>
+            <Typography variant="h5" sx={{mb: 2}}>
                 Subscribe to our emails!
             </Typography>
             <form onSubmit={handleSubscribe}>
