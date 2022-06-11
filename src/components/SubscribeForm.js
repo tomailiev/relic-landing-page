@@ -8,13 +8,13 @@ const SubscribeForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     function handleSubscribe(e) {
+        e.preventDefault();
         if (!userEmail) {
             setHasError(true);
             return;
         }
         setIsSubmitting(true);
-        e.preventDefault();
-        uploadDoc({email: userEmail}, "testEmail")
+        uploadDoc({ email: userEmail }, "testEmail")
             .then(() => {
                 setUserEmail("");
                 setIsSubmitting(false);
@@ -27,30 +27,32 @@ const SubscribeForm = () => {
 
 
     return (
-        <Box flex={1} sx={{m: 3}}>
-            <Stack spacing={2}>
+        <Box flex={1} sx={{ m: 3 }}>
             <Typography variant="h5">
                 Subscribe to our emails!
             </Typography>
-                <TextField
-                    error={hasError}
-                    value={userEmail}
-                    onFocus={() => setHasError(false)}
-                    onChange={handleInputChange}
-                    helperText={hasError && "Valid email is required"}
-                    label="Your Email"
-                    variant="outlined"
-                    size="small"
-                />
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={handleSubscribe}
-                    disabled={isSubmitting}
-                >
-                    Subscribe
-                </Button>
-            </Stack>
+            <form onSubmit={handleSubscribe}>
+                <Stack spacing={2}>
+                    <TextField
+                        error={hasError}
+                        value={userEmail}
+                        onFocus={() => setHasError(false)}
+                        onChange={handleInputChange}
+                        helperText={hasError && "Valid email is required"}
+                        label="Your Email"
+                        variant="outlined"
+                        size="small"
+                    />
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        disabled={isSubmitting}
+                        type="submit"
+                    >
+                        Subscribe
+                    </Button>
+                </Stack>
+            </form>
         </Box>
     )
 };
