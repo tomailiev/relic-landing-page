@@ -3,6 +3,7 @@ import { Box, CssBaseline } from '@mui/material';
 import Header from './components/Header';
 import SubscribeForm from './components/SubscribeForm';
 import Title from './components/Title';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <Title />
         <SubscribeForm />
+        <Footer />
       </Box>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
