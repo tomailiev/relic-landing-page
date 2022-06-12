@@ -6,9 +6,9 @@ import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 
 const Footer = () => {
-
+    
     return (
-        <footer>
+        <footer style={{position: "absolute", bottom: 0}}>
             <Container disableGutters>
                 <Container>
                     <IconButton size="large" color="secondary">
