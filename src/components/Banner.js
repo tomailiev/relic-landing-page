@@ -8,7 +8,7 @@ const Banner = () => {
         <Parallax blur={{ min: 4, max: 6 }} bgImage={bgPic} bgImageAlt="the cat" strength={350}>
             <Box width="98vw" height="600px" display="flex" flexDirection="column" alignItems={"center"} justifyContent="center">
                 <Box maxWidth={800} marginX={2}>
-                    <Typography fontFamily="lato" fontSize={20}>
+                    <Typography fontSize={24} fontStyle="italic">
                         Inspiring audiences by bringing relics of the past to life through [sensitive and theatrical productions?]. Played by musicians [devoted/committed] to camaraderie and connection while collectively searching for [the deeper meaning of humanity] through creating together.
                     </Typography>
                 </Box>
