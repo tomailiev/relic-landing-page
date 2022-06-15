@@ -8,7 +8,7 @@ import { Container } from "@mui/system";
 const Footer = () => {
 
     return (
-        <footer style={{ background: "rgb(238,222,197)", background: "linear-gradient(180deg, rgba(238,222,197,1) 0%, rgba(214,191,162,1) 100%)", padding: 10 }}>
+        <footer style={{ background: "linear-gradient(180deg, rgba(238,222,197,1) 0%, rgba(214,191,162,1) 100%)", padding: 10 }}>
             <Container disableGutters>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">

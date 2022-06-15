@@ -37,12 +37,13 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "#eedec5",background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}>
+        <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}>
           <CssBaseline />
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/whoweare" element={<About />} />
+            <Route path="/events" element={<About />} />
           </Routes>
         </Box>
         <Footer />
