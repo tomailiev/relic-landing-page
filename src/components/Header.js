@@ -12,8 +12,8 @@ const Header = () => {
                 <MenuItem component={RouterLink} to="/whoweare">
                         <Typography textAlign="center">Who we are</Typography>
                 </MenuItem>
-                <MenuItem component={RouterLink} to="/contact">
-                        <Typography textAlign="center">Contact</Typography>
+                <MenuItem component={RouterLink} to="/events">
+                        <Typography textAlign="center">Events</Typography>
                 </MenuItem>
             </Toolbar>
         </AppBar>

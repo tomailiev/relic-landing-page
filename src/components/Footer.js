@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -8,9 +8,9 @@ import { Container } from "@mui/system";
 const Footer = () => {
     
     return (
-        <footer style={{position: "absolute", bottom: 0}}>
+        <footer style={{background: "#d6bfa2", padding: 10}}>
             <Container disableGutters>
-                <Container>
+                <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
                         <InstagramIcon fontSize="inherit" />
                     </IconButton>
@@ -20,7 +20,7 @@ const Footer = () => {
                     <IconButton size="large" color="secondary">
                         <TwitterIcon fontSize="inherit" />
                     </IconButton>
-                </Container>
+                </Box>
                 <Copyright />
             </Container>
         </footer>

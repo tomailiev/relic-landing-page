@@ -1,13 +1,14 @@
 import { Container, Typography } from "@mui/material";
-import logo from "../imgs/photo.jpg";
+import logo from "../imgs/WA0002.jpg";
+import '@fontsource/tangerine/700.css';
 
 const Title = () => {
     return (
-        <Container maxWidth="xs" sx={{textAlign: "center", m: 2}}>
-        <Typography variant="h3">
-            Relic
-        </Typography>
-        <img src={logo} width={300} height={"auto"} alt="logo" />
+        <Container maxWidth="xs" sx={{ textAlign: "center", m: 8 }}>
+            <Typography fontFamily="tangerine" variant="h2">
+                Relic Ensemble
+            </Typography>
+            <img src={logo} width={200} height={"auto"} alt="logo" />
         </Container>
     )
 };
