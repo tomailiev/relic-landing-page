@@ -31,6 +31,7 @@ function App() {
       secondary: {
         main: '#bf360c',
       },
+      
     }
   });
 

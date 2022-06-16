@@ -1,6 +1,7 @@
 import { Box, Button, TextField, Stack, Typography } from "@mui/material"
 import { useState } from "react";
 import uploadDoc from "../utils/firebase/firestore-funcs";
+import { emailSubSchema } from "../utils/yup/schemas";
 
 const SubscribeForm = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -9,16 +10,19 @@ const SubscribeForm = () => {
 
     function handleSubscribe(e) {
         e.preventDefault();
-        if (!userEmail) {
-            setHasError(true);
-            return;
-        }
         setIsSubmitting(true);
-        uploadDoc({ email: userEmail }, "testEmail")
+        emailSubSchema.validate({ email: userEmail })
+            .then(val => uploadDoc(val, 'testEmail'))
             .then(() => {
-                setUserEmail("");
+                setUserEmail('');
                 setIsSubmitting(false);
             })
+            .catch(e => {
+                setIsSubmitting(false);
+                e.name === 'ValidationError'
+                    ? setHasError(true)
+                    : console.log(e.errors);
+            });
     }
 
     function handleInputChange(e) {
@@ -28,7 +32,7 @@ const SubscribeForm = () => {
 
     return (
         <Box flex={1} sx={{ p: 10 }}>
-            <Typography variant="h5" sx={{mb: 2}}>
+            <Typography variant="h5" sx={{ mb: 2 }}>
                 Subscribe to our emails!
             </Typography>
             <form onSubmit={handleSubscribe}>
