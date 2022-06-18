@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Stack, Typography } from "@mui/material"
 import { useState } from "react";
-import uploadDoc from "../utils/firebase/firestore-funcs";
-import { emailSubSchema } from "../utils/yup/schemas";
+import uploadDoc from "../../utils/firebase/firestore-funcs";
+import { emailSubSchema } from "../../utils/yup/schemas";
 
 const SubscribeForm = () => {
     const [userEmail, setUserEmail] = useState("");
