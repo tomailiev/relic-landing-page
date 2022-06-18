@@ -1,9 +1,11 @@
 import { Box, Button, TextField, Stack, Typography } from "@mui/material"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import NotificationContext from "../../context/NotificationContext";
 import uploadDoc from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
 
 const SubscribeForm = () => {
+    const { setNotification } = useContext(NotificationContext);
     const [userEmail, setUserEmail] = useState("");
     const [hasError, setHasError] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,6 +18,7 @@ const SubscribeForm = () => {
             .then(() => {
                 setUserEmail('');
                 setIsSubmitting(false);
+                setNotification({ type: 'success', message: 'Successfully subscribed!' });
             })
             .catch(e => {
                 setIsSubmitting(false);
