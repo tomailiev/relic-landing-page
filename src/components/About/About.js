@@ -10,7 +10,7 @@ const About = () => {
                 This is Relic
             </Typography>
             <Bio />
-            <Bio />
+            <Bio picRight />
         </Container>
     );
 };
