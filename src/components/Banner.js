@@ -9,10 +9,9 @@ const Banner = () => {
             <Box width="98vw" height="600px" display="flex" flexDirection="column" alignItems={"center"} justifyContent="center">
                 <Box maxWidth={800} marginX={2}>
                     <Typography fontSize={24} fontStyle="italic" sx={{
-                        background: '#f4e5cf', padding: '15px', WebkitBoxShadow: "0px 5px 2px 0px rgba(0,0,0,0.58)",
-                        boxShadow: "0px 5px 2px 0px rgba(0,0,0,0.58)", borderRadius: '5px'
+                        background: 'linear-gradient(180deg, rgba(238,222,197,0) 0%, rgba(214,191,162,1) 20%, rgba(214,191,162,1) 80%, rgba(238,222,197,0) 100%)', paddingX: '15px', paddingY: '25px', borderRadius: '5px'
                     }}>
-                        Inspiring audiences by bringing relics of the past to life through [sensitive and theatrical productions?]. Played by musicians [devoted/committed] to camaraderie and connection while collectively searching for [the deeper meaning of humanity] through creating together.
+                        Relic is a brand new music ensemble aiming to bring high quality music making and dramatic narative to the same stage. We believe in sharing close, personal musical experiences with our audiences and presenting music as a storytelling device.
                     </Typography>
                 </Box>
             </Box>

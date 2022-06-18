@@ -4,8 +4,8 @@ import '@fontsource/tangerine/700.css';
 
 const Title = () => {
     return (
-        <Container maxWidth="xs" sx={{ textAlign: "center", m: 8 }}>
-            <Typography fontFamily="tangerine" variant="h2">
+        <Container maxWidth="sm" sx={{ textAlign: "center", m: 8 }}>
+            <Typography fontFamily="tangerine" variant="h1">
                 Relic Ensemble
             </Typography>
             <img src={logo} width={200} height={"auto"} alt="logo" />
