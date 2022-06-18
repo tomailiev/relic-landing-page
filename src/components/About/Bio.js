@@ -12,7 +12,7 @@ const Bio = () => {
             <Box textAlign={'left'} sx={{ my: 5 }}>
                 <Grid container justifyContent={'center'}>
                     <Grid md="4" xs="12" justifyContent={"center"}>
-                        <img src={t} height="400px" />
+                        <img src={t} height="400px" alt="member avatar" />
                     </Grid>
                     <Grid md="6" xs="12">
                         <Collapse collapsedSize={360} in={isFullBioOpen}>
