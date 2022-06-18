@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { Parallax } from "react-parallax";
-import bgPic from '../imgs/10bg.jpg';
+import bgPic from '../../imgs/10bg.jpg';
 import '@fontsource/lato/400-italic.css';
 
 const Banner = () => {

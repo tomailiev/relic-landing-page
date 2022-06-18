@@ -1,7 +1,7 @@
 import './App.css';
 import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About/About';

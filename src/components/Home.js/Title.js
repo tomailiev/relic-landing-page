@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import logo from "../imgs/WA0002.jpg";
+import logo from "../../imgs/WA0002.jpg";
 import '@fontsource/tangerine/700.css';
 
 const Title = () => {
