@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -6,9 +6,10 @@ import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 
 const Footer = () => {
+    const theme = useTheme();
 
     return (
-        <footer style={{ background: "linear-gradient(180deg, rgba(238,222,197,1) 0%, rgba(214,191,162,1) 100%)", padding: 10 }}>
+        <footer style={{ background: theme.palette.background.reverseGradient, padding: 10 }}>
             <Container disableGutters>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">

@@ -1,9 +1,10 @@
 import { useTheme } from "@emotion/react";
-import { Button, Collapse, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material"
+import { Button, Collapse, Divider, Grid, Paper, useMediaQuery } from "@mui/material"
 import { Box } from "@mui/system"
 import { useEffect } from "react";
 import { useState } from "react";
 import { getLink } from "../../utils/firebase/firestore-funcs";
+import MusicianBio from "../Text/MusicianBio";
 import MemberPic from "./MemberPic";
 
 const Bio = ({ picRight, name, bio, picUrl }) => {
@@ -11,12 +12,6 @@ const Bio = ({ picRight, name, bio, picUrl }) => {
     const xsMatch = useMediaQuery(theme.breakpoints.down('md'));
     const [isFullBioOpen, setIsFullBioOpen] = useState(false);
     const [src, setSrc] = useState(null);
-
-    function addBoldToBio(bio = "") {
-        const arr = bio.split(name);
-        const span = (<Typography component={'span'} fontSize={18} fontWeight="700" >{name}</Typography>);
-        return [arr[0], span, arr[1]];
-    }
 
     useEffect(() => {
         getLink(picUrl)
@@ -37,10 +32,7 @@ const Bio = ({ picRight, name, bio, picUrl }) => {
                         {(!picRight || xsMatch) && <MemberPic src={src} />}
                         <Grid item md={6} xs={12} m={xsMatch && 5} textAlign={!picRight && !xsMatch ? 'right' : 'left'}>
                             <Collapse collapsedSize={330} in={isFullBioOpen}>
-                                {/* <Typography component={'span'} fontSize={18} fontWeight="bold" >{name}</Typography> */}
-                                <Typography component={'span'} fontSize={18}>
-                                    {addBoldToBio(bio).map((item, idx) => <span key={idx}>{item}</span>)}
-                                </Typography>
+                                <MusicianBio bio={bio} name={name} />
                             </Collapse>
                             <Button sx={{ justifySelf: 'center', my: 1 }} variant="contained" color="secondary" onClick={toggleFullBio}>Read {isFullBioOpen ? 'less' : 'more'}</Button>
                         </Grid>

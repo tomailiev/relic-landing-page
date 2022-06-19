@@ -9,7 +9,7 @@ const MemberPic = ({ src }) => {
                 <Box overflow={'hidden'} borderRadius="50%" height={'360px'}>
                     {src
                         ? <img src={src} height="400px" alt="relic founder avatar" />
-                        : <Skeleton variant="rectangular" height={400} width={230} />
+                        : <Skeleton variant="rectangular" animation={'wave'} height={400} width={230} />
                     }
                 </Box>
             </Grid>

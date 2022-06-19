@@ -36,7 +36,12 @@ function App() {
       secondary: {
         main: '#bf360c',
       },
-
+      background: {
+        mainGradient: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)",
+        reverseGradient: "linear-gradient(180deg, rgba(238,222,197,1) 0%, rgba(214,191,162,1) 100%)",
+        textGradient: 'linear-gradient(180deg, rgba(238,222,197,0) 0%, rgba(214,191,162,1) 20%, rgba(214,191,162,1) 80%, rgba(238,222,197,0) 100%)',
+        drawer: '#f4e5cf'
+      }
     }
   });
 
@@ -45,7 +50,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <NotificationContext.Provider value={{ notification, setNotification }}>
           <Notification />
-          <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}>
+          <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: theme.palette.background.mainGradient }}>
             <CssBaseline />
             <Header />
             <Routes>
