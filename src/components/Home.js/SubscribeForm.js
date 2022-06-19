@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Stack, Typography } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
-import uploadDoc from "../../utils/firebase/firestore-funcs";
+import { uploadDoc } from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
 
 const SubscribeForm = () => {

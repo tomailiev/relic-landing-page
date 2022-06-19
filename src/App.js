@@ -50,7 +50,7 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/whoweare" element={<About />} />
+              <Route path="/about" element={<About />} />
               <Route path="/events" element={<About />} />
             </Routes>
           </Box>
