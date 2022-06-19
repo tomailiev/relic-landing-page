@@ -8,7 +8,7 @@ const MemberPic = ({ src }) => {
             <Grid container justifyContent={'center'}>
                 <Box overflow={'hidden'} borderRadius="50%" height={'360px'}>
                     {src
-                        ? <img src={src} height="400px" alt="member avatar" />
+                        ? <img src={src} height="400px" alt="relic founder avatar" />
                         : <Skeleton variant="rectangular" height={400} width={230} />
                     }
                 </Box>
