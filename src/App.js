@@ -31,10 +31,10 @@ function App() {
     },
     palette: {
       primary: {
-        main: '#f57f17',
+        main: '#bf360c',
       },
       secondary: {
-        main: '#bf360c',
+        main: '#f57f17',
       },
       background: {
         mainGradient: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)",

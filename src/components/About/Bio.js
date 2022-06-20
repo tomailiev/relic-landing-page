@@ -34,7 +34,7 @@ const Bio = ({ picRight, name, bio, picUrl }) => {
                             <Collapse collapsedSize={330} in={isFullBioOpen}>
                                 <MusicianBio bio={bio} name={name} />
                             </Collapse>
-                            <Button sx={{ justifySelf: 'center', my: 1 }} variant="contained" color="secondary" onClick={toggleFullBio}>Read {isFullBioOpen ? 'less' : 'more'}</Button>
+                            <Button sx={{ justifySelf: 'center', my: 1 }} variant="contained" color="primary" onClick={toggleFullBio}>Read {isFullBioOpen ? 'less' : 'more'}</Button>
                         </Grid>
                         {(!!picRight && !xsMatch) && <MemberPic src={src} />}
                     </Grid>

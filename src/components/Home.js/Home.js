@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             <Title />
-            <Banner textComponent={<Intro />} bgUrl={bgPic} />
+            <Banner textComponent={<Intro />} bgUrl={bgPic} height={600} />
             <SubscribeForm />
         </>
     );
