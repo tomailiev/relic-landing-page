@@ -9,7 +9,7 @@ const Footer = () => {
     const theme = useTheme();
 
     return (
-        <footer style={{ background: theme.palette.background.reverseGradient, padding: 10 }}>
+        <footer style={{ background: theme.palette.background.reverseGrayscale, padding: 10 }}>
             <Container disableGutters>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">

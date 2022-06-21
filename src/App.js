@@ -9,6 +9,7 @@ import '@fontsource/lato/400.css';
 import NotificationContext from './context/NotificationContext';
 import { useState } from 'react';
 import Notification from './components/Common/Notification';
+import { grey } from '@mui/material/colors';
 
 function App() {
 
@@ -38,8 +39,11 @@ function App() {
       },
       background: {
         mainGradient: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)",
+        mainGrayscale: `linear-gradient(180deg, ${grey[500]} 0%, ${grey[200]} 100%)`,
         reverseGradient: "linear-gradient(180deg, rgba(238,222,197,1) 0%, rgba(214,191,162,1) 100%)",
+        reverseGrayscale: `linear-gradient(180deg, ${grey[200]} 0%, ${grey[500]} 100%)`,
         textGradient: 'linear-gradient(180deg, rgba(238,222,197,0) 0%, rgba(214,191,162,1) 20%, rgba(214,191,162,1) 80%, rgba(238,222,197,0) 100%)',
+        textGrayscale: 'linear-gradient(180deg, rgba(238,238,238,0) 0%, rgba(158, 158, 158,1) 20%, rgba(158, 158, 158,1) 80%, rgba(238,238,238,0) 100%)',
         drawer: '#f4e5cf'
       }
     }
@@ -50,7 +54,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <NotificationContext.Provider value={{ notification, setNotification }}>
           <Notification />
-          <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: theme.palette.background.mainGradient }}>
+          <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: theme.palette.background.mainGrayscale }}>
             <CssBaseline />
             <Header />
             <Routes>
