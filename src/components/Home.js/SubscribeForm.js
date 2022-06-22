@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Stack, Typography } from "@mui/material"
+import { Box, Button, TextField, Stack, Typography, useTheme } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { uploadDoc } from "../../utils/firebase/firestore-funcs";
@@ -6,6 +6,7 @@ import { emailSubSchema } from "../../utils/yup/schemas";
 
 const SubscribeForm = () => {
     const { setNotification } = useContext(NotificationContext);
+    const theme = useTheme();
     const [userEmail, setUserEmail] = useState("");
     const [hasError, setHasError] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,7 +53,7 @@ const SubscribeForm = () => {
                     />
                     <Button
                         variant="outlined"
-                        color="primary"
+                        color={theme.palette.primary.grayscale}
                         disabled={isSubmitting}
                         type="submit"
                     >

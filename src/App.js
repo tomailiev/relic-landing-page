@@ -33,9 +33,11 @@ function App() {
     palette: {
       primary: {
         main: '#bf360c',
+        grayScale: grey[900]
       },
       secondary: {
         main: '#f57f17',
+        grayscale: grey[50]
       },
       background: {
         mainGradient: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)",
@@ -45,7 +47,7 @@ function App() {
         textGradient: 'linear-gradient(180deg, rgba(238,222,197,0) 0%, rgba(214,191,162,1) 20%, rgba(214,191,162,1) 80%, rgba(238,222,197,0) 100%)',
         textGrayscale: 'linear-gradient(180deg, rgba(238,238,238,0) 0%, rgba(158, 158, 158,1) 20%, rgba(158, 158, 158,1) 80%, rgba(238,238,238,0) 100%)',
         drawer: '#f4e5cf'
-      }
+      },
     }
   });
 
