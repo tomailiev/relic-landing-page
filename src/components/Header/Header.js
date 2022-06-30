@@ -9,7 +9,7 @@ const Header = () => {
     const navItems = [
         { path: '/', title: 'Home' },
         { path: '/about', title: 'About us' },
-        // { path: '/contact', title: 'Contact' },
+        { path: '/events', title: 'Events' },
     ];
 
     function handleDrawerToggle() {

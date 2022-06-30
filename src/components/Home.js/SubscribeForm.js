@@ -14,7 +14,7 @@ const SubscribeForm = () => {
         e.preventDefault();
         setIsSubmitting(true);
         emailSubSchema.validate({ email: userEmail })
-            .then(val => uploadDoc(val, 'testEmail'))
+            .then(val => uploadDoc(val, 'subscribers'))
             .then(() => {
                 setUserEmail('');
                 setIsSubmitting(false);

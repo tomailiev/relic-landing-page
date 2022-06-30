@@ -9,6 +9,7 @@ import '@fontsource/lato/400.css';
 import NotificationContext from './context/NotificationContext';
 import { useState } from 'react';
 import Notification from './components/Common/Notification';
+import Events from './components/Events/Events';
 
 function App() {
 
@@ -51,7 +52,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/events" element={<About />} />
+              <Route path="/events" element={<Events />} />
             </Routes>
           </Box>
           <Footer />
