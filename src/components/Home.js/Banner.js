@@ -11,7 +11,7 @@ const Banner = () => {
                     <Typography fontSize={24} fontStyle="italic" sx={{
                         background: 'linear-gradient(180deg, rgba(238,222,197,0) 0%, rgba(214,191,162,1) 20%, rgba(214,191,162,1) 80%, rgba(238,222,197,0) 100%)', paddingX: '15px', paddingY: '25px', borderRadius: '5px'
                     }}>
-                        Relic is a brand new music ensemble aiming to bring high quality music making and dramatic narative to the same stage. We believe in sharing close, personal musical experiences with our audiences and presenting music as a storytelling device.
+                        Relic is a brand new music ensemble aiming to bring high quality music making and dramatic narrative to the same stage. We believe in sharing close, personal musical experiences with our audiences and presenting music as a storytelling device.
                     </Typography>
                 </Box>
             </Box>
