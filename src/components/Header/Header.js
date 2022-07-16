@@ -1,7 +1,8 @@
-import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Drawer, List, Divider, } from "@mui/material";
+import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Drawer, List, Divider, Button, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
+// import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
 
     return (
         <AppBar position="static" color="transparent">
-            <Toolbar>
+            <Toolbar sx={{ justifyContent: 'space-between' }}>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
@@ -30,7 +31,7 @@ const Header = () => {
                 </IconButton>
                 <Box justifyContent={'center'} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                     {navItems.map(({ path, title }) => (
-                        <MenuItem key={title} component={RouterLink} to={path}>
+                        <MenuItem key={title} component={RouterLink} to={path} sx={{ mx: '2' }}>
                             <Typography textAlign="center">{title}</Typography>
                         </MenuItem>
                     ))}
@@ -64,6 +65,10 @@ const Header = () => {
                         </Box>
                     </Drawer>
                 </Box>
+                <Button variant="contained" href="https://ci.ovationtix.com/35560/store/donations/47953" target={'_blank'}>
+                    Donate  
+                    {/* <OpenInNewIcon fontSize="small"/> */}
+                </Button>
             </Toolbar>
         </AppBar>
     );
