@@ -1,6 +1,7 @@
-import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Drawer, List, Divider, Button, } from "@mui/material";
+import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Drawer, List, Divider, Button, useScrollTrigger, Slide, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import logoIcon from '../../assets/logos/relic-logo-bw.png'
 import { useState } from "react";
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
@@ -8,69 +9,75 @@ const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
-        { path: '/', title: 'Home' },
         { path: '/about', title: 'About us' },
         { path: '/events', title: 'Events' },
     ];
+
+    const trigger = useScrollTrigger();
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
     }
 
     return (
-        <AppBar position="static" color="transparent">
-            <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Box justifyContent={'center'} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                    {navItems.map(({ path, title }) => (
-                        <MenuItem key={title} component={RouterLink} to={path} sx={{ mx: '2' }}>
-                            <Typography textAlign="center">{title}</Typography>
-                        </MenuItem>
-                    ))}
-                </Box>
-                <Box component="nav">
-                    <Drawer
-                        anchor="left"
-                        variant="temporary"
-                        open={isDrawerOpen}
-                        onClose={handleDrawerToggle}
-                        ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                        }}
-                        sx={{
-                            display: { xs: 'block', sm: 'none' },
-                            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#f4e5cf' },
-                        }}
+        <Slide appear={false} direction="down" in={!trigger}>
+            <AppBar color="primary" position={'sticky'}>
+                <Toolbar sx={{ justifyContent: 'space-between' }}>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', }}>
-                            <Typography variant="h4" fontFamily="tangerine" sx={{ my: 2 }}>
-                                Relic
-                            </Typography>
-                            <Divider />
-                            <List>
-                                {navItems.map(({ path, title }) => (
-                                    <MenuItem key={title} component={RouterLink} to={path}>
-                                        <Typography textAlign="center">{title}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </List>
-                        </Box>
-                    </Drawer>
-                </Box>
-                <Button variant="contained" href="https://ci.ovationtix.com/35560/store/donations/47953" target={'_blank'}>
-                    Donate  
-                    {/* <OpenInNewIcon fontSize="small"/> */}
-                </Button>
-            </Toolbar>
-        </AppBar>
+                        <MenuIcon />
+                    </IconButton>
+                    <Box justifyContent={'center'} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                        <MenuItem component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
+                            <img src={logoIcon} height="48px" width="auto" alt="logo icon" />
+                        </MenuItem>
+                        {navItems.map(({ path, title }) => (
+                            <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
+                                <Typography textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                            </MenuItem>
+                        ))}
+                    </Box>
+                    <Box component="nav">
+                        <Drawer
+                            anchor="left"
+                            variant="temporary"
+                            open={isDrawerOpen}
+                            onClose={handleDrawerToggle}
+                            ModalProps={{
+                                keepMounted: true, // Better open performance on mobile.
+                            }}
+                            sx={{
+                                display: { xs: 'block', sm: 'none' },
+                                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#f4e5cf' },
+                            }}
+                        >
+                            <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', }}>
+                                <Typography variant="h4" fontFamily="tangerine" sx={{ my: 2 }}>
+                                    Relic
+                                </Typography>
+                                <Divider />
+                                <List>
+                                    {navItems.map(({ path, title }) => (
+                                        <MenuItem key={title} component={RouterLink} to={path}>
+                                            <Typography textAlign="center">{title}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </List>
+                            </Box>
+                        </Drawer>
+                    </Box>
+                    <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href="https://ci.ovationtix.com/35560/store/donations/47953" target={'_blank'}>
+                        Donate
+                        {/* <OpenInNewIcon fontSize="small"/> */}
+                    </Button>
+                </Toolbar>
+            </AppBar>
+        </Slide>
     );
 };
 

@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Link, Typography } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -17,10 +17,14 @@ const Footer = () => {
                 </Box>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
-                        <InstagramIcon fontSize="inherit" />
+                        <Link href="https://www.instagram.com/relic_ensemble/" target={"_blank"}>
+                            <InstagramIcon fontSize="inherit" />
+                        </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
-                        <FacebookRoundedIcon fontSize="inherit" />
+                        <Link href="https://www.facebook.com/RELIC-ensemble-109345125182475/" target={"_blank"}>
+                            <FacebookRoundedIcon fontSize="inherit" />
+                        </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
                         <TwitterIcon fontSize="inherit" />

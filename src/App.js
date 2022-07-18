@@ -1,11 +1,12 @@
 import './App.css';
-import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About/About';
 import '@fontsource/lato/400.css';
+import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
 import { useState } from 'react';
 import Notification from './components/Common/Notification';
@@ -32,10 +33,10 @@ function App() {
     },
     palette: {
       primary: {
-        main: '#f57f17',
+        main: '#a33363',
       },
       secondary: {
-        main: '#bf360c',
+        main: '#ffffff',
       },
 
     }
@@ -46,7 +47,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <NotificationContext.Provider value={{ notification, setNotification }}>
           <Notification />
-          <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}>
+          {/* <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}> */}
             <CssBaseline />
             <Header />
             <Routes>
@@ -54,7 +55,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/events" element={<Events />} />
             </Routes>
-          </Box>
+          {/* </Box> */}
           <Footer />
         </NotificationContext.Provider>
       </ThemeProvider>
