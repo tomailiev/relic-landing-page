@@ -1,7 +1,7 @@
-import { Box, Button, IconButton, Link, Typography } from "@mui/material";
+import { Box, IconButton, Link, Typography } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
+// import TwitterIcon from '@mui/icons-material/Twitter';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 
@@ -26,9 +26,9 @@ const Footer = () => {
                             <FacebookRoundedIcon fontSize="inherit" />
                         </Link>
                     </IconButton>
-                    <IconButton size="large" color="secondary">
+                    {/* <IconButton size="large" color="secondary">
                         <TwitterIcon fontSize="inherit" />
-                    </IconButton>
+                    </IconButton> */}
                 </Box>
                 <Copyright />
             </Container>

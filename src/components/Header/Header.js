@@ -3,15 +3,22 @@ import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import logoIcon from '../../assets/logos/relic-logo-bw.png'
 import { useState } from "react";
+import NavMenuItem from "./NavMenuItem";
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
-        { path: '/about', title: 'About us' },
+        {
+            path: '/about', title: 'About us', menu: [
+                { path: '/mission', title: 'Our mission' },
+                { path: '/musicians', title: 'Our musicians' }
+            ]
+        },
         { path: '/events', title: 'Events' },
     ];
+
 
     const trigger = useScrollTrigger();
 
@@ -33,18 +40,23 @@ const Header = () => {
                         <MenuIcon />
                     </IconButton>
                     <Box justifyContent={'center'} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                        <MenuItem component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
+                        <MenuItem component={RouterLink} to={'/'} sx={{ my: 2.2, mr: 1 }}>
                             <img src={logoIcon} height="48px" width="auto" alt="logo icon" />
                         </MenuItem>
-                        {navItems.map(({ path, title }) => (
-                            <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                <Typography textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
-                            </MenuItem>
-                        ))}
+                        {navItems.map(({ path, title, menu }) => {
+                            return menu
+                                ? <NavMenuItem key={title} menuTitle={title} menu={menu} />
+                                : (
+                                <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
+                                    <Typography textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                </MenuItem>
+                                )
+                        })}
                     </Box>
                     <Box component="nav">
                         <Drawer
                             anchor="left"
+                            color="primary"
                             variant="temporary"
                             open={isDrawerOpen}
                             onClose={handleDrawerToggle}
@@ -53,18 +65,18 @@ const Header = () => {
                             }}
                             sx={{
                                 display: { xs: 'block', sm: 'none' },
-                                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#f4e5cf' },
+                                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#a33363' },
                             }}
                         >
-                            <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', }}>
-                                <Typography variant="h4" fontFamily="tangerine" sx={{ my: 2 }}>
-                                    Relic
-                                </Typography>
+                            <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', color: 'white' }}>
+                                <MenuItem component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
+                                    <img src={logoIcon} height="48px" width="auto" alt="logo icon" />
+                                </MenuItem>
                                 <Divider />
                                 <List>
                                     {navItems.map(({ path, title }) => (
                                         <MenuItem key={title} component={RouterLink} to={path}>
-                                            <Typography textAlign="center">{title}</Typography>
+                                            <Typography textAlign="center" fontSize={'bold'}>{title}</Typography>
                                         </MenuItem>
                                     ))}
                                 </List>
@@ -73,11 +85,10 @@ const Header = () => {
                     </Box>
                     <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href="https://ci.ovationtix.com/35560/store/donations/47953" target={'_blank'}>
                         Donate
-                        {/* <OpenInNewIcon fontSize="small"/> */}
                     </Button>
                 </Toolbar>
             </AppBar>
-        </Slide>
+        </Slide >
     );
 };
 

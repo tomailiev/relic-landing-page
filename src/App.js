@@ -29,7 +29,12 @@ function App() {
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
-      ].join(',')
+      ].join(','),
+      h1: {
+        '@media (max-width:600px)': {
+          fontSize: '3.5rem',
+        }
+      },
     },
     palette: {
       primary: {
@@ -48,13 +53,13 @@ function App() {
         <NotificationContext.Provider value={{ notification, setNotification }}>
           <Notification />
           {/* <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}> */}
-            <CssBaseline />
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/events" element={<Events />} />
-            </Routes>
+          <CssBaseline />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/events" element={<Events />} />
+          </Routes>
           {/* </Box> */}
           <Footer />
         </NotificationContext.Provider>
