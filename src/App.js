@@ -5,12 +5,14 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About/About';
+import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
 import { useState } from 'react';
 import Notification from './components/Common/Notification';
 import Events from './components/Events/Events';
+import ActionCenter from './components/Common/ActionCenter';
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
         '"Segoe UI Symbol"',
       ].join(','),
       h1: {
+        fontWeight: 700,
         '@media (max-width:600px)': {
           fontSize: '3.5rem',
         }
@@ -61,6 +64,7 @@ function App() {
             <Route path="/events" element={<Events />} />
           </Routes>
           {/* </Box> */}
+          <ActionCenter />
           <Footer />
         </NotificationContext.Provider>
       </ThemeProvider>
