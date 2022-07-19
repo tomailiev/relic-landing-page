@@ -5,7 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const NavMenuItem = ({ menuTitle, menu }) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    console.log(menu);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -20,6 +19,8 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 aria-expanded={!!anchorEl ? 'true' : undefined}
                 onClick={handleClick}
                 color="secondary"
+                component={'a'}
+                sx={{fontWeight: 'bold'}}
             >
                 {menuTitle}
             </MenuItem>

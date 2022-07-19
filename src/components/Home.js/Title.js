@@ -6,7 +6,7 @@ const Title = () => {
     return (
         <Container maxWidth="md" sx={{ textAlign: "center", mt: 2, height: '100%' }}>
             <Box height={'50%'}>
-                <img src={logo} alt="logo" width={'auto'} height={'100%'} />
+                <img src={logo} alt="logo" width={'auto'} height={'85%'} />
             </Box>
             {/* <Typography variant="h3" color={'#bd6984'} my={'25px'}>
                     PRESENTS
