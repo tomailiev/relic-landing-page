@@ -8,7 +8,7 @@ const Copyright = () => {
             <Typography variant="body2" color="text.secondary" align="center" paddingBottom={2}>
                 {'Copyright © '}
                 <Link color="inherit" href="https://relicensemble.org">
-                    Relic Ensemble
+                    Relic
                 </Link>{' '}
                 {year}
                 {'.'}

@@ -17,7 +17,7 @@ const ContentSection = () => {
                             Upcoming events
                         </Typography>
                         <Typography variant="body1" mx={2}>
-                            Our inaugural week is quickly approaching. We have an exciting program of baroque music favorites that we are excited to present in Kalamazoo, MI this September.
+                            Our inaugural week is quickly approaching. We have an exciting program of baroque music favorites that we are looking forward to presenting in Kalamazoo, MI this September.
                         </Typography>
                     </Grid>
                     <Grid item md={6}>
