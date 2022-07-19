@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material"
+import { Button, Dialog, DialogActions } from "@mui/material";
 
 const DonationDialog = ({ open, setOpen }) => {
     return (
@@ -8,7 +8,7 @@ const DonationDialog = ({ open, setOpen }) => {
             open={open}
             onClose={() => setOpen(false)}
         >
-            <iframe height={'1000px'} src="https://ci.ovationtix.com/35560/store/donations/47953"></iframe>
+            <iframe height={'1000px'} title="Donation frame" src="https://ci.ovationtix.com/35560/store/donations/47953"></iframe>
             <DialogActions>
                 <Button onClick={() => setOpen(false)}>Close</Button>
             </DialogActions>
