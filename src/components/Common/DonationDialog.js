@@ -1,6 +1,8 @@
 import { Button, Dialog, DialogActions } from "@mui/material";
+import { links } from '../../data/links'
 
 const DonationDialog = ({ open, setOpen }) => {
+
     return (
         <Dialog
             fullWidth={true}
@@ -8,7 +10,7 @@ const DonationDialog = ({ open, setOpen }) => {
             open={open}
             onClose={() => setOpen(false)}
         >
-            <iframe height={'1000px'} title="Donation frame" src="https://ci.ovationtix.com/35560/store/donations/47953"></iframe>
+            <iframe height={'1000px'} title="Donation frame" src={links.gems}></iframe>
             <DialogActions>
                 <Button onClick={() => setOpen(false)}>Close</Button>
             </DialogActions>
