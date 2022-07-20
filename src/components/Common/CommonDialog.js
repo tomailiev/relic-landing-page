@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions } from "@mui/material";
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import { links } from '../../data/links'
-import SubscribeForm from "../Home.js/SubscribeForm";
+import SubscribeForm from "./SubscribeForm";
 
 const CommonDialog = () => {
 

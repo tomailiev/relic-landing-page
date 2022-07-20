@@ -15,7 +15,8 @@ const Home = () => {
             cardImage: eventsImage,
             cardTitle: 'Autumn Rising',
             cardTexts: ['September 8-10, 2022', 'Kalamazoo, MI'],
-            buttonText: ''
+            buttonText: '',
+            route: '/events'
         },
         {
             infoTitle: 'Our Musicians',
@@ -23,7 +24,8 @@ const Home = () => {
             cardImage: musicianImage,
             cardTitle: 'Our musicians',
             cardTexts: ['Co-founder & violinist Kako Miura', 'PC: Sam Brewer'],
-            buttonText: ''
+            buttonText: '',
+            route: '/musicians'
         }
     ];
 

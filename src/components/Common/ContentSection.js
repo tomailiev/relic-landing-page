@@ -1,4 +1,5 @@
 import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Paper, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const ContentSection = ({ content }) => {
 
@@ -12,12 +13,12 @@ const ContentSection = ({ content }) => {
                     <Typography variant="body1" mx={2}>
                         {content.infoText}
                     </Typography>
-                    <Button variant="contained" sx={{ m: 2 }}>
+                    <Button component={RouterLink} to={content.route} variant="contained" sx={{ m: 2 }}>
                         {content.buttonText || 'See more'}
                     </Button>
                 </Grid>
                 <Grid item md={6}>
-                    <Card>
+                    <Card component={RouterLink} to={content.route} sx={{textDecoration: 'none'}}>
                         <CardActionArea>
                             <CardMedia
                                 component="img"

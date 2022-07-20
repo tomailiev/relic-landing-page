@@ -4,9 +4,9 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom';
-import About from './components/About/About';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
+import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
 import { useState } from 'react';
@@ -15,6 +15,8 @@ import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
+import Musicians from './components/About/Musicians';
+import { TransitionGroup } from 'react-transition-group';
 
 function App() {
 
@@ -43,6 +45,12 @@ function App() {
       },
       h3: {
         marginTop: 30
+      },
+      subtitle1: {
+        color: '#ffffff',
+        fontWeight: '400',
+        fontStyle: 'italic',
+        fontSize: '1.3rem'
       }
     },
     palette: {
@@ -65,11 +73,13 @@ function App() {
             <CommonDialog />
             <CssBaseline />
             <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/events" element={<Events />} />
-            </Routes>
+            <TransitionGroup>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/musicians" element={<Musicians />} />
+                  <Route path="/events" element={<Events />} />
+                </Routes>
+            </TransitionGroup>
             <ActionCenter />
             <Footer />
           </DialogContext.Provider>

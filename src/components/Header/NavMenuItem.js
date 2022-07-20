@@ -34,7 +34,7 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 }}
             >
                 {menu.map(({title, path}) => (
-                    <MenuItem key={title} component={RouterLink} to={path} >
+                    <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
                         <Typography textAlign="center" color={'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                     </MenuItem>
                 ))}

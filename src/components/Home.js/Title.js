@@ -15,8 +15,8 @@ const Title = () => {
                 <Typography maxWidth={'100%'} variant="h1" mt={'85px'} mx={1} color={'white'} bgcolor={'rgba(179, 87, 126, 0.7)'} sx={{ textShadow: "-2px 0px 3px rgba(150, 150, 150, 1)" }}>
                     RELIC
                 </Typography>
-                <Typography variant="subtitle2">
-                    Let's bring early music to all 50 states
+                <Typography variant="subtitle1">
+                    The period chamber orchestra dedicated to bringing early music to all 50 states
                 </Typography>
             </Box>
         </Container>
