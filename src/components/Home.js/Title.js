@@ -11,9 +11,12 @@ const Title = () => {
             {/* <Typography variant="h3" color={'#bd6984'} my={'25px'}>
                     PRESENTS
                 </Typography> */}
-            <Box height={'50%'} display="flex" flexDirection={'column'} justifyContent="center" mt={2}>
-                <Typography maxWidth={'100%'} variant="h1" my={'85px'} mx={1} color={'white'} bgcolor={'rgba(179, 87, 126, 0.7)'} sx={{ textShadow: "-2px 0px 3px rgba(150, 150, 150, 1)" }}>
-                    AUTUMN RISING
+            <Box height={'50%'} display="flex" flexDirection={'column'} justifyContent="center" mt={1}>
+                <Typography maxWidth={'100%'} variant="h1" mt={'85px'} mx={1} color={'white'} bgcolor={'rgba(179, 87, 126, 0.7)'} sx={{ textShadow: "-2px 0px 3px rgba(150, 150, 150, 1)" }}>
+                    RELIC
+                </Typography>
+                <Typography variant="subtitle2">
+                    Let's bring early music to all 50 states
                 </Typography>
             </Box>
         </Container>

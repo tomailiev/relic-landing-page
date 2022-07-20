@@ -4,12 +4,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import logoIcon from '../../assets/logos/relic-logo-bw.png'
 import { useState } from "react";
 import NavMenuItem from "./NavMenuItem";
-import DonationDialog from "../Common/DonationDialog";
+import { useContext } from "react";
+import DialogContext from "../../context/DialogContext";
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const Header = () => {
+
+    const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [open, setOpen] = useState(false);
 
     const navItems = [
         {
@@ -30,7 +32,6 @@ const Header = () => {
 
     return (
         <>
-            <DonationDialog open={open} setOpen={setOpen} />
             <Slide appear={false} direction="down" in={!trigger}>
                 <AppBar color="primary" position={'sticky'}>
                     <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -87,7 +88,7 @@ const Header = () => {
                                 </Box>
                             </Drawer>
                         </Box>
-                        <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" onClick={() => setOpen(true)}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" onClick={() => setDialog('donation')}>
                             Donate
                         </Button>
                     </Toolbar>

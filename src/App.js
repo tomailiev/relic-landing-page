@@ -13,10 +13,13 @@ import { useState } from 'react';
 import Notification from './components/Common/Notification';
 import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
+import DialogContext from './context/DialogContext';
+import CommonDialog from './components/Common/CommonDialog';
 
 function App() {
 
   const [notification, setNotification] = useState(null);
+  const [dialog, setDialog] = useState(null);
 
   const theme = createTheme({
     typography: {
@@ -38,6 +41,9 @@ function App() {
           fontSize: '3.5rem',
         }
       },
+      h3: {
+        marginTop: 30
+      }
     },
     palette: {
       primary: {
@@ -54,18 +60,19 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <NotificationContext.Provider value={{ notification, setNotification }}>
-          <Notification />
-          {/* <Box minHeight="90vh" display="flex" flexDirection="column" alignItems={"center"} sx={{ background: "linear-gradient(180deg, rgba(214,191,162,1) 0%, rgba(238,222,197,1) 100%)" }}> */}
-          <CssBaseline />
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/events" element={<Events />} />
-          </Routes>
-          {/* </Box> */}
-          <ActionCenter />
-          <Footer />
+          <DialogContext.Provider value={{ dialog, setDialog }}>
+            <Notification />
+            <CommonDialog />
+            <CssBaseline />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/events" element={<Events />} />
+            </Routes>
+            <ActionCenter />
+            <Footer />
+          </DialogContext.Provider>
         </NotificationContext.Provider>
       </ThemeProvider>
     </div>
