@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions } from "@mui/material";
+import { Button, Dialog, DialogActions, Typography } from "@mui/material";
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import { links } from '../../data/links'
@@ -11,13 +11,15 @@ const CommonDialog = () => {
     return (
         <Dialog
             fullWidth={true}
-            maxWidth={dialog === 'donation' ? 'lg' : 'md'}
+            maxWidth={dialog === 'donation' ? 'lg' : 'sm'}
             open={!!dialog}
             onClose={() => setDialog(null)}
         >
             {dialog === 'donation'
                 ? <iframe height={'1000px'} title="Donation frame" src={links.gems}></iframe>
-                : <SubscribeForm />
+                : dialog === 'subscription'
+                    ? <SubscribeForm />
+                    : <Typography m={4}>{dialog}</Typography>
             }
             <DialogActions>
                 <Button onClick={() => setDialog(null)}>Close</Button>

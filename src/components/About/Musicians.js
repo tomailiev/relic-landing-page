@@ -9,18 +9,18 @@ const Musicians = () => {
 
     return (
             <>
-                <Container maxWidth={false}>
+                <Container maxWidth={false} sx={{px: 0}}>
                     <img src={musiciansBanner} width="100%" height={'auto'} alt="banner" />
                 </Container>
                 <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                    <Typography fontFamily="tangerine" variant="h2" >
+                    <Typography variant="h2" >
                         Musicians
                     </Typography>
-                    <Grid container>
-                        {founders.map(({ name, pic, bio }, i) => {
+                    <Grid container spacing={6} mt={3}>
+                        {founders.map(({ name, pic, bio, title }, i) => {
                             return (
-                                <Grid item xs={12} sm={6}>
-                                    <MusicianCard />
+                                <Grid key={name} item xs={12} md={6}>
+                                    <MusicianCard name={name} picUrl={pic} bio={bio} title={title} />
                                 </Grid>
                             );
                         })}
