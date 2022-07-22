@@ -60,7 +60,6 @@ function App() {
       secondary: {
         main: '#ffffff',
       },
-
     }
   });
 

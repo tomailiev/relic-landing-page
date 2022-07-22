@@ -18,7 +18,6 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 aria-haspopup="true"
                 aria-expanded={!!anchorEl ? 'true' : undefined}
                 onClick={handleClick}
-                color="secondary"
                 component={'a'}
                 sx={{fontWeight: 'bold'}}
             >
@@ -35,7 +34,7 @@ const NavMenuItem = ({ menuTitle, menu }) => {
             >
                 {menu.map(({title, path}) => (
                     <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                        <Typography textAlign="center" color={'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                        <Typography textAlign="center" color={'secondary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                     </MenuItem>
                 ))}
             </Menu>

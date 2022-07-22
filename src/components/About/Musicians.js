@@ -9,7 +9,7 @@ const Musicians = () => {
 
     return (
             <>
-                <Container maxWidth={false} sx={{px: 0}}>
+                <Container disableGutters maxWidth={false}>
                     <img src={musiciansBanner} width="100%" height={'auto'} alt="banner" />
                 </Container>
                 <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
