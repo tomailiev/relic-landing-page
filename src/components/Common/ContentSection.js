@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 const ContentSection = ({ content }) => {
 
     return (
-        <Paper elevation={1} sx={{ my: 2, p: 3, textAlign: 'center' }}>
+        <Paper elevation={1} sx={{ my: 2, p: 1, textAlign: 'center' }}>
             <Grid container spacing={2} justifyContent="center" my={4}>
                 <Grid item md={6} >
                     <Typography variant="h5" textAlign="center" mb={2}>

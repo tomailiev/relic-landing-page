@@ -1,5 +1,6 @@
 import { Container, Grid, Paper, Typography } from "@mui/material";
 import eventsBanner from '../../assets/banners/eventsBanner.webp';
+// import eventsBanner from '../../assets/banners/recital-hall_banner.webp';
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 

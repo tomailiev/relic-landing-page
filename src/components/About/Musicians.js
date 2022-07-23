@@ -1,8 +1,8 @@
-import {  Grid, Typography } from "@mui/material";
+import {  Grid, Skeleton, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 // import Bio from "./Bio";
 import founders from '../../data/founders.json';
-import musiciansBanner from '../../assets/banners/relic_musicians.webp';
+import musiciansBanner from '../../assets/banners/relic_musicians_960.webp';
 import MusicianCard from "./MusicianCard";
 
 const Musicians = () => {
@@ -11,6 +11,7 @@ const Musicians = () => {
             <>
                 <Container disableGutters maxWidth={false}>
                     <img src={musiciansBanner} width="100%" height={'auto'} alt="banner" />
+                    <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
                 </Container>
                 <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                     <Typography variant="h2" >
