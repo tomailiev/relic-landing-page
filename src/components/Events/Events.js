@@ -1,6 +1,7 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 import eventsBanner from '../../assets/banners/eventsBanner.webp';
 import EventCard from "./EventCard";
+import EventInfo from "./EventInfo";
 
 const Events = () => {
 
@@ -10,17 +11,19 @@ const Events = () => {
                 <img src={eventsBanner} width="100%" height={'auto'} alt="banner" />
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h2" >
+                <Typography variant="h2" mb={3}>
                     Upcoming Events
                 </Typography>
-                <Grid container spacing={6} mt={3}>
-                    <Grid item xs={12} md={6}>
-                        <EventCard />
+                <Paper elevation={3} sx={{p:5}}>
+                    <Grid container spacing={6}>
+                        <Grid item sm={12} md={5}>
+                            <EventCard />
+                        </Grid>
+                        <Grid item sm={12} md={7} textAlign={'left'}>
+                            <EventInfo />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} md={6}>
-                        
-                    </Grid>
-                </Grid>
+                </Paper>
             </Container>
         </>
         // <Box height={'500px'} display="flex" flexDirection="column" alignItems={"center"} justifyContent="center" textAlign={'center'} mx={2}>
