@@ -4,7 +4,7 @@ import logo from "../../assets/logos/relic-logo-red-256.png";
 
 const Title = () => {
     return (
-        <Container maxWidth="md" sx={{ textAlign: "center", mt: 2, height: '100%' }}>
+        <Container maxWidth={false} disableGutters sx={{ textAlign: "center", mt: 2, height: '100%' }}>
             <Box height={'50%'} display="flex" justifyContent={"center"} alignItems="center">
                 <img src={logo} alt="logo" width={'auto'} height={'85%'} />
             </Box>
