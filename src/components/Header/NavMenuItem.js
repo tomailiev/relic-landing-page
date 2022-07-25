@@ -19,7 +19,7 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 aria-expanded={!!anchorEl ? 'true' : undefined}
                 onClick={handleClick}
                 component={'a'}
-                sx={{fontWeight: 'bold'}}
+                sx={{ fontWeight: 'bold' }}
             >
                 {menuTitle}
             </MenuItem>
@@ -28,11 +28,12 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 anchorEl={anchorEl}
                 open={!!anchorEl}
                 onClose={handleClose}
+                // anchorOrigin={{vertical: 'center', horizontal: 'left'}}
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {menu.map(({title, path}) => (
+                {menu.map(({ title, path }) => (
                     <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
                         <Typography textAlign="center" color={'secondary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                     </MenuItem>

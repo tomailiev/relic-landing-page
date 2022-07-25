@@ -60,6 +60,15 @@ function App() {
       secondary: {
         main: '#ffffff',
       },
+    },
+    components: {
+      MuiMenu: {
+        styleOverrides: {
+          list: {
+            background: '#a33363'
+          }
+        }
+      }
     }
   });
 
@@ -73,11 +82,11 @@ function App() {
             <CssBaseline />
             <Header />
             <TransitionGroup>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/musicians" element={<Musicians />} />
-                  <Route path="/events" element={<Events />} />
-                </Routes>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/musicians" element={<Musicians />} />
+                <Route path="/events" element={<Events />} />
+              </Routes>
             </TransitionGroup>
             <ActionCenter />
             <Footer />

@@ -4,21 +4,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 // import logoIcon from '../../assets/logos/relic-logo-bw.png'
 import { useState } from "react";
 import NavMenuItem from "./NavMenuItem";
-import { useContext } from "react";
-import DialogContext from "../../context/DialogContext";
+// import { useContext } from "react";
+// import DialogContext from "../../context/DialogContext";
 import ResponsiveDrawer from "./ResponsiveDrawer";
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { links } from "../../data/links";
 
 const Header = () => {
 
-    const { setDialog } = useContext(DialogContext);
+    // const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
         { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About us', menu: [
-                { path: '/mission', title: 'Our story' },
+                // { path: '/aboutus', title: 'Our story' },
                 { path: '/musicians', title: 'Our musicians' }
             ]
         },
@@ -61,7 +62,7 @@ const Header = () => {
                             <img src={logoIcon} height="48px" width="auto" alt="logo icon" />
                         </MenuItem> */}
                         <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                        <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" onClick={() => setDialog('donation')}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
                             Donate
                         </Button>
                     </Toolbar>
