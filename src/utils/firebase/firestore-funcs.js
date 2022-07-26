@@ -13,12 +13,16 @@ function getLink(url) {
 }
 
 function downloadDocs(col, condition, sorting) {
-    const q = query(collection(db, col), where(condition, "==", true), orderBy(sorting));
+    const q = sorting
+        ? query(collection(db, col), where(condition, "==", true), orderBy(sorting))
+        : condition
+            ? query(collection(db, col), where(condition, '==', true))
+            : query(collection(db, col));
     return getDocs(q)
         .then(qSnap => {
             const docs = [];
             qSnap.forEach(doc => {
-                docs.push(Object.assign({id: doc.id}, doc.data()));
+                docs.push(Object.assign({ id: doc.id }, doc.data()));
             });
             return docs;
         })
