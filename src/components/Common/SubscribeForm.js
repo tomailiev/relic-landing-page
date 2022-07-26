@@ -18,7 +18,7 @@ const SubscribeForm = () => {
             .then(() => {
                 setUserEmail('');
                 setIsSubmitting(false);
-                setNotification({ type: 'success', message: 'Successfully subscribed!' });
+                setNotification({ type: 'success', message: 'Thank you for subscribing!' });
             })
             .catch(e => {
                 setIsSubmitting(false);
@@ -36,7 +36,7 @@ const SubscribeForm = () => {
     return (
         <Box flex={1} sx={{ p: 10 }}>
             <Typography variant="h5" sx={{ mb: 2 }}>
-                Subscribe to our emails!
+                Subscribe to our list!
             </Typography>
             <form onSubmit={handleSubscribe}>
                 <Stack spacing={2}>

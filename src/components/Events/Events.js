@@ -1,10 +1,22 @@
 import { Container, Grid, Paper, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import eventsBanner from '../../assets/banners/banner_events.webp';
+import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 // import eventsBanner from '../../assets/banners/recital-hall_banner.webp';
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 
 const Events = () => {
+
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        downloadDocs('events')
+            .then(docs => {
+                setEvents(docs);
+            })
+            .catch(console.error)
+    }, []);
 
     return (
         <>
@@ -15,16 +27,18 @@ const Events = () => {
                 <Typography variant="h2" mb={3}>
                     Upcoming Events
                 </Typography>
-                <Paper elevation={3} sx={{p:5}}>
-                    <Grid container spacing={6}>
-                        <Grid item sm={12} md={5}>
-                            <EventCard />
+                {events.map(event => (
+                    <Paper key={event.id} elevation={3} sx={{ p: 5 }}>
+                        <Grid container spacing={6}>
+                            <Grid item sm={12} md={5}>
+                                <EventCard imageUrl={event.imageUrl} />
+                            </Grid>
+                            <Grid item sm={12} md={7} textAlign={'left'}>
+                                <EventInfo event={event} />
+                            </Grid>
                         </Grid>
-                        <Grid item sm={12} md={7} textAlign={'left'}>
-                            <EventInfo />
-                        </Grid>
-                    </Grid>
-                </Paper>
+                    </Paper>
+                ))}
             </Container>
         </>
         // <Box height={'500px'} display="flex" flexDirection="column" alignItems={"center"} justifyContent="center" textAlign={'center'} mx={2}>

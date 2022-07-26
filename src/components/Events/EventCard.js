@@ -1,19 +1,34 @@
-import { Card, CardActionArea, CardMedia } from "@mui/material";
-import klmzImg from '../../assets/banners/banner_square.webp';
+import { Card, CardActionArea, CardMedia, Skeleton } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
+// import klmzImg from '../../assets/banners/banner_square.webp';
+import { getLink } from "../../utils/firebase/firestore-funcs";
 
-const EventCard = () => {
+const EventCard = ({ imageUrl }) => {
+
+    const [src, setSrc] = useState(null);
+
+    useEffect(() => {
+        getLink(imageUrl)
+            .then(val => setSrc(val))
+            .catch(console.error);
+    }, [imageUrl]);
+
     return (
-        <Card raised sx={{maxWidth: 400, maxHeight: 400}}>
+        <Card raised sx={{ maxWidth: 400, maxHeight: 400 }}>
             <CardActionArea>
                 <div style={{ display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
-                    <CardMedia
-                        component="img"
-                        // height="300"
-                        width={'auto'}
-                        image={klmzImg}
-                        alt="green iguana"
-                        sx={{ width: '100%', maxHeight: '100%' }}
-                    />
+                    {src
+                        ? <CardMedia
+                            component="img"
+                            // height="300"
+                            width={'auto'}
+                            image={src}
+                            alt="event image"
+                            sx={{ width: '100%', maxHeight: '100%' }}
+                        />
+                        : <Skeleton variant="rectangular" height={'400px'} width={'400px'} />
+                    }
                 </div>
             </CardActionArea>
         </Card>

@@ -31,7 +31,7 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
                                 // height="300"
                                 width={'auto'}
                                 image={src}
-                                alt="green iguana"
+                                alt="musician picture"
                                 sx={{ width: 'auto', maxHeight: '100%' }}
                             />
                             : <Skeleton variant="rectangular" height={400} width={'100%'} />
