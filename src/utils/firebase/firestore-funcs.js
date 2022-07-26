@@ -1,4 +1,4 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, orderBy } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { db, storage } from './firebase-init';
 
@@ -12,4 +12,16 @@ function getLink(url) {
     return getDownloadURL(ref(storage, url));
 }
 
-export { uploadDoc, getLink };
+function downloadDocs(col, condition, sorting) {
+    const q = query(collection(db, col), where(condition, "==", true), orderBy(sorting));
+    return getDocs(q)
+        .then(qSnap => {
+            const docs = [];
+            qSnap.forEach(doc => {
+                docs.push(Object.assign({id: doc.id}, doc.data()));
+            });
+            return docs;
+        })
+}
+
+export { uploadDoc, getLink, downloadDocs };

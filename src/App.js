@@ -65,10 +65,14 @@ function App() {
       MuiMenu: {
         styleOverrides: {
           list: {
-            background: '#a33363'
+            background: '#a33363',
+            boxShadow: 'none'
+          },
+          paper: {
+            boxShadow: 'none'
           }
         }
-      }
+      },
     }
   });
 
