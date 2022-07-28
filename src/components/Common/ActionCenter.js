@@ -19,7 +19,7 @@ const ActionCenter = () => {
                     <Grid item md={6} xs={12} textAlign="center" my={2}>
                         <Button variant="contained" size="large" href={links.gems} target={'_blank'}>Donate</Button>
                         <Typography variant="body1" mt={3}>
-                            Help us bring our music to communities accross the United States!
+                            Help us bring our music to communities across the United States!
                         </Typography>
                     </Grid>
                     <Grid item md={6} xs={12} textAlign="center" my={2}>
