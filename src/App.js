@@ -17,6 +17,7 @@ import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/About/Musicians';
 import { TransitionGroup } from 'react-transition-group';
+import Story from './components/About/Story';
 
 function App() {
 
@@ -90,6 +91,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/musicians" element={<Musicians />} />
                 <Route path="/events" element={<Events />} />
+                <Route path="/story" element={<Story />} />
               </Routes>
             </TransitionGroup>
             <ActionCenter />
