@@ -9,6 +9,22 @@ const StoryListItem = ({ icon, text, more }) => {
 
     const [open, setOpen] = useState(false);
 
+    const ListItemRouterLink = ({ type, route, itemText, itemIcon }) => {
+        return type === 'route'
+            ? <ListItemButton sx={{ pl: 4 }} component={RouterLink} to={route}>
+                <ListItemIcon>
+                    {itemIcon}
+                </ListItemIcon>
+                <ListItemText primary={itemText} />
+            </ListItemButton>
+            : <ListItemButton sx={{ pl: 4 }} href={route} target="_blank">
+                <ListItemIcon>
+                    {itemIcon}
+                </ListItemIcon>
+                <ListItemText primary={itemText} />
+            </ListItemButton>;
+    };
+
     return (
         <>
             <ListItem disablePadding>
@@ -24,12 +40,7 @@ const StoryListItem = ({ icon, text, more }) => {
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {more.map(({ type, route, itemText, itemIcon }) => (
-                            <ListItemButton sx={{ pl: 4 }} component={type === 'route' ? RouterLink : 'button'} to={route}>
-                                <ListItemIcon>
-                                    {itemIcon}
-                                </ListItemIcon>
-                                <ListItemText primary={itemText} />
-                            </ListItemButton>
+                            <ListItemRouterLink key={itemText} type={type} route={route} itemText={itemText} itemIcon={itemIcon} />
                         ))}
                     </List>
                 </Collapse>}
