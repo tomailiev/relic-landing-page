@@ -19,7 +19,7 @@ const Header = () => {
         { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About us', menu: [
-                // { path: '/aboutus', title: 'Our story' },
+                { path: '/story', title: 'Our story' },
                 { path: '/musicians', title: 'Our musicians' }
             ]
         },
