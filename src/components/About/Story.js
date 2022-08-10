@@ -65,7 +65,7 @@ const Story = () => {
         },
         {
             q: 'What our goals are',
-            a: 'To bring early music to all 50 states;\nTo share our art, engage with, and inspire audiences;\nTo accessibly educate new audiences about historical performance'
+            a: '- To bring early music to all 50 states;\n- To share our art, engage with, and inspire audiences;\n- To accessibly educate new audiences about historical performance.'
         }
     ]
 
@@ -107,7 +107,7 @@ const Story = () => {
                                     <Typography variant="h6">{q}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                    <Typography>
+                                    <Typography sx={{whiteSpace: 'pre-line'}}>
                                         {a}
                                     </Typography>
                                 </AccordionDetails>
