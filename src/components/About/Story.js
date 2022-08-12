@@ -82,8 +82,7 @@ const Story = () => {
                 <Grid container spacing={3} my={2} component={Paper}>
                     <Grid item xs={12} md={8} p={3}>
                         <Typography mb={2}>
-                            Tucked in a small niche of the classical music world six friends found each other; regularly nerding out about anything historical performance, performing side by side in some of the world’s best baroque bands, and giggling the night away any chance we have.
-                            Over the course of a couple years of seeing each other at gigs we decided there was an opening in our small niche of classical music for us to do something different with our art. We put our heads and efforts together and founded RELIC, a small chamber orchestra with the goal of producing textured theatrical performances for an all-engaging experience. The combination of friendship and creating art together has motivated us to lead classical music in a new direction; creating productions at the highest level (albeit a small budget); sharing our art, engaging with, and inspiring new audiences; and accessibly educating the world about our first love, historical performance.
+                            In a small, niched orbit of the classical music world six friends found each other: we regularly nerded out about anything historical performance, performed side by side in some of the world’s best baroque bands, and giggled the night away any chance we had. After frequently crossing paths, we recognized a growing synergy sparked by a mutual desire to expand the performance potential of early music. With excitement and delight, we founded Relic, a small chamber orchestra with the goal of producing textured, theatrical performances for an all-engaging experience. We’re inspired to usher baroque music in a fresh, spirited direction. Our aim is to create thoughtful performances at the highest level (albeit on a small budget); share the joy of our art; and educate the world about the rich, ornamental wonders of our first love, historical performance.
                         </Typography>
                         <Divider />
                         <Typography mt={2}>
@@ -107,7 +106,7 @@ const Story = () => {
                                     <Typography variant="h6">{q}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                    <Typography sx={{whiteSpace: 'pre-line'}}>
+                                    <Typography sx={{ whiteSpace: 'pre-line' }}>
                                         {a}
                                     </Typography>
                                 </AccordionDetails>
