@@ -26,6 +26,9 @@ function downloadDocs(col, condition, sorting) {
             });
             return docs;
         })
+        .catch(e => {
+            console.error('firebase fail to load');
+        })
 }
 
 export { uploadDoc, getLink, downloadDocs };

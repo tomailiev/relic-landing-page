@@ -1,7 +1,6 @@
 import { Card, CardActionArea, CardMedia, Skeleton } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
-// import klmzImg from '../../assets/banners/banner_square.webp';
 import { getLink } from "../../utils/firebase/firestore-funcs";
 
 const EventCard = ({ imageUrl }) => {

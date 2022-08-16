@@ -1,11 +1,13 @@
 import { Box, Button, TextField, Stack, Typography } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
+import TextContext from "../../context/TextContext";
 import { uploadDoc } from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
 
 const SubscribeForm = () => {
     const { setNotification } = useContext(NotificationContext);
+    const { text } = useContext(TextContext);
     const [userEmail, setUserEmail] = useState("");
     const [hasError, setHasError] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +38,7 @@ const SubscribeForm = () => {
     return (
         <Box flex={1} sx={{ p: 10 }}>
             <Typography variant="h5" sx={{ mb: 2 }}>
-                Subscribe to our list!
+                {text.subscribeTitle || 'Subscribe to our list!'}
             </Typography>
             <form onSubmit={handleSubscribe}>
                 <Stack spacing={2}>
