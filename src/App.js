@@ -36,7 +36,6 @@ function App() {
     downloadOneDoc('textContent', 'allTexts')
       .then(doc => {
         if (doc) {
-          console.log(doc);
           setText(doc);
           return;
         };
