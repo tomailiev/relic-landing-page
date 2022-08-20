@@ -35,7 +35,7 @@ const Story = () => {
                     </Grid>
                     <Grid item xs={12} md={4} p={3}>
                         <Typography variant="h4" textAlign={'center'} mb={1}>
-                            Quick facts
+                            At a glance
                         </Typography>
                         {text.storyQandAs.map(({ q, a }) => (
                             <Accordion key={q}>

@@ -18,10 +18,12 @@ import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/About/Musicians';
 import { TransitionGroup } from 'react-transition-group';
 import Story from './components/About/Story';
-import texts from './data/texts';
+import { texts } from './data/texts';
 import TextContext from './context/TextContext';
 import banners from './data/banners';
 import BannerContext from './context/BannerContext';
+import { useEffect } from 'react';
+import { downloadOneDoc } from './utils/firebase/firestore-funcs';
 
 function App() {
 
@@ -29,6 +31,21 @@ function App() {
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
   const [allBanners, setAllBanners] = useState(banners);
+
+  useEffect(() => {
+    downloadOneDoc('textContent', 'allTexts')
+      .then(doc => {
+        if (doc) {
+          console.log(doc);
+          setText(doc);
+          return;
+        };
+        setText(texts);
+      })
+      .catch(e => {
+        setText(texts);
+      })
+  }, [])
 
   const theme = createTheme({
     typography: {

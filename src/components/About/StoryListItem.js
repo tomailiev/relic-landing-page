@@ -3,6 +3,7 @@ import { useState } from "react";
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Link as RouterLink } from 'react-router-dom';
+import { icons } from "../../data/texts";
 
 
 const StoryListItem = ({ icon, text, more }) => {
@@ -13,13 +14,13 @@ const StoryListItem = ({ icon, text, more }) => {
         return type === 'route'
             ? <ListItemButton sx={{ pl: 4 }} component={RouterLink} to={route}>
                 <ListItemIcon>
-                    {itemIcon}
+                    {icons[itemIcon]}
                 </ListItemIcon>
                 <ListItemText primary={itemText} />
             </ListItemButton>
             : <ListItemButton sx={{ pl: 4 }} href={route} target="_blank">
                 <ListItemIcon>
-                    {itemIcon}
+                    {icons[itemIcon]}
                 </ListItemIcon>
                 <ListItemText primary={itemText} />
             </ListItemButton>;
@@ -30,7 +31,7 @@ const StoryListItem = ({ icon, text, more }) => {
             <ListItem disablePadding>
                 <ListItemButton onClick={() => setOpen(!open)}>
                     <ListItemIcon>
-                        {icon}
+                        {icons[icon]}
                     </ListItemIcon>
                     <ListItemText primary={text} />
                     {more && (open ? <ExpandLess /> : <ExpandMore />)}
