@@ -1,5 +1,6 @@
 import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import images from "../../data/images";
 
 const ContentSection = ({ content }) => {
 
@@ -23,7 +24,7 @@ const ContentSection = ({ content }) => {
                             <CardMedia
                                 component="img"
                                 height="300"
-                                image={content.cardImage}
+                                image={images[content.cardImage]}
                                 alt="Event Image"
                             />
                             <CardContent>

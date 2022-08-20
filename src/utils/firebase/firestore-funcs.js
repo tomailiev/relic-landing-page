@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { db, storage } from './firebase-init';
 
@@ -26,6 +26,19 @@ function downloadDocs(col, condition, sorting) {
             });
             return docs;
         })
+        .catch(_e => {
+            console.error('firebase failed to load');
+        })
 }
 
-export { uploadDoc, getLink, downloadDocs };
+function downloadOneDoc(col, id) {
+    // REVISE!!!
+    return getDoc(doc(db, col, id))
+        .then(item => {
+            if (!item) console.log('Problem loading');
+            return Object.assign({ id: item.id }, item.data());
+        })
+        .catch(_e => console.error('no data'));
+}
+
+export { uploadDoc, getLink, downloadDocs, downloadOneDoc };

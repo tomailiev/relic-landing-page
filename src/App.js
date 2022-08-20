@@ -18,11 +18,33 @@ import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/About/Musicians';
 import { TransitionGroup } from 'react-transition-group';
 import Story from './components/About/Story';
+import texts from './data/texts';
+import TextContext from './context/TextContext';
+import banners from './data/banners';
+import BannerContext from './context/BannerContext';
+import { useEffect } from 'react';
+import { downloadOneDoc } from './utils/firebase/firestore-funcs';
 
 function App() {
 
   const [notification, setNotification] = useState(null);
   const [dialog, setDialog] = useState(null);
+  const [text, setText] = useState(texts);
+  const [allBanners, setAllBanners] = useState(banners);
+
+  useEffect(() => {
+    downloadOneDoc('textContent', 'allTexts')
+      .then(doc => {
+        if (doc) {
+          setText(doc);
+          return;
+        };
+        setText(texts);
+      })
+      .catch(e => {
+        setText(texts);
+      })
+  }, [])
 
   const theme = createTheme({
     typography: {
@@ -80,24 +102,28 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <NotificationContext.Provider value={{ notification, setNotification }}>
-          <DialogContext.Provider value={{ dialog, setDialog }}>
-            <Notification />
-            <CommonDialog />
-            <CssBaseline />
-            <Header />
-            <TransitionGroup>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/musicians" element={<Musicians />} />
-                <Route path="/events" element={<Events />} />
-                <Route path="/story" element={<Story />} />
-              </Routes>
-            </TransitionGroup>
-            <ActionCenter />
-            <Footer />
-          </DialogContext.Provider>
-        </NotificationContext.Provider>
+        <TextContext.Provider value={{ text, setText }}>
+          <BannerContext.Provider value={{ allBanners, setAllBanners }}>
+            <NotificationContext.Provider value={{ notification, setNotification }}>
+              <DialogContext.Provider value={{ dialog, setDialog }}>
+                <Notification />
+                <CommonDialog />
+                <CssBaseline />
+                <Header />
+                <TransitionGroup>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/musicians" element={<Musicians />} />
+                    <Route path="/events" element={<Events />} />
+                    <Route path="/story" element={<Story />} />
+                  </Routes>
+                </TransitionGroup>
+                <ActionCenter />
+                <Footer />
+              </DialogContext.Provider>
+            </NotificationContext.Provider>
+          </BannerContext.Provider>
+        </TextContext.Provider>
       </ThemeProvider>
     </div>
   );

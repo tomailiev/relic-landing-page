@@ -4,16 +4,19 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
+import { useContext } from "react";
+import TextContext from "../../context/TextContext";
 
 const Footer = () => {
 
+    const { text } = useContext(TextContext);
 
     return (
         <footer style={{ background: '#aa4370', padding: 10 }}>
             <Container disableGutters>
                 <Box justifyContent={'center'} mx={5}>
                     <Typography color="white" align="center" paddingBottom={2}>
-                        Relic is a fiscal project of Gotham Early Music Scene, Inc., a 501(c)(3) non-profit organization registered in the State of New York. Your contribution is tax deductible to the full extent of the law.
+                        {text.footerGemsNote}
                     </Typography>
                 </Box>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
