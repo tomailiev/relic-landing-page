@@ -18,7 +18,7 @@ import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/About/Musicians';
 import { TransitionGroup } from 'react-transition-group';
 import Story from './components/About/Story';
-import { texts } from './data/texts';
+import texts from './data/texts';
 import TextContext from './context/TextContext';
 import banners from './data/banners';
 import BannerContext from './context/BannerContext';

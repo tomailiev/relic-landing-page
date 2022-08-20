@@ -1,27 +1,3 @@
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import PublicIcon from '@mui/icons-material/Public';
-import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import eventsImage from '../assets/imgs/ev_img.webp';
-import musicianImage from '../assets/imgs/IMG_3983.webp';
-
-const icons = {
-    ConfirmationNumberOutlined: <ConfirmationNumberOutlinedIcon />,
-    MusicNote: <MusicNoteIcon />,
-    Public: <PublicIcon />,
-    FacebookRounded: <FacebookRoundedIcon />,
-    Instagram: <InstagramIcon />,
-    Loyalty: <LoyaltyIcon />
-};
-
-const images = {
-    eventsImage,
-    musicianImage
-};
-
-
 const texts = {
     storyGroupBio: 'In a small, niched orbit of the classical music world six friends found each other: we regularly nerded out about anything historical performance, performed side by side in some of the world’s best baroque bands, and giggled the night away any chance we had. After frequently crossing paths, we recognized a growing synergy sparked by a mutual desire to expand the performance potential of early music. With excitement and delight, we founded Relic, a small chamber orchestra with the goal of producing textured, theatrical performances for an all-engaging experience. We’re inspired to usher baroque music in a fresh, spirited direction. Our aim is to create thoughtful performances at the highest level; share the joy of our art; and educate the world about the rich, ornamental wonders of our first love, historical performance.',
     storyAddress: 'We welcome you to our little niche and invite you to engage with us in any of these ways:',
@@ -110,4 +86,4 @@ const texts = {
     siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states'
 };
 
-export { texts, icons, images };
+export default texts;

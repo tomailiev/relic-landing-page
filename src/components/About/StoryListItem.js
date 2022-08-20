@@ -3,7 +3,7 @@ import { useState } from "react";
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Link as RouterLink } from 'react-router-dom';
-import { icons } from "../../data/texts";
+import icons from "../../data/icons";
 
 
 const StoryListItem = ({ icon, text, more }) => {

@@ -1,6 +1,6 @@
 import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { images } from "../../data/texts";
+import images from "../../data/images";
 
 const ContentSection = ({ content }) => {
 
