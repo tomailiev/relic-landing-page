@@ -30,7 +30,7 @@ const Musicians = () => {
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h2" >
+                <Typography variant="h3" >
                     Musicians
                 </Typography>
                 <Grid container spacing={6} mt={3}>

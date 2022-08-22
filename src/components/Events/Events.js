@@ -25,7 +25,7 @@ const Events = () => {
                 <img src={allBanners.eventsBanner} width="100%" height={'auto'} alt="banner" />
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h2" mb={3}>
+                <Typography variant="h3" mb={3}>
                     Upcoming Events
                 </Typography>
                 {events.map(event => (

@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, Paper, Stack, TextField } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
@@ -14,10 +14,10 @@ const fields = {
 };
 
 const fieldsArray = [
-    { label: 'First name', id: 'firstName' },
-    { label: 'Last name', id: 'lastName' },
-    { label: 'Email', id: 'email' },
-    { label: 'Message', id: 'message' },
+    { label: 'first name', id: 'firstName' },
+    { label: 'last name', id: 'lastName' },
+    { label: 'email', id: 'email' },
+    { label: 'message', id: 'message' },
 ]
 
 const ContactForm = () => {
@@ -60,41 +60,47 @@ const ContactForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubscribe}>
-            <Stack spacing={2}>
-                {fieldsArray.map(({ id, label }) => (
-                    <TextField
-                        key={id}
-                        id={id}
-                        error={!!hasError[id]}
-                        value={userFields[id]}
-                        onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
-                        onChange={handleInputChange}
-                        helperText={hasError[id]}
-                        label={`Your ${label}`}
-                        variant="outlined"
-                        size="small"
-                    />
-                ))}
-                <FormControlLabel
-                    control={<Checkbox
-                        icon={<FavoriteBorder />}
-                        checkedIcon={<Favorite />}
-                        checked={willSubscribe}
-                        onChange={() => setWillSubscribe(!willSubscribe)}
-                    />}
-                    label={'Subscribe to our mailing list'}
-                />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    disabled={isSubmitting}
-                    type="submit"
-                >
-                    Send
-                </Button>
-            </Stack>
-        </form>
+        <Paper elevation={2} sx={{ mb: 10 }}>
+            <Box my={4} padding={6}>
+                <form onSubmit={handleSubscribe}>
+                    <Stack spacing={2}>
+                        {fieldsArray.map(({ id, label }) => (
+                            <TextField
+                                key={id}
+                                id={id}
+                                error={!!hasError[id]}
+                                value={userFields[id]}
+                                onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
+                                onChange={handleInputChange}
+                                helperText={hasError[id]}
+                                label={`Your ${label}`}
+                                variant="outlined"
+                                size="small"
+                                multiline={id === 'message'}
+                                rows={4}
+                            />
+                        ))}
+                        <FormControlLabel
+                            control={<Checkbox
+                                icon={<FavoriteBorder />}
+                                checkedIcon={<Favorite />}
+                                checked={willSubscribe}
+                                onChange={() => setWillSubscribe(!willSubscribe)}
+                            />}
+                            label={'Subscribe to our mailing list'}
+                        />
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            disabled={isSubmitting}
+                            type="submit"
+                        >
+                            Send
+                        </Button>
+                    </Stack>
+                </form>
+            </Box>
+        </Paper>
     );
 };
 
