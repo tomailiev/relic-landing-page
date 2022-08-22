@@ -1,10 +1,13 @@
-import { Button, Stack, TextField } from "@mui/material"
+import { Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import { uploadDoc } from "../../utils/firebase/firestore-funcs";
 
 const fields = {
-    firstname: '',
+    firstName: '',
     lastName: '',
     email: '',
     message: '',
@@ -23,17 +26,18 @@ const ContactForm = () => {
     const [userFields, setUserFields] = useState(fields);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [hasError, setHasError] = useState(fields);
+    const [willSubscribe, setWillSubscribe] = useState(true);
 
 
     function handleSubscribe(e) {
         e.preventDefault();
         setIsSubmitting(true);
         contactFormSchema.validate(userFields, { abortEarly: false })
-            // .then(val => uploadDoc(val, 'subscribers'))
+            .then(val => uploadDoc({ ...val, subscriber: willSubscribe }, 'messages'))
             .then(() => {
-                // setUserEmail('');
+                setUserFields(fields);
                 setIsSubmitting(false);
-                setNotification({ type: 'success', message: 'Thank you for subscribing!' });
+                setNotification({ type: 'success', message: 'Message sent! We\'ll get back to you shortly' });
             })
             .catch(e => {
                 setIsSubmitting(false);
@@ -72,13 +76,22 @@ const ContactForm = () => {
                         size="small"
                     />
                 ))}
+                <FormControlLabel
+                    control={<Checkbox
+                        icon={<FavoriteBorder />}
+                        checkedIcon={<Favorite />}
+                        checked={willSubscribe}
+                        onChange={() => setWillSubscribe(!willSubscribe)}
+                    />}
+                    label={'Subscribe to our mailing list'}
+                />
                 <Button
-                    variant="outlined"
+                    variant="contained"
                     color="primary"
                     disabled={isSubmitting}
                     type="submit"
                 >
-                    Subscribe
+                    Send
                 </Button>
             </Stack>
         </form>
