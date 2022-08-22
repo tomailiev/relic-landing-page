@@ -1,6 +1,14 @@
-import { object, string } from 'yup'
+import { boolean, object, string } from 'yup'
 const emailSubSchema = object({
-    email: string().email().required(),
+    email: string().email('Valid email is required').required('Valid email is required'),
 });
 
-export { emailSubSchema };
+const contactFormSchema = object({
+    firstName: string().required('First name is required'),
+    lastName: string().required('Last name is required'),
+    email: string().email('Valid email is required').required(),
+    message: string().required('Message is required').min(3),
+    subscriber: boolean().default(true)
+});
+
+export { emailSubSchema, contactFormSchema };
