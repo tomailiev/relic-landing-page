@@ -24,6 +24,7 @@ import banners from './data/banners';
 import BannerContext from './context/BannerContext';
 import { useEffect } from 'react';
 import { downloadOneDoc } from './utils/firebase/firestore-funcs';
+import Contact from './components/Contact/Contact';
 
 function App() {
 
@@ -116,6 +117,7 @@ function App() {
                     <Route path="/musicians" element={<Musicians />} />
                     <Route path="/events" element={<Events />} />
                     <Route path="/story" element={<Story />} />
+                    <Route path="/contact" element={<Contact />} />
                   </Routes>
                 </TransitionGroup>
                 <ActionCenter />

@@ -9,7 +9,7 @@ const SubscribeForm = () => {
     const { setNotification } = useContext(NotificationContext);
     const { text } = useContext(TextContext);
     const [userEmail, setUserEmail] = useState("");
-    const [hasError, setHasError] = useState(false);
+    const [hasError, setHasError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     function handleSubscribe(e) {
@@ -25,7 +25,7 @@ const SubscribeForm = () => {
             .catch(e => {
                 setIsSubmitting(false);
                 e.name === 'ValidationError'
-                    ? setHasError(true)
+                    ? setHasError(e.message)
                     : console.log(e.errors);
             });
     }
@@ -43,11 +43,11 @@ const SubscribeForm = () => {
             <form onSubmit={handleSubscribe}>
                 <Stack spacing={2}>
                     <TextField
-                        error={hasError}
+                        error={!!hasError}
                         value={userEmail}
-                        onFocus={() => setHasError(false)}
+                        onFocus={() => setHasError('')}
                         onChange={handleInputChange}
-                        helperText={hasError && "Valid email is required"}
+                        helperText={hasError}
                         label="Your Email"
                         variant="outlined"
                         size="small"

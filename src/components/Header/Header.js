@@ -24,6 +24,7 @@ const Header = () => {
             ]
         },
         { path: '/events', title: 'Events' },
+        {path: '/contact', title: 'Contact Us'}
     ];
 
 

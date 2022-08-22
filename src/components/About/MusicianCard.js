@@ -8,6 +8,23 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
     const { setDialog } = useContext(DialogContext);
     const [src, setSrc] = useState(null);
 
+    // const greyToColor = {
+    //     '-webkit-transition': '.3s ease-in-out',
+    //     '-moz-filter': 'rayscale(100%)',
+    //     '-moz-transition': '.3s ease-in-out',
+    //     '-o-filter': 'grayscale(100%)',
+    //     '-o-transition': '.3s ease-in-out',
+    //     '-webkit-filter': 'grayscale(100%)',
+    //     '&:hover': {
+    //         '-webkit-filter': 'grayscale(0%)',
+    //         '-webkit-transition': '.3s ease-in-out',
+    //         '-moz-filter': 'grayscale(0%)',
+    //         '-moz-transition': '.3s ease-in-out',
+    //         '-o-filter': 'grayscale(0%)',
+    //         '-o-transition': '.3s ease-in-out',
+    //     }
+    // }
+
     function addBoldToBio(bio = "") {
         const arr = bio.split(name);
         const span = (<Typography component={'span'} fontSize={18} fontWeight="700" >{name}</Typography>);
