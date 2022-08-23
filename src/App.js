@@ -25,6 +25,8 @@ import BannerContext from './context/BannerContext';
 import { useEffect } from 'react';
 import { downloadOneDoc } from './utils/firebase/firestore-funcs';
 import Contact from './components/Contact/Contact';
+import LoadingContext from './context/LoadingContext';
+import LoadingBackdrop from './components/Common/LoadingBackdrop';
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
   const [allBanners, setAllBanners] = useState(banners);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     downloadOneDoc('textContent', 'allTexts')
@@ -104,27 +107,30 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <TextContext.Provider value={{ text, setText }}>
-          <BannerContext.Provider value={{ allBanners, setAllBanners }}>
-            <NotificationContext.Provider value={{ notification, setNotification }}>
-              <DialogContext.Provider value={{ dialog, setDialog }}>
-                <Notification />
-                <CommonDialog />
-                <CssBaseline />
-                <Header />
-                <TransitionGroup>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/musicians" element={<Musicians />} />
-                    <Route path="/events" element={<Events />} />
-                    <Route path="/story" element={<Story />} />
-                    <Route path="/contact" element={<Contact />} />
-                  </Routes>
-                </TransitionGroup>
-                <ActionCenter />
-                <Footer />
-              </DialogContext.Provider>
-            </NotificationContext.Provider>
-          </BannerContext.Provider>
+          <LoadingContext.Provider value={{ loading, setLoading }}>
+            <BannerContext.Provider value={{ allBanners, setAllBanners }}>
+              <NotificationContext.Provider value={{ notification, setNotification }}>
+                <DialogContext.Provider value={{ dialog, setDialog }}>
+                  <LoadingBackdrop />
+                  <Notification />
+                  <CommonDialog />
+                  <CssBaseline />
+                  <Header />
+                  <TransitionGroup>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/musicians" element={<Musicians />} />
+                      <Route path="/events" element={<Events />} />
+                      <Route path="/story" element={<Story />} />
+                      <Route path="/contact" element={<Contact />} />
+                    </Routes>
+                  </TransitionGroup>
+                  <ActionCenter />
+                  <Footer />
+                </DialogContext.Provider>
+              </NotificationContext.Provider>
+            </BannerContext.Provider>
+          </LoadingContext.Provider>
         </TextContext.Provider>
       </ThemeProvider>
     </div>

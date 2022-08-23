@@ -5,6 +5,7 @@ import { contactFormSchema } from "../../utils/yup/schemas";
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { uploadDoc } from "../../utils/firebase/firestore-funcs";
+import LoadingContext from "../../context/LoadingContext";
 
 const fields = {
     firstName: '',
@@ -23,6 +24,7 @@ const fieldsArray = [
 const ContactForm = () => {
 
     const { setNotification } = useContext(NotificationContext);
+    const { setLoading } = useContext(LoadingContext);
     const [userFields, setUserFields] = useState(fields);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [hasError, setHasError] = useState(fields);
@@ -31,6 +33,7 @@ const ContactForm = () => {
 
     function handleSubscribe(e) {
         e.preventDefault();
+        setLoading(true);
         setIsSubmitting(true);
         contactFormSchema.validate(userFields, { abortEarly: false })
             .then(val => uploadDoc({ ...val, subscriber: willSubscribe }, 'messages'))
@@ -38,9 +41,11 @@ const ContactForm = () => {
                 setUserFields(fields);
                 setIsSubmitting(false);
                 setNotification({ type: 'success', message: 'Message sent! We\'ll get back to you shortly' });
+                setLoading(false);
             })
             .catch(e => {
                 setIsSubmitting(false);
+                setLoading(false);
                 if (e.inner) {
                     const errors = e.inner.reduce((p, c) => {
                         return { ...p, [c.path]: c.message };

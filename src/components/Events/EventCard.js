@@ -6,6 +6,7 @@ import { getLink } from "../../utils/firebase/firestore-funcs";
 const EventCard = ({ imageUrl }) => {
 
     const [src, setSrc] = useState(null);
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     useEffect(() => {
         getLink(imageUrl)
@@ -14,20 +15,19 @@ const EventCard = ({ imageUrl }) => {
     }, [imageUrl]);
 
     return (
-        <Card raised sx={{ maxWidth: 400, maxHeight: 400 }}>
+        <Card raised>
             <CardActionArea>
-                <div style={{ display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
-                    {src
-                        ? <CardMedia
-                            component="img"
-                            // height="300"
-                            width={'auto'}
-                            image={src}
-                            alt="event image"
-                            sx={{ width: '100%', maxHeight: '100%' }}
-                        />
-                        : <Skeleton variant="rectangular" height={'400px'} width={'400px'} />
-                    }
+                <div style={{ maxHeight: 400, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
+                    {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={400} />}
+                    <CardMedia
+                        component="img"
+                        // height="300"
+                        width={'auto'}
+                        image={src}
+                        alt="event picture"
+                        sx={!imgLoaded ? { width: 0, height: 0 } : { width: 'auto', maxHeight: '100%', maxWidth: '100%' }}
+                        onLoad={() => setImgLoaded(true)}
+                    />
                 </div>
             </CardActionArea>
         </Card>

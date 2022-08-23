@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 // import Bio from "./Bio";
 // import founders from '../../data/founders.json';
@@ -21,13 +21,12 @@ const Musicians = () => {
                 console.error('not found');
                 console.error(e);
             })
-    });
+    }, []);
 
     return (
         <>
             <Container disableGutters maxWidth={false}>
                 <img src={allBanners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
-                <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" >
