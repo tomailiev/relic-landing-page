@@ -8,7 +8,7 @@ const LoadingBackdrop = () => {
 
     return (
         <Backdrop
-            sx={{ color: '#fff', zIndex: 1101 }}
+            sx={{ color: '#fff', zIndex: 1301 }}
             open={loading}
         >
             <CircularProgress color="inherit" />
