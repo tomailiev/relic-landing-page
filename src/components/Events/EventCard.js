@@ -17,8 +17,8 @@ const EventCard = ({ imageUrl }) => {
     return (
         <Card raised>
             <CardActionArea>
-                <div style={{ maxHeight: 400, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
-                    {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={400} />}
+                <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
+                    {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={'400px'} />}
                     <CardMedia
                         component="img"
                         // height="300"
