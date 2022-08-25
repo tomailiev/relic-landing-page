@@ -2,39 +2,39 @@ import './App.css';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Home from './components/Home.js/Home';
 import { Routes, Route } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Notification from './components/Common/Notification';
-import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
-import Musicians from './components/About/Musicians';
 import { TransitionGroup } from 'react-transition-group';
-import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
-import banners from './data/banners';
-import BannerContext from './context/BannerContext';
 import { useEffect } from 'react';
 import { downloadOneDoc } from './utils/firebase/firestore-funcs';
-import Contact from './components/Contact/Contact';
 import LoadingContext from './context/LoadingContext';
 import LoadingBackdrop from './components/Common/LoadingBackdrop';
+import { lazy } from 'react';
 
 function App() {
 
   const [notification, setNotification] = useState(null);
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
-  const [allBanners, setAllBanners] = useState(banners);
   const [loading, setLoading] = useState(false);
+
+  const Home = lazy(() => import('./components/Home/Home'));
+  const Musicians = lazy(() => import('./components/About/Musicians'));
+  const Story = lazy(() => import('./components/About/Story'));
+  const Events = lazy(() => import('./components/Events/Events'));
+  const Contact = lazy(() => import('./components/Contact/Contact'));
+
 
   useEffect(() => {
     downloadOneDoc('textContent', 'allTexts')
@@ -108,15 +108,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <TextContext.Provider value={{ text, setText }}>
           <LoadingContext.Provider value={{ loading, setLoading }}>
-            <BannerContext.Provider value={{ allBanners, setAllBanners }}>
-              <NotificationContext.Provider value={{ notification, setNotification }}>
-                <DialogContext.Provider value={{ dialog, setDialog }}>
-                  <LoadingBackdrop />
-                  <Notification />
-                  <CommonDialog />
-                  <CssBaseline />
-                  <Header />
-                  <TransitionGroup>
+            <NotificationContext.Provider value={{ notification, setNotification }}>
+              <DialogContext.Provider value={{ dialog, setDialog }}>
+                <LoadingBackdrop />
+                <Notification />
+                <CommonDialog />
+                <CssBaseline />
+                <Header />
+                <TransitionGroup>
+                  <Suspense fallback={<LoadingBackdrop />} >
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/musicians" element={<Musicians />} />
@@ -124,12 +124,12 @@ function App() {
                       <Route path="/story" element={<Story />} />
                       <Route path="/contact" element={<Contact />} />
                     </Routes>
-                  </TransitionGroup>
-                  <ActionCenter />
-                  <Footer />
-                </DialogContext.Provider>
-              </NotificationContext.Provider>
-            </BannerContext.Provider>
+                  </Suspense>
+                </TransitionGroup>
+                <ActionCenter />
+                <Footer />
+              </DialogContext.Provider>
+            </NotificationContext.Provider>
           </LoadingContext.Provider>
         </TextContext.Provider>
       </ThemeProvider>

@@ -1,20 +1,27 @@
-import { Grid, Skeleton, Typography, Container, Divider, List, Paper, Accordion, AccordionSummary, AccordionDetails, } from "@mui/material";
+import { Grid, Typography, Container, Divider, List, Paper, Accordion, AccordionSummary, AccordionDetails, } from "@mui/material";
 import StoryListItem from "./StoryListItem";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
-import BannerContext from "../../context/BannerContext";
+import ImageWrapper from "../Common/ImageWrapper";
+import { banners } from '../../data/banners'
+
 
 const Story = () => {
 
     const { text } = useContext(TextContext);
-    const { allBanners } = useContext(BannerContext);
 
     return (
         <>
             <Container disableGutters maxWidth={false}>
-                <img src={allBanners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
-                <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
+                {/* <img src={allBanners.musiciansBanner} width="100%" height={'auto'} alt="banner" /> */}
+                <ImageWrapper
+                    width="100%"
+                    height={'auto'}
+                    alt="musicians banner"
+                    placeholderSrc={banners.musiciansBanner.placeholder}
+                    picUrl={banners.musiciansBanner.url}
+                />
             </Container>
             <Container maxWidth="lg">
                 <Typography variant="h3" textAlign={'center'} mb={3}>

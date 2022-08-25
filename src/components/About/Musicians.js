@@ -6,12 +6,11 @@ import MusicianCard from "./MusicianCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
-import { useContext } from "react";
-import BannerContext from "../../context/BannerContext";
+import ImageWrapper from "../Common/ImageWrapper";
+import { banners } from '../../data/banners'
 
 const Musicians = () => {
 
-    const { allBanners } = useContext(BannerContext);
     const [founders, setFounders] = useState([]);
 
     useEffect(() => {
@@ -26,7 +25,13 @@ const Musicians = () => {
     return (
         <>
             <Container disableGutters maxWidth={false}>
-                <img src={allBanners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
+                <ImageWrapper
+                    width="100%"
+                    height={'auto'}
+                    alt="musicians banner"
+                    placeholderSrc={banners.musiciansBanner.placeholder}
+                    picUrl={banners.musiciansBanner.url}
+                />
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" >

@@ -1,14 +1,14 @@
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import { useContext } from "react";
 import { useEffect, useState } from "react";
-import BannerContext from "../../context/BannerContext";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+// import ImageWrapper from "../Common/ImageWrapper";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
+// import { banners } from '../../data/banners'
+
 
 const Events = () => {
 
-    const { allBanners } = useContext(BannerContext);
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
@@ -22,7 +22,14 @@ const Events = () => {
     return (
         <>
             <Container disableGutters maxWidth={false} sx={{ px: 0 }}>
-                <img src={allBanners.eventsBanner} width="100%" height={'auto'} alt="banner" />
+                {/* <img src={allBanners.eventsBanner} width="100%" height={'auto'} alt="banner" /> */}
+                {/* <ImageWrapper
+                    width="100%"
+                    height={'auto'}
+                    alt="events banner"
+                    placeholderSrc={banners.eventsBanner.placeholder}
+                    picUrl={banners.eventsBanner.url}
+                /> */}
             </Container>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" mb={3}>
