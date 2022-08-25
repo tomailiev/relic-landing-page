@@ -7,6 +7,7 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
 
     const { setDialog } = useContext(DialogContext);
     const [src, setSrc] = useState(null);
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     // const greyToColor = {
     //     '-webkit-transition': '.3s ease-in-out',
@@ -41,25 +42,23 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
         <Card>
             <CardActionArea onClick={() => setDialog(addBoldToBio(bio))}>
                 <div style={{ height: 400, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
-                    {
-                        src
-                            ? <CardMedia
-                                component="img"
-                                // height="300"
-                                width={'auto'}
-                                image={src}
-                                alt="musician picture"
-                                sx={{ width: 'auto', maxHeight: '100%' }}
-                            />
-                            : <Skeleton variant="rectangular" height={400} width={'100%'} />
-                    }
+                    {!imgLoaded && <Skeleton variant="rectangular" height={400} width={'100%'} />}
+                    <CardMedia
+                        component="img"
+                        // height="300"
+                        width={'auto'}
+                        image={src}
+                        alt="musician picture"
+                        sx={!imgLoaded ? { width: 0, height: 0 } : { width: 'auto', maxHeight: '100%' }}
+                        onLoad={() => setImgLoaded(true)}
+                    />
                 </div>
                 <CardContent>
                     <Typography variant="h5">
-                        {name}
+                        {imgLoaded ? name : <Skeleton />}
                     </Typography>
                     <Typography variant="body1">
-                        {title}
+                        {imgLoaded ? title : <Skeleton />}
                     </Typography>
                 </CardContent>
             </CardActionArea>
