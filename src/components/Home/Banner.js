@@ -21,11 +21,10 @@ const Banner = ({ height, children }) => {
 
     return (
         <Parallax
-            blur={0}
+            blur={imgSrc === banners.homeBanner.placeholder ? 10 : 0}
             strength={150}
             bgImage={imgSrc}
             bgImageAlt=""
-            style={imgSrc === banners.homeBanner.placeholder ? { filter: 'blur(10px)', clipPath: 'inset(0)' } : { filter: 'blur(0px)', transition: 'filter 0.3s linear' }}
         >
             <Box width="100%" height={height} display="flex" flexDirection="column" alignItems={"center"} justifyContent={'space-between'}>
                 {children}

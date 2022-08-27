@@ -1,13 +1,17 @@
-import { Card, CardActionArea, CardMedia, Skeleton } from "@mui/material";
+import { useTheme } from "@emotion/react";
+import { Card, CardActionArea, CardMedia, Skeleton, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getLink } from "../../utils/firebase/firestore-funcs";
 
 const EventCard = ({ imageUrl }) => {
 
+    const theme = useTheme();
+    const matchesSm = useMediaQuery(theme.breakpoints.down('md'));
+    const matchesXs = useMediaQuery(theme.breakpoints.down('sm'));
+
     const [src, setSrc] = useState(null);
     const [imgLoaded, setImgLoaded] = useState(false);
-
     useEffect(() => {
         getLink(imageUrl)
             .then(val => setSrc(val))
@@ -18,7 +22,7 @@ const EventCard = ({ imageUrl }) => {
         <Card raised>
             <CardActionArea>
                 <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
-                    {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={'400px'} />}
+                    {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={matchesXs ? 250 : matchesSm ? 600 : 400} />}
                     <CardMedia
                         component="img"
                         // height="300"
