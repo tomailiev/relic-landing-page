@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
+import EventSkeleton from "./EventSkeleton";
 
 const Events = () => {
 
@@ -25,18 +26,21 @@ const Events = () => {
                 <Typography variant="h3" mb={3}>
                     Upcoming Events
                 </Typography>
-                {events.map(event => (
-                    <Paper key={event.id} elevation={3} sx={{ p: 5 }}>
-                        <Grid container spacing={6}>
-                            <Grid item sm={12} md={5}>
-                                <EventCard imageUrl={event.imageUrl} />
+                {events.length
+                    ? events.map(event => (
+                        <Paper key={event.id} elevation={3} sx={{ p: 5 }}>
+                            <Grid container spacing={6}>
+                                <Grid item sm={12} md={5}>
+                                    <EventCard imageUrl={event.imageUrl} />
+                                </Grid>
+                                <Grid item sm={12} md={7} textAlign={'left'}>
+                                    <EventInfo event={event} />
+                                </Grid>
                             </Grid>
-                            <Grid item sm={12} md={7} textAlign={'left'}>
-                                <EventInfo event={event} />
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                ))}
+                        </Paper>
+                    ))
+                    : <EventSkeleton />
+                }
             </Container>
         </>
         // <Box height={'500px'} display="flex" flexDirection="column" alignItems={"center"} justifyContent="center" textAlign={'center'} mx={2}>

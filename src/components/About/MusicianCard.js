@@ -12,17 +12,17 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
     const greyToColor = {
         width: 'auto',
         maxHeight: '100%',
-        '-webkit-transition': '.2s ease-in-out',
+        WebkitTransition: '.2s ease-in-out',
         '-moz-filter': 'grayscale(100%)',
-        '-moz-transition': '.2s ease-in-out',
+        MozTransition: '.2s ease-in-out',
         '-o-filter': 'grayscale(100%)',
         '-o-transition': '.2s ease-in-out',
-        '-webkit-filter': 'grayscale(100%)',
+        WebkitFilter: 'grayscale(100%)',
         '&:hover': {
-            '-webkit-filter': 'grayscale(0%)',
-            '-webkit-transition': '.2s ease-in-out',
+            WebkitFilter: 'grayscale(0%)',
+            WebkitTransition: '.2s ease-in-out',
             '-moz-filter': 'grayscale(0%)',
-            '-moz-transition': '.2s ease-in-out',
+            MozTransition: '.2s ease-in-out',
             '-o-filter': 'grayscale(0%)',
             '-o-transition': '.2s ease-in-out',
         }
