@@ -2,8 +2,8 @@ import './App.css';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Home from './components/Home.js/Home';
-import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/400-italic.css';
@@ -16,24 +16,21 @@ import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/About/Musicians';
-import { TransitionGroup } from 'react-transition-group';
 import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
-import banners from './data/banners';
-import BannerContext from './context/BannerContext';
 import { useEffect } from 'react';
 import { downloadOneDoc } from './utils/firebase/firestore-funcs';
 import Contact from './components/Contact/Contact';
 import LoadingContext from './context/LoadingContext';
 import LoadingBackdrop from './components/Common/LoadingBackdrop';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function App() {
 
   const [notification, setNotification] = useState(null);
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
-  const [allBanners, setAllBanners] = useState(banners);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -49,6 +46,8 @@ function App() {
         setText(texts);
       })
   }, [])
+
+  const location = useLocation();
 
   const theme = createTheme({
     typography: {
@@ -108,7 +107,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <TextContext.Provider value={{ text, setText }}>
           <LoadingContext.Provider value={{ loading, setLoading }}>
-            <BannerContext.Provider value={{ allBanners, setAllBanners }}>
               <NotificationContext.Provider value={{ notification, setNotification }}>
                 <DialogContext.Provider value={{ dialog, setDialog }}>
                   <LoadingBackdrop />
@@ -116,20 +114,21 @@ function App() {
                   <CommonDialog />
                   <CssBaseline />
                   <Header />
-                  <TransitionGroup>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/musicians" element={<Musicians />} />
-                      <Route path="/events" element={<Events />} />
-                      <Route path="/story" element={<Story />} />
-                      <Route path="/contact" element={<Contact />} />
-                    </Routes>
+                  <TransitionGroup component={null}>
+                    <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/musicians" element={<Musicians />} />
+                        <Route path="/events" element={<Events />} />
+                        <Route path="/story" element={<Story />} />
+                        <Route path="/contact" element={<Contact />} />
+                      </Routes>
+                      </CSSTransition>
                   </TransitionGroup>
                   <ActionCenter />
                   <Footer />
                 </DialogContext.Provider>
               </NotificationContext.Provider>
-            </BannerContext.Provider>
           </LoadingContext.Provider>
         </TextContext.Provider>
       </ThemeProvider>

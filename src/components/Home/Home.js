@@ -7,16 +7,15 @@ import ContentSection from "../Common/ContentSection";
 import { Container, Typography } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
-import BannerContext from "../../context/BannerContext";
+import banners from '../../data/banners';
 
 const Home = () => {
 
     const { text } = useContext(TextContext);
-    const { allBanners } = useContext(BannerContext);
 
     return (
         <>
-            <Banner bgPic={allBanners.homeBanner} height={'88vh'} children={<Title />} />
+            <Banner bgPic={banners.homeBanner} height={'88vh'} children={<Title />} />
             <Container maxWidth="lg" >
                 <Typography variant="h3" textAlign={'center'}>
                     Discover

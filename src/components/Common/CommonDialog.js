@@ -33,7 +33,7 @@ const CommonDialog = () => {
                 ? <iframe height={'1000px'} title="Donation frame" src={links.gems}></iframe>
                 : dialog === 'subscription'
                     ? <SubscribeForm />
-                    : <Typography m={4}>{dialog}</Typography>
+                    : <Typography key={dialog} m={4}>{dialog}</Typography>
             }
             <DialogActions>
                 <Button variant="contained" onClick={() => setDialog(null)}>Close</Button>
