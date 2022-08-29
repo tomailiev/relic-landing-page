@@ -93,7 +93,7 @@ const SubscribeForm = () => {
                         />
                     ))}
                     <Button
-                        variant="outlined"
+                        variant="contained"
                         color="primary"
                         disabled={isSubmitting}
                         type="submit"
