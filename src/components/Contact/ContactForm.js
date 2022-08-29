@@ -19,7 +19,7 @@ const fieldsArray = [
     { label: 'last name', id: 'lastName' },
     { label: 'email', id: 'email' },
     { label: 'message', id: 'message' },
-]
+];
 
 const ContactForm = () => {
 
