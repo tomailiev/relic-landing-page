@@ -3,17 +3,16 @@ import StoryListItem from "./StoryListItem";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
-import BannerContext from "../../context/BannerContext";
+import banners from '../../data/banners';
 
 const Story = () => {
 
     const { text } = useContext(TextContext);
-    const { allBanners } = useContext(BannerContext);
 
     return (
         <>
             <Container disableGutters maxWidth={false}>
-                <img src={allBanners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
+                <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
             <Container maxWidth="lg">

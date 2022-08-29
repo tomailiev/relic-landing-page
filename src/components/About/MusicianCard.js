@@ -9,22 +9,24 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
     const [src, setSrc] = useState(null);
     const [imgLoaded, setImgLoaded] = useState(false);
 
-    // const greyToColor = {
-    //     '-webkit-transition': '.3s ease-in-out',
-    //     '-moz-filter': 'rayscale(100%)',
-    //     '-moz-transition': '.3s ease-in-out',
-    //     '-o-filter': 'grayscale(100%)',
-    //     '-o-transition': '.3s ease-in-out',
-    //     '-webkit-filter': 'grayscale(100%)',
-    //     '&:hover': {
-    //         '-webkit-filter': 'grayscale(0%)',
-    //         '-webkit-transition': '.3s ease-in-out',
-    //         '-moz-filter': 'grayscale(0%)',
-    //         '-moz-transition': '.3s ease-in-out',
-    //         '-o-filter': 'grayscale(0%)',
-    //         '-o-transition': '.3s ease-in-out',
-    //     }
-    // }
+    const greyToColor = {
+        width: 'auto',
+        maxHeight: '100%',
+        '-webkit-transition': '.2s ease-in-out',
+        '-moz-filter': 'grayscale(100%)',
+        '-moz-transition': '.2s ease-in-out',
+        '-o-filter': 'grayscale(100%)',
+        '-o-transition': '.2s ease-in-out',
+        '-webkit-filter': 'grayscale(100%)',
+        '&:hover': {
+            '-webkit-filter': 'grayscale(0%)',
+            '-webkit-transition': '.2s ease-in-out',
+            '-moz-filter': 'grayscale(0%)',
+            '-moz-transition': '.2s ease-in-out',
+            '-o-filter': 'grayscale(0%)',
+            '-o-transition': '.2s ease-in-out',
+        }
+    }
 
     function addBoldToBio(bio = "") {
         const arr = bio.split(name);
@@ -48,8 +50,9 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
                         // height="300"
                         width={'auto'}
                         image={src}
+                        loading='lazy'
                         alt="musician picture"
-                        sx={!imgLoaded ? { width: 0, height: 0 } : { width: 'auto', maxHeight: '100%' }}
+                        sx={!imgLoaded ? { width: 0, height: 0 } : greyToColor}
                         onLoad={() => setImgLoaded(true)}
                     />
                 </div>

@@ -2,7 +2,7 @@ import './App.css';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Home from './components/Home.js/Home';
+import Home from './components/Home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
@@ -19,8 +19,6 @@ import Musicians from './components/About/Musicians';
 import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
-import banners from './data/banners';
-import BannerContext from './context/BannerContext';
 import { useEffect } from 'react';
 import { downloadOneDoc } from './utils/firebase/firestore-funcs';
 import Contact from './components/Contact/Contact';
@@ -33,7 +31,6 @@ function App() {
   const [notification, setNotification] = useState(null);
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
-  const [allBanners, setAllBanners] = useState(banners);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -110,7 +107,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <TextContext.Provider value={{ text, setText }}>
           <LoadingContext.Provider value={{ loading, setLoading }}>
-            <BannerContext.Provider value={{ allBanners, setAllBanners }}>
               <NotificationContext.Provider value={{ notification, setNotification }}>
                 <DialogContext.Provider value={{ dialog, setDialog }}>
                   <LoadingBackdrop />
@@ -133,7 +129,6 @@ function App() {
                   <Footer />
                 </DialogContext.Provider>
               </NotificationContext.Provider>
-            </BannerContext.Provider>
           </LoadingContext.Provider>
         </TextContext.Provider>
       </ThemeProvider>

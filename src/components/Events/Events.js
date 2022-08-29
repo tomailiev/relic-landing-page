@@ -1,14 +1,11 @@
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import { useContext } from "react";
 import { useEffect, useState } from "react";
-import BannerContext from "../../context/BannerContext";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 
 const Events = () => {
 
-    const { allBanners } = useContext(BannerContext);
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
@@ -21,9 +18,9 @@ const Events = () => {
 
     return (
         <>
-            <Container disableGutters maxWidth={false} sx={{ px: 0 }}>
+            {/* <Container disableGutters maxWidth={false} sx={{ px: 0 }}>
                 <img src={allBanners.eventsBanner} width="100%" height={'auto'} alt="banner" />
-            </Container>
+            </Container> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" mb={3}>
                     Upcoming Events
