@@ -25,6 +25,7 @@ import Contact from './components/Contact/Contact';
 import LoadingContext from './context/LoadingContext';
 import LoadingBackdrop from './components/Common/LoadingBackdrop';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Forward from './components/Common/Forward';
 
 function App() {
 
@@ -107,28 +108,29 @@ function App() {
       <ThemeProvider theme={theme}>
         <TextContext.Provider value={{ text, setText }}>
           <LoadingContext.Provider value={{ loading, setLoading }}>
-              <NotificationContext.Provider value={{ notification, setNotification }}>
-                <DialogContext.Provider value={{ dialog, setDialog }}>
-                  <LoadingBackdrop />
-                  <Notification />
-                  <CommonDialog />
-                  <CssBaseline />
-                  <Header />
-                  <TransitionGroup component={null}>
-                    <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                      <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/musicians" element={<Musicians />} />
-                        <Route path="/events" element={<Events />} />
-                        <Route path="/story" element={<Story />} />
-                        <Route path="/contact" element={<Contact />} />
-                      </Routes>
-                      </CSSTransition>
-                  </TransitionGroup>
-                  <ActionCenter />
-                  <Footer />
-                </DialogContext.Provider>
-              </NotificationContext.Provider>
+            <NotificationContext.Provider value={{ notification, setNotification }}>
+              <DialogContext.Provider value={{ dialog, setDialog }}>
+                <LoadingBackdrop />
+                <Notification />
+                <CommonDialog />
+                <CssBaseline />
+                <Header />
+                <TransitionGroup component={null}>
+                  <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/musicians" element={<Musicians />} />
+                      <Route path="/events" element={<Events />} />
+                      <Route path="/story" element={<Story />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/donate" element={<Forward />} />
+                    </Routes>
+                  </CSSTransition>
+                </TransitionGroup>
+                <ActionCenter />
+                <Footer />
+              </DialogContext.Provider>
+            </NotificationContext.Provider>
           </LoadingContext.Provider>
         </TextContext.Provider>
       </ThemeProvider>
