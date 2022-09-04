@@ -1,18 +1,13 @@
 import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Button, useScrollTrigger, Slide, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-// import logoIcon from '../../assets/logos/relic-logo-bw.png'
 import { useState } from "react";
 import NavMenuItem from "./NavMenuItem";
-// import { useContext } from "react";
-// import DialogContext from "../../context/DialogContext";
 import ResponsiveDrawer from "./ResponsiveDrawer";
-// import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { links } from "../../data/links";
 
 const Header = () => {
 
-    // const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
@@ -24,7 +19,7 @@ const Header = () => {
             ]
         },
         { path: '/events', title: 'Events' },
-        {path: '/contact', title: 'Contact Us'}
+        { path: '/contact', title: 'Contact Us' }
     ];
 
 
@@ -59,9 +54,6 @@ const Header = () => {
                                     )
                             })}
                         </Box>
-                        {/* <MenuItem component={RouterLink} to={'/'} sx={{ my: 2.2, mr: 1 }}>
-                            <img src={logoIcon} height="48px" width="auto" alt="logo icon" />
-                        </MenuItem> */}
                         <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                         <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
                             Donate
