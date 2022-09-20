@@ -26,6 +26,7 @@ import LoadingContext from './context/LoadingContext';
 import LoadingBackdrop from './components/Common/LoadingBackdrop';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Forward from './components/Common/Forward';
+import NoMatch from './components/Common/NoMatch';
 
 function App() {
 
@@ -124,6 +125,7 @@ function App() {
                       <Route path="/story" element={<Story />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
+                      <Route path="*" element={<NoMatch />} />
                     </Routes>
                   </CSSTransition>
                 </TransitionGroup>
