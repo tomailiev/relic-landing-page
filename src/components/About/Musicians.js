@@ -13,7 +13,7 @@ const Musicians = () => {
     const [founders, setFounders] = useState([]);
 
     useEffect(() => {
-        downloadDocs('musicians', 'featured', 'name')
+        downloadDocs('musicians', ['featured', '==', true], 'name')
             .then(docs => setFounders(docs))
             .catch(e => {
                 console.error('not found');
