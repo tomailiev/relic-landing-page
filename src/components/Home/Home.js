@@ -15,7 +15,8 @@ const Home = () => {
 
     return (
         <>
-            <Banner bgPic={banners.homeBanner} height={'88vh'} children={<Title />} />
+            <Banner bgPic={banners.groupBanner} height={'85vh'} children={<Title />} />
+            <Container sx={{height: '90vh'}}></Container>
             <Container maxWidth="lg" >
                 <Typography variant="h3" textAlign={'center'}>
                     Discover

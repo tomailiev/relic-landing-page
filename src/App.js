@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
+import '@fontsource/arizonia/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
@@ -67,6 +68,7 @@ function App() {
       ].join(','),
       h1: {
         fontWeight: 700,
+        fontFamily: 'Arizonia',
         '@media (max-width:600px)': {
           fontSize: '3.5rem',
         }
@@ -83,7 +85,7 @@ function App() {
     },
     palette: {
       primary: {
-        main: '#a33363',
+        main: '#000000',
       },
       secondary: {
         main: '#ffffff',

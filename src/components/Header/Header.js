@@ -5,6 +5,8 @@ import { useState } from "react";
 import NavMenuItem from "./NavMenuItem";
 import ResponsiveDrawer from "./ResponsiveDrawer";
 import { links } from "../../data/links";
+import logo from "../../assets/logos/relic-logo-bw.png";
+
 
 const Header = () => {
 
@@ -24,6 +26,7 @@ const Header = () => {
 
 
     const trigger = useScrollTrigger();
+    const colorTrigger = useScrollTrigger({disableHysteresis: true});
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
@@ -32,8 +35,8 @@ const Header = () => {
     return (
         <>
             <Slide appear={false} direction="down" in={!trigger}>
-                <AppBar color="primary" position={'sticky'}>
-                    <Toolbar sx={{ justifyContent: 'space-between' }}>
+                <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} position={'sticky'}>
+                    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -43,7 +46,10 @@ const Header = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Box justifyContent={'center'} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                        <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '50px' : '100px'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                            <img src={logo} alt="logo" width={'auto'} height={'65%'} />
+                        </Box>
+                        <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                             {navItems.map(({ path, title, menu }) => {
                                 return menu
                                     ? <NavMenuItem key={title} menuTitle={title} menu={menu} />
