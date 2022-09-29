@@ -19,20 +19,22 @@ const MusicianCard = ({ name, picUrl, bio, title }) => {
 
     function handleImgLoad() {
         setImgLoaded(true);
-        setImgStyle({width: 'auto', height: '100%'})
+        setImgStyle({ width: 'auto', height: '100%' })
     }
     function handleMouseOver() {
-        setImgStyle({width: 'auto', height: '110%', transition: 'height 300ms ease-out'})
+        setImgStyle({ width: 'auto', height: '110%', transition: 'height 300ms ease-out' })
     }
 
     function handleMouseOut() {
-        setImgStyle({width: 'auto', height: '100%', transition: 'height 300ms ease-out'})
+        setImgStyle({ width: 'auto', height: '100%', transition: 'height 300ms ease-out' })
     }
 
     useEffect(() => {
-        getLink(picUrl)
-            .then(val => setSrc(val))
-            .catch(console.error);
+        if (picUrl) {
+            getLink(picUrl)
+                .then(val => setSrc(val))
+                .catch(console.error);
+        }
     }, [picUrl]);
 
     return (

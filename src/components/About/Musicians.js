@@ -8,9 +8,15 @@ import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import banners from '../../data/banners';
 
+const placeholder = [
+    { name: 'loading content...', pic: '', id: 0 },
+    { name: 'loading content...', pic: '', id: 1 },
+    { name: 'loading content...', pic: '', id: 2 }
+];
+
 const Musicians = () => {
 
-    const [founders, setFounders] = useState([]);
+    const [founders, setFounders] = useState(placeholder);
 
     useEffect(() => {
         downloadDocs('musicians', 'featured', 'name')
@@ -33,7 +39,7 @@ const Musicians = () => {
                 <Grid container spacing={6} mt={3}>
                     {founders.map(({ name, pic, bio, title, id }) => {
                         return (
-                            <Grid key={id} item xs={12} md={6}>
+                            <Grid key={id} item xs={12} md={6} lg={4}>
                                 <MusicianCard name={name} picUrl={pic} bio={bio} title={title} />
                             </Grid>
                         );
