@@ -14,9 +14,9 @@ function getLink(url) {
 
 function downloadDocs(col, condition, sorting) {
     const q = sorting
-        ? query(collection(db, col), where(condition, "==", true), orderBy(sorting))
+        ? query(collection(db, col), where(...condition), orderBy(sorting))
         : condition
-            ? query(collection(db, col), where(condition, '==', true))
+            ? query(collection(db, col), where(...condition))
             : query(collection(db, col));
     return getDocs(q)
         .then(qSnap => {
