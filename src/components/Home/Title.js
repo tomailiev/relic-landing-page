@@ -10,19 +10,19 @@ const Title = () => {
 
     return (
         <Container maxWidth={false} disableGutters sx={{ textAlign: "center", mt: 2, height: '100%' }}>
-            <Box height={'20%'} display="flex" justifyContent={"center"} alignItems="center">
+            <Box height={'5%'} display="flex" justifyContent={"center"} alignItems="center">
                 {/* <img src={logo} alt="logo" width={'auto'} height={'85%'} /> */}
             </Box>
             {/* <Typography variant="h3" color={'#bd6984'} my={'25px'}>
                     PRESENTS
                 </Typography> */}
-            <Box height={'80%'} display="flex" flexDirection={'column'} justifyContent="center" mt={1}>
-                <Typography maxWidth={'100%'} variant="h1" mt={'85px'} mx={1} color={'white'} sx={{ textShadow: "-2px 2px 5px rgba(0, 0, 0, 1)" }}>
-                    {text.siteHeading || 'Relic'}
+            <Box height={'95%'} display="flex" flexDirection={'column'} justifyContent="start" mt={1}>
+                <Typography maxWidth={'100%'} variant="h1" mt={'85px'} mx={1} color={'white'} >
+                    {text.siteHeading || 'relic'}
                 </Typography>
-                <Typography variant="subtitle1">
+                {/* <Typography variant="subtitle1">
                     {text.siteSubtitle || 'The period chamber orchestra dedicated to bringing early music to all 50 states'}
-                </Typography>
+                </Typography> */}
             </Box>
         </Container>
     )

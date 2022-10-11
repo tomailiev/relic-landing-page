@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Button, useScrollTrigger, Slide, } from "@mui/material";
+import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Button, useScrollTrigger, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
@@ -25,7 +25,6 @@ const Header = () => {
     ];
 
 
-    const trigger = useScrollTrigger();
     const colorTrigger = useScrollTrigger({disableHysteresis: true});
 
     function handleDrawerToggle() {
@@ -34,7 +33,6 @@ const Header = () => {
 
     return (
         <>
-            <Slide appear={false} direction="down" in={!trigger}>
                 <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} position={'sticky'}>
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                         <IconButton
@@ -46,7 +44,7 @@ const Header = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '50px' : '100px'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <Box component={RouterLink} to={'/'} height={'100px'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
                             <img src={logo} alt="logo" width={'auto'} height={'65%'} />
                         </Box>
                         <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
@@ -66,7 +64,6 @@ const Header = () => {
                         </Button>
                     </Toolbar>
                 </AppBar>
-            </Slide >
         </>
     );
 };

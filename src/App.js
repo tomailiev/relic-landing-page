@@ -6,7 +6,7 @@ import Home from './components/Home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
-import '@fontsource/arizonia/400.css';
+import '@fontsource/julius-sans-one/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
@@ -55,7 +55,7 @@ function App() {
   const theme = createTheme({
     typography: {
       fontFamily: [
-        'Lato',
+        'Julius Sans One',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -68,7 +68,7 @@ function App() {
       ].join(','),
       h1: {
         fontWeight: 700,
-        fontFamily: 'Arizonia',
+        fontFamily: 'Julius Sans One',
         '@media (max-width:600px)': {
           fontSize: '3.5rem',
         }
@@ -77,7 +77,7 @@ function App() {
         marginTop: 30
       },
       subtitle1: {
-        color: '#ffffff',
+        color: '#000000',
         fontWeight: '400',
         fontStyle: 'italic',
         fontSize: '1.3rem'
