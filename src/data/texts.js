@@ -65,10 +65,10 @@ const texts = {
     contentSections: [
         {
             infoTitle: 'Upcoming events',
-            infoText: 'Our inaugural week is quickly approaching. We have an exciting program of baroque music favorites that we are looking forward to presenting in Kalamazoo, MI this September.',
+            infoText: 'Find out where you can see us live next!',
             cardImage: 'eventsImage',
-            cardTitle: 'Autumn Rising',
-            cardTexts: ['September 8-10, 2022', 'Kalamazoo, MI'],
+            cardTitle: 'See events',
+            cardTexts: [''],
             buttonText: '',
             route: '/events'
         },
@@ -77,7 +77,7 @@ const texts = {
             infoText: 'Find out who we are and what we do!',
             cardImage: 'musicianImage',
             cardTitle: 'Our musicians',
-            cardTexts: ['Co-founder & violinist Kako Miura', 'PC: Sam Brewer'],
+            cardTexts: ['PC: John Lacko'],
             buttonText: '',
             route: '/musicians'
         }

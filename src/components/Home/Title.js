@@ -1,5 +1,4 @@
-import { Container, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import {  Typography } from "@mui/material";
 import { useContext } from "react";
 // import logo from "../../assets/logos/relic-logo-red-256.png";
 import TextContext from "../../context/TextContext";
