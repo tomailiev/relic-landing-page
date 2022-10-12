@@ -90,7 +90,7 @@ function App() {
     },
     palette: {
       primary: {
-        main: '#000000',
+        main: '#5e66a5',
       },
       secondary: {
         main: '#ffffff',
