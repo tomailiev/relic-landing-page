@@ -13,7 +13,7 @@ const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
-        { path: '/', title: 'Home' },
+        // { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About us', menu: [
                 { path: '/story', title: 'Our story' },
@@ -33,7 +33,7 @@ const Header = () => {
 
     return (
         <>
-                <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} position={'sticky'}>
+                <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} sx={{transition: 'all 0.15s ease'}} position={'sticky'}>
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                         <IconButton
                             color="inherit"
@@ -44,8 +44,8 @@ const Header = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Box component={RouterLink} to={'/'} height={'100px'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                            <img src={logo} alt="logo" width={'auto'} height={'65%'} />
+                        <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '40px' : '100px'} sx={{transition: 'all 0.08s ease'}} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                            <img src={logo} alt="logo" width={'auto'} height={!!colorTrigger ?'95%' : '70%'} />
                         </Box>
                         <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                             {navItems.map(({ path, title, menu }) => {
@@ -53,7 +53,7 @@ const Header = () => {
                                     ? <NavMenuItem key={title} menuTitle={title} menu={menu} />
                                     : (
                                         <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                            <Typography textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                            <Typography textAlign="center" color={!!colorTrigger ?'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                                         </MenuItem>
                                     )
                             })}

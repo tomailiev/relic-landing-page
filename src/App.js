@@ -68,9 +68,10 @@ function App() {
       ].join(','),
       h1: {
         fontWeight: 700,
+        fontSize: '8.5rem',
         fontFamily: 'Julius Sans One',
         '@media (max-width:600px)': {
-          fontSize: '3.5rem',
+          fontSize: '4.5rem',
         }
       },
       h3: {
