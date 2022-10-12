@@ -55,7 +55,7 @@ function App() {
   const theme = createTheme({
     typography: {
       fontFamily: [
-        'Julius Sans One',
+        'Lato',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -76,6 +76,10 @@ function App() {
       },
       h3: {
         marginTop: 30
+      },
+      h6: {
+        fontFamily: 'Julius Sans One',
+        fontSize: '1.2rem'
       },
       subtitle1: {
         color: '#000000',

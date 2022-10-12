@@ -53,7 +53,7 @@ const Header = () => {
                                 ? <NavMenuItem key={title} menuTitle={title} menu={menu} color={!!colorTrigger ? 'white' : 'primary'} />
                                 : (
                                     <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                        <Typography textAlign="center" color={!!colorTrigger ? 'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                        <Typography variant="h6" textAlign="center" color={!!colorTrigger ? 'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                                     </MenuItem>
                                 )
                         })}

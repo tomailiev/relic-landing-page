@@ -9,22 +9,18 @@ const Title = () => {
     const { text } = useContext(TextContext);
 
     return (
-        <Container maxWidth={false} disableGutters sx={{ textAlign: "center", mt: 2, height: '100%' }}>
-            <Box height={'5%'} display="flex" justifyContent={"center"} alignItems="center">
-                {/* <img src={logo} alt="logo" width={'auto'} height={'85%'} /> */}
-            </Box>
-            {/* <Typography variant="h3" color={'#bd6984'} my={'25px'}>
-                    PRESENTS
-                </Typography> */}
-            <Box height={'95%'} display="flex" flexDirection={'column'} justifyContent="start" mt={1}>
-                <Typography maxWidth={'100%'} variant="h1" mt={'85px'} mx={1} color={'white'} >
-                    {text.siteHeading || 'relic'}
-                </Typography>
-                {/* <Typography variant="subtitle1">
-                    {text.siteSubtitle || 'The period chamber orchestra dedicated to bringing early music to all 50 states'}
-                </Typography> */}
-            </Box>
-        </Container>
+        <Typography
+            maxWidth={'100%'}
+            textAlign={'center'}
+            variant="h1"
+            mt={'85px'}
+            mx={1}
+            color={'white'}
+            zIndex={200}
+            sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '1px 1px black, -1px -1px black', opacity: 1 }}
+        >
+            {text.siteHeading || 'relic'}
+        </Typography>
     )
 };
 

@@ -21,7 +21,7 @@ const NavMenuItem = ({ menuTitle, menu, color }) => {
                 component={'a'}
                 sx={{ fontWeight: 'bold' }}
             >
-                <Typography textAlign="center" color={color} sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h6" textAlign="center" color={color} sx={{ fontWeight: 'bold' }}>
                     {menuTitle}
                 </Typography>
             </MenuItem>
@@ -37,7 +37,7 @@ const NavMenuItem = ({ menuTitle, menu, color }) => {
             >
                 {menu.map(({ title, path }) => (
                     <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                        <Typography textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                        <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                     </MenuItem>
                 ))}
             </Menu>
