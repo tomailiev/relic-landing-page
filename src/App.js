@@ -71,7 +71,7 @@ function App() {
         fontSize: '8.5rem',
         fontFamily: 'Julius Sans One',
         '@media (max-width:600px)': {
-          fontSize: '4.5rem',
+          fontSize: '5rem',
         }
       },
       h3: {
@@ -96,7 +96,7 @@ function App() {
       MuiMenu: {
         styleOverrides: {
           list: {
-            background: '#a33363',
+            background: '#000000',
             boxShadow: 'none'
           },
           paper: {

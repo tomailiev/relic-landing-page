@@ -8,17 +8,35 @@ import { Box, Container, Typography, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Home = () => {
 
     const { text } = useContext(TextContext);
+    const [dimensions, setDimensions] = useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    });
+
+    useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
 
     return (
         <>
             <Container sx={{ height: '100vh' }} >
                 <Box sx={{ position: 'absolute', width: '100%', height: '100%', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', objectFit: 'contain', }}>
-                    <Box width={'100%'} height={'100%'} overflow={'hidden'} sx={{ background: `no-repeat center/${window.innerWidth / window.innerHeight >= 1.5 ? 100 : (window.innerHeight / window.innerWidth) * 150}% url(${banners.groupBanner})` }}>
-                        <Typography maxWidth={'100%'} textAlign={'center'} variant="h1" mt={'85px'} mx={1} color={'white'} zIndex={200} sx={{position: 'absolute',left: '50%', top: '60%', transform: 'translate(-50%, -50%)'}}>
+                    <Box width={'100%'} height={'100%'} overflow={'hidden'} sx={{ background: `no-repeat center/${dimensions.width / dimensions.height > 1.5 ? 100 : (dimensions.height / dimensions.width) * 160}% url(${banners.groupBanner})` }}>
+                        <Typography maxWidth={'100%'} textAlign={'center'} variant="h1" mt={'85px'} mx={1} color={'white'} zIndex={200} sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)' }}>
                             {text.siteHeading || 'relic'}
                         </Typography>
                     </Box>

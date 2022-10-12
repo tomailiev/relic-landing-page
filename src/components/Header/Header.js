@@ -25,7 +25,7 @@ const Header = () => {
     ];
 
 
-    const colorTrigger = useScrollTrigger({disableHysteresis: true});
+    const colorTrigger = useScrollTrigger({ disableHysteresis: true });
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
@@ -33,37 +33,37 @@ const Header = () => {
 
     return (
         <>
-                <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} sx={{transition: 'all 0.15s ease'}} position={'sticky'}>
-                    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: 'none' } }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '40px' : '100px'} sx={{transition: 'all 0.08s ease'}} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                            <img src={logo} alt="logo" width={'auto'} height={!!colorTrigger ?'95%' : '70%'} />
-                        </Box>
-                        <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                            {navItems.map(({ path, title, menu }) => {
-                                return menu
-                                    ? <NavMenuItem key={title} menuTitle={title} menu={menu} />
-                                    : (
-                                        <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                            <Typography textAlign="center" color={!!colorTrigger ?'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
-                                        </MenuItem>
-                                    )
-                            })}
-                        </Box>
-                        <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                        <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
-                            Donate
-                        </Button>
-                    </Toolbar>
-                </AppBar>
+            <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
+                <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '40px' : '100px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="logo" width={'auto'} height={!!colorTrigger ? '95%' : '70%'} />
+                    </Box>
+                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                        {navItems.map(({ path, title, menu }) => {
+                            return menu
+                                ? <NavMenuItem key={title} menuTitle={title} menu={menu} color={!!colorTrigger ? 'white' : 'primary'} />
+                                : (
+                                    <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
+                                        <Typography textAlign="center" color={!!colorTrigger ? 'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                    </MenuItem>
+                                )
+                        })}
+                    </Box>
+                    <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
+                    <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
+                        Donate
+                    </Button>
+                </Toolbar>
+            </AppBar>
         </>
     );
 };
