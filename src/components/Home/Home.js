@@ -4,7 +4,7 @@ import Title from "./Title";
 // import eventsImage from '../../assets/imgs/ev_img.webp';
 // import musicianImage from '../../assets/imgs/IMG_3983.webp';
 import ContentSection from "../Common/ContentSection";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
@@ -15,7 +15,7 @@ const Home = () => {
 
     return (
         <>
-            <Banner bgPic={banners.homeBanner} height={'88vh'} children={<Title />} />
+            <Banner height={100} bgPic={banners.groupBanner} children={<Title />} />
             <Container maxWidth="lg" >
                 <Typography variant="h3" textAlign={'center'}>
                     Discover

@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
+import '@fontsource/julius-sans-one/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
@@ -67,15 +68,21 @@ function App() {
       ].join(','),
       h1: {
         fontWeight: 700,
+        fontSize: '8.5rem',
+        fontFamily: 'Julius Sans One',
         '@media (max-width:600px)': {
-          fontSize: '3.5rem',
+          fontSize: '5rem',
         }
       },
       h3: {
         marginTop: 30
       },
+      h6: {
+        fontFamily: 'Julius Sans One',
+        fontSize: '1.2rem'
+      },
       subtitle1: {
-        color: '#ffffff',
+        color: '#000000',
         fontWeight: '400',
         fontStyle: 'italic',
         fontSize: '1.3rem'
@@ -93,7 +100,7 @@ function App() {
       MuiMenu: {
         styleOverrides: {
           list: {
-            background: '#a33363',
+            background: '#000000',
             boxShadow: 'none'
           },
           paper: {

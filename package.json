@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@fontsource/arizonia": "^4.5.8",
+    "@fontsource/julius-sans-one": "^4.5.10",
     "@fontsource/lato": "^4.5.8",
     "@fontsource/tangerine": "^4.5.8",
     "@mui/icons-material": "^5.8.3",

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import banners from '../../data/banners';
+// import Banner from "../Home/Banner";
 
 const placeholder = [
     { name: 'loading content...', pic: '', id: 0 },
@@ -32,6 +33,7 @@ const Musicians = () => {
             <Container disableGutters maxWidth={false}>
                 <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
             </Container>
+            {/* <Banner bgPic={banners.musiciansBanner} height={80} /> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" >
                     Musicians

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const NavMenuItem = ({ menuTitle, menu }) => {
+const NavMenuItem = ({ menuTitle, menu, color }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -21,7 +21,9 @@ const NavMenuItem = ({ menuTitle, menu }) => {
                 component={'a'}
                 sx={{ fontWeight: 'bold' }}
             >
-                {menuTitle}
+                <Typography variant="h6" textAlign="center" color={color} sx={{ fontWeight: 'bold' }}>
+                    {menuTitle}
+                </Typography>
             </MenuItem>
             <Menu
                 id="basic-menu"
@@ -35,7 +37,7 @@ const NavMenuItem = ({ menuTitle, menu }) => {
             >
                 {menu.map(({ title, path }) => (
                     <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                        <Typography textAlign="center" color={'secondary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                        <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
                     </MenuItem>
                 ))}
             </Menu>

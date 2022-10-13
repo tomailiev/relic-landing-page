@@ -1,5 +1,5 @@
-import eventsImage from '../assets/imgs/ev_img.webp';
-import musicianImage from '../assets/imgs/IMG_3983.webp';
+import eventsImage from '../assets/imgs/0129.jpg';
+import musicianImage from '../assets/imgs/0063.jpg';
 
 const images = {
     eventsImage,

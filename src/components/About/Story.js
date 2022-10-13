@@ -12,7 +12,7 @@ const Story = () => {
     return (
         <>
             <Container disableGutters maxWidth={false}>
-                <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
+                <img src={banners.storyBanner} width="100%" height={'auto'} alt="banner" />
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
             <Container maxWidth="lg">

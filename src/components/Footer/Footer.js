@@ -1,4 +1,4 @@
-import { Box, IconButton, Link, Typography } from "@mui/material";
+import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 // import TwitterIcon from '@mui/icons-material/Twitter';
@@ -10,9 +10,11 @@ import TextContext from "../../context/TextContext";
 const Footer = () => {
 
     const { text } = useContext(TextContext);
+    const theme = useTheme();
+    
 
     return (
-        <footer style={{ background: '#aa4370', padding: 10 }}>
+        <footer style={{ background: theme.palette.primary.main, padding: 10 }}>
             <Container disableGutters>
                 <Box justifyContent={'center'} mx={5}>
                     <Typography color="white" align="center" paddingBottom={2}>
