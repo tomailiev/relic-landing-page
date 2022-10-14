@@ -10,7 +10,7 @@ const Events = () => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        downloadDocs('events', ['dateDone', '<', new Date('09-13-2022')], 'dateDone')
+        downloadDocs('events', ['dateDone', '<', new Date('2022-09-13')], 'dateDone')
             .then(docs => {
                 setEvents(docs);
             })
