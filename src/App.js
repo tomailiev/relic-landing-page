@@ -129,7 +129,7 @@ function App() {
                       <Route path="/" element={<Home />} />
                       <Route path="/musicians" element={<Musicians />} />
                       <Route path="/events" element={<Events />} />
-                      <Route path="/story" element={<Story />} />
+                      <Route path="/bio" element={<Story />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
                       <Route path="*" element={<NoMatch />} />
