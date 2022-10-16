@@ -1,4 +1,4 @@
-import { Grid, List, Typography } from "@mui/material";
+import { Divider, Grid, List, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 // import Bio from "./Bio";
 // import founders from '../../data/founders.json';
@@ -10,19 +10,31 @@ import banners from '../../data/banners';
 import MusicianLI from "./MusicianLI";
 // import Banner from "../Home/Banner";
 
-const placeholder = [
-    { name: 'loading content...', pic: '', id: 0 },
-    { name: 'loading content...', pic: '', id: 1 },
-    { name: 'loading content...', pic: '', id: 2 }
-];
+const placeholder = {
+    violin: [],
+    viola: [],
+    cello: [],
+    theorbo: [],
+    bass: [],
+    harpsichord: [],
+    oboe: [],
+    basson: [],
+    flute: []
+};
 
 const Musicians = () => {
 
-    const [founders, setFounders] = useState(placeholder);
+    const [musicians, setMusicians] = useState(placeholder);
 
     useEffect(() => {
         downloadDocs('musicians', ['featured', '==', true], 'name')
-            .then(docs => setFounders(docs))
+            .then((docs) => {
+                setMusicians(docs.reduce((prev, curr) => {
+                    if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
+                    prev[curr.newTitle].push(curr);
+                    return prev;
+                }, {}));
+            })
             .catch(e => {
                 console.error('not found');
                 console.error(e);
@@ -40,20 +52,50 @@ const Musicians = () => {
                     Musicians
                 </Typography>
                 <Grid container spacing={6} mt={3}>
-                    {/* {founders.map(({ name, pic, bio, title, id }) => {
-                        return (
-                            <Grid key={id} item xs={12} md={6} lg={4}>
-                                <MusicianCard name={name} picUrl={pic} bio={bio} title={title} />
-                            </Grid>
-                        );
-                    })} */}
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        {founders.map(({ name, pic, bio, title, id }) => {
-                            return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} />
-                        })}
-                    </List>
+                    <Grid item xs={12} md={6}>
+                        <Typography variant={'h6'}>violin</Typography>
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.violin?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                        {musicians.viola && <Typography variant={'h6'}>viola</Typography>}
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.viola?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Typography variant={'h6'}>cello</Typography>
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.cello?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                        <Typography variant={'h6'}>bass</Typography>
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.bass?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                        <Typography variant={'h6'}>theorbo</Typography>
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.theorbo?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                        <Typography variant={'h6'}>harpsichord</Typography>
+                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            {musicians.harpsichord?.map(({ name, pic, bio, title, id, founder }) => {
+                                return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
+                            })}
+                        </List>
+                    </Grid>
 
                 </Grid>
+                <Divider />
+                <Typography variant="body2"padding={2}>* indicates Relic founders</Typography>
             </Container>
         </>
     );
