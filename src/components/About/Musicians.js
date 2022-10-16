@@ -1,12 +1,13 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, List, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 // import Bio from "./Bio";
 // import founders from '../../data/founders.json';
-import MusicianCard from "./MusicianCard";
+// import MusicianCard from "./MusicianCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import banners from '../../data/banners';
+import MusicianLI from "./MusicianLI";
 // import Banner from "../Home/Banner";
 
 const placeholder = [
@@ -39,13 +40,19 @@ const Musicians = () => {
                     Musicians
                 </Typography>
                 <Grid container spacing={6} mt={3}>
-                    {founders.map(({ name, pic, bio, title, id }) => {
+                    {/* {founders.map(({ name, pic, bio, title, id }) => {
                         return (
                             <Grid key={id} item xs={12} md={6} lg={4}>
                                 <MusicianCard name={name} picUrl={pic} bio={bio} title={title} />
                             </Grid>
                         );
-                    })}
+                    })} */}
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        {founders.map(({ name, pic, bio, title, id }) => {
+                            return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} />
+                        })}
+                    </List>
+
                 </Grid>
             </Container>
         </>
