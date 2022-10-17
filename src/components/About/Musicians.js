@@ -51,7 +51,7 @@ const Musicians = () => {
                 <Typography variant="h3" >
                     Musicians
                 </Typography>
-                <Grid container spacing={6} mt={3}>
+                <Grid container spacing={6} my={3}>
                     <Grid item xs={12} md={6}>
                         <Typography variant={'h6'}>violin</Typography>
                         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
