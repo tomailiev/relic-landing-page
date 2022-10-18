@@ -16,12 +16,12 @@ const Header = () => {
         // { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About us', menu: [
-                { path: '/story', title: 'Our story' },
-                { path: '/musicians', title: 'Our musicians' }
+                { path: '/bio', title: 'Bio' },
+                { path: '/musicians', title: 'Musicians' }
             ]
         },
         { path: '/events', title: 'Events' },
-        { path: '/contact', title: 'Contact Us' }
+        { path: '/contact', title: 'Contact' }
     ];
 
 

@@ -1,4 +1,4 @@
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { Avatar, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 
@@ -18,16 +18,18 @@ const EventInfo = ({ event }) => {
                     Performances:
                 </Typography>
                 <List>
-                    {event.performances.map(({ id, date, day, time, location, venue }) => {
+                    {event.performances.map(({ id, date, day, time, location, venue, url }) => {
                         return (
-                            <ListItem key={id}>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        <ConfirmationNumberOutlinedIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary={`${venue} - ${location}`} secondary={`${day}, ${date} - ${time}`} />
-                            </ListItem>
+                            <Link key={id} href={url} target={'_blank'} underline={'none'}>
+                                <ListItem button>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            <ConfirmationNumberOutlinedIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText primary={`${venue} - ${location}`} secondary={`${day}, ${date} - ${time}`} />
+                                </ListItem>
+                            </Link>
                         )
                     })}
                 </List>

@@ -10,7 +10,7 @@ const Events = () => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        downloadDocs('events', ['dateDone', '<', new Date('2022-09-13')], 'dateDone')
+        downloadDocs('events', ['dateDone', '>', new Date('2022-09-13')], 'dateDone')
             .then(docs => {
                 setEvents(docs);
             })
@@ -31,7 +31,7 @@ const Events = () => {
                         <Paper key={event.id} elevation={3} sx={{ p: 5 }}>
                             <Grid container spacing={6}>
                                 <Grid item sm={12} md={5}>
-                                    <EventCard imageUrl={event.imageUrl} />
+                                    <EventCard imageUrl={event.imageUrl} url={event.eventUrl} />
                                 </Grid>
                                 <Grid item sm={12} md={7} textAlign={'left'}>
                                     <EventInfo event={event} />
