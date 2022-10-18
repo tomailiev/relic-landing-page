@@ -20,8 +20,8 @@ const EventInfo = ({ event }) => {
                 <List>
                     {event.performances.map(({ id, date, day, time, location, venue, url }) => {
                         return (
-                            <Link href={url} target={'_blank'} underline={'none'}>
-                                <ListItem key={id} button>
+                            <Link key={id} href={url} target={'_blank'} underline={'none'}>
+                                <ListItem button>
                                     <ListItemAvatar>
                                         <Avatar>
                                             <ConfirmationNumberOutlinedIcon />

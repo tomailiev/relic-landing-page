@@ -1,8 +1,7 @@
-import { Button, Dialog, DialogActions, DialogTitle, IconButton, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import { links } from '../../data/links'
-import SubscribeForm from "./SubscribeForm";
 import CloseIcon from '@mui/icons-material/Close';
 
 const CommonDialog = () => {
@@ -12,14 +11,15 @@ const CommonDialog = () => {
     return (
         <Dialog
             fullWidth={true}
-            maxWidth={dialog === 'donation' ? 'lg' : 'sm'}
+            maxWidth={dialog?.type === 'donation' ? 'lg' : 'sm'}
             open={!!dialog}
             onClose={() => setDialog(null)}
         >
-            <DialogTitle sx={{ m: 0, p: 2 }}>
+            <DialogTitle sx={{ mx: 2 }}>
+                {dialog?.title}
                 <IconButton
                     aria-label="close"
-                    onClick={()=> setDialog(null)}
+                    onClick={() => setDialog(null)}
                     sx={{
                         position: 'absolute',
                         right: 8,
@@ -29,12 +29,12 @@ const CommonDialog = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            {dialog === 'donation'
+            <DialogContent dividers={!(dialog?.type === 'subscription')}>
+            {dialog?.type === 'donation'
                 ? <iframe height={'1000px'} title="Donation frame" src={links.gems}></iframe>
-                : dialog === 'subscription'
-                    ? <SubscribeForm />
-                    : <Typography key={dialog} m={4}>{dialog}</Typography>
+                : dialog?.component
             }
+            </DialogContent>
             <DialogActions>
                 <Button variant="contained" onClick={() => setDialog(null)}>Close</Button>
             </DialogActions>
