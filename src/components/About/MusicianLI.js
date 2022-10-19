@@ -1,31 +1,13 @@
-import { Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import { getLink } from "../../utils/firebase/firestore-funcs";
+import MusicianDialog from "./MusicianDialog";
 
 const MusicianLI = ({ name, picUrl, bio, title, id, founder }) => {
     const { setDialog } = useContext(DialogContext);
 
     const [src, setSrc] = useState(null);
-
-    function addBoldToBio(bio = "") {
-        const arr = bio.split(name);
-        return (
-            <>
-                <Box display={'flex'} justifyContent={'center'}>
-                    <img src={src} height="auto" width="80%" alt={name} />
-                </Box>
-                <Box>
-                    <Typography m={3}>
-                        {arr[0]}
-                        <Typography component={'span'} fontSize={18} fontWeight="700" >{name}</Typography>
-                        {arr[1]}
-                    </Typography>
-                </Box>
-            </>
-        );
-    }
 
     useEffect(() => {
         if (picUrl) {
@@ -36,7 +18,7 @@ const MusicianLI = ({ name, picUrl, bio, title, id, founder }) => {
     }, [picUrl]);
 
     return (
-        <ListItemButton onClick={() => setDialog({ type: 'bio', component: addBoldToBio(bio), title: name })}>
+        <ListItemButton onClick={() => setDialog({ type: 'bio', component: <MusicianDialog name={name} src={src} bio={bio} />, title: name })}>
             <ListItem key={id} alignItems="center" sx={{ padding: 0 }} >
                 <ListItemAvatar>
                     <Avatar alt={name} src={src} />
