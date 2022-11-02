@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-const MusicianDialog = ({src, name, bio}) => {
+const MusicianDialog = ({ src, name, bio }) => {
     const arr = bio.split(name);
 
     return (

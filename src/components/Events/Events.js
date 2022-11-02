@@ -29,7 +29,7 @@ const Events = () => {
             </Container> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={3}>
-                    Season {seasonSwitch ? `${year} - ${year + 1}` : `${year - 1} - ${year}`}
+                    {seasonSwitch ? `${year} - ${year + 1}` : `${year - 1} - ${year}`} Season
                 </Typography>
                 {events.length
                     ? events.map(event => (

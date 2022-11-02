@@ -4,7 +4,7 @@ import DialogContext from "../../context/DialogContext";
 import { getLink } from "../../utils/firebase/firestore-funcs";
 import MusicianDialog from "./MusicianDialog";
 
-const MusicianLI = ({ name, picUrl, bio, title, id, founder }) => {
+const MusicianLI = ({ name, picUrl, bio, id, founder }) => {
     const { setDialog } = useContext(DialogContext);
 
     const [src, setSrc] = useState(null);

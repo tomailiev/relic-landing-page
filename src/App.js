@@ -16,7 +16,7 @@ import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
-import Musicians from './components/About/Musicians';
+import Musicians from './components/Musicians/Musicians';
 import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
