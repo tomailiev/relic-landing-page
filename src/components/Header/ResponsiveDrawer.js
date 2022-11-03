@@ -23,7 +23,7 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
             >
                 <Box sx={{ textAlign: 'center', color: 'white' }}>
                     <MenuItem onClick={handleDrawerToggle} component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
-                        <Typography textAlign="center"  sx={{ fontWeight: 'bold' }}>Home</Typography>
+                        <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>Home</Typography>
                     </MenuItem>
                     <Divider />
                     <List>
@@ -32,7 +32,7 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
                                 ? <ResponsiveMenuItem key={title} menuTitle={title} menu={menu} handleDrawerToggle={handleDrawerToggle} />
                                 : (
                                     <MenuItem onClick={handleDrawerToggle} key={title} component={RouterLink} to={path}>
-                                        <Typography textAlign="center"  sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                        <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>{title}</Typography>
                                     </MenuItem>
                                 );
                         }

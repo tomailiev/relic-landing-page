@@ -40,7 +40,7 @@ const AboutItem = ({ title, bg, textContent, right }) => {
                     <Typography variant="h6" mb={1}>
                         {title}
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" fontSize={'1.2em'}>
                         {textContent}
                     </Typography>
                 </Paper>
