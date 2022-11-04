@@ -18,26 +18,26 @@ const AboutItem = ({ title, bg, textContent, right }) => {
             right: smMatch ? 0 : right ? 0 : '50%',
             content: "''",
             opacity: 0.9,
-            filter: 'blur(3px)',
+            filter: 'sepia(70%)',
             zIndex: -1
         }
     };
 
     const textCss = {
-        width: smMatch ? '90%' : '60%',
+        width: smMatch ? '90%' : '70%',
         background: 'white',
         zIndex: 1,
         textAlign: right ? 'right' : 'left',
         p: 2,
-        left: smMatch ? '5%' : right ? 0 : '40%',
+        left: smMatch ? '5%' : right ? 0 : '30%',
         position: 'relative'
     };
 
     return (
         <Container maxWidth="lg">
             <Box m={2} p={3} sx={bgCss}>
-                <Paper sx={textCss}>
-                    <Typography variant="h6" mb={1}>
+                <Paper square elevation={4} sx={textCss}>
+                    <Typography variant="h6">
                         {title}
                     </Typography>
                     <Typography variant="body1" fontSize={'1.2em'}>

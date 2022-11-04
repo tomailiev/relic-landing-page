@@ -1,7 +1,6 @@
 import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
-// import TwitterIcon from '@mui/icons-material/Twitter';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 import { useContext } from "react";
@@ -11,10 +10,15 @@ const Footer = () => {
 
     const { text } = useContext(TextContext);
     const theme = useTheme();
-    
 
     return (
         <footer style={{ background: theme.palette.primary.main, padding: 10 }}>
+            {/* <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
+                <InstagramIcon />
+            </Fab>
+            <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '100px' }}>
+                <FacebookRoundedIcon />
+            </Fab> */}
             <Container disableGutters>
                 <Box justifyContent={'center'} mx={5}>
                     <Typography color="white" align="center" paddingBottom={2}>
@@ -32,9 +36,6 @@ const Footer = () => {
                             <FacebookRoundedIcon fontSize="inherit" />
                         </Link>
                     </IconButton>
-                    {/* <IconButton size="large" color="secondary">
-                        <TwitterIcon fontSize="inherit" />
-                    </IconButton> */}
                 </Box>
                 <Copyright />
             </Container>

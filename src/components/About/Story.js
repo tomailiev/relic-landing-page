@@ -20,13 +20,13 @@ const Story = () => {
             <Typography variant="h3" textAlign={'center'} m={5}>
                 About us
             </Typography>
-            <AboutItem title={'Our bio'} textContent={text.aboutBio} bg={hrpsBG} />
+            <AboutItem title={'Our story'} textContent={text.aboutStory} bg={hrpsBG}  />
             <CustomDivider />
-            <AboutItem title={'Our values'} textContent={text.aboutValues} bg={thrbBG} right />
+            <AboutItem title={'Our bio'} textContent={text.aboutBio} bg={thrbBG} right />
             <CustomDivider />
             <AboutItem title={'Our mission'} textContent={text.aboutMission} bg={hrpsBG} />
             <CustomDivider />
-            <AboutItem title={'Our story'} textContent={text.aboutStory} bg={thrbBG} right />
+            <AboutItem title={'Our values'} textContent={text.aboutValues} bg={thrbBG} right />
         </>
     );
 };
