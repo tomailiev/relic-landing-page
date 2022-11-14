@@ -1,13 +1,13 @@
 import { Button, Card, CardActionArea, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import images from "../../data/images";
-import CustomDivider from "./CustomDivider";
+// import CustomDivider from "./CustomDivider";
 
-const ContentSection = ({ content, index }) => {
+const ContentSection = ({ content }) => {
 
     return (
         <>
-            {index !== 0 && <CustomDivider />}
+            {/* {index !== 0 && <CustomDivider />} */}
             <Paper sx={{ my: 2, p: 1, }}>
                 <Grid container spacing={2} justifyContent="center" my={4}>
                     <Grid item md={6} sm={8}>
