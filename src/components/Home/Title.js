@@ -9,7 +9,7 @@ const Title = () => {
 
     return (
         <Typography
-            width={'100%'}
+            maxWidth={'100%'}
             textAlign={'center'}
             variant="h1"
             mt={'85px'}
