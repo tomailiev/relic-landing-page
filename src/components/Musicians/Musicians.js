@@ -64,7 +64,7 @@ const Musicians = () => {
                     </Grid>
                 </Grid>
                 <Divider />
-                <Typography variant="body2" padding={2}>* indicates Relic founders</Typography>
+                {/* <Typography variant="body2" padding={2}>* indicates Relic founders</Typography> */}
             </Container>
         </>
     );

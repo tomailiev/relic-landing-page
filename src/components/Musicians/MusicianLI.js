@@ -4,7 +4,7 @@ import DialogContext from "../../context/DialogContext";
 import { getLink } from "../../utils/firebase/firestore-funcs";
 import MusicianDialog from "./MusicianDialog";
 
-const MusicianLI = ({ name, picUrl, bio, id, founder }) => {
+const MusicianLI = ({ name, picUrl, bio, id, }) => {
     const { setDialog } = useContext(DialogContext);
 
     const [src, setSrc] = useState(null);
@@ -24,7 +24,7 @@ const MusicianLI = ({ name, picUrl, bio, id, founder }) => {
                     <Avatar alt={name} src={src} />
                 </ListItemAvatar>
                 <ListItemText
-                    primary={`${name}${founder ? '*' : ''}`}
+                    primary={name}
                     primaryTypographyProps={{
                         fontSize: '1.2em',
                       }}

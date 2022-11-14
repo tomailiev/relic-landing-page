@@ -5,7 +5,7 @@ import banners from '../../data/banners';
 import hrpsBG from '../../assets/imgs/hrps.jpg';
 import thrbBG from '../../assets/imgs/thrb.jpg';
 import AboutItem from "./AboutItem";
-import CustomDivider from "../Common/CustomDivider";
+// import CustomDivider from "../Common/CustomDivider";
 
 const Story = () => {
 
@@ -18,15 +18,17 @@ const Story = () => {
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
             <Typography variant="h3" textAlign={'center'} m={5}>
-                About us
+                About Us
             </Typography>
-            <AboutItem title={'Our story'} textContent={text.aboutStory} bg={hrpsBG}  />
-            <CustomDivider />
-            <AboutItem title={'Our bio'} textContent={text.aboutBio} bg={thrbBG} right />
-            <CustomDivider />
-            <AboutItem title={'Our mission'} textContent={text.aboutMission} bg={hrpsBG} />
-            <CustomDivider />
-            <AboutItem title={'Our values'} textContent={text.aboutValues} bg={thrbBG} right />
+            <Container disableGutters maxWidth={false} sx={{ my: 3 }}>
+                <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'mission'} textContent={text.aboutMission} bg={hrpsBG} />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'values'} textContent={text.aboutValues} bg={thrbBG} right />
+            </Container>
         </>
     );
 };

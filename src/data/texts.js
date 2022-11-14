@@ -57,9 +57,9 @@ const texts = {
             ]
         }
     ],
-    actionCenterTitle: 'Become our friend!',
-    actionCenterDonate: 'Help us bring our music to communities across the United States!',
-    actionCenterSubscribe: 'Get updates on our journey in your inbox!',
+    actionCenterTitle: 'Join the Relic family!',
+    actionCenterDonate: 'Help us bring music to communities across the country!',
+    actionCenterSubscribe: 'Receive updates about our journey!',
     footerGemsNote: 'Relic is a fiscal project of Gotham Early Music Scene, Inc., a 501(c)(3) non-profit organization registered in the State of New York. Your contribution is tax deductible to the full extent of the law.',
     subscribeTitle: 'Subscribe to our list!',
     contentSections: [

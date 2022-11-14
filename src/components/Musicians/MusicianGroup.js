@@ -13,7 +13,7 @@ const MusicianGroup = ({ section }) => {
 
     return (
         <>
-            {sectionTitle && <Typography variant={'h6'}>{sectionTitle}</Typography>}
+            {sectionTitle && <Typography variant={'h6'} textAlign={'left'}>{sectionTitle}</Typography>}
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 {section?.map(({ name, pic, bio, title, id, founder }) => {
                     return <MusicianLI key={id} name={name} picUrl={pic} bio={bio} title={title} founder={founder} />
