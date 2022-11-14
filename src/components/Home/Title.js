@@ -9,7 +9,7 @@ const Title = () => {
 
     return (
         <Typography
-            maxWidth={'100%'}
+            width={'100%'}
             textAlign={'center'}
             variant="h1"
             mt={'85px'}
@@ -18,7 +18,7 @@ const Title = () => {
             zIndex={200}
             sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '1px 1px black, -1px -1px black', opacity: 1 }}
         >
-            {text.siteHeading || 'relic'}
+            {text.siteHeading || 'RELIC'}
         </Typography>
     )
 };

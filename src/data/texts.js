@@ -82,7 +82,7 @@ const texts = {
             route: '/musicians'
         }
     ],
-    siteHeading: 'RELIC',
+    // siteHeading: 'RELIC',
     siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states',
     aboutBio: 'Relic is a conductorless period chamber orchestra that aims to connect with audiences through intimate, innovative and dramatic representations of early music, and to present these performances to communities in all 50 states. Members of Relic perform on original eighteenth century instruments, or their replicas, and are fluent in the improvisational and ornamental languages of the Baroque and Classical era.',
     aboutStory: 'Once upon a time, in the recent post-pandemic past, the six future co-founders of Relic (Aniela, Cullen, Kako, Natalie, Rebecca and Toma) crossed paths regularly at concerts, rehearsals, and social gatherings around the United States. Backstage chats, late-night hangs, and shared commutes led these six musicians to recognize a mutual aspiration: to contribute to the accessibility and expansion of early music across the country in communities both large and small. Having developed strong friendships and a common vision, they began working to materialize their dream—and Relic was born!',
