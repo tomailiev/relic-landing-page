@@ -20,7 +20,7 @@ const Story = () => {
             <Typography variant="h3" textAlign={'center'} m={6}>
                 About Us
             </Typography>
-            <Container disableGutters maxWidth={false} sx={{ my: 3 }}>
+            <Container disableGutters maxWidth={false} sx={{ my: 4 }}>
                 <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
                 {/* <CustomDivider /> */}
                 <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
