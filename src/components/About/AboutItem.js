@@ -45,7 +45,7 @@ const AboutItem = ({ title, bg, textContent, right }) => {
 
     return (
         <Container maxWidth="lg">
-            <Box m={smMatch ? 3 : -4} p={4} sx={bgCss}>
+            <Box m={smMatch ? 3 : -4} p={smMatch ? 2 : 4} sx={bgCss}>
                 <Paper square elevation={0} sx={textCss}>
                     <Typography variant="h6" fontWeight={700}>
                         {title}
