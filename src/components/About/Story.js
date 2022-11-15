@@ -1,9 +1,11 @@
-import { Grid, Skeleton, Typography, Container, Divider, List, Paper, Accordion, AccordionSummary, AccordionDetails, } from "@mui/material";
-import StoryListItem from "./StoryListItem";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Skeleton, Typography, Container, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
+import hrpsBG from '../../assets/imgs/hrps.jpg';
+import thrbBG from '../../assets/imgs/thrb.jpg';
+import AboutItem from "./AboutItem";
+// import CustomDivider from "../Common/CustomDivider";
 
 const Story = () => {
 
@@ -15,45 +17,17 @@ const Story = () => {
                 <img src={banners.storyBanner} width="100%" height={'auto'} alt="banner" />
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
-            <Container maxWidth="lg">
-                <Typography variant="h3" textAlign={'center'} mb={3}>
-                    Our Story
-                </Typography>
-                <Grid container spacing={3} my={2} component={Paper}>
-                    <Grid item xs={12} md={8} p={3}>
-                        <Typography mb={2}>
-                            {text.storyGroupBio}
-                        </Typography>
-                        <Divider />
-                        <Typography mt={2}>
-                            {text.storyAddress}
-                        </Typography>
-                        <List>
-                            {text.storyActionItems.map(({ text, icon, more }) => <StoryListItem key={text} text={text} icon={icon} more={more} />)}
-                        </List>
-                    </Grid>
-                    <Grid item xs={12} md={4} p={3}>
-                        <Typography variant="h4" textAlign={'center'} mb={1}>
-                            At a glance
-                        </Typography>
-                        {text.storyQandAs.map(({ q, a }) => (
-                            <Accordion key={q}>
-                                <AccordionSummary
-                                    expandIcon={<ChevronRightIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    <Typography variant="h6">{q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography sx={{ whiteSpace: 'pre-line' }}>
-                                        {a}
-                                    </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Grid>
-                </Grid>
+            <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
+                About Us
+            </Typography>
+            <Container disableGutters maxWidth={false} sx={{ my: 4 }}>
+                <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'mission'} textContent={text.aboutMission} bg={hrpsBG} />
+                {/* <CustomDivider /> */}
+                <AboutItem title={'values'} textContent={text.aboutValues} bg={thrbBG} right />
             </Container>
         </>
     );

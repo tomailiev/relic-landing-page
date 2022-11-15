@@ -65,7 +65,7 @@ const ContactForm = () => {
     }
 
     return (
-        <Paper elevation={2} sx={{ mb: 10 }}>
+        <Paper elevation={2}>
             <Box my={4} padding={6}>
                 <form onSubmit={handleSubscribe}>
                     <Stack spacing={2}>

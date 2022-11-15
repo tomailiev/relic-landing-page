@@ -20,7 +20,7 @@ const Home = () => {
                 <Typography variant="h3" textAlign={'center'}>
                     Discover
                 </Typography>
-                {text.contentSections.map(content => <ContentSection key={content.cardTitle} content={content} />)}
+                {text.contentSections.map((content, i) => <ContentSection key={content.cardTitle} content={content} index={i} />)}
             </Container>
         </>
     );
