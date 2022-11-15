@@ -50,7 +50,7 @@ const AboutItem = ({ title, bg, textContent, right }) => {
                     <Typography variant="h6" fontWeight={700}>
                         {title}
                     </Typography>
-                    <Typography variant="body1" fontSize={'1.2em'}>
+                    <Typography variant="body1" fontSize={smMatch ? '1em' : '1.2em'}>
                         {textContent}
                     </Typography>
                 </Paper>

@@ -24,7 +24,7 @@ const Header = () => {
         { path: '/contact', title: 'Contact' }
     ];
 
-    const colorTrigger = useScrollTrigger({ disableHysteresis: true, threshold: 1 });
+    const colorTrigger = useScrollTrigger({ disableHysteresis: true, threshold: 5 });
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
