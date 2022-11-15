@@ -17,7 +17,7 @@ const Story = () => {
                 <img src={banners.storyBanner} width="100%" height={'auto'} alt="banner" />
                 <Skeleton variant="rectangular" width={"100%"} height={'auto'} />
             </Container>
-            <Typography variant="h3" textAlign={'center'} m={6}>
+            <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
                 About Us
             </Typography>
             <Container disableGutters maxWidth={false} sx={{ my: 4 }}>
