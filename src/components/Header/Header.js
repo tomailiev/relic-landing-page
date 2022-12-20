@@ -15,17 +15,16 @@ const Header = () => {
     const navItems = [
         // { path: '/', title: 'Home' },
         {
-            path: '/about', title: 'About us', menu: [
-                { path: '/story', title: 'Our story' },
-                { path: '/musicians', title: 'Our musicians' }
+            path: '/about', title: 'About', menu: [
+                { path: '/bio', title: 'Relic' },
+                { path: '/musicians', title: 'Musicians' }
             ]
         },
         { path: '/events', title: 'Events' },
-        { path: '/contact', title: 'Contact Us' }
+        { path: '/contact', title: 'Contact' }
     ];
 
-
-    const colorTrigger = useScrollTrigger({ disableHysteresis: true });
+    const colorTrigger = useScrollTrigger({ disableHysteresis: true, threshold: 5 });
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);

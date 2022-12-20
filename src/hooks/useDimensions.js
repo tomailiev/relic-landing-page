@@ -8,11 +8,12 @@ const useDimensions = () => {
 
     useEffect(() => {
         function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })
-
+            if (window.innerWidth !== dimensions.width) {
+                setDimensions({
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                });
+            }
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);

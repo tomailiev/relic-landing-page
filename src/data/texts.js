@@ -57,9 +57,9 @@ const texts = {
             ]
         }
     ],
-    actionCenterTitle: 'Become our friend!',
-    actionCenterDonate: 'Help us bring our music to communities across the United States!',
-    actionCenterSubscribe: 'Get updates on our journey in your inbox!',
+    actionCenterTitle: 'Join the Relic family!',
+    actionCenterDonate: 'Help us bring music to communities across the country!',
+    actionCenterSubscribe: 'Receive updates about our journey!',
     footerGemsNote: 'Relic is a fiscal project of Gotham Early Music Scene, Inc., a 501(c)(3) non-profit organization registered in the State of New York. Your contribution is tax deductible to the full extent of the law.',
     subscribeTitle: 'Subscribe to our list!',
     contentSections: [
@@ -82,8 +82,12 @@ const texts = {
             route: '/musicians'
         }
     ],
-    siteHeading: 'RELIC',
-    siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states'
+    // siteHeading: 'RELIC',
+    siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states',
+    aboutBio: 'Relic is a conductorless period chamber orchestra that aims to connect with audiences through intimate, innovative and dramatic representations of early music, and to present these performances to communities in all 50 states. Members of Relic perform on original eighteenth century instruments, or their replicas, and are fluent in the improvisational and ornamental languages of the Baroque and Classical era.',
+    aboutStory: 'Once upon a time, six musicians encountered each other frequently at various concerts, rehearsals, and social gatherings across the United States. Through the sharing of ideas and aspirations, they recognized a mutual spark: an impulse to contribute to the accessibility and expansion of early music in small and large communities around the country. Backstage chats, onstage synergy and shared commutes led to the foundation of strong friendships and deep musical bonds. In a heartbeat, Relic was born.',
+    aboutMission: 'Relic’s mission is to present captivating live performances to communities across the country, especially those with little access to live early music. Relic strives to make early music accessible to people from all backgrounds through free concerts, open rehearsals, and educational events for students with no prior knowledge of early music.',
+    aboutValues: 'We believe in working in a democratic, tolerant, and accepting environment, and we deeply value our supporters, audiences, volunteers, and fellow musicians. We are committed to bringing people from all backgrounds into our community.',
 };
 
 export default texts;

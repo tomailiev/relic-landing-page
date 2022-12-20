@@ -16,7 +16,7 @@ import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
-import Musicians from './components/About/Musicians';
+import Musicians from './components/Musicians/Musicians';
 import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
@@ -129,7 +129,7 @@ function App() {
                       <Route path="/" element={<Home />} />
                       <Route path="/musicians" element={<Musicians />} />
                       <Route path="/events" element={<Events />} />
-                      <Route path="/story" element={<Story />} />
+                      <Route path="/bio" element={<Story />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
                       <Route path="*" element={<NoMatch />} />

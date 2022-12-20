@@ -11,10 +11,15 @@ const Footer = () => {
 
     const { text } = useContext(TextContext);
     const theme = useTheme();
-    
 
     return (
         <footer style={{ background: theme.palette.primary.main, padding: 10 }}>
+            {/* <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
+                <InstagramIcon />
+            </Fab>
+            <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '100px' }}>
+                <FacebookRoundedIcon />
+            </Fab> */}
             <Container disableGutters>
                 <Box justifyContent={'center'} mx={5}>
                     <Typography color="white" align="center" paddingBottom={2}>
