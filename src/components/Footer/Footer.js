@@ -1,7 +1,7 @@
 import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import FacebookRoundedIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-// import TwitterIcon from '@mui/icons-material/Twitter';
+import YoutubeIcon from '@mui/icons-material/YouTube';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 import { useContext } from "react";
@@ -23,18 +23,20 @@ const Footer = () => {
                 </Box>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
+                        <Link color={'inherit'} href="https://www.facebook.com/RELIC-ensemble-109345125182475/" target={"_blank"}>
+                            <FacebookRoundedIcon fontSize="inherit" />
+                        </Link>
+                    </IconButton>
+                    <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href="https://www.instagram.com/relic_ensemble/" target={"_blank"}>
                             <InstagramIcon fontSize="inherit" />
                         </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
-                        <Link color={'inherit'} href="https://www.facebook.com/RELIC-ensemble-109345125182475/" target={"_blank"}>
-                            <FacebookRoundedIcon fontSize="inherit" />
+                        <Link color={'inherit'} href="https://www.youtube.com/@relic7499" target={"_blank"}>
+                            <YoutubeIcon fontSize="inherit" />
                         </Link>
                     </IconButton>
-                    {/* <IconButton size="large" color="secondary">
-                        <TwitterIcon fontSize="inherit" />
-                    </IconButton> */}
                 </Box>
                 <Copyright />
             </Container>
