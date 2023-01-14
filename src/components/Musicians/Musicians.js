@@ -27,7 +27,7 @@ const Musicians = () => {
     const [musicians, setMusicians] = useState(placeholder);
 
     useEffect(() => {
-        downloadDocs('musicians', ['featured', '==', true], 'name')
+        downloadDocs('musicians', ['featured', '==', true], ['name'])
             .then((docs) => {
                 setMusicians(docs.reduce((prev, curr) => {
                     if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
