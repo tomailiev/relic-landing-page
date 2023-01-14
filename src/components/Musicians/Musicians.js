@@ -18,7 +18,7 @@ const placeholder = {
     bass: [],
     harpsichord: [],
     oboe: [],
-    basson: [],
+    bassoon: [],
     flute: []
 };
 
@@ -27,7 +27,7 @@ const Musicians = () => {
     const [musicians, setMusicians] = useState(placeholder);
 
     useEffect(() => {
-        downloadDocs('musicians', ['featured', '==', true], 'name')
+        downloadDocs('musicians', ['featured', '==', true], ['name'])
             .then((docs) => {
                 setMusicians(docs.reduce((prev, curr) => {
                     if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
@@ -55,9 +55,10 @@ const Musicians = () => {
                     <Grid item xs={12} md={6}>
                         <MusicianGroup section={musicians.violin} />
                         <MusicianGroup section={musicians.viola} />
+                        <MusicianGroup section={musicians.cello} />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <MusicianGroup section={musicians.cello} />
+                        {musicians.bassoon && <MusicianGroup section={musicians.bassoon} />}
                         <MusicianGroup section={musicians.bass} />
                         <MusicianGroup section={musicians.theorbo} />
                         <MusicianGroup section={musicians.harpsichord} />

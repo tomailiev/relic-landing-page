@@ -15,7 +15,7 @@ const Events = () => {
     const seasonStart = seasonSwitch ? `${year}-08-01` : `${year - 1}-08-01`;
 
     useEffect(() => {
-        downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], 'dateDone')
+        downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
             .then(docs => {
                 setEvents(docs);
             })
