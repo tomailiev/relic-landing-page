@@ -18,7 +18,7 @@ const placeholder = {
     bass: [],
     harpsichord: [],
     oboe: [],
-    basson: [],
+    bassoon: [],
     flute: []
 };
 
