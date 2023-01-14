@@ -55,9 +55,10 @@ const Musicians = () => {
                     <Grid item xs={12} md={6}>
                         <MusicianGroup section={musicians.violin} />
                         <MusicianGroup section={musicians.viola} />
+                        <MusicianGroup section={musicians.cello} />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <MusicianGroup section={musicians.cello} />
+                        {musicians.bassoon && <MusicianGroup section={musicians.bassoon} />}
                         <MusicianGroup section={musicians.bass} />
                         <MusicianGroup section={musicians.theorbo} />
                         <MusicianGroup section={musicians.harpsichord} />
