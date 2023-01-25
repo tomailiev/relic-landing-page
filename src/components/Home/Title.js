@@ -1,11 +1,9 @@
 import {  Typography } from "@mui/material";
-import { useContext } from "react";
-// import logo from "../../assets/logos/relic-logo-red-256.png";
-import TextContext from "../../context/TextContext";
+import logo from "../../assets/logos/Relic-logo_gold.png";
 
 const Title = () => {
 
-    const { text } = useContext(TextContext);
+    // const { text } = useContext(TextContext);
 
     return (
         <Typography
@@ -18,7 +16,8 @@ const Title = () => {
             zIndex={200}
             sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '1px 1px black, -1px -1px black', opacity: 1 }}
         >
-            {text.siteHeading || 'RELIC'}
+            {/* {text.siteHeading || 'RELIC'} */}
+            <img width={'60%'} src={logo} alt={'logo'} />
         </Typography>
     )
 };
