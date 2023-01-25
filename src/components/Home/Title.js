@@ -1,5 +1,5 @@
 import {  Typography } from "@mui/material";
-import logo from "../../assets/logos/Relic-logo_gold.png";
+import logo from "../../assets/logos/Relic-logo_white.png";
 
 const Title = () => {
 
@@ -17,7 +17,7 @@ const Title = () => {
             sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '1px 1px black, -1px -1px black', opacity: 1 }}
         >
             {/* {text.siteHeading || 'RELIC'} */}
-            <img width={'60%'} src={logo} alt={'logo'} />
+            <img width={'80%'} src={logo} alt={'logo'} />
         </Typography>
     )
 };

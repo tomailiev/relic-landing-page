@@ -94,6 +94,8 @@ function App() {
       },
       secondary: {
         main: '#efd498',
+        dark: '#cfaa55',
+        light: '#f9ebb3'
       },
     },
     components: {

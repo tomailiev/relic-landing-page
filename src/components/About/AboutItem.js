@@ -8,9 +8,9 @@ const AboutItem = ({ title, bg, textContent, right }) => {
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
     const gradients = {
-        mobile: 'linear-gradient(90deg, rgba(163,51,99,1) 0%, rgba(208,138,173,1) 40%, rgba(208,138,173,1) 60%, rgba(163,51,99,1) 100%);',
-        right: 'linear-gradient(90deg, rgba(163,51,99,1) 0%, rgba(208,138,173,1) 100%);',
-        left: 'linear-gradient(90deg, rgba(208,138,173,1), rgba(163,51,99,1) 100%);'
+        mobile: `linear-gradient(90deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.light} 40%, ${theme.palette.secondary.light} 60%, ${theme.palette.secondary.dark} 100%);`,
+        right: `linear-gradient(90deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.light} 100%);`,
+        left: `linear-gradient(90deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.dark} 100%);`
     }
 
     const bgCss = {
