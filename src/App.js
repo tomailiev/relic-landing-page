@@ -70,9 +70,9 @@ function App() {
         fontWeight: 700,
         fontSize: '8.5rem',
         fontFamily: 'Julius Sans One',
-        '@media (max-width:600px)': {
-          fontSize: '5rem',
-        }
+        // '@media (max-width:600px)': {
+        //   fontSize: '5rem',
+        // }
       },
       h3: {
         marginTop: 30
