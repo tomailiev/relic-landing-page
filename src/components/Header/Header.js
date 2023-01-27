@@ -42,8 +42,8 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} to={'/'} height={'80px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                        <img src={logo} alt="logo" width={'auto'} height={'70%'} />
+                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="homepage" width={'70%'} height={'70%'} />
                     </Box>
                     <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
@@ -51,9 +51,11 @@ const Header = () => {
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                    <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
+                    <Box width={'80px'}>
+                    <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
                         Donate
                     </Button>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </>
