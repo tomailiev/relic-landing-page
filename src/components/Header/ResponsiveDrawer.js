@@ -26,7 +26,7 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
                 <Box sx={{ textAlign: 'center', color: 'white' }}>
                     <MenuItem onClick={handleDrawerToggle} component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
                         {/* <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>Home</Typography> */}
-                        <img width={'70%'} src={logos.logo_gold} alt={'Home'} />
+                        <img width={'50%'} src={logos.logo_gold} alt={'Home'} />
                     </MenuItem>
                     <Divider />
                     <List>
