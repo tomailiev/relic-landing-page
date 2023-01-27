@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Button, } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box, Button, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
@@ -47,13 +47,7 @@ const Header = () => {
                     </Box>
                     <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
-                            return menu
-                                ? <NavMenuItem key={title} menuTitle={title} menu={menu} color={'white'} />
-                                : (
-                                    <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                        <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
-                                    </MenuItem>
-                                )
+                            return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />

@@ -1,47 +1,39 @@
-import { Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Fade, MenuItem, Typography, useTheme } from "@mui/material";
+import { useRef } from "react";
 import { useState } from "react";
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const NavMenuItem = ({ menuTitle, menu, color }) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+const NavMenuItem = ({ menuTitle, menu, path }) => {
+    const theme = useTheme();
+    const anchorEl = useRef(null);
+    const [checked, setChecked] = useState(false);
+
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setChecked(true);
     };
+
     const handleClose = () => {
-        setAnchorEl(null);
+        setChecked(false);
     };
+
     return (
-        <>
-            <MenuItem
-                aria-controls={!!anchorEl ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={!!anchorEl ? 'true' : undefined}
-                onClick={handleClick}
-                component={'a'}
-                sx={{ fontWeight: 'bold' }}
-            >
-                <Typography variant="h6" textAlign="center" color={color} sx={{ fontWeight: 'bold' }}>
-                    {menuTitle}
-                </Typography>
+        <Box onMouseOver={handleClick} onMouseOut={handleClose}>
+            <MenuItem ref={anchorEl} key={menuTitle} component={menu ? Box : RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
+                <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{menuTitle}</Typography>
             </MenuItem>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={!!anchorEl}
-                onClose={handleClose}
-                // anchorOrigin={{vertical: 'center', horizontal: 'left'}}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                {menu.map(({ title, path }) => (
-                    <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                        <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
-                    </MenuItem>
-                ))}
-            </Menu>
-        </>
+            {menu && (
+                <Fade direction="up" in={checked} container={anchorEl.current}>
+                    <Box position={'absolute'} sx={{ background: theme.palette.primary.main, mx: 1.2 }} >
+                        {menu.map(({ title, path }) => (
+                            <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
+                                <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                            </MenuItem>
+                        ))}
+                    </Box>
+                </Fade>
+            )}
+        </Box>
     );
 };
 
