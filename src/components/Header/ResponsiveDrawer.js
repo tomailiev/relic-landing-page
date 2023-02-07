@@ -1,10 +1,12 @@
-import { Divider, Drawer, List, MenuItem, Typography } from "@mui/material"
+import { Divider, Drawer, List, MenuItem, Typography, useTheme } from "@mui/material"
 import { Box } from "@mui/system";
 import { Link as RouterLink } from 'react-router-dom';
 import ResponsiveMenuItem from "./ResponsiveMenuItem";
+import { logos } from '../../data/images';
 
 
 const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
+    const theme = useTheme();
     return (
         <Box component="nav">
             <Drawer
@@ -18,12 +20,13 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
                 }}
                 sx={{
                     display: { xs: 'block', sm: 'none' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#a33363' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: theme.palette.primary.main },
                 }}
             >
                 <Box sx={{ textAlign: 'center', color: 'white' }}>
                     <MenuItem onClick={handleDrawerToggle} component={RouterLink} to={'/'} sx={{ my: 2.2 }}>
-                        <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>Home</Typography>
+                        {/* <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>Home</Typography> */}
+                        <img width={'50%'} src={logos.logo_gold} alt={'Home'} />
                     </MenuItem>
                     <Divider />
                     <List>
@@ -32,7 +35,7 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
                                 ? <ResponsiveMenuItem key={title} menuTitle={title} menu={menu} handleDrawerToggle={handleDrawerToggle} />
                                 : (
                                     <MenuItem onClick={handleDrawerToggle} key={title} component={RouterLink} to={path}>
-                                        <Typography variant="h6" textAlign="center"  sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                        <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>{title}</Typography>
                                     </MenuItem>
                                 );
                         }

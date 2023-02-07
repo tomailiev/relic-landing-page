@@ -70,9 +70,9 @@ function App() {
         fontWeight: 700,
         fontSize: '8.5rem',
         fontFamily: 'Julius Sans One',
-        '@media (max-width:600px)': {
-          fontSize: '5rem',
-        }
+        // '@media (max-width:600px)': {
+        //   fontSize: '5rem',
+        // }
       },
       h3: {
         marginTop: 30
@@ -90,10 +90,12 @@ function App() {
     },
     palette: {
       primary: {
-        main: '#a33363',
+        main: '#09455a',
       },
       secondary: {
-        main: '#ffffff',
+        main: '#efd498',
+        dark: '#cfaa55',
+        light: '#f9ebb3'
       },
     },
     components: {

@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, MenuItem, IconButton, Box, Button, useScrollTrigger, } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box, Button, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
@@ -24,7 +24,6 @@ const Header = () => {
         { path: '/contact', title: 'Contact' }
     ];
 
-    const colorTrigger = useScrollTrigger({ disableHysteresis: true, threshold: 5 });
 
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
@@ -32,7 +31,7 @@ const Header = () => {
 
     return (
         <>
-            <AppBar color={!!colorTrigger ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
+            <AppBar color={'primary'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                     <IconButton
                         color="inherit"
@@ -43,24 +42,20 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} to={'/'} height={!!colorTrigger ? '40px' : '100px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                        <img src={logo} alt="logo" width={'auto'} height={!!colorTrigger ? '95%' : '70%'} />
+                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="homepage" width={'70%'} height={'70%'} />
                     </Box>
                     <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
-                            return menu
-                                ? <NavMenuItem key={title} menuTitle={title} menu={menu} color={!!colorTrigger ? 'white' : 'primary'} />
-                                : (
-                                    <MenuItem key={title} component={RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                                        <Typography variant="h6" textAlign="center" color={!!colorTrigger ? 'white' : 'primary'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
-                                    </MenuItem>
-                                )
+                            return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                    <Button color="secondary" sx={{ fontWeight: 'bold' }} variant="contained" href={links.gems} target={'_blank'}>
+                    <Box width={'80px'}>
+                    <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
                         Donate
                     </Button>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </>

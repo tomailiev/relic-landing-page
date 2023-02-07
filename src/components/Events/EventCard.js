@@ -26,7 +26,7 @@ const EventCard = ({ imageUrl, url }) => {
                             width={'auto'}
                             image={src}
                             alt="event picture"
-                            sx={!imgLoaded ? { width: 0, height: 0 } : { width: 'auto', maxHeight: '100%', maxWidth: '100%' }}
+                            sx={!imgLoaded ? { width: 0, height: 0 } : { maxHeight: '100%', maxWidth: '100%' }}
                             onLoad={() => setImgLoaded(true)}
                         />
                     </Link>
