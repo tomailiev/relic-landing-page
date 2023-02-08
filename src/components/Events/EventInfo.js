@@ -18,7 +18,7 @@ const EventInfo = ({ event }) => {
                     Performances:
                 </Typography>
                 <List>
-                    {event.performances.map(({ id, date, day, time, location, venue, url }) => {
+                    {event.performances.sort((a, b) => a.id - b.id).map(({ id, date, day, time, location, venue, url }) => {
                         return (
                             <Link key={id} href={url} target={'_blank'} underline={'none'}>
                                 <ListItem button>
