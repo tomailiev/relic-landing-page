@@ -38,7 +38,7 @@ const Footer = () => {
                         </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
-                        <Link color={'inherit'} href="https://www.youtube.com/@relic7499" target={"_blank"}>
+                        <Link color={'inherit'} href="https://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA" target={"_blank"}>
                             <YoutubeIcon fontSize="inherit" />
                         </Link>
                     </IconButton>
