@@ -17,7 +17,8 @@ const Header = () => {
         {
             path: '/about', title: 'About', menu: [
                 { path: '/bio', title: 'Relic' },
-                { path: '/musicians', title: 'Musicians' }
+                { path: '/musicians', title: 'Musicians' },
+                { path: '/maps', title: 'Where' }
             ]
         },
         { path: '/events', title: 'Events' },
@@ -52,9 +53,9 @@ const Header = () => {
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'80px'}>
-                    <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
-                        Donate
-                    </Button>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
+                            Donate
+                        </Button>
                     </Box>
                 </Toolbar>
             </AppBar>

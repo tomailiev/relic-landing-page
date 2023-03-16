@@ -28,6 +28,7 @@ import LoadingBackdrop from './components/Common/LoadingBackdrop';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Forward from './components/Common/Forward';
 import NoMatch from './components/Common/NoMatch';
+import Maps from './components/Maps/Maps';
 
 function App() {
 
@@ -132,6 +133,7 @@ function App() {
                       <Route path="/musicians" element={<Musicians />} />
                       <Route path="/events" element={<Events />} />
                       <Route path="/bio" element={<Story />} />
+                      <Route path='/maps' element={<Maps />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
                       <Route path="*" element={<NoMatch />} />
