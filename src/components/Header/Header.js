@@ -18,7 +18,7 @@ const Header = () => {
             path: '/about', title: 'About', menu: [
                 { path: '/bio', title: 'Relic' },
                 { path: '/musicians', title: 'Musicians' },
-                { path: '/maps', title: 'Where' }
+                { path: '/journey', title: 'Journey' }
             ]
         },
         { path: '/events', title: 'Events' },
