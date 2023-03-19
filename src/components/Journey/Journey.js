@@ -1,14 +1,17 @@
-import { Typography } from "@mui/material";
+import { Grid, Paper, Typography, } from "@mui/material";
 import { Container } from "@mui/system";
-import { createRef, useEffect, useState } from "react";
+import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
 import markerIcon from '../../assets/imgs/maps-marker-32.png'
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+import TextContext from "../../context/TextContext";
 
 const Journey = () => {
 
+    const { text } = useContext(TextContext);
     const [events, setEvents] = useState([]);
     const mapRef = createRef();
+    // const [statesNum, setStatesNum] = useState(new Set());
 
 
     useEffect(() => {
@@ -30,11 +33,10 @@ const Journey = () => {
     useEffect(() => {
         if (events.length) {
             const center = { lat: 37.0902, lng: -95.7129 };
-
             loader.load()
                 .then(google => {
                     const map = new google.maps.Map(mapRef.current, {
-                        zoom: 4,
+                        zoom: 3,
                         center: center
                     });
                     events.forEach((position) => {
@@ -75,9 +77,18 @@ const Journey = () => {
                 <Typography variant="h3" mb={5} >
                     Our journey
                 </Typography>
-                <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px' }}>
-
-                </Container>
+                <Paper elevation={3} sx={{ my: 2, mx: 4, p: 2, }}>
+                    <Grid container spacing={2} justifyContent="center" my={4}>
+                        <Grid item md={6} sm={12}>
+                            <Typography mx={3} textAlign={'left'}>
+                                {text.mapText.replace('{statesNum}', 7)}
+                            </Typography>
+                        </Grid>
+                        <Grid item md={6} sm={12} textAlign={'left'}>
+                            <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px' }} />
+                        </Grid>
+                    </Grid>
+                </Paper>
             </Container>
         </>
     );
