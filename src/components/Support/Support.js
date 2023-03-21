@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, Divider, Link, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import DialogContext from "../../context/DialogContext";
 import NotificationContext from "../../context/NotificationContext";
@@ -14,22 +14,24 @@ const Support = () => {
     const { setDialog } = useContext(DialogContext);
     const { text } = useContext(TextContext);
     const { setNotification } = useContext(NotificationContext);
+    const [copyButton, setCopyButton] = useState('Copy')
 
 
     function handleTextCopy() {
         navigator.clipboard.writeText(text.supportGemsAddress?.replaceAll('\\n', '\n'))
             .then(() => {
+                setCopyButton('Copied!');
                 setNotification({ type: 'success', message: 'Address copied to clipboard' });
             })
             .catch(_e => {
-                setNotification({ type: 'error', message: 'Something went wrong. Please try again' })
+                setNotification({ type: 'error', message: 'Something went wrong. Please try again' });
             })
     }
 
     return (
         <>
             <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
-                Support Us
+                Support Relic
             </Typography>
             <Box mt={2} mb={5}>
                 <Container maxWidth={'md'}>
@@ -41,12 +43,7 @@ const Support = () => {
                     <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
                         {text.supportDonateNowNote}
                     </Typography>
-                    <Typography variant="h6">
-                        {text.supportDonateCheckTitle}
-                    </Typography>
-                    <Typography mb={2}>
-                        {text.supportDonateCheckText}
-                    </Typography>
+                    <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckText} />
                     <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
                         <CardContent>
                             <Typography whiteSpace={'pre'}>
@@ -54,7 +51,7 @@ const Support = () => {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button variant="outlined" onClick={handleTextCopy}>Copy</Button>
+                            <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
                         </CardActions>
                     </Card>
                     <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText} />
