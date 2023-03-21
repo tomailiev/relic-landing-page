@@ -140,7 +140,7 @@ function App() {
                     </Routes>
                   </CSSTransition>
                 </TransitionGroup>
-                <ActionCenter />
+                {location.pathname !== '/support' && <ActionCenter />}
                 <Footer />
               </DialogContext.Provider>
             </NotificationContext.Provider>
