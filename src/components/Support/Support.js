@@ -7,6 +7,7 @@ import NotificationContext from "../../context/NotificationContext";
 import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
 import SubscribeForm from "../Common/SubscribeForm";
+import TypographyCombo from "./TypographyCombo";
 
 const Support = () => {
 
@@ -21,7 +22,7 @@ const Support = () => {
                 setNotification({ type: 'success', message: 'Address copied to clipboard' });
             })
             .catch(_e => {
-                setNotification({type: 'error', message: 'Something went wrong. Please try again'})
+                setNotification({ type: 'error', message: 'Something went wrong. Please try again' })
             })
     }
 
@@ -35,23 +36,18 @@ const Support = () => {
                     <Typography variant="h5" textAlign={'left'} my={2}>
                         CIRCLE OF SUPPORTERS
                     </Typography>
-                    <Typography variant="h6">
-                        Donate now
-                    </Typography>
-                    <Typography mb={3}>
-                        In order to sustain our mission and the ability to bring early music to communities across the continent, Relic relies on the generous support of our donors. All contributions are tax-deductible through our fiscal sponsorship status with GEMS (Gotham Early Music Scene, Inc) and donations of any size are greatly appreciated! Consider joining our Circle of Supporters and make a tax-deductible contribution today:
-                    </Typography>
+                    <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
                     <Button variant="contained" size="large" href={links.gems} target={'_blank'} >Donate</Button>
                     <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
-                        Note: Upon clicking the above link, you will be redirected to our fiscal sponsor's donation platform. From there you will have the option of selecting your donation amount as well as the option of making a one-time or automatically renewable donation to Relic. All donations are tax-deductible.
+                        {text.supportDonateNowNote}
                     </Typography>
                     <Typography variant="h6">
-                        Donate via check
+                        {text.supportDonateCheckTitle}
                     </Typography>
                     <Typography mb={2}>
-                        Make checks payable to “GEMS”, specify "RELIC" in the memo, and mail to:
+                        {text.supportDonateCheckText}
                     </Typography>
-                    <Card variant="outlined" sx={{ width: '250px' }}>
+                    <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
                         <CardContent>
                             <Typography whiteSpace={'pre'}>
                                 {text.supportGemsAddress?.replaceAll('\\n', '\n')}
@@ -61,18 +57,8 @@ const Support = () => {
                             <Button variant="outlined" onClick={handleTextCopy}>Copy</Button>
                         </CardActions>
                     </Card>
-                    <Typography variant="h6" mt={3}>
-                        Matching gifts
-                    </Typography>
-                    <Typography pb={3}>
-                        Double your gift by inquiring if your company will match your contribution to Relic. For help and more information about this, please contact Aniela Eddy at relicensemble@gmail.com.
-                    </Typography>
-                    <Typography variant="h6" mt={3}>
-                        OTHER FORMS OF GIVING
-                    </Typography>
-                    <Typography pb={3}>
-                        For corporate sponsorship, foundation and government funding, planned giving and legacy gifts, please contact Aniela Eddy at relicensemble@gmail.com for more information.
-                    </Typography>
+                    <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText} />
+                    <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText} />
                 </Container>
             </Box>
             <Divider />
