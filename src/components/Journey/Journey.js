@@ -72,25 +72,23 @@ const Journey = () => {
 
 
     return (
-        <>
-            <Container maxWidth="false" disableGutters sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h3" mb={5} >
-                    Our journey
-                </Typography>
-                <Paper elevation={3} sx={{ my: 2, mx: 4, p: 2, }}>
-                    <Grid container spacing={2} justifyContent="center" my={4}>
-                        <Grid item md={6} sm={12}>
-                            <Typography mx={3} textAlign={'left'}>
-                                {text.mapText.replace('{statesNum}', 7)}
-                            </Typography>
-                        </Grid>
-                        <Grid item md={6} sm={12} textAlign={'left'}>
-                            <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px' }} />
-                        </Grid>
+        <Container maxWidth="false" disableGutters sx={{ my: 5, textAlign: 'center' }}>
+            <Typography variant="h3" mb={5} >
+                Our journey
+            </Typography>
+            <Paper elevation={3} sx={{ my: 2, mx: 4, p: 2, }}>
+                <Grid container spacing={2} justifyContent="center" my={4}>
+                    <Grid item md={6} xs={12}>
+                        <Typography mx={3} textAlign={'left'}>
+                            {text.mapText.replace('{statesNum}', 7)}
+                        </Typography>
                     </Grid>
-                </Paper>
-            </Container>
-        </>
+                    <Grid item md={6} xs={12} textAlign={'left'}>
+                        <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px' }} />
+                    </Grid>
+                </Grid>
+            </Paper>
+        </Container>
     );
 };
 
