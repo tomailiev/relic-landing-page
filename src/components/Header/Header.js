@@ -21,7 +21,8 @@ const Header = () => {
             ]
         },
         { path: '/events', title: 'Events' },
-        { path: '/contact', title: 'Contact' }
+        { path: '/support', title: 'Support' },
+        { path: '/contact', title: 'Contact' },
     ];
 
 
@@ -38,23 +39,23 @@ const Header = () => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { xs: 'relative', md: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                        <img src={logo} alt="homepage" width={'70%'} height={'70%'} />
+                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="homepage" aria-label="home" width={'70%'} height={'70%'} />
                     </Box>
-                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
                             return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'80px'}>
-                    <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
-                        Donate
-                    </Button>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
+                            Donate
+                        </Button>
                     </Box>
                 </Toolbar>
             </AppBar>
