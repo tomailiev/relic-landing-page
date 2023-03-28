@@ -6,8 +6,9 @@ import { Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
-import banners from '../../data/banners';
 import MusicianGroup from "./MusicianGroup";
+import getBannerSx from "../../styles/bannerSx";
+import useDimensions from "../../hooks/useDimensions";
 // import Banner from "../Home/Banner";
 
 const placeholder = {
@@ -25,6 +26,7 @@ const placeholder = {
 const Musicians = () => {
 
     const [musicians, setMusicians] = useState(placeholder);
+    const dimensions = useDimensions();
 
     useEffect(() => {
         downloadDocs('musicians', ['featured', '==', true], ['name'])
@@ -43,8 +45,8 @@ const Musicians = () => {
 
     return (
         <>
-            <Container disableGutters maxWidth={false}>
-                <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" />
+            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.3552, 'musiciansBanner')}>
+                {/* <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" /> */}
             </Container>
             {/* <Banner bgPic={banners.musiciansBanner} height={80} /> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>

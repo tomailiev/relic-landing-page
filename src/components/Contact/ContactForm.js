@@ -2,8 +2,8 @@ import { Box, Button, Checkbox, FormControlLabel, Paper, Stack, TextField } from
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+// import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+// import Favorite from '@mui/icons-material/Favorite';
 import { uploadDoc } from "../../utils/firebase/firestore-funcs";
 import LoadingContext from "../../context/LoadingContext";
 
@@ -78,7 +78,7 @@ const ContactForm = () => {
                                 onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
                                 onChange={handleInputChange}
                                 helperText={hasError[id]}
-                                label={`Your ${label}`}
+                                label={label}
                                 variant="outlined"
                                 size="small"
                                 multiline={id === 'message'}
@@ -87,8 +87,8 @@ const ContactForm = () => {
                         ))}
                         <FormControlLabel
                             control={<Checkbox
-                                icon={<FavoriteBorder />}
-                                checkedIcon={<Favorite />}
+                                // icon={<FavoriteBorder />}
+                                // checkedIcon={<Favorite />}
                                 checked={willSubscribe}
                                 onChange={() => setWillSubscribe(!willSubscribe)}
                             />}
