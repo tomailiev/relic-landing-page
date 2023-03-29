@@ -55,14 +55,21 @@ const Musicians = () => {
                 </Typography>
                 <Grid container spacing={6} my={3}>
                     <Grid item xs={12} md={6}>
+                        <Typography variant={'h6'} textAlign={'left'}>Violin</Typography>
                         <MusicianGroup section={musicians.violin} />
+                        <Typography variant={'h6'} textAlign={'left'}>Viola</Typography>
                         <MusicianGroup section={musicians.viola} />
+                        <Typography variant={'h6'} textAlign={'left'}>Cello</Typography>
                         <MusicianGroup section={musicians.cello} />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        {musicians.bassoon && <MusicianGroup section={musicians.bassoon} />}
+                        <Typography variant={'h6'} textAlign={'left'}>Bassoon</Typography>
+                        <MusicianGroup section={musicians.bassoon} />
+                        <Typography variant={'h6'} textAlign={'left'}>Bass</Typography>
                         <MusicianGroup section={musicians.bass} />
+                        <Typography variant={'h6'} textAlign={'left'}>Theorbo</Typography>
                         <MusicianGroup section={musicians.theorbo} />
+                        <Typography variant={'h6'} textAlign={'left'}>Harpsichord</Typography>
                         <MusicianGroup section={musicians.harpsichord} />
                     </Grid>
                 </Grid>
