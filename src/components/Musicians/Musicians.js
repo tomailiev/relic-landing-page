@@ -45,7 +45,7 @@ const Musicians = () => {
 
     return (
         <>
-            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.2813, 'musiciansBanner')}>
+            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.2813, 'musicians')}>
                 {/* <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" /> */}
             </Container>
             {/* <Banner bgPic={banners.musiciansBanner} height={80} /> */}

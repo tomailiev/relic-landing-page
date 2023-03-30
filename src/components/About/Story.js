@@ -15,20 +15,15 @@ const Story = () => {
 
     return (
         <>
-            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.3005, 'storyBanner')}>
-                {/* <img src={banners.storyBanner} width="100%" height={'auto'} alt="banner" /> */}
-                {/* <Skeleton variant="rectangular" width={"100%"} height="100%" /> */}
+            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.3005, 'story')}>
             </Container>
             <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
                 About Us
             </Typography>
             <Container disableGutters maxWidth={false} sx={{ my: 4 }}>
                 <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
-                {/* <CustomDivider /> */}
                 <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
-                {/* <CustomDivider /> */}
                 <AboutItem title={'mission'} textContent={text.aboutMission} bg={hrpsBG} />
-                {/* <CustomDivider /> */}
                 <AboutItem title={'values'} textContent={text.aboutValues} bg={thrbBG} right />
             </Container>
         </>
