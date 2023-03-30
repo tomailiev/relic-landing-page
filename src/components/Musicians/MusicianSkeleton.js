@@ -7,7 +7,7 @@ const MusicianSkeleton = () => {
             <ListItemAvatar>
                 <Skeleton animation="wave" variant="circular" width={40} height={40} />
             </ListItemAvatar>
-            <Skeleton animation="wave" variant="rectangular" width={120} height={20} />
+            <Skeleton animation="wave" variant="text" width={120} />
         </ListItem>
     );
 };
