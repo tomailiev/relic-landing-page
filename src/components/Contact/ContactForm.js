@@ -15,10 +15,10 @@ const fields = {
 };
 
 const fieldsArray = [
-    { label: 'first name', id: 'firstName' },
-    { label: 'last name', id: 'lastName' },
-    { label: 'email', id: 'email' },
-    { label: 'message', id: 'message' },
+    { label: 'First name', id: 'firstName' },
+    { label: 'Last name', id: 'lastName' },
+    { label: 'Email', id: 'email' },
+    { label: 'Message', id: 'message' },
 ];
 
 const ContactForm = () => {

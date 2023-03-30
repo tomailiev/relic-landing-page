@@ -6,7 +6,6 @@ import thrbBG from '../../assets/imgs/thrb.jpg';
 import AboutItem from "./AboutItem";
 import useDimensions from "../../hooks/useDimensions";
 import getBannerSx from "../../styles/bannerSx";
-// import CustomDivider from "../Common/CustomDivider";
 
 const Story = () => {
 

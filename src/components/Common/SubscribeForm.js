@@ -13,9 +13,9 @@ const fields = {
 };
 
 const fieldsArray = [
-    { label: 'first name', id: 'firstName' },
-    { label: 'last name', id: 'lastName' },
-    { label: 'email', id: 'email' },
+    { label: 'First name', id: 'firstName' },
+    { label: 'Last name', id: 'lastName' },
+    { label: 'Email', id: 'email' },
 ];
 
 const SubscribeForm = () => {

@@ -1,15 +1,11 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-// import Bio from "./Bio";
-// import founders from '../../data/founders.json';
-// import MusicianCard from "./MusicianCard";
 import { useEffect } from "react";
 import { useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import MusicianGroup from "./MusicianGroup";
 import getBannerSx from "../../styles/bannerSx";
 import useDimensions from "../../hooks/useDimensions";
-// import Banner from "../Home/Banner";
 
 const placeholder = {
     violin: [],
@@ -46,9 +42,7 @@ const Musicians = () => {
     return (
         <>
             <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.2813, 'musicians')}>
-                {/* <img src={banners.musiciansBanner} width="100%" height={'auto'} alt="banner" /> */}
             </Container>
-            {/* <Banner bgPic={banners.musiciansBanner} height={80} /> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" >
                     Musicians
@@ -74,7 +68,6 @@ const Musicians = () => {
                     </Grid>
                 </Grid>
                 <Divider />
-                {/* <Typography variant="body2" padding={2}>* indicates Relic founders</Typography> */}
             </Container>
         </>
     );

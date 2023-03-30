@@ -13,7 +13,6 @@ const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
-        // { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About', menu: [
                 { path: '/bio', title: 'Relic' },
