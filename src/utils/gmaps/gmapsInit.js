@@ -1,7 +1,8 @@
 import { Loader } from '@googlemaps/js-api-loader';
+import { firebaseConfig } from '../firebase/firebase-init';
 
 const loader = new Loader({
-    apiKey: '',
+    apiKey: firebaseConfig.apiKey,
     version: "weekly",
     libraries: ["places"]
 });
