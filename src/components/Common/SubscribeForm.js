@@ -13,9 +13,9 @@ const fields = {
 };
 
 const fieldsArray = [
-    { label: 'first name', id: 'firstName' },
-    { label: 'last name', id: 'lastName' },
-    { label: 'email', id: 'email' },
+    { label: 'First name', id: 'firstName' },
+    { label: 'Last name', id: 'lastName' },
+    { label: 'Email', id: 'email' },
 ];
 
 const SubscribeForm = () => {
@@ -67,16 +67,6 @@ const SubscribeForm = () => {
             </Typography>
             <form onSubmit={handleSubscribe}>
                 <Stack spacing={2}>
-                    {/* <TextField
-                        error={!!hasError}
-                        value={userEmail}
-                        onFocus={() => setHasError('')}
-                        onChange={handleInputChange}
-                        helperText={hasError}
-                        label="Your Email"
-                        variant="outlined"
-                        size="small"
-                    /> */}
                     {fieldsArray.map(({ id, label }) => (
                         <TextField
                             key={id}
@@ -86,7 +76,7 @@ const SubscribeForm = () => {
                             onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
                             onChange={handleInputChange}
                             helperText={hasError[id]}
-                            label={`Your ${label}`}
+                            label={label}
                             variant="outlined"
                             size="small"
                             rows={4}
