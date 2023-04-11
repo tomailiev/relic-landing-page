@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography, } from "@mui/material";
+import { Paper, Typography, } from "@mui/material";
 import { Container } from "@mui/system";
 import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
@@ -58,12 +58,15 @@ const Journey = () => {
                         </div>`
                         });
 
-                        marker.addListener("click", () => {
+                        marker.addListener("mouseover", () => {
                             infoWindow.open({
                                 anchor: marker,
                                 map,
                             });
                         });
+                        marker.addListener("mouseout", () => {
+                            infoWindow.close();
+                        })
                     });
                 })
                 .catch(e => console.log(e));
@@ -76,17 +79,13 @@ const Journey = () => {
             <Typography variant="h3" mb={5} >
                 Our journey
             </Typography>
-            <Paper elevation={3} sx={{ my: 2, mx: 4, p: 2, }}>
-                <Grid container spacing={2} justifyContent="center" my={4}>
-                    <Grid item md={6} xs={12}>
-                        <Typography mx={3} textAlign={'left'}>
-                            {text.mapText.replace('{statesNum}', 7)}
-                        </Typography>
-                    </Grid>
-                    <Grid item md={6} xs={12} textAlign={'left'}>
-                        <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px' }} />
-                    </Grid>
-                </Grid>
+            <Paper elevation={3} sx={{ my: 2, mx: 4, p: 5, }}>
+                <Container maxWidth={'lg'}>
+                    <Typography textAlign={'left'}>
+                        {text.mapText.replace('{statesNum}', 7)}
+                    </Typography>
+                </Container>
+                <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px', my: 5 }} />
             </Paper>
         </Container>
     );
