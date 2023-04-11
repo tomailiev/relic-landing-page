@@ -24,9 +24,6 @@ const Events = () => {
 
     return (
         <>
-            {/* <Container disableGutters maxWidth={false} sx={{ px: 0 }}>
-                <img src={allBanners.eventsBanner} width="100%" height={'auto'} alt="banner" />
-            </Container> */}
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={3}>
                     {seasonSwitch ? `${year}-${(year + 1) % 2000}`:`${year - 1}-${year % 2000}`} Concert Season
@@ -48,10 +45,6 @@ const Events = () => {
                 }
             </Container>
         </>
-        // <Box height={'500px'} display="flex" flexDirection="column" alignItems={"center"} justifyContent="center" textAlign={'center'} mx={2}>
-        //     <Typography variant="h4">Inaugural week in Kalamazoo MI September 7-10, 2022</Typography>
-        //     <Typography variant="h5">For more information <Button onClick={() => setDialog('subscription')}>Subscribe here</Button></Typography>
-        // </Box>
     );
 };
 

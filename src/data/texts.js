@@ -89,6 +89,20 @@ const texts = {
     aboutMission: 'Relic’s mission is to present captivating live performances to communities across the country, especially those with little access to live early music. Relic strives to make early music accessible to people from all backgrounds through free concerts, open rehearsals, and educational events for students with no prior knowledge of early music.',
     aboutValues: 'We believe in working in a democratic, tolerant, and accepting environment, and we deeply value our supporters, audiences, volunteers, and fellow musicians. We are committed to bringing people from all backgrounds into our community.',
     mapText: "Relic is dedicated to bringing live music to communities across the United States (and the world)! In our first season we performed live concerts, outreach events, and children's concerts in {statesNum} states. Follow our journey here and use the interactive map to see when we visited each place!",
+    supportSectionDonateTitle: 'CIRCLE OF SUPPORTERS',
+    supportDonateNowTitle: 'Donate Now',
+    supportDonateNowText: 'In order to sustain our mission and the ability to bring early music to communities across the continent, Relic relies on the generous support of our donors. All contributions are tax-deductible through our fiscal sponsorship status with GEMS (Gotham Early Music Scene, Inc) and donations of any size are greatly appreciated! Consider joining our Circle of Supporters and make a tax-deductible contribution today:',
+    supportDonateNowNote: "Note: Upon clicking the above link, you will be redirected to our fiscal sponsor's donation platform. From there you will have the option of selecting your donation amount as well as the option of making a one-time or automatically renewable donation to Relic. All donations are tax-deductible.",
+    supportDonateCheckTitle: 'Donate via check',
+    supportDonateCheckText: 'Make checks payable to “GEMS”, specify "RELIC" in the memo, and mail to:',
+    supportGemsAddress: 'Gotham Early Music Scene\\n340 Riverside Dr., 1A\\nNew York, NY 10025',
+    supportMatchingTitle: 'Matching gifts',
+    supportMatchingText: 'Double your gift by inquiring if your company will match your contribution to Relic. For help and more information about this, please contact Aniela Eddy at relicensemble@gmail.com.',
+    supportOtherTitle: 'OTHER FORMS OF GIVING',
+    supportOtherText: 'For corporate sponsorship, foundation and government funding, planned giving and legacy gifts, please contact Aniela Eddy at relicensemble@gmail.com for more information.',
+    supportSectionJoinTitle: 'JOIN THE RELIC FAMILY NOW',
+    supportJoinTitle: "Don't Miss A Beat",
+    supportVolunteersTitle: 'Volunteers',
 };
 
 export default texts;

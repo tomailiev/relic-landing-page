@@ -1,5 +1,5 @@
-import { Grid, List, ListItem, Paper, Skeleton, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
+import { Grid, List, ListItem, ListItemAvatar, Paper, Skeleton, Typography } from "@mui/material";
 
 const EventSkeleton = () => {
 
@@ -11,25 +11,26 @@ const EventSkeleton = () => {
                         variant="rectangular" width={250} height={250}
                     />
                 </Grid>
-                <Grid item sm={12} md={7} textAlign={'left'}>
+                <Grid item sm={12} md={7} textAlign={'left'} >
                     <Typography variant="h4" mb={2}>
-                        <Skeleton width={250} />
+                        <Skeleton variant={'text'} width={250} />
                     </Typography>
-                    <Typography variant="body1">
-                        <Skeleton width={250} />
-                    </Typography>
-                    <Container disableGutters>
-                        <Typography variant="h6" mt={2}>
-                            <Skeleton width={250} />
-                        </Typography>
-                        <List>
-                            <ListItem>
-                                <Typography variant="body1">
-                                    <Skeleton />
-                                </Typography>
-                            </ListItem>
-                        </List>
-                    </Container>
+                    <Skeleton variant={'text'} width={250} />
+                    <Skeleton variant={'text'} width={250} />
+                    <List>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <ConfirmationNumberOutlinedIcon />
+                            </ListItemAvatar>
+                            <Skeleton variant={'rectangular'} width={180} height={30} />
+                        </ListItem>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <ConfirmationNumberOutlinedIcon />
+                            </ListItemAvatar>
+                            <Skeleton variant={'rectangular'} width={180} height={30} />
+                        </ListItem>
+                    </List>
                 </Grid>
             </Grid>
         </Paper>

@@ -13,7 +13,6 @@ const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const navItems = [
-        // { path: '/', title: 'Home' },
         {
             path: '/about', title: 'About', menu: [
                 { path: '/bio', title: 'Relic' },
@@ -22,7 +21,8 @@ const Header = () => {
             ]
         },
         { path: '/events', title: 'Events' },
-        { path: '/contact', title: 'Contact' }
+        { path: '/support', title: 'Support' },
+        { path: '/contact', title: 'Contact' },
     ];
 
 
@@ -39,14 +39,14 @@ const Header = () => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { xs: 'relative', md: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                        <img src={logo} alt="homepage" width={'70%'} height={'70%'} />
+                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="homepage" aria-label="home" width={'70%'} height={'70%'} />
                     </Box>
-                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
                             return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
