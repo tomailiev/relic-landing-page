@@ -58,12 +58,14 @@ const Journey = () => {
                         </div>`
                         });
 
-                        marker.addListener("mouseover", () => {
+                        function showWindow() {
                             infoWindow.open({
                                 anchor: marker,
                                 map,
                             });
-                        });
+                        }
+                        marker.addListener("mouseover", showWindow);
+                        marker.addListener("mousedown", showWindow);
                         marker.addListener("mouseout", () => {
                             infoWindow.close();
                         })
