@@ -84,7 +84,7 @@ const Journey = () => {
             <Paper elevation={3} sx={{ my: 2, mx: 4, p: 5, }}>
                 <Container maxWidth={'lg'}>
                     <Typography textAlign={'left'}>
-                        {text.mapText.replace('{statesNum}', 7)}
+                        {text.mapText.replace('{statesNum}', 6)}
                     </Typography>
                 </Container>
                 <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px', my: 5 }} />
