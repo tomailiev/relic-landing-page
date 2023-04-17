@@ -1,6 +1,6 @@
 import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
-import { db, storage } from './firebase-init';
+import { db, storage, logEvent, analytics } from './firebase-init';
 
 function uploadDoc(doc, col) {
     return addDoc(collection(db, col), doc)
@@ -41,4 +41,8 @@ function downloadOneDoc(col, id) {
         .catch(_e => console.error('no data'));
 }
 
-export { uploadDoc, getLink, downloadDocs, downloadOneDoc };
+function analyze(eventType, eventParams) {
+    logEvent(analytics, eventType, eventParams);
+}
+
+export { uploadDoc, getLink, downloadDocs, downloadOneDoc, analyze };
