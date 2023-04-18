@@ -8,6 +8,7 @@ import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
 import SubscribeForm from "../Common/SubscribeForm";
 import TypographyCombo from "./TypographyCombo";
+import { analyze } from "../../utils/firebase/firestore-funcs";
 
 
 const Support = () => {
@@ -44,7 +45,7 @@ const Support = () => {
                         {text.supportSectionDonateTitle}
                     </Typography>
                     <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
-                    <Button variant="contained" size="large" href={links.gems} target={'_blank'} >Donate</Button>
+                    <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button>
                     <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
                         {text.supportDonateNowNote}
                     </Typography>

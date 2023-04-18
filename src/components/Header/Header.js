@@ -6,6 +6,7 @@ import NavMenuItem from "./NavMenuItem";
 import ResponsiveDrawer from "./ResponsiveDrawer";
 import { links } from "../../data/links";
 import logo from "../../assets/logos/relic-logo-bw.png";
+import { analyze } from "../../utils/firebase/firestore-funcs";
 
 
 const Header = () => {
@@ -53,7 +54,7 @@ const Header = () => {
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'80px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>
                             Donate
                         </Button>
                     </Box>
