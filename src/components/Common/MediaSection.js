@@ -50,7 +50,7 @@ const MediaSection = () => {
                                     <Typography variant="h5" mb={2} mx={2}>
                                         {vid.title}
                                     </Typography>
-                                    <Button variant="contained" sx={{ background: '#f60000', '&:hover': { background: '#a90000' }, fontWeight: '900' }} endIcon={<SubscriptionsIcon />} href={links.ytSubscribe} target="_blank">
+                                    <Button variant="contained" sx={{ background: '#f60000', '&:hover': { background: '#a90000' } }} endIcon={<SubscriptionsIcon />} href={links.ytSubscribe} target="_blank">
                                         {'Subscribe'}
                                     </Button>
                                 </Grid>

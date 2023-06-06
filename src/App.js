@@ -57,7 +57,7 @@ function App() {
   const theme = createTheme({
     typography: {
       fontFamily: [
-        'Lato',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -112,6 +112,14 @@ function App() {
           }
         }
       },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            letterSpacing: 1.5,
+            fontWeight: '700'
+          }
+        }
+      }
     }
   });
 

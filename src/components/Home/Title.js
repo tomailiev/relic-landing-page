@@ -14,7 +14,7 @@ const Title = () => {
             mx={1}
             color={'white'}
             zIndex={200}
-            sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '1px 1px black, -1px -1px black', opacity: 1 }}
+            sx={{ position: 'absolute', left: '50%', top: '60%', transform: 'translate(-50%, -50%)', textShadow: '2px 2px black, -2px -2px black', opacity: 1 }}
         >
             {/* {text.siteHeading || 'RELIC'} */}
             <img width={'100%'} src={logos.logo_white} alt={'logo'} />

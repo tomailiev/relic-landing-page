@@ -44,8 +44,8 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
-                        <img src={logo} alt="homepage" aria-label="home" width={'70%'} height={'70%'} />
+                    <Box component={RouterLink} overflow={'hidden'} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                        <img src={logo} alt="homepage" aria-label="home" width={'70%'} height={'170%'} />
                     </Box>
                     <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
@@ -53,8 +53,8 @@ const Header = () => {
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                    <Box width={'80px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%' }} variant="contained" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>
+                    <Box width={'90px'}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid' }} variant="outlined" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>
                             Donate
                         </Button>
                     </Box>
