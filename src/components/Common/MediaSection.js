@@ -1,12 +1,25 @@
 import { Card, CardActionArea, CardMedia, Grid, Paper, Typography, Link, Slide, Box, IconButton, } from "@mui/material";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 // import CustomDivider from "./CustomDivider";
 
 const MediaSection = () => {
+    const [videos, setVideos] = useState([]);
     const [id, setId] = useState(0);
     const containerRef = useRef();
-    const videos = [{ id: 'WKlB6mk7EQo', title: 'Alessandro Scarlatti - Concerto No. 5 in D minor - I. Allegro' }, { id: 'PPAcIoJ0PQQ', title: 'Marco Uccellini - Sinfonia Terza a cinque stromenti' }]
+
+    useEffect(() => {
+        downloadDocs('videos')
+            .then((docs) => {
+                console.log(docs);
+                setVideos(docs);
+            })
+            .catch(e => {
+                console.error('not found');
+                console.error(e);
+            })
+    }, []);
 
     function changeVid(vidIndex) {
         setId(vidIndex);
@@ -17,14 +30,14 @@ const MediaSection = () => {
             <Paper sx={{ my: 2, p: 1, }}>
                 <Box ref={containerRef} overflow={'hidden'}>
                     {videos.map((vid, i) => (
-                        <Slide key={vid.id} timeout={750} exit={false} in={id === i} direction={'left'} container={containerRef.current} mountOnEnter unmountOnExit>
+                        <Slide key={vid.youtubeId} timeout={750} exit={false} in={id === i} direction={'left'} container={containerRef.current} mountOnEnter unmountOnExit>
                             <Grid container spacing={2} justifyContent="center" my={4}>
                                 <Grid item md={6} sm={8}>
-                                    <Card component={Link} href={`https://youtu.be/${vid.id}`} sx={{ textDecoration: 'none' }}>
+                                    <Card component={Link} href={`https://youtu.be/${vid.youtubeId}`} sx={{ textDecoration: 'none' }}>
                                         <CardActionArea>
                                             <CardMedia
                                                 component={'iframe'}
-                                                src={`https://www.youtube.com/embed/${vid.id}`}
+                                                src={`https://www.youtube.com/embed/${vid.youtubeId}`}
                                                 height={'300'}
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                 allowFullScreen
