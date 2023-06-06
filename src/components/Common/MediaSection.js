@@ -1,7 +1,9 @@
-import { Card, CardActionArea, CardMedia, Grid, Paper, Typography, Link, Slide, Box, IconButton, } from "@mui/material";
+import { Card, CardActionArea, CardMedia, Grid, Paper, Typography, Link, Slide, Box, IconButton, Button, } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import { links } from "../../data/links";
 // import CustomDivider from "./CustomDivider";
 
 const MediaSection = () => {
@@ -12,7 +14,6 @@ const MediaSection = () => {
     useEffect(() => {
         downloadDocs('videos')
             .then((docs) => {
-                console.log(docs);
                 setVideos(docs);
             })
             .catch(e => {
@@ -49,6 +50,9 @@ const MediaSection = () => {
                                     <Typography variant="h5" mb={2} mx={2}>
                                         {vid.title}
                                     </Typography>
+                                    <Button variant="contained" sx={{ background: '#f60000', '&:hover': { background: '#a90000' }, fontWeight: '900' }} endIcon={<SubscriptionsIcon />} href={links.ytSubscribe} target="_blank">
+                                        {'Subscribe'}
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </Slide>
@@ -56,19 +60,17 @@ const MediaSection = () => {
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
                     {videos.map((_item, i) => (
-                        <IconButton 
-                        key={i} 
-                        size="small" 
-                        onClick={() => changeVid(i)} 
-                        disabled={i === id}
+                        <IconButton
+                            key={i}
+                            size="small"
+                            onClick={() => changeVid(i)}
+                            disabled={i === id}
+                            color="primary"
                         >
                             <HorizontalRuleIcon />
                         </IconButton>
                     ))}
                 </Box>
-                {/* <Button onClick={changeVid} variant="contained" sx={{ mt: 5 }}>
-                    {'Channel'}
-                </Button> */}
             </Paper>
         </>
     );
