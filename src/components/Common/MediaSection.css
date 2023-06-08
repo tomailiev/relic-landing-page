@@ -1,0 +1,18 @@
+.hidden-left {
+    transition: all 750ms ease-in;
+    position: absolute;
+    left: -1500px;
+}
+
+.hidden-right {
+    transition: all 750ms ease-in;
+    position: absolute;
+    left: 1500px;
+}
+
+.shown {
+    transition: all 750ms ease-in;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
