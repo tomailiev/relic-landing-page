@@ -38,24 +38,53 @@ const VideoWall = () => {
         return () => clearInterval(intervalRef.current);
     }, [videos.length])
 
-    function changeVid(vidIndex) {
+    // function changeVid(vidIndex) {
+    //     if (activePlayer) {
+    //         activePlayer.stopVideo();
+    //         setActivePlayer(null);
+    //     }
+    //     switchInterval(true);
+    //     setId(vidIndex);
+    // }
+
+    // function switchInterval(sw) {
+    //     if (sw === true) {
+    //         clearInterval(intervalRef.current);
+    //         setTimer(false);
+    //         return;
+    //     } else if (sw && sw !== true) {
+    //         setActivePlayer(sw.target);
+    //     }
+    //     if (timer) {
+    //         clearInterval(intervalRef.current);
+    //     } else {
+    //         intervalRef.current = setInterval(() => {
+    //             setId(prev => prev + 1 === videos.length ? 0 : ++prev);
+    //         }, 5000);
+    //     }
+    //     setTimer(prev => !prev);
+    // }
+
+    function playVideo(e) {
+        setActivePlayer(e.target);
+        switchInterval(true);
+    }
+
+    function switchActive(index) {
         if (activePlayer) {
             activePlayer.stopVideo();
             setActivePlayer(null);
         }
-        switchInterval(true);
-        setId(vidIndex);
+        setId(index);
+        clearInterval(intervalRef.current);
     }
 
     function switchInterval(sw) {
-        if (sw === true) {
-            clearInterval(intervalRef.current);
-            setTimer(false);
-            return;
-        } else if (sw && sw !== true) {
-            setActivePlayer(sw.target);
+        if (activePlayer) {
+            activePlayer.stopVideo();
+            setActivePlayer(null);
         }
-        if (timer) {
+        if (sw) {
             clearInterval(intervalRef.current);
         } else {
             intervalRef.current = setInterval(() => {
@@ -82,7 +111,7 @@ const VideoWall = () => {
                                 <YouTube
                                     videoId={vid.youtubeId}
                                     opts={{ height: '300px', width: '100%', }}
-                                    onPlay={switchInterval}
+                                    onPlay={playVideo}
                                 />
                             </Grid>
                             <Grid item md={id - i ? 0 : 6} textAlign={'center'}>
@@ -99,7 +128,7 @@ const VideoWall = () => {
                 <Box display={'flex'} justifyContent={'center'}>
                     <IconButton
                         size="small"
-                        onClick={switchInterval}
+                        onClick={() => switchInterval(timer)}
                         color="primary"
                     >
                         {timer ? <PauseCircleIcon /> : <PlayCircleIcon />}
@@ -108,7 +137,7 @@ const VideoWall = () => {
                         <IconButton
                             key={i}
                             size="small"
-                            onClick={() => changeVid(i)}
+                            onClick={() => switchActive(i)}
                             disabled={i === id}
                             color="primary"
                         >
