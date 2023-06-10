@@ -3,15 +3,15 @@ import YouTube from 'react-youtube';
 import { links } from "../../data/links";
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 
-const VideoItem = ({ video, position, playVideo, animating }) => {
+const VideoItem = ({ video, position, playVideo }) => {
 
     return (
         <Grid key={video.id} container spacing={2} justifyContent="center" my={4} sx={{
             position: 'absolute',
-            left: `${position ? 100 : animating ? -100 : 0}%`,
+            left: `${position === -1 ? 100 : position > 0 ? -100 : 0}%`,
             top: 0,
             width: position ? '0px' : '100%',
-            transition: 'left 1000ms ease-in',
+            transition: Math.abs(position) === 1 ? 'width 7s ease-in, visibility 5s ease-in, left 1s ease-in' : 'left 1s ease-in, width 100ms ease-in',
             visibility: position ? 'hidden' : 'visible',
         }}>
             <Grid item md={6} sm={8}>
