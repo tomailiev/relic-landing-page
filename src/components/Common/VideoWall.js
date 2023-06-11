@@ -11,7 +11,7 @@ import VideoItem from "./VideoItem";
 
 const VideoWall = () => {
     const [videos, setVideos] = useState([]);
-    const [id, setId] = useState(0);
+    const [index, setIndex] = useState(0);
     const [timer, setTimer] = useState(true);
     const [activePlayer, setActivePlayer] = useState(null);
     let intervalRef = useRef(null);
@@ -30,12 +30,11 @@ const VideoWall = () => {
     useEffect(() => {
         if (videos.length) {
             intervalRef.current = setInterval(() => {
-                setId(prev => prev + 1 === videos.length ? 0 : ++prev);
+                setIndex(prev => prev + 1 === videos.length ? 0 : ++prev);
             }, 5000);
         }
         return () => clearInterval(intervalRef.current);
     }, [videos.length])
-
 
     function playVideo(e) {
         switchInterval(true);
@@ -47,8 +46,9 @@ const VideoWall = () => {
             activePlayer.stopVideo();
             setActivePlayer(null);
         }
-        setId(index);
+        setIndex(index);
         clearInterval(intervalRef.current);
+        setTimer(false);
     }
 
     function switchInterval(sw) {
@@ -61,7 +61,7 @@ const VideoWall = () => {
             setTimer(false);
         } else {
             intervalRef.current = setInterval(() => {
-                setId(prev => prev + 1 === videos.length ? 0 : ++prev);
+                setIndex(prev => prev + 1 === videos.length ? 0 : ++prev);
             }, 5000);
             setTimer(true);
         }
@@ -71,8 +71,15 @@ const VideoWall = () => {
         <>
             <Paper sx={{ my: 2, p: 1, }}>
                 <Box position={'relative'} overflow={'hidden'} minHeight={'400px'}>
-                    {videos.map((vid, i) => (
-                        <VideoItem key={vid.youtubeId} video={vid} position={id -i} playVideo={playVideo} />
+                    {videos.map((vid, i, arr) => (
+                        <VideoItem
+                            key={vid.youtubeId}
+                            video={vid}
+                            index={i}
+                            currentIndex={index}
+                            playVideo={playVideo}
+                            length={arr.length}
+                        />
                     ))}
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
@@ -88,7 +95,7 @@ const VideoWall = () => {
                             key={i}
                             size="small"
                             onClick={() => switchActive(i)}
-                            disabled={i === id}
+                            disabled={i === index}
                             color="primary"
                         >
                             <FiberManualRecordIcon />
