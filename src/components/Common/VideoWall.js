@@ -41,12 +41,15 @@ const VideoWall = () => {
         setActivePlayer(e.target);
     }
 
-    function switchActive(index) {
+    function switchActive(direction) {
         if (activePlayer) {
             activePlayer.stopVideo();
             setActivePlayer(null);
         }
-        setIndex(index);
+        setIndex(prev => prev + direction === videos.length
+            ? 0 : prev + direction < 0
+                ? videos.length - 1
+                : prev + direction);
         clearInterval(intervalRef.current);
         setTimer(false);
     }
@@ -78,6 +81,7 @@ const VideoWall = () => {
                             index={i}
                             currentIndex={index}
                             playVideo={playVideo}
+                            switchInterval={switchInterval}
                             length={arr.length}
                         />
                     ))}
@@ -85,22 +89,25 @@ const VideoWall = () => {
                 <Box display={'flex'} justifyContent={'center'}>
                     <IconButton
                         size="small"
+                        onClick={() => switchActive(-1)}
+                        color="primary"
+                    >
+                        <FiberManualRecordIcon />
+                    </IconButton>
+                    <IconButton
+                        size="small"
                         onClick={() => switchInterval(timer)}
                         color="primary"
                     >
                         {timer ? <PauseCircleIcon /> : <PlayCircleIcon />}
                     </IconButton>
-                    {videos.map((_item, i) => (
-                        <IconButton
-                            key={i}
-                            size="small"
-                            onClick={() => switchActive(i)}
-                            disabled={i === index}
-                            color="primary"
-                        >
-                            <FiberManualRecordIcon />
-                        </IconButton>
-                    ))}
+                    <IconButton
+                        size="small"
+                        onClick={() => switchActive(1)}
+                        color="primary"
+                    >
+                        <FiberManualRecordIcon />
+                    </IconButton>
                 </Box>
             </Paper>
         </>
