@@ -2,10 +2,15 @@ import { Paper, Box, IconButton, } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 // import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import PauseCircleIcon from '@mui/icons-material/PauseCircle';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+// import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+// import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+// import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import VideoItem from "./VideoItem";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+// import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import PauseIcon from '@mui/icons-material/Pause';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 // import CircleIcon from '@mui/icons-material/Circle';
 
 
@@ -73,7 +78,7 @@ const VideoWall = () => {
     return (
         <>
             <Paper sx={{ my: 2, p: 1, }}>
-                <Box position={'relative'} overflow={'hidden'} minHeight={'400px'}>
+                <Box position={'relative'} overflow={'hidden'}>
                     {videos.map((vid, i, arr) => (
                         <VideoItem
                             key={vid.youtubeId}
@@ -88,25 +93,25 @@ const VideoWall = () => {
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
                     <IconButton
-                        size="small"
+                        size="large"
                         onClick={() => switchActive(-1)}
                         color="primary"
                     >
-                        <FiberManualRecordIcon />
+                        <NavigateBeforeIcon />
                     </IconButton>
                     <IconButton
-                        size="small"
+                        size="large"
                         onClick={() => switchInterval(timer)}
                         color="primary"
                     >
-                        {timer ? <PauseCircleIcon /> : <PlayCircleIcon />}
+                        {timer ? <PauseIcon /> : <PlayArrowIcon />}
                     </IconButton>
                     <IconButton
-                        size="small"
+                        size="large"
                         onClick={() => switchActive(1)}
                         color="primary"
                     >
-                        <FiberManualRecordIcon />
+                        <NavigateNextIcon />
                     </IconButton>
                 </Box>
             </Paper>
