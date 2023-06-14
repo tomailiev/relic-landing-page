@@ -25,7 +25,7 @@ const VideoWall = () => {
     const lgMatch = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
-        downloadDocs('videos', ['featured', '==', true])
+        downloadDocs('videos', ['featured', '!=', 0], ['featured', 'desc'])
             .then((docs) => {
                 setVideos(docs);
             })
