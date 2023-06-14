@@ -1,4 +1,4 @@
-import { Paper, Box, IconButton, } from "@mui/material";
+import { Paper, Box, IconButton, useTheme, useMediaQuery, } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 // import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
@@ -20,6 +20,9 @@ const VideoWall = () => {
     const [timer, setTimer] = useState(true);
     const [activePlayer, setActivePlayer] = useState(null);
     let intervalRef = useRef(null);
+
+    const theme = useTheme();
+    const lgMatch = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
         downloadDocs('videos', ['featured', '==', true])
@@ -46,6 +49,7 @@ const VideoWall = () => {
         setActivePlayer(e.target);
     }
 
+
     function switchActive(direction) {
         if (activePlayer) {
             activePlayer.stopVideo();
@@ -60,14 +64,15 @@ const VideoWall = () => {
     }
 
     function switchInterval(sw) {
-        if (activePlayer) {
-            activePlayer.stopVideo();
-            setActivePlayer(null);
-        }
+        
         if (sw) {
             clearInterval(intervalRef.current);
             setTimer(false);
         } else {
+            if (activePlayer) {
+                activePlayer.stopVideo();
+                setActivePlayer(null);
+            }
             intervalRef.current = setInterval(() => {
                 setIndex(prev => prev + 1 === videos.length ? 0 : ++prev);
             }, 5000);
@@ -78,39 +83,39 @@ const VideoWall = () => {
     return (
         <>
             <Paper sx={{ my: 2, p: 1, }}>
-                <Box position={'relative'} overflow={'hidden'}>
+                <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '546px'}>
                     {videos.map((vid, i, arr) => (
                         <VideoItem
-                            key={vid.youtubeId}
-                            video={vid}
+                        key={vid.youtubeId}
+                        video={vid}
                             index={i}
                             currentIndex={index}
                             playVideo={playVideo}
                             switchInterval={switchInterval}
                             length={arr.length}
-                        />
-                    ))}
+                            />
+                            ))}
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
                     <IconButton
                         size="large"
                         onClick={() => switchActive(-1)}
                         color="primary"
-                    >
+                        >
                         <NavigateBeforeIcon />
                     </IconButton>
                     <IconButton
                         size="large"
                         onClick={() => switchInterval(timer)}
                         color="primary"
-                    >
+                        >
                         {timer ? <PauseIcon /> : <PlayArrowIcon />}
                     </IconButton>
                     <IconButton
                         size="large"
                         onClick={() => switchActive(1)}
                         color="primary"
-                    >
+                        >
                         <NavigateNextIcon />
                     </IconButton>
                 </Box>
