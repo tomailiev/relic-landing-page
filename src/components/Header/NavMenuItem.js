@@ -20,14 +20,14 @@ const NavMenuItem = ({ menuTitle, menu, path }) => {
     return (
         <Box onMouseOver={handleClick} onMouseOut={handleClose}>
             <MenuItem ref={anchorEl} key={menuTitle} component={menu ? Box : RouterLink} to={path} sx={{ my: 2.2, mx: 1.2 }}>
-                <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{menuTitle}</Typography>
+                <Typography variant="h6" textAlign="center" color={'white'} >{menuTitle}</Typography>
             </MenuItem>
             {menu && (
                 <Fade direction="up" in={checked} container={anchorEl.current}>
                     <Box position={'absolute'} sx={{ background: theme.palette.primary.main, mx: 1.2 }} >
                         {menu.map(({ title, path }) => (
                             <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                                <Typography variant="h6" textAlign="center" color={'white'} sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                <Typography variant="h6" textAlign="center" color={'white'}>{title}</Typography>
                             </MenuItem>
                         ))}
                     </Box>

@@ -35,7 +35,7 @@ const ResponsiveDrawer = ({ isDrawerOpen, handleDrawerToggle, navItems }) => {
                                 ? <ResponsiveMenuItem key={title} menuTitle={title} menu={menu} handleDrawerToggle={handleDrawerToggle} />
                                 : (
                                     <MenuItem onClick={handleDrawerToggle} key={title} component={RouterLink} to={path}>
-                                        <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                                        <Typography variant="h6" textAlign="center">{title}</Typography>
                                     </MenuItem>
                                 );
                         }

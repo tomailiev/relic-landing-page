@@ -30,6 +30,7 @@ import Forward from './components/Common/Forward';
 import NoMatch from './components/Common/NoMatch';
 import Journey from './components/Journey/Journey';
 import Support from './components/Support/Support';
+import Cochin from './assets/fonts/Cochin.ttf';
 
 function App() {
 
@@ -77,11 +78,17 @@ function App() {
         // }
       },
       h3: {
-        marginTop: 30
+        marginTop: 30,
+        fontFamily: 'Cochin',
+        // fontSize: '1.2rem',
+        textTransform: 'uppercase',
+        letterSpacing: 1.2
       },
       h6: {
-        fontFamily: 'Julius Sans One',
-        fontSize: '1.2rem'
+        fontFamily: 'Cochin',
+        fontSize: '1.2rem',
+        textTransform: 'uppercase',
+        letterSpacing: 1.2
       },
       subtitle1: {
         color: '#000000',
@@ -101,6 +108,18 @@ function App() {
       },
     },
     components: {
+      MuiCssBaseline: {
+        styleOverrides: `
+        @font-face {
+          font-family: 'Cochin';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('Cochin'), local('Cochin-Regular'), url(${Cochin}) format('ttf');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `
+      },
       MuiMenu: {
         styleOverrides: {
           list: {
