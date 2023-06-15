@@ -80,6 +80,7 @@ function App() {
       h3: {
         marginTop: 30,
         fontFamily: 'Cochin',
+        fontSize: '2.5rem',
         // fontSize: '1.2rem',
         textTransform: 'uppercase',
         letterSpacing: 1.2

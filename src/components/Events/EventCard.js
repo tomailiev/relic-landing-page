@@ -17,7 +17,7 @@ const EventCard = ({ imageUrl, url }) => {
     return (
         <Card raised>
             <CardActionArea>
-                <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}>
+                {/* <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}> */}
                     {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={'400px'} />}
                     <Link href={url} target={'_blank'} underline={'none'}>
                         <CardMedia
@@ -30,7 +30,7 @@ const EventCard = ({ imageUrl, url }) => {
                             onLoad={() => setImgLoaded(true)}
                         />
                     </Link>
-                </div>
+                {/* </div> */}
             </CardActionArea>
         </Card>
     )

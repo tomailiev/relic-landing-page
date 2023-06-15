@@ -77,11 +77,11 @@ const Journey = () => {
 
 
     return (
-        <Container maxWidth="false" disableGutters sx={{ my: 5, textAlign: 'center' }}>
-            <Typography variant="h3" mb={5} >
+        <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+            <Typography variant="h3" my={8} >
                 Our journey
             </Typography>
-            <Paper elevation={3} sx={{ my: 2, mx: 4, p: 5, }}>
+            <Paper elevation={3} sx={{ my: 2, mx: 3, py: 5, px: 1 }}>
                 <Container maxWidth={'lg'}>
                     <Typography textAlign={'left'}>
                         {text.mapText.replace('{statesNum}', 6)}
