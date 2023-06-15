@@ -10,7 +10,7 @@ const ContentSection = ({ content }) => {
             {/* {index !== 0 && <CustomDivider />} */}
             <Paper sx={{ my: 2, p: 1, }}>
                 <Grid container spacing={2} justifyContent="center" my={4}>
-                    <Grid item md={6} sm={8}>
+                    <Grid item md={6} sm={8} xs={12}>
                         <Card component={RouterLink} to={content.route} sx={{ textDecoration: 'none' }}>
                             <CardActionArea>
                                 <CardMedia
@@ -29,7 +29,7 @@ const ContentSection = ({ content }) => {
                         <Typography variant="body1" mx={2}>
                             {content.infoText}
                         </Typography>
-                        <Button component={RouterLink} to={content.route} variant="contained" sx={{ m: 2 }}>
+                        <Button component={RouterLink} to={content.route} variant="outlined" sx={{ m: 2 }}>
                             {content.buttonText || 'See more'}
                         </Button>
                     </Grid>

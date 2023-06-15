@@ -14,12 +14,12 @@ const ResponsiveMenuItem = ({ menuTitle, menu, handleDrawerToggle }) => {
     return (
         <Accordion expanded={expanded} onClick={() => setExpanded(!expanded)} sx={{ background: theme.palette.primary.main, color: '#ffffff', borderBottom: 'none', boxShadow: 'none' }}>
             <AccordionSummary>
-                <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>{menuTitle}</Typography>
+                <Typography variant="h6" textAlign="center">{menuTitle}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 {menu.map(({ title, path }) => (
                     <MenuItem key={title} component={RouterLink} to={path} onClick={handleClose} >
-                        <Typography variant="h6" textAlign="center" sx={{ fontWeight: 'bold' }}>{title}</Typography>
+                        <Typography variant="h6" textAlign="center">{title}</Typography>
                     </MenuItem>
                 ))}
             </AccordionDetails>

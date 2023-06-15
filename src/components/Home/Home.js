@@ -8,6 +8,8 @@ import { Container, Typography, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
+// import MediaSection from "../Common/MediaSection";
+import VideoWall from "../Common/VideoWall";
 
 const Home = () => {
 
@@ -20,6 +22,8 @@ const Home = () => {
                 <Typography variant="h3" textAlign={'center'}>
                     Discover
                 </Typography>
+                <VideoWall />
+                {/* <MediaSection /> */}
                 {text.contentSections.map((content, i) => <ContentSection key={content.cardTitle} content={content} index={i} />)}
             </Container>
         </>

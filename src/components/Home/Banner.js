@@ -17,19 +17,19 @@ const Banner = ({ bgPic, height, children }) => {
         //     </Parallax>
         // </Box>
         <Container sx={{ height: `${height}vh`, }} >
+            <Box
+                sx={{ position: 'absolute', width: '100%', height: `${height}%`, left: '50%', top: `${height - 50}%`, transform: 'translate(-50%, -50%)', objectFit: 'contain', }}
+            >
                 <Box
-                    sx={{ position: 'absolute', width: '100%', height: `${height}%`, left: '50%', top: `${height - 50}%`, transform: 'translate(-50%, -50%)', objectFit: 'contain', }}
+                    width={'100%'}
+                    height={'100%'}
+                    overflow={'hidden'}
+                    sx={{ background: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), no-repeat center/${dimensions.width / dimensions.height > 1.5 ? 100 : (dimensions.height / dimensions.width) * 160}% url(${bgPic})`, opacity: 1 }}
                 >
-                    <Box
-                        width={'100%'}
-                        height={'100%'}
-                        overflow={'hidden'}
-                        sx={{ background: `no-repeat center/${dimensions.width / dimensions.height > 1.5 ? 100 : (dimensions.height / dimensions.width) * 160}% url(${bgPic})`, opacity: 0.9 }}
-                    >
-                       {children}
-                    </Box>
+                    {children}
                 </Box>
-            </Container>
+            </Box>
+        </Container>
     );
 };
 

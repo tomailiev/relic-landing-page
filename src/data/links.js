@@ -4,4 +4,5 @@ export const links = {
     youtube: "https://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA",
     gems: "https://ci.ovationtix.com/35560/store/donations/47953",
     gemsWebsite: 'https://gemsny.org',
+    ytSubscribe: 'http://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA?sub_confirmation=1'
 };
