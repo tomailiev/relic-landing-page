@@ -19,6 +19,7 @@ const VideoWall = () => {
     const [index, setIndex] = useState(0);
     const [timer, setTimer] = useState(true);
     const [activePlayer, setActivePlayer] = useState(null);
+    const [buttonsDisabled, setButtonsDisabled] = useState(false);
     let intervalRef = useRef(null);
 
     const theme = useTheme();
@@ -55,6 +56,10 @@ const VideoWall = () => {
             activePlayer.stopVideo();
             setActivePlayer(null);
         }
+        setButtonsDisabled(true);
+        setTimeout(() => {
+            setButtonsDisabled(false);
+        }, 900)
         setIndex(prev => prev + direction === videos.length
             ? 0 : prev + direction < 0
                 ? videos.length - 1
@@ -83,7 +88,7 @@ const VideoWall = () => {
     return (
         <>
             <Paper sx={{ my: 2, p: 1, }}>
-                <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '546px'}>
+                <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '540px'} >
                     {videos.map((vid, i, arr) => (
                         <VideoItem
                         key={vid.youtubeId}
@@ -100,6 +105,7 @@ const VideoWall = () => {
                     <IconButton
                         size="large"
                         onClick={() => switchActive(-1)}
+                        disabled={buttonsDisabled}
                         color="primary"
                         >
                         <NavigateBeforeIcon />
@@ -114,6 +120,7 @@ const VideoWall = () => {
                     <IconButton
                         size="large"
                         onClick={() => switchActive(1)}
+                        disabled={buttonsDisabled}
                         color="primary"
                         >
                         <NavigateNextIcon />
