@@ -18,7 +18,15 @@ const Banner = ({ bgPic, height, children }) => {
         // </Box>
         <Container sx={{ height: `${height}vh`, }} >
             <Box
-                sx={{ position: 'absolute', width: '100%', height: `${height}%`, left: '50%', top: `${height - 50}%`, transform: 'translate(-50%, -50%)', objectFit: 'contain', }}
+                sx={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: `${height}%`,
+                    left: '50%',
+                    top: `${height - 50}%`,
+                    transform: 'translate(-50%, -50%)',
+                    objectFit: 'contain',
+                }}
             >
                 <Box
                     width={'100%'}
