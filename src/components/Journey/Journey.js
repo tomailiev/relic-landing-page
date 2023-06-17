@@ -78,7 +78,7 @@ const Journey = () => {
 
     return (
         <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
-            <Typography variant="h3" my={8} >
+            <Typography variant="h3" my={8} mx={3} >
                 Our journey
             </Typography>
             <Paper elevation={3} sx={{ my: 2, mx: 3, py: 5, px: 1 }}>

@@ -16,7 +16,7 @@ const Story = () => {
         <>
             <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.3005, 'story')}>
             </Container>
-            <Typography variant="h3" textAlign={'center'} my={8}>
+            <Typography variant="h3" textAlign={'center'} my={8} mx={3}>
                 About Us
             </Typography>
             <Container disableGutters maxWidth={false} sx={{ mb: 4 }}>
