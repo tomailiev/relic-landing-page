@@ -16,10 +16,10 @@ const Story = () => {
         <>
             <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.3005, 'story')}>
             </Container>
-            <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
+            <Typography variant="h3" textAlign={'center'} my={8} mx={3}>
                 About Us
             </Typography>
-            <Container disableGutters maxWidth={false} sx={{ my: 4 }}>
+            <Container disableGutters maxWidth={false} sx={{ mb: 4 }}>
                 <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
                 <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
                 <AboutItem title={'mission'} textContent={text.aboutMission} bg={hrpsBG} />

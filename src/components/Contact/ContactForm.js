@@ -66,7 +66,7 @@ const ContactForm = () => {
 
     return (
         <Paper elevation={2}>
-            <Box my={4} padding={6}>
+            <Box my={4} p={3}>
                 <form onSubmit={handleSubscribe}>
                     <Stack spacing={2}>
                         {fieldsArray.map(({ id, label }) => (

@@ -36,7 +36,7 @@ const Support = () => {
 
     return (
         <>
-            <Typography variant="h3" textAlign={'center'} mt={6} mb={10}>
+            <Typography variant="h3" textAlign={'center'} mt={8} mb={10}>
                 Support Relic
             </Typography>
             <Box mt={2} mb={5}>

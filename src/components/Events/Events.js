@@ -25,12 +25,12 @@ const Events = () => {
     return (
         <>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h3" my={3}>
+                <Typography variant="h3" my={8}>
                     {seasonSwitch ? `${year}-${(year + 1) % 2000}`:`${year - 1}-${year % 2000}`} Concert Season
                 </Typography>
                 {events.length
                     ? events.map(event => (
-                        <Paper key={event.id} elevation={3} sx={{ p: 5, mb: 4 }}>
+                        <Paper key={event.id} elevation={3} sx={{ py: 5, px: 2, mb: 4 }}>
                             <Grid container spacing={6}>
                                 <Grid item sm={12} md={5}>
                                     <EventCard imageUrl={event.imageUrl} url={event.eventUrl} />

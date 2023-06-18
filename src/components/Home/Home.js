@@ -3,13 +3,13 @@ import Banner from "./Banner";
 import Title from "./Title";
 // import eventsImage from '../../assets/imgs/ev_img.webp';
 // import musicianImage from '../../assets/imgs/IMG_3983.webp';
-import ContentSection from "../Common/ContentSection";
+import ContentSection from "./ContentSection";
 import { Container, Typography, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
 // import MediaSection from "../Common/MediaSection";
-import VideoWall from "../Common/VideoWall";
+import VideoWall from "./VideoWall";
 
 const Home = () => {
 
@@ -17,9 +17,9 @@ const Home = () => {
 
     return (
         <>
-            <Banner height={100} bgPic={banners.groupBanner} children={<Title />} />
+            <Banner bgPic={banners.groupBanner} children={<Title />} />
             <Container maxWidth="lg" >
-                <Typography variant="h3" textAlign={'center'}>
+                <Typography variant="h3" textAlign={'center'} my={6}>
                     Discover
                 </Typography>
                 <VideoWall />
