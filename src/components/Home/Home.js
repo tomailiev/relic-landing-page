@@ -19,7 +19,7 @@ const Home = () => {
         <>
             <Banner bgPic={banners.groupBanner} children={<Title />} />
             <Container maxWidth="lg" >
-                <Typography variant="h3" textAlign={'center'} my={4}>
+                <Typography variant="h3" textAlign={'center'} my={6}>
                     Discover
                 </Typography>
                 <VideoWall />
