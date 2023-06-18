@@ -1,4 +1,4 @@
-import { Paper, Box, IconButton, useTheme, useMediaQuery, } from "@mui/material";
+import { Paper, Box, IconButton, useTheme, useMediaQuery, Tooltip, } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 // import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
@@ -69,7 +69,7 @@ const VideoWall = () => {
     }
 
     function switchInterval(sw) {
-        
+
         if (sw) {
             clearInterval(intervalRef.current);
             setTimer(false);
@@ -87,44 +87,50 @@ const VideoWall = () => {
 
     return (
         <>
-            <Paper sx={{ mb: 2, p: 1, }}>
+            <Paper elevation={3} sx={{ mb: 2, p: 1, }}>
                 <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '540px'} >
                     {videos.map((vid, i, arr) => (
                         <VideoItem
-                        key={vid.youtubeId}
-                        video={vid}
+                            key={vid.youtubeId}
+                            video={vid}
                             index={i}
                             currentIndex={index}
                             playVideo={playVideo}
                             switchInterval={switchInterval}
                             length={arr.length}
-                            />
-                            ))}
+                        />
+                    ))}
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
-                    <IconButton
-                        size="large"
-                        onClick={() => switchActive(-1)}
-                        disabled={buttonsDisabled}
-                        color="primary"
+                    <Tooltip title={'previous video'}>
+                        <IconButton
+                            size="large"
+                            onClick={() => switchActive(-1)}
+                            disabled={buttonsDisabled}
+                            color="primary"
                         >
-                        <NavigateBeforeIcon />
-                    </IconButton>
-                    <IconButton
-                        size="large"
-                        onClick={() => switchInterval(timer)}
-                        color="primary"
+                            <NavigateBeforeIcon />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={`${timer ? 'pause' : 'play'} slideshow`}>
+                        <IconButton
+                            size="large"
+                            onClick={() => switchInterval(timer)}
+                            color="primary"
                         >
-                        {timer ? <PauseIcon /> : <PlayArrowIcon />}
-                    </IconButton>
-                    <IconButton
-                        size="large"
-                        onClick={() => switchActive(1)}
-                        disabled={buttonsDisabled}
-                        color="primary"
+                            {timer ? <PauseIcon /> : <PlayArrowIcon />}
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={'next video'}>
+                        <IconButton
+                            size="large"
+                            onClick={() => switchActive(1)}
+                            disabled={buttonsDisabled}
+                            color="primary"
                         >
-                        <NavigateNextIcon />
-                    </IconButton>
+                            <NavigateNextIcon />
+                        </IconButton>
+                    </Tooltip>
                 </Box>
             </Paper>
         </>
