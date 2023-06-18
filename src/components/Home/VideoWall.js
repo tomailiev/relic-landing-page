@@ -87,7 +87,7 @@ const VideoWall = () => {
 
     return (
         <>
-            <Paper sx={{ my: 2, p: 1, }}>
+            <Paper sx={{ mb: 2, p: 1, }}>
                 <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '540px'} >
                     {videos.map((vid, i, arr) => (
                         <VideoItem

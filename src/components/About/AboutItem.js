@@ -1,5 +1,5 @@
-import { useTheme } from "@emotion/react";
-import { Paper, Typography, useMediaQuery } from "@mui/material";
+// import { useTheme } from "@emotion/react";
+import { Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Box, Container } from "@mui/system";
 
 const AboutItem = ({ title, bg, textContent, right }) => {

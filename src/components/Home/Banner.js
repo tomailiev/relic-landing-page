@@ -1,9 +1,14 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
 // import { Parallax } from "react-parallax";
 import '@fontsource/lato/400-italic.css';
 import useDimensions from "../../hooks/useDimensions";
 
-const Banner = ({ bgPic, height, children }) => {
+const Banner = ({ bgPic, children }) => {
+
+    const theme = useTheme();
+    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
+    const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
+
 
     const dimensions = useDimensions();
 
@@ -16,14 +21,14 @@ const Banner = ({ bgPic, height, children }) => {
         //         </Box>
         //     </Parallax>
         // </Box>
-        <Container sx={{ height: `${height}vh`, }} >
+        <Container sx={{ height: `calc(100vh - ${xsMatch ? 56 : smMatch ? 64 : 80}px)`, }} >
             <Box
                 sx={{
                     position: 'absolute',
                     width: '100%',
-                    height: `${height}%`,
+                    height: '100%',
                     left: '50%',
-                    top: `${height - 50}%`,
+                    top: '50%',
                     transform: 'translate(-50%, -50%)',
                     objectFit: 'contain',
                 }}
