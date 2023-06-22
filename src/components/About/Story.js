@@ -1,8 +1,6 @@
 import { Typography, Container, } from "@mui/material";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
-import hrpsBG from '../../assets/imgs/hrps.jpg';
-import thrbBG from '../../assets/imgs/thrb.jpg';
 import AboutItem from "./AboutItem";
 import useDimensions from "../../hooks/useDimensions";
 import getBannerSx from "../../styles/bannerSx";
@@ -20,10 +18,10 @@ const Story = () => {
                 About Us
             </Typography>
             <Container disableGutters maxWidth={false} sx={{ mb: 4 }}>
-                <AboutItem title={'bio'} textContent={text.aboutBio} bg={hrpsBG} />
-                <AboutItem title={'story'} textContent={text.aboutStory} bg={thrbBG} right />
-                <AboutItem title={'mission'} textContent={text.aboutMission} bg={hrpsBG} />
-                <AboutItem title={'values'} textContent={text.aboutValues} bg={thrbBG} right />
+                <AboutItem title={'bio'} textContent={text.aboutBio} />
+                <AboutItem title={'story'} textContent={text.aboutStory} right />
+                <AboutItem title={'mission'} textContent={text.aboutMission} />
+                <AboutItem title={'values'} textContent={text.aboutValues} right />
             </Container>
         </>
     );

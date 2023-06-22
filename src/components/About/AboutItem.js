@@ -2,7 +2,7 @@
 import { Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Box, Container } from "@mui/system";
 
-const AboutItem = ({ title, bg, textContent, right }) => {
+const AboutItem = ({ title, textContent, right }) => {
 
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
