@@ -25,7 +25,7 @@ const Musicians = () => {
     const dimensions = useDimensions();
 
     useEffect(() => {
-        downloadDocs('musicians', ['featured', '==', true], ['name'])
+        downloadDocs('musicians', ['featured', '==', 1], ['name'])
             .then((docs) => {
                 setMusicians(docs.reduce((prev, curr) => {
                     if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
