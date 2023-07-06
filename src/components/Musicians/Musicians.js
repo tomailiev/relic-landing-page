@@ -23,9 +23,13 @@ const Musicians = () => {
 
     const [musicians, setMusicians] = useState(placeholder);
     const dimensions = useDimensions();
+    const date = new Date();
+    const month = date.getMonth();
+    const seasonSwitch = month >= 7;
+    const season = seasonSwitch ? date.getFullYear() - 2021 : date.getFullYear() - 2022;
 
     useEffect(() => {
-        downloadDocs('musicians', ['featured', '==', true], ['name'])
+        downloadDocs('musicians', ['featured', '==', season], ['name'])
             .then((docs) => {
                 setMusicians(docs.reduce((prev, curr) => {
                     if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
@@ -37,7 +41,7 @@ const Musicians = () => {
                 console.error('not found');
                 console.error(e);
             })
-    }, []);
+    }, [season]);
 
     return (
         <>
