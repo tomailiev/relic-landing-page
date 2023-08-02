@@ -160,7 +160,7 @@ function App() {
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/musicians" element={<Musicians />} />
-                      <Route path="/events" element={<Events />} />
+                      <Route path="/events/:year" element={<Events />} />
                       <Route path="/bio" element={<Story />} />
                       <Route path='/journey' element={<Journey />} />
                       <Route path='/support' element={<Support />} />

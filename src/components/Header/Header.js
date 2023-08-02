@@ -12,6 +12,8 @@ import { analyze } from "../../utils/firebase/firestore-funcs";
 const Header = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const year = new Date().getFullYear();
+    const seasons = Array.from({length: year - 2021}, (_, i) => i + 2022);
 
     const navItems = [
         {
@@ -21,7 +23,12 @@ const Header = () => {
                 { path: '/journey', title: 'Journey' }
             ]
         },
-        { path: '/events', title: 'Events' },
+        { path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
+            return {
+                path: `/events/${item}`,
+                title: `Season ${item}-${(item + 1) % 2000}`
+            }
+        }) },
         { path: '/support', title: 'Support' },
         { path: '/contact', title: 'Contact' },
     ];

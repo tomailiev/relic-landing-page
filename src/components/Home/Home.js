@@ -24,7 +24,20 @@ const Home = () => {
                 </Typography>
                 <VideoWall />
                 {/* <MediaSection /> */}
-                {text.contentSections.map((content, i) => <ContentSection key={content.cardTitle} content={content} index={i} />)}
+                <ContentSection
+                    key={text.eventCardInfoTitle}
+                    route={text.eventCardRoute}
+                    infoTitle={text.eventCardInfoTitle}
+                    infoText={text.eventCardInfoText}
+                    cardImage={text.eventCardImage}
+                />
+                <ContentSection
+                    key={text.musicianCardInfoTitle}
+                    route={text.musicianCardRoute}
+                    infoTitle={text.musicianCardInfoTitle}
+                    infoText={text.musicianCardInfoText}
+                    cardImage={text.musicianCardImage}
+                />
             </Container>
         </>
     );
