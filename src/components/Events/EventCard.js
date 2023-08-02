@@ -10,7 +10,7 @@ const EventCard = ({ imageUrl, url }) => {
 
     useEffect(() => {
         getLink(imageUrl)
-            .then(val => setSrc(val))
+            .then(val => setSrc(URL.createObjectURL(val)))
             .catch(console.error);
     }, [imageUrl]);
 

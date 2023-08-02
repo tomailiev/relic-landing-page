@@ -14,9 +14,7 @@ const MusicianLI = ({ name, picUrl, bio, id, }) => {
         if (picUrl) {
             getLink(picUrl)
                 .then(val => {
-                    const img = new Image();
-                    img.src = val;
-                    img.onload = () => setSrc(val);
+                    setSrc(URL.createObjectURL(val));
                 })
                 .catch(console.error);
         }

@@ -29,7 +29,7 @@ const Musicians = () => {
     const season = seasonSwitch ? date.getFullYear() - 2021 : date.getFullYear() - 2022;
 
     useEffect(() => {
-        downloadDocs('musicians', ['featured', '==', season], ['name'])
+        downloadDocs('musicians', ['featured', '>=', season], ['featured', 'desc'], ['name'])
             .then((docs) => {
                 setMusicians(docs.reduce((prev, curr) => {
                     if (!prev[curr.newTitle]) prev[curr.newTitle] = [];

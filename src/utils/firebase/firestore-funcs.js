@@ -1,5 +1,5 @@
 import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc } from "firebase/firestore";
-import { ref, getDownloadURL } from "firebase/storage";
+import { ref, getBlob } from "firebase/storage";
 import { db, storage, logEvent, analytics } from './firebase-init';
 
 function uploadDoc(doc, col) {
@@ -9,15 +9,18 @@ function uploadDoc(doc, col) {
 }
 
 function getLink(url) {
-    return getDownloadURL(ref(storage, url));
+    // return getDownloadURL(ref(storage, url));
+    return getBlob(ref(storage, url));
 }
 
-function downloadDocs(col, condition, sorting) {
-    const q = sorting
-        ? query(collection(db, col), where(...condition), orderBy(...sorting))
-        : condition
-            ? query(collection(db, col), where(...condition))
-            : query(collection(db, col));
+function downloadDocs(col, condition, sorting, secondSorting) {
+    const q = secondSorting
+        ? query(collection(db, col), where(...condition), orderBy(...sorting), orderBy(...secondSorting))
+        : sorting
+            ? query(collection(db, col), where(...condition), orderBy(...sorting))
+            : condition
+                ? query(collection(db, col), where(...condition))
+                : query(collection(db, col));
     return getDocs(q)
         .then(qSnap => {
             const docs = [];
@@ -26,8 +29,8 @@ function downloadDocs(col, condition, sorting) {
             });
             return docs;
         })
-        .catch(_e => {
-            console.error('firebase failed to load');
+        .catch(e => {
+            console.error(e);
         })
 }
 
