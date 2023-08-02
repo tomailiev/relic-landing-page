@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import images from "../../data/images";
 // import CustomDivider from "./CustomDivider";
 
-const ContentSection = ({ content }) => {
+const ContentSection = ({ infoTitle, infoText, route, cardImage }) => {
 
     return (
         <>
@@ -11,12 +11,12 @@ const ContentSection = ({ content }) => {
             <Paper sx={{ my: 2, p: 1, }}>
                 <Grid container spacing={2} justifyContent="center" my={4}>
                     <Grid item md={6} sm={8} xs={12}>
-                        <Card component={RouterLink} to={content.route} sx={{ textDecoration: 'none' }}>
+                        <Card component={RouterLink} to={route} sx={{ textDecoration: 'none' }}>
                             <CardActionArea>
                                 <CardMedia
                                     component="img"
                                     height="300"
-                                    image={images[content.cardImage]}
+                                    image={images[cardImage]}
                                     alt="Event Image"
                                 />
                             </CardActionArea>
@@ -24,13 +24,13 @@ const ContentSection = ({ content }) => {
                     </Grid>
                     <Grid item md={6} textAlign={'center'}>
                         <Typography variant="h5" mb={2} mx={2}>
-                            {content.infoTitle}
+                            {infoTitle}
                         </Typography>
                         <Typography variant="body1" mx={2}>
-                            {content.infoText}
+                            {infoText}
                         </Typography>
-                        <Button component={RouterLink} to={content.route} variant="outlined" sx={{ m: 2 }}>
-                            {content.buttonText || 'See more'}
+                        <Button component={RouterLink} to={route} variant="outlined" sx={{ m: 2 }}>
+                            {'See more'}
                         </Button>
                     </Grid>
                 </Grid>

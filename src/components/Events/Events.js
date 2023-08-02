@@ -1,13 +1,15 @@
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 import EventSkeleton from "./EventSkeleton";
 import { useParams } from "react-router-dom";
+import TextContext from "../../context/TextContext";
 
 const Events = () => {
 
+    const { text } = useContext(TextContext);
     const [events, setEvents] = useState([]);
     const [hasUpdated, setHasUpdated] = useState(false);
     let { year } = useParams();
@@ -46,7 +48,9 @@ const Events = () => {
                         </Paper>
                     ))
                     : hasUpdated
-                        ? <Typography variant="h5" my={10}>Season announcement pending. Stay tuned!</Typography>
+                        ? <Container disableGutters sx={{ px: 3, py: 2, my: 2 }}>
+                            <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
+                        </Container>
                         : <EventSkeleton />
                 }
             </Container>

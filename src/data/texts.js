@@ -62,27 +62,16 @@ const texts = {
     actionCenterSubscribe: 'Receive updates about our journey!',
     footerGemsNote: 'Relic is a fiscal project of Gotham Early Music Scene, Inc., a 501(c)(3) non-profit organization registered in the State of New York. Your contribution is tax deductible to the full extent of the law.',
     subscribeTitle: 'Subscribe to our list!',
-    contentSections: [
-        {
-            infoTitle: 'Upcoming events',
-            infoText: 'Find out where you can see us live next!',
-            cardImage: 'eventsImage',
-            cardTitle: 'See events',
-            cardTexts: [''],
-            buttonText: '',
-            route: '/events'
-        },
-        {
-            infoTitle: 'Our Musicians',
-            infoText: 'Find out who we are and what we do!',
-            cardImage: 'musicianImage',
-            cardTitle: 'Our musicians',
-            cardTexts: ['PC: John Lacko'],
-            buttonText: '',
-            route: '/musicians'
-        }
-    ],
-    // siteHeading: 'RELIC',
+    eventCardInfoTitle: 'Upcoming events',
+    eventCardInfoText: 'Find out where you can see us live next!',
+    eventCardImage: 'eventsImage',
+    eventCardTitle: 'See all events',
+    eventCardRoute: '/events/2022',
+    musicianCardInfoTitle: 'Our Musicians',
+    musicianCardInfoText: 'Find out who we are and what we do!',
+    musicianCardImage: 'musicianImage',
+    musicianCardTitle: 'See musicians',
+    musicianCardRoute: '/musicians',
     siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states',
     aboutBio: 'Relic is a conductorless period chamber orchestra that aims to connect with audiences through intimate, innovative and dramatic representations of early music, and to present these performances to communities in all 50 states. Members of Relic perform on original eighteenth century instruments, or their replicas, and are fluent in the improvisational and ornamental languages of the Baroque and Classical era.',
     aboutStory: 'Once upon a time, six musicians encountered each other frequently at various concerts, rehearsals, and social gatherings across the United States. Through the sharing of ideas and aspirations, they recognized a mutual spark: an impulse to contribute to the accessibility and expansion of early music in small and large communities around the country. Backstage chats, onstage synergy and shared commutes led to the foundation of strong friendships and deep musical bonds. In a heartbeat, Relic was born.',
@@ -103,6 +92,7 @@ const texts = {
     supportSectionJoinTitle: 'JOIN THE RELIC FAMILY NOW',
     supportJoinTitle: "Don't Miss A Beat",
     supportVolunteersTitle: 'Volunteers',
+    seasonAnnouncementText: 'Season announcement pending. Stay tuned!',
 };
 
 export default texts;
