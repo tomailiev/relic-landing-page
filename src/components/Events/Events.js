@@ -4,20 +4,24 @@ import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 import EventSkeleton from "./EventSkeleton";
+import { useParams } from "react-router-dom";
 
 const Events = () => {
 
     const [events, setEvents] = useState([]);
+    const [hasUpdated, setHasUpdated] = useState(false);
+    let { year } = useParams();
+    year = Number(year);
     const date = new Date();
     const month = date.getMonth();
     const seasonSwitch = month >= 7;
-    const year = date.getFullYear();
     const seasonStart = seasonSwitch ? `${year}-08-01` : `${year - 1}-08-01`;
 
     useEffect(() => {
         downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
             .then(docs => {
                 setEvents(docs);
+                setHasUpdated(true);
             })
             .catch(console.error)
     }, [seasonStart]);
@@ -26,7 +30,7 @@ const Events = () => {
         <>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={8}>
-                    {seasonSwitch ? `${year}-${(year + 1) % 2000}`:`${year - 1}-${year % 2000}`} Concert Season
+                    {seasonSwitch ? `${year}-${(year + 1) % 2000}` : `${year - 1}-${year % 2000}`} Concert Season
                 </Typography>
                 {events.length
                     ? events.map(event => (
@@ -41,7 +45,9 @@ const Events = () => {
                             </Grid>
                         </Paper>
                     ))
-                    : <EventSkeleton />
+                    : hasUpdated
+                        ? <Typography variant="h5" my={10}>Season announcement pending. Stay tuned!</Typography>
+                        : <EventSkeleton />
                 }
             </Container>
         </>
