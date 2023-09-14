@@ -51,7 +51,18 @@ function App() {
       .catch(e => {
         setText(texts);
       })
-  }, [])
+  }, []);
+
+  const missionTexts = [
+    { textContent: text.aboutMission },
+    { textContent: text.aboutValues }
+  ];
+
+  const bioTexts = [
+    { textContent: text.aboutNewBio },
+    { textContent: text.aboutNewBio2 },
+    { textContent: text.aboutNewBio3 }
+  ];
 
   const location = useLocation();
 
@@ -159,10 +170,11 @@ function App() {
                   <CSSTransition key={location.key} classNames="fade" timeout={300}>
                     <Routes>
                       <Route path="/" element={<Home />} />
-                      <Route path="/musicians" element={<Musicians />} />
+                      <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
+                      <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Us'} />} />
+                      <Route path="/about/musicians" element={<Musicians />} />
+                      <Route path='/about/journey' element={<Journey />} />
                       <Route path="/events/:year" element={<Events />} />
-                      <Route path="/bio" element={<Story />} />
-                      <Route path='/journey' element={<Journey />} />
                       <Route path='/support' element={<Support />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />

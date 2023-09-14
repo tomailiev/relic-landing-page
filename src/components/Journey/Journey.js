@@ -1,4 +1,4 @@
-import { Paper, Typography, } from "@mui/material";
+import { Paper, Typography, useMediaQuery, useTheme, } from "@mui/material";
 import { Container } from "@mui/system";
 import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
@@ -11,6 +11,10 @@ const Journey = () => {
     const { text } = useContext(TextContext);
     const [events, setEvents] = useState([]);
     const mapRef = createRef();
+    
+    const theme = useTheme();
+    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
+
     // const [statesNum, setStatesNum] = useState(new Set());
 
 
@@ -36,7 +40,7 @@ const Journey = () => {
             loader.load()
                 .then(google => {
                     const map = new google.maps.Map(mapRef.current, {
-                        zoom: 3,
+                        zoom: smMatch ? 3 : 4,
                         center: center
                     });
                     events.forEach((position) => {
@@ -73,7 +77,7 @@ const Journey = () => {
                 })
                 .catch(e => console.log(e));
         }
-    }, [events, mapRef])
+    }, [events, mapRef, smMatch])
 
 
     return (
