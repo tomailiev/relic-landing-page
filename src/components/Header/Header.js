@@ -18,9 +18,10 @@ const Header = () => {
     const navItems = [
         {
             path: '/about', title: 'About', menu: [
-                { path: '/bio', title: 'Relic' },
-                { path: '/musicians', title: 'Musicians' },
-                { path: '/journey', title: 'Journey' }
+                { path: '/about/bio', title: 'Relic' },
+                { path: '/about/mission', title: 'Mission' },
+                { path: '/about/musicians', title: 'Musicians' },
+                { path: '/about/journey', title: 'Journey' }
             ]
         },
         { path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
