@@ -1,18 +1,24 @@
-import { Container, Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+import { downloadDocs, getLink } from "../../utils/firebase/firestore-funcs";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 import EventSkeleton from "./EventSkeleton";
 import { useParams } from "react-router-dom";
 import TextContext from "../../context/TextContext";
+import { useTheme } from "@emotion/react";
+
 
 const Events = () => {
 
     const { text } = useContext(TextContext);
+    const [seasonAnnouncementPic, setSeasonAnnouncementPic] = useState(null);
     const [events, setEvents] = useState([]);
     const [hasUpdated, setHasUpdated] = useState(false);
     let { year } = useParams();
+    const theme = useTheme();
+    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
+
     year = Number(year);
     const date = new Date();
     const month = date.getMonth();
@@ -24,9 +30,15 @@ const Events = () => {
             .then(docs => {
                 setEvents(docs);
                 setHasUpdated(true);
+                return docs.length ? Promise.resolve(false) : getLink(`images/season_announcement_${year}.jpg`)
+            })
+            .then(docsExist => {
+                if (docsExist) {
+                    setSeasonAnnouncementPic(docsExist)
+                }
             })
             .catch(console.error)
-    }, [seasonStart]);
+    }, [seasonStart, year]);
 
     return (
         <>
@@ -48,8 +60,12 @@ const Events = () => {
                         </Paper>
                     ))
                     : hasUpdated
-                        ? <Container disableGutters sx={{ px: 3, py: 2, my: 2 }}>
-                            <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
+                        ? <Container disableGutters sx={{ px: 1, py: 2, my: 2,}}>
+                            {/* <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography> */}
+                            {seasonAnnouncementPic
+                                ? <img src={seasonAnnouncementPic} alt={text.seasonAnnouncementText} height={'auto'} width={smMatch ? '95%' : '65%'} />
+                                : <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
+                        }
                         </Container>
                         : <EventSkeleton />
                 }
