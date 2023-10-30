@@ -29,15 +29,18 @@ const Events = () => {
         downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
             .then(docs => {
                 setEvents(docs);
-                setHasUpdated(true);
                 return docs.length ? Promise.resolve(false) : getLink(`images/season_announcement_${year}.jpg`)
             })
-            .then(docsExist => {
-                if (docsExist) {
-                    setSeasonAnnouncementPic(docsExist)
+            .then(result => {
+                if (result) {
+                    setSeasonAnnouncementPic(result)
                 }
+                setHasUpdated(true);
             })
-            .catch(console.error)
+            .catch(e => {
+                setHasUpdated(true);
+                console.error(e);
+            })
     }, [seasonStart, year]);
 
     return (
