@@ -24,11 +24,13 @@ const Events = () => {
     const month = date.getMonth();
     const seasonSwitch = month >= 7;
     const seasonStart = seasonSwitch ? `${year}-08-01` : `${year - 1}-08-01`;
+    const seasonEnd = seasonSwitch ? `${year + 1}-08-01` : `${year}-08-01`;
 
     useEffect(() => {
         downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
             .then(docs => {
-                setEvents(docs);
+                console.log(docs.map(i => i.dateDone.toDate() > new Date(seasonEnd)));
+                setEvents(docs.filter(i => !(i.dateDone.toDate() > new Date(seasonEnd))));
                 return docs.length ? Promise.resolve(false) : getLink(`images/season_announcement_${year}.jpg`)
             })
             .then(result => {
@@ -41,7 +43,7 @@ const Events = () => {
                 setHasUpdated(true);
                 console.error(e);
             })
-    }, [seasonStart, year]);
+    }, [seasonStart, year, seasonEnd]);
 
     return (
         <>
