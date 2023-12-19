@@ -1,4 +1,4 @@
-import { Avatar, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { Avatar, Link, List, ListItemAvatar, ListItemButton, ListItemText, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 
@@ -21,14 +21,14 @@ const EventInfo = ({ event }) => {
                     {event.performances.sort((a, b) => a.id - b.id).map(({ id, date, day, time, location, venue, url }) => {
                         return (
                             <Link key={id} href={url} target={'_blank'} underline={'none'}>
-                                <ListItem button>
+                                <ListItemButton>
                                     <ListItemAvatar>
-                                        <Avatar>
+                                        <Avatar sx={{background: '#09455a'}}>
                                             <ConfirmationNumberOutlinedIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText primary={`${venue} - ${location}`} secondary={`${day}, ${date} - ${time}`} />
-                                </ListItem>
+                                </ListItemButton>
                             </Link>
                         )
                     })}
