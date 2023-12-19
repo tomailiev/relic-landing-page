@@ -29,7 +29,7 @@ const Events = () => {
     useEffect(() => {
         downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
             .then(docs => {
-                setEvents(docs.filter(i => !(i.dateDone.toDate() > new Date(seasonEnd))));
+                setEvents(docs.filter(i => i.dateDone.toDate() < new Date(seasonEnd)));
                 return docs.length ? Promise.resolve(false) : getLink(`images/season_announcement_${year}.jpg`)
             })
             .then(result => {
