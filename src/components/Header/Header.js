@@ -12,8 +12,11 @@ import { analyze } from "../../utils/firebase/firestore-funcs";
 const Header = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const year = new Date().getFullYear();
-    const seasons = Array.from({length: year - 2021}, (_, i) => i + 2022);
+    const date = new Date();
+    const month = date.getMonth();
+    const seasonSwitch = month >= 7;
+    const year = date.getFullYear();
+    const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
 
     const navItems = [
         {
@@ -24,12 +27,14 @@ const Header = () => {
                 { path: '/about/journey', title: 'Journey' }
             ]
         },
-        { path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
-            return {
-                path: `/events/${item}`,
-                title: `Season ${item}-${(item + 1) % 2000}`
-            }
-        }) },
+        {
+            path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
+                return {
+                    path: `/events/${item}`,
+                    title: `Season ${item}-${(item + 1) % 2000}`
+                }
+            })
+        },
         { path: '/support', title: 'Support' },
         { path: '/contact', title: 'Contact' },
     ];
@@ -62,7 +67,7 @@ const Header = () => {
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'90px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid' }} variant="outlined" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid' }} variant="outlined" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', { content_type: 'donate_button' })}>
                             Donate
                         </Button>
                     </Box>
