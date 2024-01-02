@@ -20,11 +20,8 @@ const Events = () => {
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
     year = Number(year);
-    const date = new Date();
-    const month = date.getMonth();
-    const seasonSwitch = month >= 7;
-    const seasonStart = seasonSwitch ? `${year}-08-01` : `${year - 1}-08-01`;
-    const seasonEnd = seasonSwitch ? `${year + 1}-08-01` : `${year}-08-01`;
+    const seasonStart = `${year}-08-01`;
+    const seasonEnd = `${year + 1}-08-01`;
 
     useEffect(() => {
         downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'desc'])
@@ -48,7 +45,7 @@ const Events = () => {
         <>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={8}>
-                    {seasonSwitch ? `${year}-${(year + 1) % 2000}` : `${year - 1}-${year % 2000}`} Concert Season
+                    {`${year}-${(year + 1) % 2000}`} Concert Season
                 </Typography>
                 {events.length
                     ? events.map(event => (
