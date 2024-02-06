@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import LoadingContext from "../../context/LoadingContext";
 import NotificationContext from "../../context/NotificationContext";
 import TextContext from "../../context/TextContext";
-import { uploadDoc } from "../../utils/firebase/firestore-funcs";
+import { uploadDocWithId } from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
 
 const fields = {
@@ -32,7 +32,17 @@ const SubscribeForm = () => {
         setLoading(true);
         setIsSubmitting(true);
         emailSubSchema.validate(userFields, { abortEarly: false })
-            .then(val => uploadDoc(val, 'subscribers'))
+            .then(val => {
+                const nonInputData = {
+                    id: val.email.toLowerCase(),
+                    import: 'subscribe_btn',
+                    opt_in_time: new Date().toISOString(),
+                    status: 1,
+                    location: '',
+                    tags: ['']
+                };
+                return uploadDocWithId(Object.assign(val, nonInputData), 'subscribers', val.email.toLowerCase());
+            })
             .then(() => {
                 setUserFields(fields);
                 setLoading(false);
