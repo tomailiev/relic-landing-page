@@ -5,7 +5,6 @@ import NotificationContext from "../../context/NotificationContext";
 import TextContext from "../../context/TextContext";
 import { uploadDocWithId } from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
-import { Timestamp } from "firebase/firestore";
 
 const fields = {
     firstName: '',
@@ -37,7 +36,7 @@ const SubscribeForm = () => {
                 const nonInputData = {
                     id: val.email.toLowerCase(),
                     import: 'subscribe_btn',
-                    opt_in_time: Timestamp.fromDate(new Date()),
+                    opt_in_time: new Date().toISOString(),
                     status: 1,
                     location: '',
                     tags: ['']
