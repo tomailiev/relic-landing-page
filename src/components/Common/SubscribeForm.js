@@ -36,7 +36,7 @@ const SubscribeForm = () => {
             .then(val => {
                 const nonInputData = {
                     id: val.email.toLowerCase(),
-                    import: 'subscribe_btn',
+                    imported: 'subscribe_btn',
                     email: val.email.toLowerCase(),
                     opt_in_time: new Date().toISOString(),
                     status: 1,

@@ -41,7 +41,7 @@ const ContactForm = () => {
                 if (willSubscribe) {
                     const subscriberData = {
                         id: val.email.toLowerCase(),
-                        import: 'contact_form',
+                        imported: 'contact_form',
                         email: val.email.toLowerCase(),
                         opt_in_time: new Date().toISOString(),
                         status: 1,
