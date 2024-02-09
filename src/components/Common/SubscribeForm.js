@@ -5,6 +5,7 @@ import NotificationContext from "../../context/NotificationContext";
 import TextContext from "../../context/TextContext";
 import { uploadDocWithId } from "../../utils/firebase/firestore-funcs";
 import { emailSubSchema } from "../../utils/yup/schemas";
+import { arrayUnion } from "firebase/firestore";
 
 const fields = {
     firstName: '',
@@ -35,11 +36,12 @@ const SubscribeForm = () => {
             .then(val => {
                 const nonInputData = {
                     id: val.email.toLowerCase(),
-                    import: 'subscribe_btn',
+                    imported: 'subscribe_btn',
+                    email: val.email.toLowerCase(),
                     opt_in_time: new Date().toISOString(),
                     status: 1,
                     location: '',
-                    tags: ['']
+                    tags: arrayUnion('website')
                 };
                 return uploadDocWithId(Object.assign(val, nonInputData), 'subscribers', val.email.toLowerCase());
             })

@@ -4,8 +4,9 @@ import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
 // import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 // import Favorite from '@mui/icons-material/Favorite';
-import { uploadDoc } from "../../utils/firebase/firestore-funcs";
+import { uploadDoc, uploadDocWithId } from "../../utils/firebase/firestore-funcs";
 import LoadingContext from "../../context/LoadingContext";
+import { arrayUnion } from "firebase/firestore";
 
 const fields = {
     firstName: '',
@@ -36,7 +37,26 @@ const ContactForm = () => {
         setLoading(true);
         setIsSubmitting(true);
         contactFormSchema.validate(userFields, { abortEarly: false })
-            .then(val => uploadDoc({ ...val, subscriber: willSubscribe }, 'messages'))
+            .then(val => {
+                if (willSubscribe) {
+                    const subscriberData = {
+                        id: val.email.toLowerCase(),
+                        imported: 'contact_form',
+                        email: val.email.toLowerCase(),
+                        opt_in_time: new Date().toISOString(),
+                        status: 1,
+                        location: '',
+                        tags: arrayUnion('website'),
+                        firstName: val.firstName,
+                        lastName: val.lastName,
+                    };
+                    return Promise.all([
+                        uploadDoc({ ...val, subscriber: willSubscribe }, 'messages'),
+                        uploadDocWithId(subscriberData, 'subscribers', val.email.toLowerCase())
+                    ])
+                }
+                return uploadDoc({ ...val, subscriber: willSubscribe }, 'messages')
+            })
             .then(() => {
                 setUserFields(fields);
                 setIsSubmitting(false);
