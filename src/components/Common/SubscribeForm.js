@@ -38,7 +38,6 @@ const SubscribeForm = () => {
                     id: val.email.toLowerCase(),
                     imported: 'subscribe_btn',
                     email: val.email.toLowerCase(),
-                    opt_in_time: new Date().toISOString(),
                     status: 1,
                     location: '',
                     tags: arrayUnion('website')
