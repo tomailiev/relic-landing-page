@@ -28,7 +28,7 @@ const DonorLevels = () => {
             <Box mb={5}>
                 <Container maxWidth={'md'}>
                     {
-                        tiers.map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} />)
+                        tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} />)
                     }
                 </Container>
             </Box>
