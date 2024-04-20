@@ -35,7 +35,12 @@ const Header = () => {
                 }
             })
         },
-        { path: '/support', title: 'Support' },
+        {
+            path: '/support', title: 'Support', menu: [
+                { path: '/support/donate', title: 'Give now!' },
+                { path: '/support/levels', title: 'Donor Levels' }
+            ]
+        },
         { path: '/contact', title: 'Contact' },
     ];
 
