@@ -31,6 +31,7 @@ import NoMatch from './components/Common/NoMatch';
 import Journey from './components/Journey/Journey';
 import Support from './components/Support/Support';
 import Cochin from './assets/fonts/Cochin.woff2';
+import DonorLevels from './components/Support/DonorLevels';
 
 function App() {
 
@@ -175,7 +176,8 @@ function App() {
                       <Route path="/about/musicians" element={<Musicians />} />
                       <Route path='/about/journey' element={<Journey />} />
                       <Route path="/events/:year" element={<Events />} />
-                      <Route path='/support' element={<Support />} />
+                      <Route path='/support/donate' element={<Support />} />
+                      <Route path={'/support/levels'} element={<DonorLevels />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
                       <Route path="*" element={<NoMatch />} />
