@@ -47,6 +47,7 @@ const HostItem = ({ textContent, right, bgImage }) => {
                 <Paper square elevation={0} sx={isSelected ? {
                     ...textCss,
                     left: smMatch ? '5%' : right ? '-20%' : '50%',
+                    width: right ? '70%' : '50%',
                     transition: 'left 1s ease-out'
                 } : textCss}>
                     <Typography variant="body1" fontSize={smMatch ? '1em' : '1.2em'}>
