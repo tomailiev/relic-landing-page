@@ -1,4 +1,4 @@
-import { Typography, Container, Box, } from "@mui/material";
+import { Typography, Container, Box, Button, } from "@mui/material";
 import { Link } from "react-router-dom";
 import HostItem from "./HostItem";
 import publicConcertBgImg from '../../assets/imgs/IMG_1457.JPG';
@@ -10,7 +10,7 @@ const Host = () => {
     const content = [
         { textContent: 'Public concerts', bgImage: publicConcertBgImg },
         { textContent: 'Family concerts', bgImage: familyConcertBgImg },
-        { textContent: 'Private performances', bgImage: privateConcertBgImg },
+        { textContent: 'Private concerts', bgImage: privateConcertBgImg },
         { textContent: 'School visits', bgImage: schoolVisitBgImg },
     ];
 
@@ -31,6 +31,11 @@ const Host = () => {
                     return <HostItem key={i} bgImage={bgImage} textContent={textContent} right={i % 2} />
                 })}
             </Container>
+            <Box textAlign={'center'} mb={3}>
+                <Link to={'/contact'}>
+                    <Button variant="contained" size="large">Inquire</Button>
+                </Link>
+            </Box>
         </>
     );
 };
