@@ -38,7 +38,8 @@ const Header = () => {
         {
             path: '/support', title: 'Support', menu: [
                 { path: '/support/donate', title: 'Give now!' },
-                { path: '/support/levels', title: 'Donor Levels' }
+                { path: '/support/tiers', title: 'Donor Tiers' },
+                { path: '/support/host', title: 'Host Relic' }
             ]
         },
         { path: '/contact', title: 'Contact' },
