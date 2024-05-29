@@ -1,7 +1,5 @@
 import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
-import FacebookRoundedIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YoutubeIcon from '@mui/icons-material/YouTube';
+import { FacebookRounded, Instagram, YouTube } from '@mui/icons-material';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 import { useContext } from "react";
@@ -15,11 +13,14 @@ const Footer = () => {
 
     return (
         <footer style={{ background: theme.palette.primary.main, padding: 10 }}>
-            {/* <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
-                <InstagramIcon />
+            {/* <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '150px' }}>
+                <Email />
             </Fab>
             <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '100px' }}>
-                <FacebookRoundedIcon />
+                <FacebookRounded />
+            </Fab>
+            <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
+                <Instagram />
             </Fab> */}
             <Container disableGutters>
                 <Box justifyContent={'center'} mx={5}>
@@ -30,17 +31,17 @@ const Footer = () => {
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href={links.facebook} target={"_blank"}>
-                            <FacebookRoundedIcon fontSize="inherit" />
+                            <FacebookRounded fontSize="inherit" />
                         </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href={links.insta} target={"_blank"}>
-                            <InstagramIcon fontSize="inherit" />
+                            <Instagram fontSize="inherit" />
                         </Link>
                     </IconButton>
                     <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href={links.youtube} target={"_blank"}>
-                            <YoutubeIcon fontSize="inherit" />
+                            <YouTube fontSize="inherit" />
                         </Link>
                     </IconButton>
                 </Box>
