@@ -1,16 +1,19 @@
 import { AppBar, Toolbar, IconButton, Box, Button, } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NavMenuItem from "./NavMenuItem";
 import ResponsiveDrawer from "./ResponsiveDrawer";
-import { links } from "../../data/links";
+// import { links } from "../../data/links";
 import logo from "../../assets/logos/relic-logo-bw.png";
-import { analyze } from "../../utils/firebase/firestore-funcs";
+// import { analyze } from "../../utils/firebase/firestore-funcs";
+import DialogContext from "../../context/DialogContext";
+import SubscribeForm from "../Common/SubscribeForm";
 
 
 const Header = () => {
 
+    const {setDialog} = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const date = new Date();
     const month = date.getMonth();
@@ -72,9 +75,9 @@ const Header = () => {
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
-                    <Box width={'90px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid' }} variant="outlined" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', { content_type: 'donate_button' })}>
-                            Donate
+                    <Box width={'110px'}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid' }} variant="outlined" onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
+                            Subscribe
                         </Button>
                     </Box>
                 </Toolbar>
