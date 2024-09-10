@@ -30,7 +30,7 @@ const Header = () => {
         {
             path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
                 return {
-                    path: `/events/${item}`,
+                    path: `/events/${item}-${(item + 1) % 2000}`,
                     title: `Season ${item}-${(item + 1) % 2000}`
                 }
             })

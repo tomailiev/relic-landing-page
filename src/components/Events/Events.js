@@ -19,7 +19,7 @@ const Events = () => {
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
-    year = Number(year);
+    year = Number(year.substring(0, 4));
     const seasonStart = `${year}-08-01`;
     const seasonEnd = `${year + 1}-08-01`;
 
