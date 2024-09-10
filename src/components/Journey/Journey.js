@@ -6,6 +6,7 @@ import markerIcon from '../../assets/imgs/maps-marker-32.png'
 import { downloadDocs } from "../../utils/firebase/firestore-funcs";
 import TextContext from "../../context/TextContext";
 
+//revise if international engagements!!
 const Journey = () => {
 
     const { text } = useContext(TextContext);
@@ -14,9 +15,6 @@ const Journey = () => {
     
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
-
-    // const [statesNum, setStatesNum] = useState(new Set());
-
 
     useEffect(() => {
         downloadDocs('events')
@@ -88,7 +86,13 @@ const Journey = () => {
             <Paper elevation={3} sx={{ my: 2, mx: 3, py: 5, px: 1 }}>
                 <Container maxWidth={'lg'}>
                     <Typography textAlign={'left'}>
-                        {text.mapText.replace('{statesNum}', 6)}
+                        {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
+                                const state = c.locationName.substring(c.locationName.length - 3);
+                                if (!a.includes(state) && state !== '.C.') {
+                                    return a.concat(state);
+                                }
+                                return a;
+                        }, []).length : 1)}
                     </Typography>
                 </Container>
                 <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px', my: 5 }} />

@@ -3,7 +3,7 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import '@fontsource/lato/300.css';
 import '@fontsource/lato/400.css';
 import '@fontsource/julius-sans-one/400.css';
@@ -32,6 +32,7 @@ import Journey from './components/Journey/Journey';
 import Support from './components/Support/Support';
 import Cochin from './assets/fonts/Cochin.woff2';
 import DonorLevels from './components/Support/DonorLevels';
+import Host from './components/Support/Host';
 
 function App() {
 
@@ -177,7 +178,9 @@ function App() {
                       <Route path='/about/journey' element={<Journey />} />
                       <Route path="/events/:year" element={<Events />} />
                       <Route path='/support/donate' element={<Support />} />
-                      <Route path={'/support/levels'} element={<DonorLevels />} />
+                      <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
+                      <Route path={'/support/tiers'} element={<DonorLevels />} />
+                      <Route path={'/support/host'} element={<Host />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/donate" element={<Forward />} />
                       <Route path="*" element={<NoMatch />} />
