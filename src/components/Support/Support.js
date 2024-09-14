@@ -47,7 +47,7 @@ const Support = () => {
                     <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
                     {/* <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button> */}
                     <Card variant="outlined" sx={{ mb: 3 }}>
-                        <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'600px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" onLoad={(e) => e.target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}></iframe>
+                        <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'603px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" ></iframe>
                     </Card>
                     {/* <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
                         {text.supportDonateNowNote}

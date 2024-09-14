@@ -31,7 +31,7 @@ const CommonDialog = () => {
             </DialogTitle>
             <DialogContent dividers={!(dialog?.type === 'subscription')}>
             {dialog?.type === 'donation'
-                ? <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'600px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" onLoad={(e) => e.target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}></iframe>
+                ? <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'610px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" onLoad={(e) => e.target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}></iframe>
                 : dialog?.component
             }
             </DialogContent>
