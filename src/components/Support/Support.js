@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Divider, Link, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Link, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -8,7 +8,7 @@ import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
 import SubscribeForm from "../Common/SubscribeForm";
 import TypographyCombo from "./TypographyCombo";
-import { analyze } from "../../utils/firebase/firestore-funcs";
+// import { analyze } from "../../utils/firebase/firestore-funcs";
 
 
 const Support = () => {
@@ -40,15 +40,18 @@ const Support = () => {
                 Support Relic
             </Typography>
             <Box mt={2} mb={5}>
-                <Container maxWidth={'md'}>
-                    <Typography variant="h5" textAlign={'left'} my={2} textTransform={'uppercase'}>
+                <Container maxWidth={'lg'}>
+                    {/* <Typography variant="h5" textAlign={'left'} my={2} textTransform={'uppercase'}>
                         {text.supportSectionDonateTitle}
-                    </Typography>
+                    </Typography> */}
                     <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
-                    <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button>
-                    <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
+                    {/* <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button> */}
+                    <Card variant="outlined" sx={{ mb: 3 }}>
+                        <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'600px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" onLoad={(e) => e.target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}></iframe>
+                    </Card>
+                    {/* <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
                         {text.supportDonateNowNote}
-                    </Typography>
+                    </Typography> */}
                     <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckText} />
                     <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
                         <CardContent>
@@ -63,16 +66,14 @@ const Support = () => {
                     <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText} />
                     <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText} />
                 </Container>
-            </Box>
+            {/* </Box>
             <Divider />
-            <Box mt={2} my={10} textAlign="left">
-                <Container maxWidth={'md'}>
-                    <Typography variant="h5" my={2} textTransform={'uppercase'}>
+            <Box mt={2} my={10} textAlign="left"> */}
+                <Container maxWidth={'lg'}>
+                    {/* <Typography variant="h5" my={2} textTransform={'uppercase'}>
                         {text.supportSectionJoinTitle}
-                    </Typography>
+                    </Typography> */}
                     <TypographyCombo title={text.supportJoinTitle} text={joinText} />
-                </Container>
-                <Container maxWidth={'md'}>
                     <TypographyCombo title={text.supportVolunteersTitle} text={volunteerText} />
                 </Container>
             </Box>
