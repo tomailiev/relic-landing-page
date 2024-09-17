@@ -182,7 +182,7 @@ function App() {
                       <Route path={'/support/tiers'} element={<DonorLevels />} />
                       <Route path={'/support/host'} element={<Host />} />
                       <Route path="/contact" element={<Contact />} />
-                      <Route path="/donate" element={<Forward />} />
+                      <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
                       <Route path="*" element={<NoMatch />} />
                     </Routes>
                   </CSSTransition>
