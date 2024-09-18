@@ -3,14 +3,21 @@ import { Container } from "@mui/system"
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import TextContext from "../../context/TextContext";
-import { links } from '../../data/links';
 import SubscribeForm from "./SubscribeForm";
+import LoadingContext from "../../context/LoadingContext";
 import { analyze } from "../../utils/firebase/firestore-funcs";
 
 const ActionCenter = () => {
 
     const { setDialog } = useContext(DialogContext);
     const { text } = useContext(TextContext);
+    const { setLoading } = useContext(LoadingContext);
+
+    function handleDonateButtonClick() {
+        analyze('select_content', { content_type: 'donate_button' });
+        setLoading(true);
+        setDialog({ type: 'donation', title: 'support relic' })
+    }
 
     return (
         <>
@@ -21,7 +28,7 @@ const ActionCenter = () => {
                 </Typography>
                 <Grid container my={6}>
                     <Grid item md={6} xs={12} textAlign="center" my={2}>
-                        <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button>
+                        <Button variant="contained" size="large" onClick={handleDonateButtonClick}>Donate</Button>
                         <Typography variant="body1" mt={3}>
                             {text.actionCenterDonate}
                         </Typography>
