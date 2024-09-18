@@ -1,14 +1,12 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
-import { links } from '../../data/links'
 import CloseIcon from '@mui/icons-material/Close';
-import LoadingContext from "../../context/LoadingContext";
 
 const CommonDialog = () => {
 
     const { dialog, setDialog } = useContext(DialogContext);
-    const { setLoading } = useContext(LoadingContext);
+
     return (
         <Dialog
             fullWidth={true}
@@ -31,10 +29,7 @@ const CommonDialog = () => {
                 </IconButton>
             </DialogTitle>
             <DialogContent dividers={!(dialog?.type === 'subscription')}>
-                {dialog?.type === 'donation'
-                    ? <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'610px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" onLoad={() => setLoading(false)} onError={() => setLoading(false)}></iframe>
-                    : dialog?.component
-                }
+                {dialog?.component}
             </DialogContent>
             <DialogActions>
                 <Button variant="contained" onClick={() => setDialog(null)}>Close</Button>

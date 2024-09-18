@@ -49,9 +49,9 @@ const Support = () => {
                     <Card variant="outlined" sx={{ mb: 3 }}>
                         <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'603px'} frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" allowtransparency="true" ></iframe>
                     </Card>
-                    {/* <Typography variant="body2" fontStyle={'italic'} mt={3} mb={5}>
-                        {text.supportDonateNowNote}
-                    </Typography> */}
+                    <Typography variant="body2" fontStyle={'italic'} mb={5}>
+                        Form not loading? <Link href={links.gems} target="_blank" referrerPolicy="no-referrer">Click here</Link>
+                    </Typography>
                     <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckText} />
                     <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
                         <CardContent>
@@ -66,7 +66,7 @@ const Support = () => {
                     <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText} />
                     <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText} />
                 </Container>
-            {/* </Box>
+                {/* </Box>
             <Divider />
             <Box mt={2} my={10} textAlign="left"> */}
                 <Container maxWidth={'lg'}>

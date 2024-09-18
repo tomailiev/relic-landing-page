@@ -6,6 +6,7 @@ import TextContext from "../../context/TextContext";
 import SubscribeForm from "./SubscribeForm";
 import LoadingContext from "../../context/LoadingContext";
 import { analyze } from "../../utils/firebase/firestore-funcs";
+import DonateForm from "./DonateForm";
 
 const ActionCenter = () => {
 
@@ -16,7 +17,7 @@ const ActionCenter = () => {
     function handleDonateButtonClick() {
         analyze('select_content', { content_type: 'donate_button' });
         setLoading(true);
-        setDialog({ type: 'donation', title: 'support relic' })
+        setDialog({ type: 'donation', title: 'support relic', component: <DonateForm /> })
     }
 
     return (
