@@ -177,11 +177,13 @@ function App() {
                       <Route path='/about/journey' element={<Journey />} />
                       <Route path="/events/:year" element={<Events />} />
                       <Route path='/support/donate' element={<Support />} />
-                      <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                       <Route path={'/support/tiers'} element={<DonorLevels />} />
                       <Route path={'/support/host'} element={<Host />} />
                       <Route path="/contact" element={<Contact />} />
+                      <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                       <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
+                      <Route path="/events" element={<Navigate to={'/events/2024-25'} />} />
+                      <Route path="/event" element={<Navigate to={'/events/2024-25'} />} />
                       <Route path="*" element={<NoMatch />} />
                     </Routes>
                   </CSSTransition>
