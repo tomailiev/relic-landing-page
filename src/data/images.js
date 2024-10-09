@@ -1,5 +1,5 @@
-import eventsImage from '../assets/imgs/0121.jpg';
-import musicianImage from '../assets/imgs/0063.jpg';
+import eventsImage from '../assets/imgs/IMG_1397.JPG';
+import musicianImage from '../assets/imgs/IMG_2261.JPG';
 import logo_white from "../assets/logos/Relic-logo_white.png";
 import logo_gold from '../assets/logos/Relic-logo_gold.png';
 import logo_black from '../assets/logos/Relic-logo_black.png';
