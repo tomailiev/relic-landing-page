@@ -51,7 +51,6 @@ const Header = ({location}) => {
         { path: '/contact', title: 'Contact' },
     ];
 
-    console.log(location);
     
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
