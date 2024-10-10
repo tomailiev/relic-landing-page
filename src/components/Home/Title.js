@@ -18,14 +18,14 @@ const Title = () => {
             sx={{
                 position: 'absolute',
                 left: '50%',
-                top: '75%',
+                top: '65%',
                 transform: 'translate(-50%, -50%)',
                 textShadow: '2px 2px black, -2px -2px black',
                 opacity: 1
             }}
         >
             {/* {text.siteHeading || 'RELIC'} */}
-            <img width={'100%'} src={logos.logo_white} alt={'logo'} style={{ background: 'rgba(0,0,0,0.48)' }} />
+            <img width={'100%'} src={logos.logo_white} alt={'logo'} />
         </Typography>
     )
 };
