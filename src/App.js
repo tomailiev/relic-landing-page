@@ -166,7 +166,7 @@ function App() {
                 <Notification />
                 <CommonDialog />
                 <CssBaseline />
-                <Header />
+                <Header location={location} />
                 <TransitionGroup component={null}>
                   <CSSTransition key={location.key} classNames="fade" timeout={300}>
                     <Routes>
