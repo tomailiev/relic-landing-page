@@ -5,7 +5,7 @@ import { getLink } from "../../utils/firebase/firestore-funcs";
 import MusicianDialog from "./MusicianDialog";
 import MusicianSkeleton from "./MusicianSkeleton";
 
-const MusicianLI = ({ name, picUrl, bio, id, }) => {
+const MusicianLI = ({ name, picUrl, bio, id, chair }) => {
     const { setDialog } = useContext(DialogContext);
 
     const [src, setSrc] = useState(null);
@@ -31,6 +31,7 @@ const MusicianLI = ({ name, picUrl, bio, id, }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary={name}
+                        secondary={chair}
                         primaryTypographyProps={{
                             fontSize: '1.2em',
                         }}

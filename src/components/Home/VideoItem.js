@@ -24,7 +24,7 @@ const VideoItem = ({ video, index, currentIndex, playVideo, length, switchInterv
             left: `${(position < 0 && position !== -(length - 1)) || isShifting ? 150 : position === 1 || position === -(length - 1) ? -150 : 0}%`,
             top: 0,
             width: position ? '0px' : 'calc(100% + 16px)',
-            transition: Math.abs(position) === 1 || Math.abs(position) === length - 1? 'width 7s ease-in, visibility 5s ease-in, left 1s ease-in' : !position ? 'left 1s ease-in, width 100ms ease-in' : 'none',
+            transition: Math.abs(position) === 1 || Math.abs(position) === length - 1 ? 'width 7s ease-in, visibility 5s ease-in, left 1s ease-in' : !position ? 'left 1s ease-in, width 100ms ease-in' : 'none',
             visibility: position ? 'hidden' : 'visible',
         }}>
             <Grid item md={6} sm={8} xs={12}>

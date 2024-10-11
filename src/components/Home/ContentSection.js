@@ -1,10 +1,11 @@
 import { Button, Card, CardActionArea, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import images from "../../data/images";
+import { useState } from "react";
 // import CustomDivider from "./CustomDivider";
 
 const ContentSection = ({ infoTitle, infoText, route, cardImage }) => {
-
+    const [boxShadow, setBoxShadow] = useState(10);
     return (
         <>
             {/* {index !== 0 && <CustomDivider />} */}
@@ -18,6 +19,9 @@ const ContentSection = ({ infoTitle, infoText, route, cardImage }) => {
                                     height="300"
                                     image={images[cardImage]}
                                     alt="Event Image"
+                                    sx={{borderRadius: 2, boxShadow: boxShadow, border: `${boxShadow ? 0 : 3}px solid #ffffff`, transition: 'border 80ms ease-in-out'}}
+                                    onMouseEnter={() => setBoxShadow(0)}
+                                    onMouseLeave={() => setBoxShadow(10)}
                                 />
                             </CardActionArea>
                         </Card>
