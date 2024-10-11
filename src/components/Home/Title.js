@@ -7,18 +7,19 @@ const Title = () => {
 
     return (
         <Typography
-            maxWidth={'100%'}
+            maxWidth={'75%'}
             // maxHeight={'100%'}
             textAlign={'center'}
             variant="h1"
             // mt={'85px'}
             // mx={1}
+            width={450}
             color={'white'}
             zIndex={200}
             sx={{
                 position: 'absolute',
                 left: '50%',
-                top: '65%',
+                top: '60%',
                 transform: 'translate(-50%, -50%)',
                 textShadow: '2px 2px black, -2px -2px black',
                 opacity: 1

@@ -19,7 +19,7 @@ const ContentSection = ({ infoTitle, infoText, route, cardImage }) => {
                                     height="300"
                                     image={images[cardImage]}
                                     alt="Event Image"
-                                    sx={{borderRadius: 3, boxShadow: boxShadow, border: `${boxShadow ? 0 : 3}px solid #ffffff`, transition: 'border 80ms ease-in-out'}}
+                                    sx={{borderRadius: 2, boxShadow: boxShadow, border: `${boxShadow ? 0 : 3}px solid #ffffff`, transition: 'border 80ms ease-in-out'}}
                                     onMouseEnter={() => setBoxShadow(0)}
                                     onMouseLeave={() => setBoxShadow(10)}
                                 />
