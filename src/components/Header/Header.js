@@ -74,12 +74,12 @@ const Header = ({location}) => {
                     </Box>
                     <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
-                            return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} trigger={trigger} />
+                            return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'110px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid', color: 'rgba(6, 48, 62, 1)' }} variant="contained" onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid',  }} variant={trigger || location?.pathname !== '/' ? 'outlined' : 'contained'} onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
                             Subscribe
                         </Button>
                     </Box>
