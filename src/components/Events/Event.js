@@ -8,7 +8,7 @@ const Event = ({ event, past }) => {
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Paper key={event.id} elevation={3} sx={{ py: 5, px: 2, mb: 4, position: 'relative' }}>
+        <Paper key={event.id} elevation={3} sx={{ py: 3, px: 3, mb: 4, position: 'relative' }}>
             {past && <img src={diagonalBanner} style={{ position: "absolute", zIndex: 100, left: 0, top: 0, width: `${smMatch ? '35%' : '20%'}` }} alt="past event banner" />}
             <Grid container spacing={6}>
                 <Grid item sm={12} md={5}>

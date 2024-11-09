@@ -58,14 +58,14 @@ const Events = () => {
                     {`${year}-${(year + 1) % 2000}`} Concert Season
                 </Typography>
                 {currentEvents.length
-                    ? currentEvents.map(event => (
-                        <Event event={event} />
+                    ? currentEvents.map((event, i) => (
+                        <Event event={event} key={`c${i}`} />
                     ))
                     : <></>
                 }
                 {pastEvents.length
-                    ? pastEvents.map(event => (
-                        <Event event={event} past={true} />
+                    ? pastEvents.map((event, i) => (
+                        <Event event={event} past={true} key={`c${i}`} />
                     ))
                     : <></>
                 }
