@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getLink } from "../../utils/firebase/firestore-funcs";
 
-const EventCard = ({ imageUrl, url }) => {
+const EventCard = ({ imageUrl, url, past }) => {
 
     const [src, setSrc] = useState(null);
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -26,7 +26,7 @@ const EventCard = ({ imageUrl, url }) => {
                             width={'auto'}
                             image={src}
                             alt="event picture"
-                            sx={!imgLoaded ? { width: 0, height: 0 } : { maxHeight: '100%', maxWidth: '100%' }}
+                            sx={!imgLoaded ? { width: 0, height: 0 } : { maxHeight: '100%', maxWidth: '100%', filter: `${past ? 'grayscale(80%)' : 'none'}` }}
                             onLoad={() => setImgLoaded(true)}
                         />
                     </Link>
