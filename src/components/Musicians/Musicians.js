@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
-import { downloadDocs, downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
+import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import MusicianGroup from "./MusicianGroup";
 import getBannerSx from "../../styles/bannerSx";
 import useDimensions from "../../hooks/useDimensions";
