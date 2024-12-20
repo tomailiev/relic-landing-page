@@ -6,11 +6,11 @@ const MusicianDialog = ({ src, name, bio }) => {
 
     return (
         <>
-            <Box display={'flex'} justifyContent={'center'}>
-                <img src={src} height="auto" width="80%" alt={name} />
+            <Box display={'flex'} justifyContent={'center'} >
+                <img src={src} height="auto" width="88%" alt={name} style={{borderRadius: 3}} />
             </Box>
             <Box>
-                <Typography m={3}>
+                <Typography m={4}>
                     {arr[0]}
                     <Typography component={'span'} fontSize={18} fontWeight="700" >{name}</Typography>
                     {arr[1]}

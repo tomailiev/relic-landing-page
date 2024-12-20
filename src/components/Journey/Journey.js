@@ -3,7 +3,7 @@ import { Container } from "@mui/system";
 import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
 import markerIcon from '../../assets/imgs/maps-marker-32.png'
-import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import TextContext from "../../context/TextContext";
 
 //revise if international engagements!!
@@ -17,7 +17,7 @@ const Journey = () => {
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
-        downloadDocs('events')
+        downloadDocsV2('events')
             .then(docs => {
                 setEvents(docs.reduce((acc, curr) => {
                     const title = curr.title;
