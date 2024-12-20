@@ -26,7 +26,11 @@ const VideoWall = () => {
     const lgMatch = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
-        downloadDocsV2('videos', [{ value: ['featured', '!=', 0], type: 'condition' }, { value: ['featured', 'desc'], type: 'sorting' }])
+        downloadDocsV2('videos', [
+            { value: ['featured', '!=', 0], type: 'condition' },
+            { value: ['featured', 'desc'], type: 'sorting' },
+            { value: [3], type: 'limit' }
+        ])
             .then((docs) => {
                 setVideos(docs);
             })
