@@ -27,7 +27,11 @@ const Home = () => {
             .then(docs => {
                 setNextEvent(docs[0]);
             })
-    })
+            .catch(e => {
+                console.error('not found');
+                console.error(e);
+            })
+    }, []);
 
     return (
         <>
