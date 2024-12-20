@@ -1,6 +1,6 @@
 import { Container, Typography, useMediaQuery } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { downloadDocs, getLink } from "../../utils/firebase/firestore-funcs";
+import { downloadDocsV2, getLink } from "../../utils/firebase/firestore-funcs";
 import EventSkeleton from "./EventSkeleton";
 import { useParams } from "react-router-dom";
 import TextContext from "../../context/TextContext";
@@ -23,7 +23,10 @@ const Events = () => {
     const seasonEnd = `${year + 1}-08-01`;
 
     useEffect(() => {
-        downloadDocs('events', ['dateDone', '>', new Date(seasonStart)], ['dateDone', 'asc'])
+        downloadDocsV2('events', [
+            { value: ['dateDone', '>', new Date(seasonStart)], type: 'condition' },
+            { type: 'sorting', value: ['dateDone', 'asc'] }
+        ])
             .then(docs => {
                 const current = [];
                 const past = [];

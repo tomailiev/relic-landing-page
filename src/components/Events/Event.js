@@ -10,11 +10,11 @@ const Event = ({ event, past }) => {
     return (
         <Paper key={event.id} elevation={3} sx={{ py: 3, px: 3, mb: 4, position: 'relative' }}>
             {past && <img src={diagonalBanner} style={{ position: "absolute", zIndex: 100, left: 0, top: 0, width: `${smMatch ? '35%' : '20%'}` }} alt="past event banner" />}
-            <Grid container spacing={6}>
-                <Grid item sm={12} md={5}>
+            <Grid container spacing={6} justifyContent={'center'}>
+                <Grid item sm={10} md={5}>
                     <EventCard imageUrl={event.imageUrl} url={event.eventUrl} past={past} />
                 </Grid>
-                <Grid item sm={12} md={7} textAlign={'left'}>
+                <Grid item sm={10} md={7} textAlign={'left'}>
                     <EventInfo event={event} />
                 </Grid>
             </Grid>

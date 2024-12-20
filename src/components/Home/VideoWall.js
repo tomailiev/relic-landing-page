@@ -1,7 +1,7 @@
 import { Paper, Box, IconButton, useTheme, useMediaQuery, Tooltip, } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 // import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import { downloadDocs } from "../../utils/firebase/firestore-funcs";
+import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 // import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 // import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 // import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
@@ -26,7 +26,11 @@ const VideoWall = () => {
     const lgMatch = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
-        downloadDocs('videos', ['featured', '!=', 0], ['featured', 'desc'])
+        downloadDocsV2('videos', [
+            { value: ['featured', '!=', 0], type: 'condition' },
+            { value: ['featured', 'desc'], type: 'sorting' },
+            { value: [3], type: 'limit' }
+        ])
             .then((docs) => {
                 setVideos(docs);
             })

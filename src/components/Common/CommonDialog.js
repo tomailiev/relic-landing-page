@@ -14,7 +14,7 @@ const CommonDialog = () => {
             open={!!dialog}
             onClose={() => setDialog(null)}
         >
-            <DialogTitle sx={{ mx: 2 }}>
+            <DialogTitle sx={{ mx: 4 }}>
                 {dialog?.title}
                 <IconButton
                     aria-label="close"

@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, setDoc, limit } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { db, storage, logEvent, analytics } from './firebase-init';
 
@@ -38,6 +38,26 @@ function downloadDocs(col, condition, sorting) {
         })
 }
 
+function downloadDocsV2(col, options = []) {
+    const queryConditions = options?.map(c => (
+        c.type === 'condition'
+            ? where(...c.value)
+            : c.type === 'sorting'
+                ? orderBy(...c.value)
+                : limit(...c.value)
+    ));
+    const q = query(collection(db, col), ...queryConditions);
+
+    return getDocs(q)
+        .then(qSnap => {
+            const docs = [];
+            qSnap.forEach(doc => {
+                docs.push(Object.assign({ id: doc.id }, doc.data()));
+            });
+            return docs;
+        })
+}
+
 function downloadOneDoc(col, id) {
     // REVISE!!!
     return getDoc(doc(db, col, id))
@@ -52,4 +72,4 @@ function analyze(eventType, eventParams) {
     logEvent(analytics, eventType, eventParams);
 }
 
-export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadOneDoc, analyze };
+export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadDocsV2, downloadOneDoc, analyze };
