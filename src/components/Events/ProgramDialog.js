@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -17,7 +19,6 @@ const ProgramDialog = ({ file }) => {
     const [showPages, setShowPages] = useState(true);
 
     function onDocumentLoadSuccess({ numPages }) {
-        console.log('loaded pdf');
 
         setNumberOfPages(numPages);
     }
