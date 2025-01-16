@@ -4,16 +4,14 @@ import { Document, Page, pdfjs } from "react-pdf";
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
-import pdfFile from '../../assets/The_Dawn_of_Time_DC_1.2025_program_book.pdf'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url,
 ).toString();
 
-const ProgramDialog = () => {
+const ProgramDialog = ({ file }) => {
 
-    const file = useMemo(() => pdfFile, []);
     const [numberOfPages, setNumberOfPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
     const [showPages, setShowPages] = useState(true);

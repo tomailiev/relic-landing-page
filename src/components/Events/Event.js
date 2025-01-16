@@ -2,9 +2,10 @@ import { Button, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 import diagonalBanner from '../../assets/banners/ribbon_past.png';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import ProgramDialog from "./ProgramDialog";
+import { getLink } from "../../utils/firebase/firestore-funcs";
 
 const Event = ({ event, past }) => {
 
@@ -12,6 +13,15 @@ const Event = ({ event, past }) => {
 
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
+    const [pdfFile, setPdfFile] = useState(null);
+
+    useEffect(() => {
+        if (event.program) {
+            getLink(event.program)
+                .then(val => setPdfFile(val))
+                .catch(console.error);
+        }
+    }, [event.program]);
 
     return (
         <Paper key={event.id} elevation={3} sx={{ py: 3, px: 3, mb: 4, position: 'relative' }}>
@@ -19,7 +29,7 @@ const Event = ({ event, past }) => {
             <Grid container spacing={6} justifyContent={'center'}>
                 <Grid item sm={10} md={5} textAlign={'center'}>
                     <EventCard imageUrl={event.imageUrl} title={event.title} url={event.eventUrl} past={past} />
-                    <Button sx={{ mt: 2 }} variant={'text'} onClick={() => setDialog({ title: event.title, component: <ProgramDialog />, type: 'program' })}>View Program Book</Button>
+                    {pdfFile && <Button sx={{ mt: 2 }} variant={'text'} onClick={() => setDialog({ title: event.title, component: <ProgramDialog file={pdfFile} />, type: 'program' })}>View Program Book</Button>}
                 </Grid>
                 <Grid item sm={10} md={7} textAlign={'left'}>
                     <EventInfo event={event} />
