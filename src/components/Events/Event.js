@@ -1,9 +1,15 @@
-import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import { Button, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import EventCard from "./EventCard";
 import EventInfo from "./EventInfo";
 import diagonalBanner from '../../assets/banners/ribbon_past.png';
+import { useContext } from "react";
+import DialogContext from "../../context/DialogContext";
+import ProgramDialog from "./ProgramDialog";
 
 const Event = ({ event, past }) => {
+
+    const { setDialog } = useContext(DialogContext);
+
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -11,8 +17,9 @@ const Event = ({ event, past }) => {
         <Paper key={event.id} elevation={3} sx={{ py: 3, px: 3, mb: 4, position: 'relative' }}>
             {past && <img src={diagonalBanner} style={{ position: "absolute", zIndex: 100, left: 0, top: 0, width: `${smMatch ? '35%' : '20%'}` }} alt="past event banner" />}
             <Grid container spacing={6} justifyContent={'center'}>
-                <Grid item sm={10} md={5}>
-                    <EventCard imageUrl={event.imageUrl} url={event.eventUrl} past={past} />
+                <Grid item sm={10} md={5} textAlign={'center'}>
+                    <EventCard imageUrl={event.imageUrl} title={event.title} url={event.eventUrl} past={past} />
+                    <Button sx={{ mt: 2 }} variant={'text'} onClick={() => setDialog({ title: event.title, component: <ProgramDialog />, type: 'program' })}>View Program Book</Button>
                 </Grid>
                 <Grid item sm={10} md={7} textAlign={'left'}>
                     <EventInfo event={event} />

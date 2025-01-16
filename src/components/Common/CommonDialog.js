@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import CloseIcon from '@mui/icons-material/Close';
@@ -6,6 +6,8 @@ import CloseIcon from '@mui/icons-material/Close';
 const CommonDialog = () => {
 
     const { dialog, setDialog } = useContext(DialogContext);
+    const theme = useTheme();
+    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
         <Dialog
@@ -13,6 +15,7 @@ const CommonDialog = () => {
             maxWidth={dialog?.type === 'donation' ? 'lg' : 'sm'}
             open={!!dialog}
             onClose={() => setDialog(null)}
+            fullScreen={dialog?.type === 'program' && smMatch}
         >
             <DialogTitle sx={{ mx: 4 }}>
                 {dialog?.title}
