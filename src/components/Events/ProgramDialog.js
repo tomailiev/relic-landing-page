@@ -1,16 +1,9 @@
-'use client'
-
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+import { Document, Page } from "react-pdf";
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.mjs',
-    import.meta.url,
-).toString();
 
 const ProgramDialog = ({ file }) => {
 

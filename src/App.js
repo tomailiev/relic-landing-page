@@ -32,6 +32,13 @@ import Support from './components/Support/Support';
 import Cochin from './assets/fonts/Cochin.woff2';
 import DonorLevels from './components/Support/DonorLevels';
 import Host from './components/Support/Host';
+import { pdfjs } from 'react-pdf';
+
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 function App() {
 
