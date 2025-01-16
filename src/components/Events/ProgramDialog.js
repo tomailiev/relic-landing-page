@@ -1,5 +1,5 @@
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
