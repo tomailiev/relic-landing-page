@@ -15,7 +15,9 @@ const ProgramDialog = ({ file }) => {
 
     useEffect(() => {
         if (boxRef.current) {
-            setPdfHeight(boxRef.current.offsetHeight);
+            setPdfHeight(boxRef.current.offsetHeight / boxRef.current.offsetWidth > 1.75
+                ? boxRef.current.offsetWidth * 1.75
+                : boxRef.current.offsetHeight);
         }
     }, []);
 
@@ -25,7 +27,7 @@ const ProgramDialog = ({ file }) => {
     }
 
     return (
-        <Box ref={boxRef} minHeight={'549px'} height={'100%'} position={'relative'} display={'flex'} flexDirection={'row'} flexGrow={1} justifyContent={'center'} onMouseOver={() => setShowPages(true)} onMouseOut={() => setShowPages(false)}>
+        <Box ref={boxRef} minHeight={'549px'} height={'100%'} position={'relative'} display={'flex'} flexDirection={'row'} flexGrow={1} justifyContent={'center'} onMouseOver={() => setShowPages(true)} onMouseOut={() => setShowPages(false)} justifyItems={'center'}>
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={pageNumber} height={pdfHeight} />
             </Document>
