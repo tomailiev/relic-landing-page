@@ -16,6 +16,7 @@ const CommonDialog = () => {
             open={!!dialog}
             onClose={() => setDialog(null)}
             fullScreen={(dialog?.type === 'program' || dialog?.type === 'donation') && smMatch}
+            sx={{ my: 0 }}
         >
             <DialogTitle sx={{ mx: 4 }}>
                 {dialog?.title}
@@ -31,7 +32,7 @@ const CommonDialog = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, maxHeight: '800px' }}>
+            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, }}>
                 {dialog?.component}
             </DialogContent>
             <DialogActions>
