@@ -1,11 +1,13 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import CloseIcon from '@mui/icons-material/Close';
+import { Fullscreen } from "@mui/icons-material";
 
 const CommonDialog = () => {
 
     const { dialog, setDialog } = useContext(DialogContext);
+    const [isFullScreen, setIsFullScreen] = useState(false);
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -15,11 +17,22 @@ const CommonDialog = () => {
             maxWidth={dialog?.type === 'donation' ? 'lg' : 'sm'}
             open={!!dialog}
             onClose={() => setDialog(null)}
-            fullScreen={(dialog?.type === 'program' || dialog?.type === 'donation') && smMatch}
+            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation') && smMatch)}
             sx={{ my: 0 }}
         >
             <DialogTitle sx={{ mx: 4 }}>
                 {dialog?.title}
+                {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && <IconButton
+                    aria-label="expand"
+                    onClick={() => setIsFullScreen(prev => !prev)}
+                    sx={{
+                        position: 'absolute',
+                        right: 48,
+                        top: 8,
+                    }}
+                >
+                    <Fullscreen />
+                </IconButton>}
                 <IconButton
                     aria-label="close"
                     onClick={() => setDialog(null)}

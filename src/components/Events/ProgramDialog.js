@@ -19,7 +19,15 @@ const ProgramDialog = ({ file }) => {
                 ? boxRef.current.offsetWidth * 1.75
                 : boxRef.current.offsetHeight);
         }
-    }, []);
+    }, [boxRef.current?.offsetHeight]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowPages(false)
+        }, 3000);
+
+    }, [])
+
 
     function onDocumentLoadSuccess({ numPages }) {
 
@@ -27,27 +35,41 @@ const ProgramDialog = ({ file }) => {
     }
 
     return (
-        <Box ref={boxRef} minHeight={'549px'} height={'100%'} position={'relative'} display={'flex'} flexDirection={'row'} flexGrow={1} justifyContent={'center'} onMouseOver={() => setShowPages(true)} onMouseOut={() => setShowPages(false)} justifyItems={'center'}>
+        <Box
+            ref={boxRef}
+            minHeight={'549px'}
+            height={'100%'}
+            position={'relative'}
+            display={'flex'}
+            flexDirection={'row'}
+            flexGrow={1}
+            justifyContent={'center'}
+            justifyItems={'center'}
+            onMouseOver={() => setShowPages(true)}
+            onMouseOut={() => setShowPages(false)}
+        >
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={pageNumber} height={pdfHeight} />
             </Document>
-            {numberOfPages && showPages && <Fade in={!!showPages}>
-                <Paper elevation={5} sx={{ position: 'absolute', left: '50%', bottom: '5%', transform: 'translate(-50%, 0);', zIndex: 100, minWidth: '177px' }}>
-                    <Stack direction={'row'} display={'flex'} justifyContent={'space-between'}>
-                        <IconButton onClick={() => setPageNumber(prev => prev - 1)} disabled={pageNumber === 1}>
-                            <ArrowLeft />
-                        </IconButton>
-                        <Typography mt={1}>
-                            Page {pageNumber} of {numberOfPages}
-                        </Typography>
-                        <IconButton onClick={() => setPageNumber(prev => prev + 1)} disabled={pageNumber === numberOfPages}>
-                            <ArrowRight />
-                        </IconButton>
-                    </Stack>
+            {
+                numberOfPages && showPages && <Fade in={!!showPages} easing={'ease-out'}>
+                    <Paper elevation={5} sx={{ position: 'absolute', left: '50%', bottom: '5%', transform: 'translate(-50%, 0);', zIndex: 100, minWidth: '177px' }}>
+                        <Stack direction={'row'} display={'flex'} justifyContent={'space-between'}>
+                            <IconButton onClick={() => setPageNumber(prev => prev - 1)} disabled={pageNumber === 1}>
+                                <ArrowLeft />
+                            </IconButton>
+                            <Typography mt={1}>
+                                Page {pageNumber} of {numberOfPages}
+                            </Typography>
+                            <IconButton onClick={() => setPageNumber(prev => prev + 1)} disabled={pageNumber === numberOfPages}>
+                                <ArrowRight />
+                            </IconButton>
+                        </Stack>
 
-                </Paper>
-            </Fade>}
-        </Box>
+                    </Paper>
+                </Fade>
+            }
+        </Box >
     );
 };
 
