@@ -1,5 +1,5 @@
 import { Box, Fade, IconButton, Paper, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Document, Page } from "react-pdf";
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -10,6 +10,14 @@ const ProgramDialog = ({ file }) => {
     const [numberOfPages, setNumberOfPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
     const [showPages, setShowPages] = useState(true);
+    const [pdfHeight, setPdfHeight] = useState(0);
+    const boxRef = useRef(null);
+
+    useEffect(() => {
+        if (boxRef.current) {
+            setPdfHeight(boxRef.current.offsetHeight);
+        }
+    }, []);
 
     function onDocumentLoadSuccess({ numPages }) {
 
@@ -17,9 +25,9 @@ const ProgramDialog = ({ file }) => {
     }
 
     return (
-        <Box minHeight={'549px'} position={'relative'} display={'flex'} flexDirection={'row'} flexGrow={1} justifyContent={'center'} onMouseOver={() => setShowPages(true)} onMouseOut={() => setShowPages(false)}>
+        <Box ref={boxRef} minHeight={'549px'} height={'100%'} position={'relative'} display={'flex'} flexDirection={'row'} flexGrow={1} justifyContent={'center'} onMouseOver={() => setShowPages(true)} onMouseOut={() => setShowPages(false)}>
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-                <Page pageNumber={pageNumber} height={549} />
+                <Page pageNumber={pageNumber} height={pdfHeight} />
             </Document>
             {numberOfPages && showPages && <Fade in={!!showPages}>
                 <Paper elevation={5} sx={{ position: 'absolute', left: '50%', bottom: '5%', transform: 'translate(-50%, 0);', zIndex: 100, minWidth: '177px' }}>
