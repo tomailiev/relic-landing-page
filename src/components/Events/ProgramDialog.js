@@ -19,7 +19,7 @@ const ProgramDialog = ({ file }) => {
                 ? boxRef.current.offsetWidth * 1.75
                 : boxRef.current.offsetHeight);
         }
-    }, [boxRef.current?.offsetHeight]);
+    }, [boxRef.current?.offsetHeight, boxRef.current?.offsetWidth]);
 
     useEffect(() => {
         setTimeout(() => {
@@ -39,6 +39,7 @@ const ProgramDialog = ({ file }) => {
             ref={boxRef}
             minHeight={'549px'}
             height={'100%'}
+            maxHeight={'100%'}
             position={'relative'}
             display={'flex'}
             flexDirection={'row'}
