@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, 
 import { useContext, useEffect, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import CloseIcon from '@mui/icons-material/Close';
-import { Fullscreen } from "@mui/icons-material";
+import { Fullscreen, FullscreenExit } from "@mui/icons-material";
 
 const CommonDialog = () => {
 
@@ -35,17 +35,29 @@ const CommonDialog = () => {
         >
             <DialogTitle sx={{ mx: 4 }}>
                 {dialog?.title}
-                {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && <IconButton
-                    aria-label="expand"
-                    onClick={() => setIsFullScreen(prev => !prev)}
-                    sx={{
-                        position: 'absolute',
-                        right: 48,
-                        top: 8,
-                    }}
-                >
-                    <Fullscreen />
-                </IconButton>}
+                {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && (isFullScreen
+                    ? <IconButton
+                        aria-label="expand"
+                        onClick={() => setIsFullScreen(prev => !prev)}
+                        sx={{
+                            position: 'absolute',
+                            right: 48,
+                            top: 8,
+                        }}
+                    >
+                        <FullscreenExit />
+                    </IconButton>
+                    : <IconButton
+                        aria-label="expand"
+                        onClick={() => setIsFullScreen(prev => !prev)}
+                        sx={{
+                            position: 'absolute',
+                            right: 48,
+                            top: 8,
+                        }}
+                    >
+                        <Fullscreen />
+                    </IconButton>)}
                 <IconButton
                     aria-label="close"
                     onClick={closeDialog}
