@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
 const ProgramDialog = ({ file }) => {
 
-    const [numberOfPages, setNumberOfPages] = useState(0);
+    const [numberOfPages, setNumberOfPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [showPages, setShowPages] = useState(true);
     const [pdfHeight, setPdfHeight] = useState(0);
@@ -45,7 +45,7 @@ const ProgramDialog = ({ file }) => {
             flexDirection={'row'}
             flexGrow={1}
             justifyContent={'center'}
-            justifyItems={'center'}
+            alignItems={'center'}
             onMouseOver={() => setShowPages(true)}
             onMouseOut={() => setShowPages(false)}
         >
