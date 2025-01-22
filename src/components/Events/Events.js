@@ -36,7 +36,6 @@ const Events = () => {
                         ? current.push(item)
                         : past.push(item);
                 })
-                console.log(past);
 
                 setCurrentEvents(current.filter(i => i.dateDone.toDate() < new Date(seasonEnd)));
                 setPastEvents(past.filter(i => i.dateDone.toDate() < new Date(seasonEnd)));
