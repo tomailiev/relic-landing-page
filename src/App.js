@@ -36,6 +36,7 @@ import { pdfjs } from 'react-pdf';
 import DonateForm from './components/Common/DonateForm';
 import SubscribeForm from './components/Common/SubscribeForm';
 import ProgramDialog from './components/Events/ProgramDialog';
+import MusicianDialog from './components/Musicians/MusicianDialog';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -47,7 +48,7 @@ function App() {
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
   const [loading, setLoading] = useState(false);
-  const [eventTitle, setEventTitle] = useState('');
+  const [dialogProps, setDialogProps] = useState(null);
 
   useEffect(() => {
     downloadOneDoc('textContent', 'allTexts')
@@ -93,14 +94,32 @@ function App() {
           downloadOneDoc('events', eventId)
             .then(event => {
               if (event.program) {
-                setEventTitle(event.title)
+                setDialogProps({title: event.title})
                 return getLink(event.program)
               }
               return Promise.resolve(null);
             })
             .then(value => {
               if (value) {
-                setDialog({ title: eventTitle, component: <ProgramDialog file={value} />, type: 'program' });
+                setDialog({ title: dialogProps?.title, component: <ProgramDialog file={value} />, type: 'program' });
+              }
+            })
+            .catch(e => console.log(e))
+          break;
+        case 'musician':
+          const musicianId = searchParams.get('musicianId');
+          if (!musicianId) return;
+          downloadOneDoc('musicians', musicianId)
+            .then(musician => {
+              if (musician) {
+                setDialogProps({title: musician.name, bio: musician.bio});
+                return getLink(musician.pic);
+              }
+              return Promise.resolve(null);
+            })
+            .then(value => {
+              if (value) {
+                setDialog({ type: 'bio', component: <MusicianDialog name={dialogProps?.title} src={value} bio={dialogProps?.bio || ''} />, title: dialogProps?.title });
               }
             })
             .catch(e => console.log(e))
@@ -110,7 +129,7 @@ function App() {
       }
     }
 
-  }, [location.search, eventTitle])
+  }, [location.search, dialogProps?.title, dialogProps?.bio])
 
   const theme = createTheme({
     typography: {
