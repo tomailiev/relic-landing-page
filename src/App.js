@@ -21,7 +21,7 @@ import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
 import { useEffect } from 'react';
-import { downloadOneDoc } from './utils/firebase/firestore-funcs';
+import { downloadOneDoc, getLink } from './utils/firebase/firestore-funcs';
 import Contact from './components/Contact/Contact';
 import LoadingContext from './context/LoadingContext';
 import LoadingBackdrop from './components/Common/LoadingBackdrop';
@@ -33,6 +33,10 @@ import Cochin from './assets/fonts/Cochin.woff2';
 import DonorLevels from './components/Support/DonorLevels';
 import Host from './components/Support/Host';
 import { pdfjs } from 'react-pdf';
+import DonateForm from './components/Common/DonateForm';
+import SubscribeForm from './components/Common/SubscribeForm';
+import ProgramDialog from './components/Events/ProgramDialog';
+import MusicianDialog from './components/Musicians/MusicianDialog';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -44,6 +48,7 @@ function App() {
   const [dialog, setDialog] = useState(null);
   const [text, setText] = useState(texts);
   const [loading, setLoading] = useState(false);
+  const [dialogProps, setDialogProps] = useState(null);
 
   useEffect(() => {
     downloadOneDoc('textContent', 'allTexts')
@@ -71,6 +76,60 @@ function App() {
   ];
 
   const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.has('dialog')) {
+      const dialogType = searchParams.get('dialog');
+      switch (dialogType) {
+        case 'donation':
+          setDialog({ type: 'donation', title: 'support relic', component: <DonateForm /> });
+          break;
+        case 'subscription':
+          setDialog({ type: 'subscription', component: <SubscribeForm /> });
+          break;
+        case 'programBook':
+          const eventId = searchParams.get('eventId');
+          if (!eventId) return;
+          downloadOneDoc('events', eventId)
+            .then(event => {
+              if (event.program) {
+                setDialogProps({title: event.title})
+                return getLink(event.program)
+              }
+              return Promise.resolve(null);
+            })
+            .then(value => {
+              if (value) {
+                setDialog({ title: dialogProps?.title, component: <ProgramDialog file={value} />, type: 'program' });
+              }
+            })
+            .catch(e => console.log(e))
+          break;
+        case 'musician':
+          const musicianId = searchParams.get('musicianId');
+          if (!musicianId) return;
+          downloadOneDoc('musicians', musicianId)
+            .then(musician => {
+              if (musician) {
+                setDialogProps({title: musician.name, bio: musician.bio});
+                return getLink(musician.pic);
+              }
+              return Promise.resolve(null);
+            })
+            .then(value => {
+              if (value) {
+                setDialog({ type: 'bio', component: <MusicianDialog name={dialogProps?.title} src={value} bio={dialogProps?.bio || ''} />, title: dialogProps?.title });
+              }
+            })
+            .catch(e => console.log(e))
+          break;
+        default:
+          break;
+      }
+    }
+
+  }, [location.search, dialogProps?.title, dialogProps?.bio])
 
   const theme = createTheme({
     typography: {
