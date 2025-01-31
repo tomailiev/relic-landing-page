@@ -4,7 +4,6 @@ import '@fontsource/lato/400-italic.css';
 import useDimensions from "../../hooks/useDimensions";
 
 const Banner = ({ bgPic, children }) => {
-
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
     const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
@@ -13,16 +12,16 @@ const Banner = ({ bgPic, children }) => {
     const dimensions = useDimensions();
 
     return (
-        <Container sx={{ height: `calc(100vh - ${xsMatch ? 56 : smMatch ? 64 : 80}px)`, }} >
+        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, position: 'relative' }} >
             <Box
                 sx={{
                     position: 'absolute',
                     width: '100%',
                     height: '100%',
                     left: '50%',
-                    top: '50%',
+                    top: `calc(50% - ${xsMatch ? 56 : smMatch ? 64 : 80}px)`,
                     transform: 'translate(-50%, -50%)',
-                    objectFit: 'contain',
+                    // objectFit: 'cover',
                 }}
             >
                 <Box
