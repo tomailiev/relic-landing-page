@@ -36,7 +36,7 @@ const Home = () => {
     return (
         <>
             <Banner bgPic={banners.groupBanner} children={<Title />} />
-            <Container maxWidth="lg" >
+            <Container maxWidth="lg" sx={{marginTop: '-56px'}}>
                 {nextEvent && <>
                     <Typography variant="h3" textAlign={'center'} my={6}>
                         Upcoming
