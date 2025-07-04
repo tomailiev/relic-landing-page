@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import CloseIcon from '@mui/icons-material/Close';
@@ -30,11 +30,11 @@ const CommonDialog = () => {
             maxWidth={dialog?.type === 'donation' ? 'lg' : 'sm'}
             open={hasContent}
             onClose={closeDialog}
-            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation') && smMatch)}
+            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'video') && smMatch)}
             sx={{ my: 0 }}
         >
-            <DialogTitle sx={{ mx: 4 }}>
-                {dialog?.title}
+            <DialogTitle sx={{ mr: 4 }}>
+                <Typography noWrap={true}>{dialog?.title}</Typography>
                 {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && (isFullScreen
                     ? <IconButton
                         aria-label="expand"
