@@ -37,6 +37,7 @@ import DonateForm from './components/Common/DonateForm';
 import SubscribeForm from './components/Common/SubscribeForm';
 import ProgramDialog from './components/Events/ProgramDialog';
 import MusicianDialog from './components/Musicians/MusicianDialog';
+import Videos from './components/Videos/Videos';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -243,6 +244,7 @@ function App() {
                       <Route path='/support/donate' element={<Support />} />
                       <Route path={'/support/tiers'} element={<DonorLevels />} />
                       <Route path={'/support/host'} element={<Host />} />
+                      <Route path='/media/videos' element={<Videos />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                       <Route path="/donate" element={<Navigate to={'/support/donate'} />} />

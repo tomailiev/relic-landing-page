@@ -48,6 +48,11 @@ const Header = ({location}) => {
                 { path: '/support/host', title: 'Host Relic' }
             ]
         },
+        {
+            path: '/media', title: 'Media', menu: [
+                {path: '/media/videos', title: 'Videos'}
+            ]
+        },
         { path: '/contact', title: 'Contact' },
     ];
 
@@ -65,14 +70,14 @@ const Header = ({location}) => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { xs: 'relative', md: 'none' } }}
+                        sx={{ mr: 2, display: { xs: 'relative', lg: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} overflow={'hidden'} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                    <Box component={RouterLink} overflow={'hidden'} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
                         <img src={logo} alt="homepage" aria-label="home" width={'60%'} height={'auto'} />
                     </Box>
-                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', lg: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
                             return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
