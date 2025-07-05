@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
-import { Container, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from "@mui/material";
+import { Box, Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import VideoItem from "./VideoItem";
 
 const Videos = () => {
@@ -48,6 +48,55 @@ const Videos = () => {
                     </Select>
                 </FormControl>
             </Container>
+            {videoCategory === 'full concert' && <Box my={3} >
+                <Typography variant="body1">Full concert videos are only available for our donors of the Hermes tier and above. Please enter your email below for access.</Typography>
+                <Box
+                    component="form"
+                    my={2}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        // handle submit here
+                    }}
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '100%', // optional: full-width
+                        maxWidth: 400,
+                        position: 'relative',
+                        left: '50%',
+                        transform: 'translate(-50%)'
+                    }}
+                >
+                    <TextField
+                        variant="outlined"
+                        placeholder="Email"
+                        size="small"
+                        fullWidth
+                        sx={{
+                            // borderRight: 'none',
+                            height: '40px',
+                            '& fieldset': {
+                                border: '2px solid #06303e',
+                                borderTopRightRadius: 0,
+                                borderBottomRightRadius: 0,
+                                borderRight: 'none', // remove double border between input & button
+                            },
+                        }}
+                    />
+                    <Button
+                        variant={'contained'}
+                        type="submit"
+                        sx={{
+                            height: '40px',
+                            borderTopLeftRadius: 0,
+                            borderBottomLeftRadius: 0,
+                            whiteSpace: 'nowrap',
+                        }}
+                    >
+                        Submit
+                    </Button>
+                </Box>
+            </Box>}
             {videos?.length && <Grid container spacing={6} my={3}>
                 {videos.map(video => {
                     return <VideoItem video={video} />
