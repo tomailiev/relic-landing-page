@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage';
+import { connectFunctionsEmulator, getFunctions } from "firebase/functions";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBsfOoywJliuePyVV9U_LnJgIhtRqIZLjA",
@@ -17,5 +18,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const functions = getFunctions(app);
 
-export { db, analytics, storage, firebaseConfig, logEvent };
+if (process.env.REACT_APP_EMULATORS) {
+  connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+}
+
+export { db, analytics, storage, firebaseConfig, logEvent, functions };

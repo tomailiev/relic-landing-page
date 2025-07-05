@@ -1,6 +1,7 @@
 import { collection, addDoc, getDocs, query, where, orderBy, getDoc, doc, setDoc, limit } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
-import { db, storage, logEvent, analytics } from './firebase-init';
+import { db, storage, logEvent, analytics, functions } from './firebase-init';
+import { httpsCallable } from "firebase/functions";
 
 function uploadDoc(doc, col) {
     return addDoc(collection(db, col), doc)
@@ -72,4 +73,7 @@ function analyze(eventType, eventParams) {
     logEvent(analytics, eventType, eventParams);
 }
 
-export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadDocsV2, downloadOneDoc, analyze };
+const checkVideoAccess = httpsCallable(functions, 'checkVideoAccess');
+
+
+export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadDocsV2, downloadOneDoc, analyze, checkVideoAccess };

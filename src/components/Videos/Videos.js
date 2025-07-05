@@ -1,23 +1,52 @@
 import { useEffect, useState } from "react";
-import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
+import { checkVideoAccess, downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import { Box, Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import VideoItem from "./VideoItem";
+import { donorEmailSchema } from "../../utils/yup/schemas";
+import { Link } from "react-router-dom";
 
 const Videos = () => {
 
     const [videoCategory, setVideoCategory] = useState('live');
     const [videos, setVideos] = useState([]);
+    const [userEmail, setUserEmail] = useState('');
+    const [valError, setValError] = useState('');
+    const [hasPassedVerification, setHasPassedVerification] = useState(false);
 
     useEffect(() => {
-        downloadDocsV2('videos', [
-            { type: 'condition', value: ['category', '==', videoCategory] },
-            { type: 'sorting', value: ['featured', 'desc'] }
-        ])
-            .then(docs => setVideos(docs))
-    }, [videoCategory]);
+        if (videoCategory !== 'full concert' || hasPassedVerification) {
+            downloadDocsV2('videos', [
+                { type: 'condition', value: ['category', '==', videoCategory] },
+                { type: 'sorting', value: ['featured', 'desc'] }
+            ])
+                .then(docs => setVideos(docs))
+        } else {
+            setVideos([]);
+        }
+    }, [videoCategory, hasPassedVerification]);
 
     function handleSelectChange(event) {
         setVideoCategory(event.target.value)
+    }
+
+    function checkEmailAddress(e) {
+        e.preventDefault();
+        donorEmailSchema.validate({ email: userEmail })
+            .then(val => {
+                return checkVideoAccess(val);
+            })
+            .then(result => {
+                if (result.data.code === 'Success') {
+                    setHasPassedVerification(true);
+                } else {
+                    setHasPassedVerification(false);
+                }
+
+            })
+            .catch(e => {
+                setValError(e.message);
+
+            })
     }
 
     return (
@@ -49,14 +78,11 @@ const Videos = () => {
                 </FormControl>
             </Container>
             {videoCategory === 'full concert' && <Box my={3} >
-                <Typography variant="body1">Full concert videos are only available for our donors of the Hermes tier and above. Please enter your email below for access.</Typography>
+                <Typography variant="body1">Full concert videos are only available for our donors of the <Link to={'/support/tiers'}>Hermes tier</Link> and above. Please enter your email below for access.</Typography>
                 <Box
                     component="form"
                     my={2}
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        // handle submit here
-                    }}
+                    onSubmit={checkEmailAddress}
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -72,6 +98,11 @@ const Videos = () => {
                         placeholder="Email"
                         size="small"
                         fullWidth
+                        value={userEmail}
+                        error={!!valError}
+                        helperText={valError}
+                        onFocus={() => setValError('')}
+                        onChange={(e) => setUserEmail(e.target.value)}
                         sx={{
                             // borderRight: 'none',
                             height: '40px',
@@ -97,11 +128,12 @@ const Videos = () => {
                     </Button>
                 </Box>
             </Box>}
-            {videos?.length && <Grid container spacing={6} my={3}>
+            {videos?.length ? <Grid container spacing={6} my={3}>
                 {videos.map(video => {
-                    return <VideoItem video={video} />
+                    return <VideoItem key={video.youtubeId} video={video} />
                 })}
-            </Grid>}
+            </Grid>
+                : <Box height={'200px'} />}
         </Container>
     );
 };

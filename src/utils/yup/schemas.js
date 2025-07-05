@@ -13,4 +13,8 @@ const contactFormSchema = object({
     subscriber: boolean().default(true)
 });
 
-export { emailSubSchema, contactFormSchema };
+const donorEmailSchema = object({
+    email: string().email('Valid email is required').required('Valid email is required')
+});
+
+export { emailSubSchema, contactFormSchema, donorEmailSchema };
