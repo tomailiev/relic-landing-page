@@ -3,7 +3,7 @@ import { checkVideoAccess, downloadDocsV2 } from "../../utils/firebase/firestore
 import { Box, Button, ButtonGroup, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import VideoItem from "./VideoItem";
 import { donorEmailSchema } from "../../utils/yup/schemas";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LoadingContext from "../../context/LoadingContext";
 import DialogContext from "../../context/DialogContext";
 import DonateForm from "../Common/DonateForm";
@@ -12,12 +12,25 @@ const Videos = () => {
 
     const { loading, setLoading } = useContext(LoadingContext);
     const { setDialog } = useContext(DialogContext);
-    const [videoCategory, setVideoCategory] = useState('live');
+    const [videoCategory, setVideoCategory] = useState('');
     const [videos, setVideos] = useState([]);
     const [userEmail, setUserEmail] = useState('');
     const [valError, setValError] = useState('');
     const [hasPassedVerification, setHasPassedVerification] = useState(false);
     const [hasCheckedDonorTier, setHasCheckedDonorTier] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        if (searchParams.has('category')) {
+            const category = searchParams.get('category');
+            if (['live', 'studio', 'full concert'].includes(category)) {
+                setVideoCategory(category);
+            }
+        } else {
+            setVideoCategory('live');
+        }
+    }, [location.search]);
 
     useEffect(() => {
         if (videoCategory !== 'full concert' || hasPassedVerification) {
