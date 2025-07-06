@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import LoadingContext from "../../context/LoadingContext";
 import DialogContext from "../../context/DialogContext";
 import DonateForm from "../Common/DonateForm";
+import VideoItemSkeleton from "./VideoItemSkeleton";
 
 const Videos = () => {
 
@@ -45,6 +46,7 @@ const Videos = () => {
     }, [videoCategory, hasPassedVerification]);
 
     function handleSelectChange(event) {
+        setVideos([]);
         setVideoCategory(event.target.value)
     }
 
@@ -169,12 +171,16 @@ const Videos = () => {
                 </Box>
             )
             }
-            {videos?.length ? <Grid container spacing={6} my={3}>
-                {videos.map(video => {
-                    return <VideoItem key={video.youtubeId} video={video} />
-                })}
-            </Grid>
-                : !hasCheckedDonorTier && <Box height={'200px'} />}
+            {videos?.length
+                ? <Grid container spacing={6} my={3}>
+                    {videos.map(video => {
+                        return <VideoItem key={video.youtubeId} video={video} />
+                    })}
+                </Grid>
+                : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && videoCategory === 'full concert')
+                    ? <Grid container spacing={6} my={3}>{[1, 2, 3].map(i => <VideoItemSkeleton key={i} />)}</Grid>
+                    : <Box height={'350px'} />
+            }
         </Container>
     );
 };
