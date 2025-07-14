@@ -67,107 +67,109 @@ const PhotoCarousel = ({ photos, currentIndex }) => {
     });
 
     return (
-        <Box
-            {...swipeHandlers}
-            sx={{
-                position: 'relative',
-                width: '100%',
-                height: '75vh',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'black',
-                overflow: 'hidden',
-            }}
-        >
-            <IconButton
-                onClick={goLeft}
-                sx={{
-                    position: 'absolute',
-                    left: 16,
-                    color: 'white',
-                    zIndex: 10,
-                    py: 10,
-                    pr: 3,
-                    pl: 1
-                }}
-                disabled={index === 0}
-            >
-                <ChevronLeftIcon fontSize="large" />
-            </IconButton>
-
-            <IconButton
-                onClick={goRight}
-                sx={{
-                    position: 'absolute',
-                    right: 16,
-                    color: 'white',
-                    zIndex: 10,
-                    py: 10,
-                    pr: 1,
-                    pl: 3
-                }}
-                disabled={index === photos.length - 1}
-            >
-                <ChevronRightIcon fontSize="large" />
-            </IconButton>
-
+        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} sx={{backgroundColor: 'black', width: '100%', height: '100%'}}>
             <Box
-                key={index}
+                {...swipeHandlers}
                 sx={{
-                    maxHeight: '100%',
-                    maxWidth: '100%',
-                    transition: 'transform 0.9s ease 1s',
-                    // transform:
-                    //     direction === 'left'
-                    //         ? 'translateX(-100%)'
-                    //         : direction === 'right'
-                    //             ? 'translateX(100%)'
-                    //             : 'translateX(0)',
-                    animation: direction
-                        ? `${direction === 'left' ? 'slideInFromLeft' : 'slideInFromRight'} 0.4s forwards`
-                        : 'none',
-                    '@keyframes slideInFromLeft': {
-                        from: { transform: 'translateX(-100%)' },
-                        to: { transform: 'translateX(0)' },
-                    },
-                    '@keyframes slideInFromRight': {
-                        from: { transform: 'translateX(100%)' },
-                        to: { transform: 'translateX(0)' },
-                    }
-                }}
-            >
-                {srcs[index] &&
-                    <Box
-                        component="img"
-                        src={srcs[index]}
-                        alt={photos[index]?.caption}
-                        sx={{
-                            maxHeight: '100%',
-                            maxWidth: '100%',
-                            objectFit: 'contain',
-                        }}
-                    />
-                }
-            </Box>
-
-            <Box
-                sx={{
-                    position: 'absolute',
-                    bottom: 0,
+                    position: 'relative',
                     width: '100%',
-                    bgcolor: 'rgba(0, 0, 0, 0.5)',
-                    color: 'white',
-                    px: 2,
-                    py: 1,
-                    textAlign: 'center',
+                    height: '75vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'black',
+                    overflow: 'hidden',
                 }}
             >
-                <Typography variant="body1" color={'secondary'}>{photos[index]?.caption}</Typography>
-                <Typography variant="caption" >
-                    PC: {photos[index]?.pc}
-                </Typography>
+                <IconButton
+                    onClick={goLeft}
+                    sx={{
+                        position: 'absolute',
+                        left: 16,
+                        color: 'white',
+                        zIndex: 10,
+                        py: 10,
+                        pr: 3,
+                        pl: 1
+                    }}
+                    disabled={index === 0}
+                >
+                    <ChevronLeftIcon fontSize="large" />
+                </IconButton>
+
+                <IconButton
+                    onClick={goRight}
+                    sx={{
+                        position: 'absolute',
+                        right: 16,
+                        color: 'white',
+                        zIndex: 10,
+                        py: 10,
+                        pr: 1,
+                        pl: 3
+                    }}
+                    disabled={index === photos.length - 1}
+                >
+                    <ChevronRightIcon fontSize="large" />
+                </IconButton>
+
+                <Box
+                    key={index}
+                    sx={{
+                        maxHeight: '100%',
+                        maxWidth: '100%',
+                        transition: 'transform 0.9s ease 1s',
+                        // transform:
+                        //     direction === 'left'
+                        //         ? 'translateX(-100%)'
+                        //         : direction === 'right'
+                        //             ? 'translateX(100%)'
+                        //             : 'translateX(0)',
+                        animation: direction
+                            ? `${direction === 'left' ? 'slideInFromLeft' : 'slideInFromRight'} 0.4s forwards`
+                            : 'none',
+                        '@keyframes slideInFromLeft': {
+                            from: { transform: 'translateX(-100%)' },
+                            to: { transform: 'translateX(0)' },
+                        },
+                        '@keyframes slideInFromRight': {
+                            from: { transform: 'translateX(100%)' },
+                            to: { transform: 'translateX(0)' },
+                        }
+                    }}
+                >
+                    {srcs[index] &&
+                        <Box
+                            component="img"
+                            src={srcs[index]}
+                            alt={photos[index]?.caption}
+                            sx={{
+                                maxHeight: '100%',
+                                maxWidth: '100%',
+                                objectFit: 'contain',
+                            }}
+                        />
+                    }
+                </Box>
+
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: '10px',
+                        width: '100%',
+                        bgcolor: 'rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        px: 2,
+                        py: 1,
+                        textAlign: 'center',
+                    }}
+                >
+                    <Typography variant="body1" color={'secondary'}>{photos[index]?.caption}</Typography>
+                    <Typography variant="caption" >
+                        PC: {photos[index]?.pc}
+                    </Typography>
+                </Box>
             </Box>
         </Box>
     );
