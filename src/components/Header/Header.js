@@ -11,7 +11,7 @@ import DialogContext from "../../context/DialogContext";
 import SubscribeForm from "../Common/SubscribeForm";
 
 
-const Header = ({location}) => {
+const Header = ({ location }) => {
 
     const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -50,13 +50,14 @@ const Header = ({location}) => {
         },
         {
             path: '/media', title: 'Media', menu: [
-                {path: '/media/videos', title: 'Videos'}
+                { path: '/media/photos', title: 'Photos' },
+                { path: '/media/videos', title: 'Videos' }
             ]
         },
         { path: '/contact', title: 'Contact' },
     ];
 
-    
+
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
     }
@@ -84,7 +85,7 @@ const Header = ({location}) => {
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'110px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid',  }} variant={trigger || location?.pathname !== '/' ? 'outlined' : 'contained'} onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid', }} variant={trigger || location?.pathname !== '/' ? 'outlined' : 'contained'} onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
                             Subscribe
                         </Button>
                     </Box>

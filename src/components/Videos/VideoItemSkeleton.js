@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 
 
-export default function VideoItemSkeleton() {
+export default function VideoItemSkeleton({ playIcon }) {
   return (
     <Grid item xs={12} sm={6} md={4} display="flex">
       <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -23,7 +23,7 @@ export default function VideoItemSkeleton() {
             sx={{
               position: 'relative',
               width: '100%',
-              pt: '56.25%', 
+              pt: '56.25%',
               overflow: 'hidden',
             }}
           >
@@ -40,7 +40,7 @@ export default function VideoItemSkeleton() {
               }}
             />
 
-            <Skeleton
+            {playIcon && <Skeleton
               variant="circular"
               animation={false}
               sx={{
@@ -52,7 +52,7 @@ export default function VideoItemSkeleton() {
                 transform: 'translate(-50%, -50%)',
                 opacity: 0.3,
               }}
-            />
+            />}
           </Box>
 
           {/* ─────────── Title placeholder ─────────── */}

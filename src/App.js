@@ -38,6 +38,7 @@ import SubscribeForm from './components/Common/SubscribeForm';
 import ProgramDialog from './components/Events/ProgramDialog';
 import MusicianDialog from './components/Musicians/MusicianDialog';
 import Videos from './components/Videos/Videos';
+import Photos from './components/Photos/Photos';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -95,7 +96,7 @@ function App() {
           downloadOneDoc('events', eventId)
             .then(event => {
               if (event.program) {
-                setDialogProps({title: event.title})
+                setDialogProps({ title: event.title })
                 return getLink(event.program)
               }
               return Promise.resolve(null);
@@ -113,7 +114,7 @@ function App() {
           downloadOneDoc('musicians', musicianId)
             .then(musician => {
               if (musician) {
-                setDialogProps({title: musician.name, bio: musician.bio});
+                setDialogProps({ title: musician.name, bio: musician.bio });
                 return getLink(musician.pic);
               }
               return Promise.resolve(null);
@@ -244,6 +245,7 @@ function App() {
                       <Route path='/support/donate' element={<Support />} />
                       <Route path={'/support/tiers'} element={<DonorLevels />} />
                       <Route path={'/support/host'} element={<Host />} />
+                      <Route path={'/media/photos'} element={<Photos />} />
                       <Route path='/media/videos' element={<Videos />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />

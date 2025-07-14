@@ -108,7 +108,7 @@ const Videos = () => {
                 </FormControl>
             </Container>
             {videoCategory === 'full concert' && <Box my={3} >
-                <Typography variant="body1">Full concert videos are only available for our donors of the <Link to={'/support/tiers'}>Hermes tier</Link> and above. Please enter your email below for access.</Typography>
+                <Typography variant="body1">Full concert videos are only available for our <Link to={'/support/tiers'}>Hermes tier</Link> donors and higher. Please enter your email below for access.</Typography>
                 <Box
                     component="form"
                     my={3}
@@ -178,7 +178,7 @@ const Videos = () => {
                     })}
                 </Grid>
                 : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && videoCategory === 'full concert')
-                    ? <Grid container spacing={6} my={3}>{[1, 2, 3].map(i => <VideoItemSkeleton key={i} />)}</Grid>
+                    ? <Grid container spacing={6} my={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton playIcon={true} key={i} />)}</Grid>
                     : <Box height={'350px'} />
             }
         </Container>
