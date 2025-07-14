@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import PhotoItem from "./PhotoItem";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
@@ -14,7 +14,7 @@ const Photos = () => {
 
     useEffect(() => {
         downloadDocsV2('photos', [
-            { type: 'sorting', value: ['createdAt', 'desc'] }
+            { type: 'sorting', value: ['title', 'asc'] }
         ])
             .then(docs => setPhotos(docs))
     }, []);
@@ -27,6 +27,9 @@ const Photos = () => {
 
     return (
         <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
+            <Typography variant="h3" my={8}>
+                Photos
+            </Typography>
             {photos?.length
                 ? <Grid container spacing={6} my={3}>
                     {photos.map((photo, index) => {
