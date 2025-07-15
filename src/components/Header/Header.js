@@ -9,22 +9,23 @@ import logo from "../../assets/logos/relic-logo-bw.png";
 // import { analyze } from "../../utils/firebase/firestore-funcs";
 import DialogContext from "../../context/DialogContext";
 import SubscribeForm from "../Common/SubscribeForm";
+import { currentSeason } from "../../data/currentSeason";
 
 
 const Header = ({ location }) => {
 
     const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const date = new Date();
-    const month = date.getMonth();
-    const seasonSwitch = month >= 7;
-    const year = date.getFullYear();
-    const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
+    
+    // const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
     const trigger = useScrollTrigger({
         threshold: 100,
         disableHysteresis: true
     });
     const navItems = [
+        {
+            path: `/events/${currentSeason}`, title: 'Events',
+        },
         {
             path: '/about', title: 'About', menu: [
                 { path: '/about/bio', title: 'Relic' },
@@ -34,18 +35,10 @@ const Header = ({ location }) => {
             ]
         },
         {
-            path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
-                return {
-                    path: `/events/${item}-${(item + 1) % 2000}`,
-                    title: `Season ${item}-${(item + 1) % 2000}`
-                }
-            })
-        },
-        {
             path: '/support', title: 'Support', menu: [
                 { path: '/support/donate', title: 'Give now!' },
                 { path: '/support/tiers', title: 'Donor Tiers' },
-                { path: '/support/host', title: 'Host Relic' }
+                // { path: '/support/host', title: 'Host Relic' }
             ]
         },
         {

@@ -31,7 +31,7 @@ import Journey from './components/Journey/Journey';
 import Support from './components/Support/Support';
 import Cochin from './assets/fonts/Cochin.woff2';
 import DonorLevels from './components/Support/DonorLevels';
-import Host from './components/Support/Host';
+// import Host from './components/Support/Host';
 import { pdfjs } from 'react-pdf';
 import DonateForm from './components/Common/DonateForm';
 import SubscribeForm from './components/Common/SubscribeForm';
@@ -39,6 +39,7 @@ import ProgramDialog from './components/Events/ProgramDialog';
 import MusicianDialog from './components/Musicians/MusicianDialog';
 import Videos from './components/Videos/Videos';
 import Photos from './components/Photos/Photos';
+import { currentSeason } from './data/currentSeason';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -244,14 +245,14 @@ function App() {
                       <Route path="/events/:year" element={<Events />} />
                       <Route path='/support/donate' element={<Support />} />
                       <Route path={'/support/tiers'} element={<DonorLevels />} />
-                      <Route path={'/support/host'} element={<Host />} />
+                      {/* <Route path={'/support/host'} element={<Host />} /> */}
                       <Route path={'/media/photos'} element={<Photos />} />
                       <Route path='/media/videos' element={<Videos />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                       <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
-                      <Route path="/events" element={<Navigate to={'/events/2024-25'} />} />
-                      <Route path="/event" element={<Navigate to={'/events/2024-25'} />} />
+                      <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
+                      <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
                       <Route path="*" element={<NoMatch />} />
                     </Routes>
                   </CSSTransition>
