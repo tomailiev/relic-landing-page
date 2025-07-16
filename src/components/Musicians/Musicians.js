@@ -29,7 +29,7 @@ const Musicians = () => {
     const season = seasonSwitch ? date.getFullYear() - 2021 : date.getFullYear() - 2022;
 
     useEffect(() => {
-        fetchCurrentMusicians({ sorting: 'name', order: 'desc' })
+        fetchCurrentMusicians({ sorting: 'name', order: 'asc' })
             .then(({data}) => {
                 if (data) {
                     setMusicians(data.reduce((prev, curr) => {
