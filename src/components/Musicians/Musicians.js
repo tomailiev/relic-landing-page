@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
-import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
+import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
 import MusicianGroup from "./MusicianGroup";
 import getBannerSx from "../../styles/bannerSx";
 import useDimensions from "../../hooks/useDimensions";
@@ -29,13 +29,15 @@ const Musicians = () => {
     const season = seasonSwitch ? date.getFullYear() - 2021 : date.getFullYear() - 2022;
 
     useEffect(() => {
-        downloadDocsV2('musicians', [{ value: ['featured', '==', season], type: 'condition' }, { value: ['name'], type: 'sorting' }])
-            .then((docs) => {
-                setMusicians(docs.reduce((prev, curr) => {
-                    if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
-                    prev[curr.newTitle].push(curr);
-                    return prev;
-                }, {}));
+        fetchCurrentMusicians({ sorting: 'name', order: 'desc' })
+            .then(({data}) => {
+                if (data) {
+                    setMusicians(data.reduce((prev, curr) => {
+                        if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
+                        prev[curr.newTitle].push(curr);
+                        return prev;
+                    }, {}));
+                }
             })
             .catch(e => {
                 console.error('not found');

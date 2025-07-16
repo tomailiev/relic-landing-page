@@ -74,6 +74,7 @@ function analyze(eventType, eventParams) {
 }
 
 const checkVideoAccess = httpsCallable(functions, 'checkVideoAccess');
+const fetchCurrentMusicians = httpsCallable(functions, 'fetchCurrentMusicians');
 
 
-export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadDocsV2, downloadOneDoc, analyze, checkVideoAccess };
+export { uploadDoc, uploadDocWithId, getLink, downloadDocs, downloadDocsV2, downloadOneDoc, analyze, checkVideoAccess, fetchCurrentMusicians };
