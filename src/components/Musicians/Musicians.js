@@ -56,9 +56,9 @@ const Musicians = () => {
                 <Grid container spacing={6} my={3}>
                     <Grid item xs={12} md={6}>
                         <Typography variant={'h6'} textAlign={'left'}>Violin</Typography>
-                        <MusicianGroup section={musicians.violin} />
+                        <MusicianGroup section={musicians.violin} length={5} />
                         <Typography variant={'h6'} textAlign={'left'}>Viola</Typography>
-                        <MusicianGroup section={musicians.viola} />
+                        <MusicianGroup section={musicians.viola} length={2} />
                         <Typography variant={'h6'} textAlign={'left'}>Cello</Typography>
                         <MusicianGroup section={musicians.cello} />
                     </Grid>
