@@ -70,7 +70,7 @@ const CommonDialog = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, }}>
+            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ p: 0 }}>
                 {dialog?.component}
             </DialogContent>
             <DialogActions>

@@ -67,7 +67,7 @@ const PhotoCarousel = ({ photos, currentIndex }) => {
     });
 
     return (
-        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} sx={{backgroundColor: 'black', width: '100%', height: '100%'}}>
+        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} sx={{ backgroundColor: 'black', width: '100%', height: '100%' }}>
             <Box
                 {...swipeHandlers}
                 sx={{
@@ -120,12 +120,6 @@ const PhotoCarousel = ({ photos, currentIndex }) => {
                         maxHeight: '100%',
                         maxWidth: '100%',
                         transition: 'transform 0.9s ease 1s',
-                        // transform:
-                        //     direction === 'left'
-                        //         ? 'translateX(-100%)'
-                        //         : direction === 'right'
-                        //             ? 'translateX(100%)'
-                        //             : 'translateX(0)',
                         animation: direction
                             ? `${direction === 'left' ? 'slideInFromLeft' : 'slideInFromRight'} 0.4s forwards`
                             : 'none',
@@ -154,6 +148,7 @@ const PhotoCarousel = ({ photos, currentIndex }) => {
                 </Box>
 
                 <Box
+                    key={index + 100}
                     sx={{
                         position: 'absolute',
                         bottom: '10px',
@@ -163,6 +158,18 @@ const PhotoCarousel = ({ photos, currentIndex }) => {
                         px: 2,
                         py: 1,
                         textAlign: 'center',
+                        transition: 'transform 0.9s ease 1s',
+                        animation: direction
+                            ? `${direction === 'left' ? 'slideInFromLeft' : 'slideInFromRight'} 0.4s forwards`
+                            : 'none',
+                        '@keyframes slideInFromLeft': {
+                            from: { transform: 'translateX(-100%)' },
+                            to: { transform: 'translateX(0)' },
+                        },
+                        '@keyframes slideInFromRight': {
+                            from: { transform: 'translateX(100%)' },
+                            to: { transform: 'translateX(0)' },
+                        }
                     }}
                 >
                     <Typography variant="body1" color={'secondary'}>{photos[index]?.caption}</Typography>

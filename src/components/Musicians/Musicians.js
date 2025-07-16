@@ -1,4 +1,4 @@
-import { Divider, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -73,7 +73,6 @@ const Musicians = () => {
                         <MusicianGroup section={musicians.harpsichord} />
                     </Grid>
                 </Grid>
-                <Divider />
             </Container>
         </>
     );
