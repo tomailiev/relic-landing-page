@@ -177,7 +177,7 @@ const Videos = () => {
                         return <VideoItem key={video.youtubeId} video={video} />
                     })}
                 </Grid>
-                : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && videoCategory === 'full concert')
+                : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && hasPassedVerification && videoCategory === 'full concert')
                     ? <Grid container spacing={6} my={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton playIcon={true} key={i} />)}</Grid>
                     : <Box height={'350px'} />
             }

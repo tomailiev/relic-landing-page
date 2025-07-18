@@ -6,14 +6,14 @@ import useDimensions from "../../hooks/useDimensions";
 const Banner = ({ bgPic, children }) => {
 
     const theme = useTheme();
-    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
+    const smMatch = useMediaQuery(theme.breakpoints.down('lg'));
     const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
 
 
     const dimensions = useDimensions();
 
     return (
-        <Container sx={{ height: `calc(100vh - ${xsMatch ? 56 : smMatch ? 64 : 80}px)`, }} >
+        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `${xsMatch ? -56 : smMatch ? -64 : -80}px`, position: 'relative', overflow: 'hidden' }} >
             <Box
                 sx={{
                     position: 'absolute',
