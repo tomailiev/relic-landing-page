@@ -1,4 +1,4 @@
-import { Paper, Box, useTheme, useMediaQuery, Grid, Button, Typography, } from "@mui/material";
+import { Paper, Box, Grid, Button, Typography, } from "@mui/material";
 import { useEffect, useState } from "react";
 // import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
@@ -26,8 +26,6 @@ const VideoWall = () => {
     // const [buttonsDisabled, setButtonsDisabled] = useState(false);
     // let intervalRef = useRef(null);
 
-    const theme = useTheme();
-    const lgMatch = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
         downloadDocsV2('videos', [
@@ -97,7 +95,7 @@ const VideoWall = () => {
     return (
         <>
             <Paper sx={{ my: 2, px: 1, }}>
-                <Box position={'relative'} overflow={'hidden'} height={lgMatch ? '370px' : '540px'} >
+                <Box position={'relative'} overflow={'hidden'} >
                     {/* {videos.map((vid, i, arr) => (
                         <VideoItem
                             key={vid.youtubeId}
@@ -121,7 +119,7 @@ const VideoWall = () => {
                                 {video.title}
                             </Typography>
                             <Link to={'/media/videos'}>
-                                <Button variant="outlined">
+                                <Button variant={'outlined'}>
                                     {'More videos'}
                                 </Button>
                             </Link>
