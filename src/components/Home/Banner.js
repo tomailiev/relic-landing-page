@@ -1,19 +1,23 @@
-import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Container, } from "@mui/material";
 // import { Parallax } from "react-parallax";
 import '@fontsource/lato/400-italic.css';
 import useDimensions from "../../hooks/useDimensions";
+import { useContext } from "react";
+import HeaderHeightContext from "../../context/HeatherHeightContext";
 
 const Banner = ({ bgPic, children }) => {
 
-    const theme = useTheme();
-    const smMatch = useMediaQuery(theme.breakpoints.down('lg'));
-    const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
+    const { headerHeight } = useContext(HeaderHeightContext);
+
+    // const theme = useTheme();
+    // const smMatch = useMediaQuery(theme.breakpoints.down('lg'));
+    // const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
 
 
     const dimensions = useDimensions();
 
     return (
-        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `${xsMatch ? -56 : smMatch ? -64 : -80}px`, position: 'relative', overflow: 'hidden' }} >
+        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `-${headerHeight}px`, position: 'relative', overflow: 'hidden' }} >
             <Box
                 sx={{
                     position: 'absolute',

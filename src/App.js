@@ -40,6 +40,7 @@ import MusicianDialog from './components/Musicians/MusicianDialog';
 import Videos from './components/Videos/Videos';
 import Photos from './components/Photos/Photos';
 import { currentSeason } from './data/currentSeason';
+import { HeaderHeightProvider } from './components/Header/HeatherHeightProvider';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -229,36 +230,38 @@ function App() {
           <LoadingContext.Provider value={{ loading, setLoading }}>
             <NotificationContext.Provider value={{ notification, setNotification }}>
               <DialogContext.Provider value={{ dialog, setDialog }}>
-                <LoadingBackdrop />
-                <Notification />
-                <CommonDialog />
-                <CssBaseline />
-                <Header location={location} />
-                <TransitionGroup component={null}>
-                  <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
-                      <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Us'} />} />
-                      <Route path="/about/musicians" element={<Musicians />} />
-                      <Route path='/about/journey' element={<Journey />} />
-                      <Route path="/events/:year" element={<Events />} />
-                      <Route path='/support/donate' element={<Support />} />
-                      <Route path={'/support/tiers'} element={<DonorLevels />} />
-                      {/* <Route path={'/support/host'} element={<Host />} /> */}
-                      <Route path={'/media/photos'} element={<Photos />} />
-                      <Route path='/media/videos' element={<Videos />} />
-                      <Route path="/contact" element={<Contact />} />
-                      <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
-                      <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
-                      <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
-                      <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
-                      <Route path="*" element={<NoMatch />} />
-                    </Routes>
-                  </CSSTransition>
-                </TransitionGroup>
-                {location.pathname !== '/support' && <ActionCenter />}
-                <Footer />
+                <HeaderHeightProvider>
+                  <LoadingBackdrop />
+                  <Notification />
+                  <CommonDialog />
+                  <CssBaseline />
+                  <Header location={location} />
+                  <TransitionGroup component={null}>
+                    <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
+                        <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Us'} />} />
+                        <Route path="/about/musicians" element={<Musicians />} />
+                        <Route path='/about/journey' element={<Journey />} />
+                        <Route path="/events/:year" element={<Events />} />
+                        <Route path='/support/donate' element={<Support />} />
+                        <Route path={'/support/tiers'} element={<DonorLevels />} />
+                        {/* <Route path={'/support/host'} element={<Host />} /> */}
+                        <Route path={'/media/photos'} element={<Photos />} />
+                        <Route path='/media/videos' element={<Videos />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
+                        <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
+                        <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
+                        <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
+                        <Route path="*" element={<NoMatch />} />
+                      </Routes>
+                    </CSSTransition>
+                  </TransitionGroup>
+                  {location.pathname !== '/support' && <ActionCenter />}
+                  <Footer />
+                </HeaderHeightProvider>
               </DialogContext.Provider>
             </NotificationContext.Provider>
           </LoadingContext.Provider>

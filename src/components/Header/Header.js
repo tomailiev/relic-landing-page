@@ -10,13 +10,15 @@ import logo from "../../assets/logos/relic-logo-bw.png";
 import DialogContext from "../../context/DialogContext";
 import SubscribeForm from "../Common/SubscribeForm";
 import { currentSeason } from "../../data/currentSeason";
+import HeaderHeightContext from "../../context/HeatherHeightContext";
 
 
 const Header = ({ location }) => {
 
+    const { ref } = useContext(HeaderHeightContext);
     const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    
+
     // const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
     const trigger = useScrollTrigger({
         threshold: 100,
@@ -57,7 +59,7 @@ const Header = ({ location }) => {
 
     return (
         <>
-            <AppBar color={trigger || location?.pathname !== '/' ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
+            <AppBar ref={ref} color={trigger || location?.pathname !== '/' ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                     <IconButton
                         color="secondary"
