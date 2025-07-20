@@ -35,7 +35,7 @@ const CommonDialog = () => {
         >
             <DialogTitle sx={{ mr: 4 }}>
                 <Typography noWrap={true}>{dialog?.title}</Typography>
-                {((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'photo') && !smMatch) && (isFullScreen
+                {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && (isFullScreen
                     ? <IconButton
                         aria-label="expand"
                         onClick={() => setIsFullScreen(prev => !prev)}
