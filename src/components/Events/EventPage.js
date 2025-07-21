@@ -24,6 +24,7 @@ const EventPage = () => {
     const { setDialog } = useContext(DialogContext);
     const [event, setEvent] = useState(null);
     const [pdfFile, setPdfFile] = useState(null);
+    const [eventBanner, setEventBanner] = useState(null);
 
     useEffect(() => {
         if (event?.program) {
@@ -32,6 +33,14 @@ const EventPage = () => {
                 .catch(console.error);
         }
     }, [event, event?.program]);
+
+    useEffect(() => {
+        if (event?.banner) {
+            getLink(event.banner)
+                .then(val => setEventBanner(val))
+                .catch(console.error);
+        }
+    })
 
     useEffect(() => {
         downloadOneDoc('events', eventId)
@@ -47,7 +56,7 @@ const EventPage = () => {
                 sx={{
                     width: '100%',
                     height: { xs: 300, sm: 400, md: 500 },
-                    backgroundImage: `url(${banner})`,
+                    backgroundImage: `url(${eventBanner || banner})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     mb: 3,
