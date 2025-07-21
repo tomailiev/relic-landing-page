@@ -30,7 +30,7 @@ const CommonDialog = () => {
             maxWidth={dialog?.type === 'donation' || dialog?.type === 'photo' ? 'lg' : 'sm'}
             open={hasContent}
             onClose={closeDialog}
-            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'video' || dialog?.type === 'photo') && smMatch)}
+            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'video' || dialog?.type === 'photo' || dialog?.type === 'map') && smMatch)}
             sx={{ my: 0 }}
         >
             <DialogTitle sx={{ mr: 4 }}>
@@ -70,7 +70,7 @@ const CommonDialog = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ p: 0 }}>
+            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, px: dialog?.type === 'photo' || dialog?.type === 'video' ? 0 : 3 }}>
                 {dialog?.component}
             </DialogContent>
             <DialogActions>
