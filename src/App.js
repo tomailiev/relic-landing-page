@@ -41,6 +41,7 @@ import Videos from './components/Videos/Videos';
 import Photos from './components/Photos/Photos';
 import { currentSeason } from './data/currentSeason';
 import { HeaderHeightProvider } from './components/Header/HeatherHeightProvider';
+import EventPage from './components/Events/EventPage';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -254,6 +255,7 @@ function App() {
                         <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                         <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
                         <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
+                        <Route path='event/:eventId' element={<EventPage />} />
                         <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
                         <Route path="*" element={<NoMatch />} />
                       </Routes>
