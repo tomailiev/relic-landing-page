@@ -7,10 +7,10 @@ import {
     List,
     ListItem,
     ListItemText,
-    Link,
+    Skeleton,
 } from '@mui/material';
 
-import banner from '../../assets/imgs/WO_02232023-b.png';
+// import banner from '../../assets/imgs/WO_02232023-b.png';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { downloadOneDoc, getLink } from '../../utils/firebase/firestore-funcs';
@@ -40,42 +40,45 @@ const EventPage = () => {
                 .then(val => setEventBanner(val))
                 .catch(console.error);
         }
-    })
+    }, [event?.banner])
 
     useEffect(() => {
         downloadOneDoc('events', eventId)
-            .then(doc => setEvent(doc));
+            .then(doc => {
+                setEvent(doc)
+            });
     }, [eventId]);
 
 
-    if (!event) return <Typography>Loading...</Typography>;
     return (
-        <Box>
+        <Box mb={5}>
             {/* Banner */}
-            <Box
+            {eventBanner ? <Box
                 sx={{
                     width: '100%',
                     height: { xs: 300, sm: 400, md: 500 },
-                    backgroundImage: `url(${eventBanner || banner})`,
+                    backgroundImage: `url(${eventBanner})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     mb: 3,
                 }}
             />
+                : <Skeleton variant={'rectangular'} width={'100%'} sx={{ height: { xs: 300, sm: 400, md: 500 } }} />}
 
 
             {/* Title */}
-            <Container sx={{ my: 5 }}>
-                <Typography
+            <Container sx={{ my: 6, textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                {event?.title ? <Typography
                     variant="h3"
                     sx={{
-                        textAlign: 'center',
                         fontWeight: 600,
-                        mb: 3,
+                        mb: 1,
                     }}
                 >
                     {event.title}
                 </Typography>
+                    : <Skeleton variant='text' height={'70px'} width={'350px'} />}
+                {event?.subtitle && <Typography variant='h6' fontWeight={600} >{event.subtitle}</Typography>}
             </Container>
 
             {/* Content */}
@@ -86,11 +89,21 @@ const EventPage = () => {
                         <Typography variant="h5" gutterBottom fontWeight={'bold'}>
                             Overview
                         </Typography>
-                        <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', pt: 1 }}>
-                            {event.description}
+                        {event?.description
+                            ? <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', pt: 1 }}>
+                                {event.description}
+                            </Typography>
+                            : <Skeleton variant='text' height={'125px'} />}
+                        <Typography variant="h5" gutterBottom mt={4} fontWeight={'bold'}>
+                            Music
                         </Typography>
+                        {event?.music
+                            ? <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', pt: 1, }}>
+                                Featuring music by {event.music}
+                            </Typography>
+                            : <Skeleton variant='text' height={'25px'} />}
 
-                        {event.program && (
+                        {pdfFile && (
                             <Button
                                 variant="contained"
                                 color="primary"
@@ -108,43 +121,43 @@ const EventPage = () => {
                             Performances
                         </Typography>
                         <List disablePadding>
-                            {event.performances.map((perf) => (
-                                <ListItem disableGutters key={perf.id} alignItems="flex-start" sx={{ mb: 2 }}>
-                                    <ListItemText
-                                        primary={
-                                            <Typography variant="subtitle1">
-                                                {perf.day}, {perf.date} at {perf.time}
-                                            </Typography>
-                                        }
-                                        secondary={
-                                            <>
-                                                <Typography variant="body1">
-                                                    {perf.venue}, {perf.location}
+                            {event?.performances
+                                ? event.performances.map((perf) => (
+                                    <ListItem disableGutters key={perf.id} alignItems="flex-start" sx={{ mb: 2 }}>
+                                        <ListItemText
+                                            primary={
+                                                <Typography variant="subtitle1">
+                                                    {perf.day}, {perf.date} at {perf.time}
                                                 </Typography>
-                                                <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
-                                                    <Link
-                                                        href={perf.url}
-                                                        target="_blank"
-                                                        rel="noopener"
-                                                        sx={{ display: 'inline-block', fontWeight: 'bold' }}
-                                                    >
-                                                        <Button variant='contained'>
+                                            }
+                                            secondary={
+                                                <>
+                                                    <Typography variant="body1">
+                                                        {perf.venue}, {perf.location}
+                                                    </Typography>
+                                                    <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
+                                                        <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate()}>
                                                             Tickets
                                                         </Button>
-                                                    </Link>
-                                                    {perf.geocode && <Button
-                                                        variant="outlined"
-                                                        size={'small'}
-                                                        onClick={() => {
-                                                            setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
-                                                        }}
-                                                    >View Map</Button>}
-                                                </Box>
-                                            </>
-                                        }
-                                    />
-                                </ListItem>
-                            ))}
+                                                        {perf.geocode && <Button
+                                                            variant="outlined"
+                                                            size={'small'}
+                                                            onClick={() => {
+                                                                setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
+                                                            }}
+                                                        >View Map</Button>}
+                                                    </Box>
+                                                </>
+                                            }
+                                        />
+                                    </ListItem>
+                                ))
+                                : [1, 2, 3].map(item => {
+                                    return <ListItem disableGutters key={item} alignItems="flex-start" sx={{ mb: 2 }}>
+                                        <Skeleton variant='text' height={'132px'} width={'100%'} />
+                                    </ListItem>
+                                })
+                            }
                         </List>
                     </Grid>
                 </Grid>
