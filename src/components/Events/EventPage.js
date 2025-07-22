@@ -17,6 +17,7 @@ import { downloadOneDoc, getLink } from '../../utils/firebase/firestore-funcs';
 import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
 import MapDialog from './MapDialog';
+import { sortByNewTitle } from '../../data/musicianSorter';
 
 const EventPage = () => {
 
@@ -113,6 +114,13 @@ const EventPage = () => {
                                 View program book
                             </Button>
                         )}
+                        <Typography variant="h5" gutterBottom mt={4} fontWeight={'bold'}>
+                            Musicians
+                        </Typography>
+                        {event?.musicians
+                            ? event.musicians.sort(sortByNewTitle).map(({ name, newTitle, id }) => <Typography variant='body1' key={id}>{name}, {newTitle}</Typography>)
+                            : <Skeleton variant="text" height={'150px'} />
+                        }
                     </Grid>
 
                     {/* Performances */}
