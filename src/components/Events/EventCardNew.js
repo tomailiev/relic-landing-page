@@ -30,15 +30,21 @@ const EventCardNew = ({ event, past }) => {
     const startDate = new Date(sortedPerformances[0].date);
     const endDate = new Date(sortedPerformances[sortedPerformances.length - 1].date);
 
-    const formattedDateRange = `${startDate.toLocaleDateString('en-US', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-    })} - ${endDate.toLocaleDateString('en-US', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-    })}`;
+    const formattedDateRange = startDate.toDateString() === endDate.toDateString()
+        ? `${startDate.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        })}`
+        : `${startDate.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        })} - ${endDate.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        })}`;
 
     const uniqueLocations = [
         ...new Set(sortedPerformances.map((p) => p.location)),
@@ -155,10 +161,10 @@ const EventCardNew = ({ event, past }) => {
                             </Typography>
                         )}
 
-                        <Typography variant="body1" sx={{ mb: 1 }}>
+                        <Typography variant="body1" fontWeight={'600'} sx={{ mb: 1 }}>
                             {formattedDateRange}
                         </Typography>
-                        <Typography variant="body1" sx={{ mb: 2 }}>
+                        <Typography variant="body1" fontWeight={'600'} sx={{ mb: 2 }}>
                             {locationsString}
                         </Typography>
 

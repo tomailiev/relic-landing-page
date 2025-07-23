@@ -31,7 +31,7 @@ const Photos = () => {
                 Photos
             </Typography>
             {photos?.length
-                ? <Grid container spacing={6} my={3}>
+                ? <Grid container spacing={6} mb={3}>
                     {photos.map((photo, index) => {
                         return <PhotoItem key={photo.id} photo={photo} setPhotoDialog={() => setPhotoDialog(index, photo)} />
                     })}

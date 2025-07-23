@@ -80,7 +80,7 @@ const EventPage = () => {
                 >
                     {event.title}
                 </Typography>
-                    : <Skeleton variant='text' height={'70px'} width={'350px'} />}
+                    : <Skeleton variant='text' height={'80px'} width={'350px'} />}
                 {event?.subtitle && <Typography variant='h6' fontWeight={600} >{event.subtitle}</Typography>}
             </Container>
 
@@ -104,7 +104,7 @@ const EventPage = () => {
                             ? <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', pt: 1, }}>
                                 Featuring music by {event.music}
                             </Typography>
-                            : <Skeleton variant='text' height={'25px'} />}
+                            : <Skeleton variant='text' height={'35px'} />}
 
                         {pdfFile && (
                             <Button
@@ -121,7 +121,7 @@ const EventPage = () => {
                         </Typography>
                         {event?.musicians
                             ? event.musicians.sort(sortByNewTitle).map(({ name, newTitle, id }) => <Typography variant='body1' key={id}>{name}, {newTitle}</Typography>)
-                            : <Skeleton variant="text" height={'150px'} />
+                            : <Skeleton variant="text" height={'250px'} width={'60%'} />
                         }
                     </Grid>
 
@@ -147,9 +147,10 @@ const EventPage = () => {
                                             }
                                             secondary={
                                                 <>
-                                                    {perf.presenter && <Typography color={'primary'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
+                                                    {perf.presenter && <Typography color={'primary'} fontSize={'1.1em'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
+                                                    {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
-                                                        <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate()}>
+                                                        <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
                                                             Tickets
                                                         </Button>
                                                         {perf.geocode && <Button
