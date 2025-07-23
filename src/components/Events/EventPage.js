@@ -12,12 +12,14 @@ import {
 
 // import banner from '../../assets/imgs/WO_02232023-b.png';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { downloadOneDoc, getLink } from '../../utils/firebase/firestore-funcs';
 import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
 import MapDialog from './MapDialog';
 import { sortByNewTitle } from '../../data/musicianSorter';
+import { ArrowLeft } from '@mui/icons-material';
+import { currentSeason } from '../../data/currentSeason';
 
 const EventPage = () => {
 
@@ -115,7 +117,7 @@ const EventPage = () => {
                             </Button>
                         )}
                         <Typography variant="h5" gutterBottom mt={4} fontWeight={'bold'}>
-                            Musicians
+                            Artists
                         </Typography>
                         {event?.musicians
                             ? event.musicians.sort(sortByNewTitle).map(({ name, newTitle, id }) => <Typography variant='body1' key={id}>{name}, {newTitle}</Typography>)
@@ -134,15 +136,18 @@ const EventPage = () => {
                                     <ListItem disableGutters key={perf.id} alignItems="flex-start" sx={{ mb: 2 }}>
                                         <ListItemText
                                             primary={
-                                                <Typography variant="subtitle1">
-                                                    {perf.day}, {perf.date} at {perf.time}
-                                                </Typography>
-                                            }
-                                            secondary={
                                                 <>
+                                                    <Typography variant="body1" fontWeight={'600'}>
+                                                        {perf.day}, {perf.date} at {perf.time}
+                                                    </Typography>
                                                     <Typography variant="body1">
                                                         {perf.venue}, {perf.location}
                                                     </Typography>
+                                                </>
+                                            }
+                                            secondary={
+                                                <>
+                                                    {perf.presenter && <Typography color={'primary'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
                                                         <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate()}>
                                                             Tickets
@@ -169,6 +174,11 @@ const EventPage = () => {
                         </List>
                     </Grid>
                 </Grid>
+                <Box textAlign={'center'} mt={2}>
+                    <Link to={`/events/${currentSeason}`}>
+                        <Button variant='text' startIcon={<ArrowLeft />}>All events</Button>
+                    </Link>
+                </Box>
             </Container>
         </Box>
     );
