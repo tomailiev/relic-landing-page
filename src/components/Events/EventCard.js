@@ -1,9 +1,10 @@
-import {  Card, CardActionArea, CardMedia, Link, Skeleton } from "@mui/material";
+import {  Card, CardActionArea, CardMedia, Skeleton } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getLink } from "../../utils/firebase/firestore-funcs";
+import { Link } from "react-router-dom";
 
-const EventCard = ({ imageUrl, url, past, title }) => {
+const EventCard = ({ imageUrl, url, past, title, id }) => {
 
     const [src, setSrc] = useState(null);
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -19,7 +20,7 @@ const EventCard = ({ imageUrl, url, past, title }) => {
             <CardActionArea>
                 {/* <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}> */}
                 {!imgLoaded && <Skeleton variant="rectangular" width='100%' height={'400px'} />}
-                <Link href={url} target={'_blank'} underline={'none'}>
+                <Link to={`/event/${id}`}  underline={'none'}>
                     <CardMedia
                         component="img"
                         // height="300"

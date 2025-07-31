@@ -9,22 +9,25 @@ import logo from "../../assets/logos/relic-logo-bw.png";
 // import { analyze } from "../../utils/firebase/firestore-funcs";
 import DialogContext from "../../context/DialogContext";
 import SubscribeForm from "../Common/SubscribeForm";
+import { currentSeason } from "../../data/currentSeason";
+import HeaderHeightContext from "../../context/HeatherHeightContext";
 
 
-const Header = ({location}) => {
+const Header = ({ location }) => {
 
+    const { ref } = useContext(HeaderHeightContext);
     const { setDialog } = useContext(DialogContext);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const date = new Date();
-    const month = date.getMonth();
-    const seasonSwitch = month >= 7;
-    const year = date.getFullYear();
-    const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
+
+    // const seasons = Array.from({ length: seasonSwitch ? year - 2021 : year - 2022 }, (_, i) => i + 2022);
     const trigger = useScrollTrigger({
         threshold: 100,
         disableHysteresis: true
     });
     const navItems = [
+        {
+            path: `/events/${currentSeason}`, title: 'Events',
+        },
         {
             path: '/about', title: 'About', menu: [
                 { path: '/about/bio', title: 'Relic' },
@@ -34,52 +37,50 @@ const Header = ({location}) => {
             ]
         },
         {
-            path: '/events', title: 'Events', menu: seasons.reverse().map((item) => {
-                return {
-                    path: `/events/${item}-${(item + 1) % 2000}`,
-                    title: `Season ${item}-${(item + 1) % 2000}`
-                }
-            })
-        },
-        {
             path: '/support', title: 'Support', menu: [
                 { path: '/support/donate', title: 'Give now!' },
                 { path: '/support/tiers', title: 'Donor Tiers' },
-                { path: '/support/host', title: 'Host Relic' }
+                // { path: '/support/host', title: 'Host Relic' }
+            ]
+        },
+        {
+            path: '/media', title: 'Media', menu: [
+                { path: '/media/photos', title: 'Photos' },
+                { path: '/media/videos', title: 'Videos' }
             ]
         },
         { path: '/contact', title: 'Contact' },
     ];
 
-    
+
     function handleDrawerToggle() {
         setIsDrawerOpen(!isDrawerOpen);
     }
 
     return (
         <>
-            <AppBar color={trigger || location?.pathname !== '/' ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
+            <AppBar ref={ref} color={trigger || location?.pathname !== '/' ? 'primary' : 'transparent'} sx={{ transition: 'all 0.15s ease' }} position={'sticky'}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
                     <IconButton
                         color="secondary"
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { xs: 'relative', md: 'none' } }}
+                        sx={{ mr: 2, display: { xs: 'relative', lg: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box component={RouterLink} overflow={'hidden'} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+                    <Box component={RouterLink} overflow={'hidden'} to={'/'} height={'80px'} minWidth={'80px'} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' }, transition: 'all 0.08s ease' }} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
                         <img src={logo} alt="homepage" aria-label="home" width={'60%'} height={'auto'} />
                     </Box>
-                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box justifyContent={'center'} flexGrow={1} component={"nav"} sx={{ display: { xs: 'none', lg: 'flex' } }}>
                         {navItems.map(({ path, title, menu }) => {
                             return <NavMenuItem key={title} menuTitle={title} menu={menu} path={path} color={'white'} />
                         })}
                     </Box>
                     <ResponsiveDrawer handleDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} navItems={navItems} />
                     <Box width={'110px'}>
-                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid',  }} variant={trigger || location?.pathname !== '/' ? 'outlined' : 'contained'} onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
+                        <Button color="secondary" sx={{ fontWeight: 'bold', width: '100%', letterSpacing: 1.5, px: 6, border: '2px solid', }} variant={trigger || location?.pathname !== '/' ? 'outlined' : 'contained'} onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>
                             Subscribe
                         </Button>
                     </Box>

@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import DialogContext from "../../context/DialogContext";
 import CloseIcon from '@mui/icons-material/Close';
@@ -27,14 +27,14 @@ const CommonDialog = () => {
     return (
         <Dialog
             fullWidth={true}
-            maxWidth={dialog?.type === 'donation' ? 'lg' : 'sm'}
+            maxWidth={dialog?.type === 'donation' || dialog?.type === 'photo' ? 'lg' : 'sm'}
             open={hasContent}
             onClose={closeDialog}
-            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation') && smMatch)}
+            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'video' || dialog?.type === 'photo' || dialog?.type === 'map') && smMatch)}
             sx={{ my: 0 }}
         >
-            <DialogTitle sx={{ mx: 4 }}>
-                {dialog?.title}
+            <DialogTitle sx={{ mr: 4 }}>
+                <Typography noWrap={true}>{dialog?.title}</Typography>
                 {((dialog?.type === 'program' || dialog?.type === 'donation') && !smMatch) && (isFullScreen
                     ? <IconButton
                         aria-label="expand"
@@ -70,7 +70,7 @@ const CommonDialog = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, }}>
+            <DialogContent dividers={!(dialog?.type === 'subscription')} sx={{ py: 0, px: dialog?.type === 'photo' || dialog?.type === 'video' ? 0 : 3 }}>
                 {dialog?.component}
             </DialogContent>
             <DialogActions>

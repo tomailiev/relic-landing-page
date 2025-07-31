@@ -1,19 +1,23 @@
-import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Container, } from "@mui/material";
 // import { Parallax } from "react-parallax";
 import '@fontsource/lato/400-italic.css';
-import useDimensions from "../../hooks/useDimensions";
+// import useDimensions from "../../hooks/useDimensions";
+import { useContext } from "react";
+import HeaderHeightContext from "../../context/HeatherHeightContext";
 
 const Banner = ({ bgPic, children }) => {
 
-    const theme = useTheme();
-    const smMatch = useMediaQuery(theme.breakpoints.down('md'));
-    const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
+    const { headerHeight } = useContext(HeaderHeightContext);
+
+    // const theme = useTheme();
+    // const smMatch = useMediaQuery(theme.breakpoints.down('lg'));
+    // const xsMatch = useMediaQuery(theme.breakpoints.down('sm'));
 
 
-    const dimensions = useDimensions();
+    // const dimensions = useDimensions();
 
     return (
-        <Container sx={{ height: `calc(100vh - ${xsMatch ? 56 : smMatch ? 64 : 80}px)`, }} >
+        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `-${headerHeight}px`, position: 'relative', overflow: 'hidden' }} >
             <Box
                 sx={{
                     position: 'absolute',
@@ -29,7 +33,9 @@ const Banner = ({ bgPic, children }) => {
                     width={'100%'}
                     height={'100%'}
                     overflow={'hidden'}
-                    sx={{ background: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), no-repeat center/${dimensions.width / dimensions.height > 1.5 ? 100 : (dimensions.height / dimensions.width) * 160}% url(${bgPic})`, opacity: 1 }}
+                    sx={{
+                        background: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), center/cover no-repeat url(${bgPic})`, opacity: 1
+                    }}
                 >
                     {children}
                 </Box>

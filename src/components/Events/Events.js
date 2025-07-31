@@ -1,11 +1,13 @@
-import { Container, Typography, useMediaQuery } from "@mui/material";
+import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { downloadDocsV2, getLink } from "../../utils/firebase/firestore-funcs";
-import EventSkeleton from "./EventSkeleton";
+// import EventSkeleton from "./EventSkeleton";
 import { useParams } from "react-router-dom";
 import TextContext from "../../context/TextContext";
 import { useTheme } from "@emotion/react";
-import Event from "./Event";
+// import Event from "./Event";
+import EventCardNew from "./EventCardNew";
+import EventCardSkeleton from "./EventCardSkeleton";
 
 
 const Events = () => {
@@ -56,22 +58,29 @@ const Events = () => {
     return (
         <>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h3" my={8}>
+                <Typography variant="h3" my={8} fontWeight={'600'}>
                     {`${year}-${(year + 1) % 2000}`} Concert Season
                 </Typography>
-                {currentEvents.length
-                    ? currentEvents.map((event, i) => (
-                        <Event event={event} key={`c${i}`} />
-                    ))
-                    : <></>
-                }
-                {pastEvents.length
-                    ? pastEvents.map((event, i) => (
-                        <Event event={event} past={true} key={`c${i}`} />
-                    ))
-                    : <></>
-                }
-
+                <Container sx={{ pb: 6 }}>
+                    <Grid container spacing={4} direction="column">
+                        {currentEvents.length
+                            ? currentEvents.map((event, i) => (
+                                <Grid item key={event.id}>
+                                    <EventCardNew event={event} />
+                                </Grid>
+                            ))
+                            : <></>
+                        }
+                        {pastEvents.length
+                            ? pastEvents.map((event, i) => (
+                                <Grid item key={event.id}>
+                                    <EventCardNew event={event} past={true} key={`p${i}`} />
+                                </Grid>
+                            ))
+                            : <></>
+                        }
+                    </Grid>
+                </Container>
 
                 {!currentEvents.length && !pastEvents.length
                     ? hasUpdated
@@ -82,7 +91,7 @@ const Events = () => {
                                 : <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
                             }
                         </Container>
-                        : <EventSkeleton />
+                        : Array.from({ length: 3 }).map((_, i) => <EventCardSkeleton key={i} />)
                     : <></>
                 }
             </Container>

@@ -4,7 +4,7 @@ import { links } from "../../data/links";
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 // import { useEffect } from "react";
 
-const VideoItem = ({ video, index, currentIndex, playVideo, length, switchInterval }) => {
+const VideoItemLegacy = ({ video, index, currentIndex, playVideo, length, switchInterval }) => {
     //position = currentIndex - index
     // const [position, setPosition] = useState(currentIndex - index);
 
@@ -47,4 +47,4 @@ const VideoItem = ({ video, index, currentIndex, playVideo, length, switchInterv
     );
 };
 
-export default VideoItem;
+export default VideoItemLegacy;
