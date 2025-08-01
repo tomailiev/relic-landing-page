@@ -245,7 +245,7 @@ function App() {
                         <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Us'} />} />
                         <Route path="/about/musicians" element={<Musicians />} />
                         <Route path='/about/journey' element={<Journey />} />
-                        <Route path="/events/:year" element={<Events />} />
+                        <Route path="/events/:season" element={<Events />} />
                         <Route path='/support/donate' element={<Support />} />
                         <Route path={'/support/tiers'} element={<DonorLevels />} />
                         {/* <Route path={'/support/host'} element={<Host />} /> */}
@@ -255,7 +255,7 @@ function App() {
                         <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                         <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
                         <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
-                        <Route path='event/:eventId' element={<EventPage />} />
+                        <Route path='/event/:eventId' element={<EventPage />} />
                         <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
                         <Route path="*" element={<NoMatch />} />
                       </Routes>

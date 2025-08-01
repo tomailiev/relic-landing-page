@@ -11,7 +11,7 @@ import banners from '../../data/banners';
 // import MediaSection from "../Common/MediaSection";
 import VideoWall from "./VideoWall";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
-import Event from "../Events/Event";
+import EventCardNew from "../Events/EventCardNew";
 
 const Home = () => {
 
@@ -41,7 +41,7 @@ const Home = () => {
                     <Typography variant="h3" textAlign={'center'} my={6}>
                         Upcoming
                     </Typography>
-                    <Event event={nextEvent} />
+                    <EventCardNew event={nextEvent} />
                 </>}
                 <Typography variant="h3" textAlign={'center'} my={6}>
                     Watch & Listen

@@ -26,7 +26,10 @@ const Header = ({ location }) => {
     });
     const navItems = [
         {
-            path: `/events/${currentSeason}`, title: 'Events',
+            path: '/events', title: 'Events', menu: [
+                { path: `/events/${currentSeason}`, title: `${currentSeason} Season` },
+                { path: '/events/past', title: 'Archive' }
+            ]
         },
         {
             path: '/about', title: 'About', menu: [
