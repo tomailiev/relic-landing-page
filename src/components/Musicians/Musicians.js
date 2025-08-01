@@ -1,27 +1,28 @@
-import { Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
 import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
-import MusicianGroup from "./MusicianGroup";
+// import MusicianGroup from "./MusicianGroup";
 import getBannerSx from "../../styles/bannerSx";
 import useDimensions from "../../hooks/useDimensions";
+import MusicianLI from "./MusicianLI";
 
-const placeholder = {
-    violin: [],
-    viola: [],
-    cello: [],
-    theorbo: [],
-    bass: [],
-    harpsichord: [],
-    oboe: [],
-    bassoon: [],
-    flute: []
-};
+// const placeholder = {
+//     violin: [],
+//     viola: [],
+//     cello: [],
+//     theorbo: [],
+//     bass: [],
+//     harpsichord: [],
+//     oboe: [],
+//     bassoon: [],
+//     flute: []
+// };
 
 const Musicians = () => {
 
-    const [musicians, setMusicians] = useState(placeholder);
+    const [musicians, setMusicians] = useState([]);
     const dimensions = useDimensions();
     const date = new Date();
     const month = date.getMonth();
@@ -30,13 +31,9 @@ const Musicians = () => {
 
     useEffect(() => {
         fetchCurrentMusicians({ sorting: 'name', order: 'asc' })
-            .then(({data}) => {
+            .then(({ data }) => {
                 if (data) {
-                    setMusicians(data.reduce((prev, curr) => {
-                        if (!prev[curr.newTitle]) prev[curr.newTitle] = [];
-                        prev[curr.newTitle].push(curr);
-                        return prev;
-                    }, {}));
+                    setMusicians(data);
                 }
             })
             .catch(e => {
@@ -49,20 +46,24 @@ const Musicians = () => {
         <>
             <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.2813, 'musicians')}>
             </Container>
-            <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-                <Typography variant="h3" >
+            <Container maxWidth="lg" sx={{ my: 5, px: { xs: 2, sm: 10 }, textAlign: 'center' }}>
+                <Typography variant="h3" my={8}>
                     Musicians
                 </Typography>
-                <Grid container spacing={6} my={3}>
-                    <Grid item xs={12} md={6}>
+                <Grid container spacing={{ xs: 3, sm: 0.7 }} direction="column">
+                    {musicians.length
+                        ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} ><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
+                        : Array.from({ length: 3 }).map((_, i) => <Box sx={{ my: { xs: 3, sm: 0.7 }, ml: { xs: 3, sm: 0 } }}>
+                            <Skeleton variant="rectangular" width="100%" sx={{ borderRadius: 3, height: { xs: 400, sm: 122 } }} />
+                        </Box>)
+                    }
+                    {/* <Grid item >
                         <Typography variant={'h6'} textAlign={'left'}>Violin</Typography>
                         <MusicianGroup section={musicians.violin} length={5} />
                         <Typography variant={'h6'} textAlign={'left'}>Viola</Typography>
                         <MusicianGroup section={musicians.viola} length={2} />
                         <Typography variant={'h6'} textAlign={'left'}>Cello</Typography>
                         <MusicianGroup section={musicians.cello} />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
                         <Typography variant={'h6'} textAlign={'left'}>Bassoon</Typography>
                         <MusicianGroup section={musicians.bassoon} />
                         <Typography variant={'h6'} textAlign={'left'}>Bass</Typography>
@@ -71,7 +72,7 @@ const Musicians = () => {
                         <MusicianGroup section={musicians.theorbo} />
                         <Typography variant={'h6'} textAlign={'left'}>Harpsichord</Typography>
                         <MusicianGroup section={musicians.harpsichord} />
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Container>
         </>
