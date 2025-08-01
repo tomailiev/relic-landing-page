@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, Paper, Stack, TextField } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
 import { useContext, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
@@ -84,47 +84,45 @@ const ContactForm = () => {
     }
 
     return (
-        <Paper elevation={2}>
-            <Box my={4} p={3}>
-                <form onSubmit={handleSubscribe}>
-                    <Stack spacing={2}>
-                        {fieldsArray.map(({ id, label }) => (
-                            <TextField
-                                key={id}
-                                id={id}
-                                error={!!hasError[id]}
-                                value={userFields[id]}
-                                onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
-                                onChange={handleInputChange}
-                                helperText={hasError[id]}
-                                label={label}
-                                variant="outlined"
-                                size="small"
-                                multiline={id === 'message'}
-                                rows={4}
-                            />
-                        ))}
-                        <FormControlLabel
-                            control={<Checkbox
-                                // icon={<FavoriteBorder />}
-                                // checkedIcon={<Favorite />}
-                                checked={willSubscribe}
-                                onChange={() => setWillSubscribe(!willSubscribe)}
-                            />}
-                            label={'Subscribe to our mailing list'}
+        <Box my={4} p={3}>
+            <form onSubmit={handleSubscribe}>
+                <Stack spacing={2}>
+                    {fieldsArray.map(({ id, label }) => (
+                        <TextField
+                            key={id}
+                            id={id}
+                            error={!!hasError[id]}
+                            value={userFields[id]}
+                            onFocus={() => setHasError(prev => ({ ...prev, [id]: '' }))}
+                            onChange={handleInputChange}
+                            helperText={hasError[id]}
+                            label={label}
+                            variant="outlined"
+                            size="small"
+                            multiline={id === 'message'}
+                            rows={4}
                         />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            disabled={isSubmitting}
-                            type="submit"
-                        >
-                            Send
-                        </Button>
-                    </Stack>
-                </form>
-            </Box>
-        </Paper>
+                    ))}
+                    <FormControlLabel
+                        control={<Checkbox
+                            // icon={<FavoriteBorder />}
+                            // checkedIcon={<Favorite />}
+                            checked={willSubscribe}
+                            onChange={() => setWillSubscribe(!willSubscribe)}
+                        />}
+                        label={'Subscribe to our mailing list'}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={isSubmitting}
+                        type="submit"
+                    >
+                        Send
+                    </Button>
+                </Stack>
+            </form>
+        </Box>
     );
 };
 
