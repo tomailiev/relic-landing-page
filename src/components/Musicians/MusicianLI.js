@@ -20,10 +20,11 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
         <Link
             onClick={() => setDialog({ type: 'bio', component: <MusicianDialog name={name} src={src} bio={bio} />, title: name })}
             color="inherit"
+            width={'100%%'}
             style={{
                 transition: '0.3s',
                 '&:hover': { opacity: 0.95 },
-                textDecoration: 'none'
+                textDecoration: 'none',
             }}
         >
             <Paper
@@ -32,7 +33,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                     p: 1,
                     display: 'flex',
                     flexDirection: 'column',
-                    // alignItems: 'stretch',
+                    alignItems: 'stretch',
                     borderRadius: 3,
                     backgroundColor: '#f9f9f9',
                     cursor: 'pointer',
@@ -40,6 +41,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                     position: 'relative',
                     overflow: 'hidden',
                     height: '100%',
+                    width: '100%',
                     '&:hover': {
                         transform: 'translateY(-2px)',
                         boxShadow: 4,
@@ -52,6 +54,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                     sx={{
                         width: '100%',
                         height: 'auto',
+                        display: 'flex',
                         aspectRatio: '1 / 1',
                         flexShrink: 0,
                         borderRadius: '50%',
@@ -69,8 +72,9 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                                 width: '100%',
                                 height: '100%',
                                 position: 'absolute',
-                                top: 0,
-                                left: 0,
+                                // top: '50%',
+                                // left: '50%',
+                                // transform: 'translate(50%, 50%)'
                             }}
                         />
                     )}
@@ -96,7 +100,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        
+
                     }}
                 >
                     <Box>

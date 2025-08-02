@@ -1,10 +1,11 @@
 import { Paper, Typography, useMediaQuery, useTheme, } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
 import markerIcon from '../../assets/imgs/maps-marker-32.png'
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import TextContext from "../../context/TextContext";
+import banners from "../../data/banners";
 
 //revise if international engagements!!
 const Journey = () => {
@@ -12,7 +13,7 @@ const Journey = () => {
     const { text } = useContext(TextContext);
     const [events, setEvents] = useState([]);
     const mapRef = createRef();
-    
+
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -80,21 +81,32 @@ const Journey = () => {
 
     return (
         <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: { xs: 300, sm: 350, },
+                    backgroundImage: `url(${banners.journeyBanner})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    mb: 3,
+                }}
+            />
             <Typography variant="h3" my={8} mx={3} >
-                Our journey
+                Relic's journey
             </Typography>
-            <Paper elevation={3} sx={{ my: 2, mx: 3, py: 5, px: 1 }}>
-                <Container maxWidth={'lg'}>
-                    <Typography textAlign={'left'}>
-                        {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
-                                const state = c.locationName.substring(c.locationName.length - 3);
-                                if (!a.includes(state) && state !== '.C.') {
-                                    return a.concat(state);
-                                }
-                                return a;
-                        }, []).length : 1)}
-                    </Typography>
-                </Container>
+            <Container maxWidth={'lg'}>
+                <Typography textAlign={'left'}>
+                    {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
+                        const state = c.locationName.substring(c.locationName.length - 3);
+                        if (!a.includes(state) && state !== '.C.') {
+                            return a.concat(state);
+                        }
+                        return a;
+                    }, []).length : 1)}
+                </Typography>
+            </Container>
+            <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}>
+                <Container maxWidth={'lg'} />
                 <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px', my: 5 }} />
             </Paper>
         </Container>

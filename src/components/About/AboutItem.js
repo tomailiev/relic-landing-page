@@ -13,21 +13,21 @@ const AboutItem = ({ title, textContent, right }) => {
         left: `linear-gradient(90deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.dark} 100%);`
     }
 
-    const bgCss = {
-        position: 'relative',
-        '&::after': {
-            background: `right / cover repeat-y ${smMatch ? gradients.mobile : right ? gradients.right : gradients.left}`,
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: smMatch ? 0 : right ? '50%' : 0,
-            right: smMatch ? 0 : right ? 0 : '50%',
-            content: "''",
-            opacity: 0.9,
-            // filter: 'sepia(70%)',
-            zIndex: -1
-        }
-    };
+    // const bgCss = {
+    //     position: 'relative',
+    //     '&::after': {
+    //         background: `right / cover repeat-y ${gradients.mobile}`,
+    //         position: 'absolute',
+    //         top: 0,
+    //         bottom: 0,
+    //         left: 0,
+    //         right: 0,
+    //         content: "''",
+    //         opacity: 0.9,
+    //         // filter: 'sepia(70%)',
+    //         zIndex: -1
+    //     }
+    // };
 
     const textCss = {
         width: smMatch ? '90%' : '70%',
@@ -37,16 +37,20 @@ const AboutItem = ({ title, textContent, right }) => {
         p: 2,
         left: smMatch ? '5%' : right ? 0 : '30%',
         position: 'relative',
-        minHeight: '280px',
+        minHeight: '250px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderBottomLeftRadius: smMatch || !right ? 10 : 0,
+        borderTopLeftRadius: smMatch || !right ? 10 : 0,
+        borderBottomRightRadius: smMatch || right ? 10 : 0,
+        borderTopRightRadius: smMatch || right ? 10 : 0,
     };
 
     return (
-        <Container maxWidth="lg">
-            <Box mb={smMatch ? 3 : -4} py={smMatch ? 2 : 4} sx={bgCss}>
-                <Paper square elevation={0} sx={textCss}>
+        <Container maxWidth="false" disableGutters>
+            <Box mb="0" py={smMatch ? 2 : 4} sx={{background: `center / cover repeat-y ${gradients.mobile}`}}>
+                <Paper square elevation={2} sx={textCss}>
                     <Typography variant="h6" fontWeight={700}>
                         {title}
                     </Typography>

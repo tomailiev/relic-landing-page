@@ -5,6 +5,7 @@ import musiciansBanner_sm from '../assets/banners/IMG_5767_sm.jpg';
 import groupBanner from '../assets/banners/IMG_2260.JPG';
 import storyBanner from '../assets/banners/IMG_2260_banner.JPG';
 import storyBanner_sm from '../assets/banners/IMG_2260_sm.JPG'
+import journeyBanner from '../assets/banners/journey_banner.jpg'
 
 
 const banners = {
@@ -17,6 +18,7 @@ const banners = {
         storyBanner_sm
     },
     groupBanner,
+    journeyBanner
 };
 
 export default banners;

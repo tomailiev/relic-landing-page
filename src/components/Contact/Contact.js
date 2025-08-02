@@ -17,7 +17,7 @@ const ContactPage = () => {
             <Typography
                 variant="body1"
                 color="text.primary"
-                align="center"
+                align="left"
                 sx={{ mx: 'auto', mb: 5 }}
             >
                 For performance bookings, please reach out to our agent, <strong>{text.contactAgentName}</strong> at{' '}

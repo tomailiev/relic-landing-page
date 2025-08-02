@@ -155,7 +155,7 @@ function App() {
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
-                        <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Us'} />} />
+                        <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Relic'} />} />
                         <Route path="/about/musicians" element={<Musicians />} />
                         <Route path='/about/journey' element={<Journey />} />
                         <Route path="/events/:season" element={<Events />} />
