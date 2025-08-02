@@ -1,5 +1,5 @@
 import './App.css';
-import {  CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -74,11 +74,7 @@ function App() {
     { textContent: text.aboutValues }
   ];
 
-  const bioTexts = [
-    { textContent: text.aboutNewBio },
-    { textContent: text.aboutNewBio2 },
-    { textContent: text.aboutNewBio3 }
-  ];
+  const bioTexts = text.aboutBio.split('\\n').map(item => ({ textContent: item }));
 
   const location = useLocation();
 
