@@ -62,7 +62,7 @@ const Home = () => {
                     key={text.musicianCardInfoTitle}
                     route={text.musicianCardRoute}
                     infoTitle={text.musicianCardInfoTitle}
-                    infoText={text.musicianCardInfoText}
+                    infoText={text.aboutBio.split('\\n')[0]}
                     cardImage={text.musicianCardImage}
                 />
             </Container>
