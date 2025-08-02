@@ -27,19 +27,19 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
             }}
         >
             <Paper
-
                 elevation={0}
                 sx={{
                     p: 1,
                     display: 'flex',
-                    flexDirection: { xs: 'column', sm: 'row' },
-                    alignItems: 'stretch',
+                    flexDirection: 'column',
+                    // alignItems: 'stretch',
                     borderRadius: 3,
                     backgroundColor: '#f9f9f9',
                     cursor: 'pointer',
                     transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                     position: 'relative',
                     overflow: 'hidden',
+                    height: '100%',
                     '&:hover': {
                         transform: 'translateY(-2px)',
                         boxShadow: 4,
@@ -50,14 +50,13 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                 {/* Image */}
                 <Box
                     sx={{
-                        width: { xs: '100%', sm: 90 },
-                        height: { xs: 'auto', sm: 90 },
+                        width: '100%',
+                        height: 'auto',
                         aspectRatio: '1 / 1',
                         flexShrink: 0,
                         borderRadius: '50%',
                         overflow: 'hidden',
-                        mr: { md: 3 },
-                        mb: { xs: 2, md: 0 },
+                        mb: 2,
                         backgroundColor: '#eee',
                         position: 'relative',
                     }}
@@ -97,14 +96,14 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        px: { xs: 0, md: 10 }
+                        
                     }}
                 >
                     <Box>
                         <Typography variant="h6" fontWeight={600}>
                             {name}, {title}
                         </Typography>
-                        {chair && <Typography variant="body1" fontWeight={'600'} fontStyle={'italic'} sx={{ mb: 1 }}>
+                        {chair && <Typography variant="body1" fontWeight={'600'} fontStyle={'italic'} sx={{ mt: 1 }}>
                             The {chair}
                         </Typography>}
 
@@ -116,7 +115,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
                     </Box>
 
                     <Box>
-                        <Button variant="contained" color="primary" sx={{ mt: { sx: 1, sm: 0 } }}>
+                        <Button variant="contained" color="primary" sx={{ my: 1 }}>
                             View
                         </Button>
                     </Box>

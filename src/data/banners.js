@@ -1,4 +1,4 @@
-import musiciansBanner from '../assets/banners/IMG_5767.jpg';
+import musiciansBanner from '../assets/banners/musicians_banner2.jpg';
 import musiciansBanner_sm from '../assets/banners/IMG_5767_sm.jpg';
 // import eventsBanner from '../assets/banners/banner_events.webp';
 // import homeBanner from '../assets/banners/homeBannerWithNoTitle.webp';

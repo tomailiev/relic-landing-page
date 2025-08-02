@@ -4,30 +4,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
 // import MusicianGroup from "./MusicianGroup";
-import getBannerSx from "../../styles/bannerSx";
-import useDimensions from "../../hooks/useDimensions";
 import MusicianLI from "./MusicianLI";
-
-// const placeholder = {
-//     violin: [],
-//     viola: [],
-//     cello: [],
-//     theorbo: [],
-//     bass: [],
-//     harpsichord: [],
-//     oboe: [],
-//     bassoon: [],
-//     flute: []
-// };
+import banners from "../../data/banners";
 
 const Musicians = () => {
 
     const [musicians, setMusicians] = useState([]);
-    const dimensions = useDimensions();
-    const date = new Date();
-    const month = date.getMonth();
-    const seasonSwitch = month >= 7;
-    const season = seasonSwitch ? date.getFullYear() - 2021 : date.getFullYear() - 2022;
 
     useEffect(() => {
         fetchCurrentMusicians({ sorting: 'name', order: 'asc' })
@@ -40,19 +22,28 @@ const Musicians = () => {
                 console.error('not found');
                 console.error(e);
             })
-    }, [season]);
+    }, []);
 
     return (
         <>
-            <Container disableGutters maxWidth={false} sx={getBannerSx(dimensions.width * 0.2813, 'musicians')}>
-            </Container>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: { xs: 300, sm: 380, },
+                    backgroundImage: `url(${banners.musicians.musiciansBanner})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    mb: 3,
+                }}
+            />
+
             <Container maxWidth="lg" sx={{ my: 5, px: { xs: 2, sm: 10 }, textAlign: 'center' }}>
                 <Typography variant="h3" my={8}>
                     Musicians
                 </Typography>
-                <Grid container spacing={{ xs: 3, sm: 0.7 }} direction="column">
+                <Grid container spacing={4} display={'flex'} alignItems={'stretch'}>
                     {musicians.length
-                        ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} ><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
+                        ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} xs={12} sm={6} md={4} lg={3} display={'flex'}><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
                         : Array.from({ length: 3 }).map((_, i) => <Box sx={{ my: { xs: 3, sm: 0.7 }, ml: { xs: 3, sm: 0 } }}>
                             <Skeleton variant="rectangular" width="100%" sx={{ borderRadius: 3, height: { xs: 400, sm: 122 } }} />
                         </Box>)
