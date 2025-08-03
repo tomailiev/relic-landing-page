@@ -56,7 +56,7 @@ const ContentSection = ({ infoTitle, infoText, cardImage, textCss, titleCss, but
                         <Typography variant="h6" fontWeight={600} mb={2} mx={2} sx={titleCss || {}}>
                             {infoTitle}
                         </Typography>
-                        <Typography variant="body1" fontSize={'1.2rem'} mx={2} sx={textCss || {}}>
+                        <Typography variant="body1" fontSize={{ xs: '1.4rem', md: '1.2rem' }} mx={2} sx={textCss || {}}>
                             {infoText}
                         </Typography>
                         <Button variant="outlined" sx={{ my: 3, mx: 2 }}>

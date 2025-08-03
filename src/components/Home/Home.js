@@ -4,7 +4,7 @@ import Title from "./Title";
 // import eventsImage from '../../assets/imgs/ev_img.webp';
 // import musicianImage from '../../assets/imgs/IMG_3983.webp';
 import ContentSection from "./ContentSection";
-import { Container, Typography, } from "@mui/material";
+import { Container, Paper, Typography, } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
@@ -40,10 +40,24 @@ const Home = () => {
             <Banner bgPic={banners.groupBanner} children={<Title />} />
             <Container maxWidth="lg" >
                 {nextEvent && <>
-                    <Typography variant="h3" textAlign={'center'} my={6}>
+                    {/* <Typography variant="h3" textAlign={'center'} my={6}>
                         Upcoming
-                    </Typography>
+                    </Typography> */}
+                    <Paper elevation={0} sx={{
+                        // my: 2,
+                        borderRadius: 0,
+                        backgroundColor: '#244458',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        height: '100%',
+                        width: '100%',
+                        textAlign: 'center'
+
+                    }}>
+                        <Typography my={1} variant="h6" fontWeight={600} color={'#ffffff'}>Next event coming up soon!</Typography>
+                    </Paper>
                     <EventCardNew event={nextEvent} />
+                    
                 </>}
                 {/* <Typography variant="h3" textAlign={'center'} my={6}>
                     Watch & Listen

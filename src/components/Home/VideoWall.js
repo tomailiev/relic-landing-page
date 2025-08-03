@@ -38,7 +38,6 @@ const VideoWall = () => {
                 p: 1,
                 borderRadius: 0,
                 backgroundColor: '#f9f9f9',
-                cursor: 'pointer',
                 transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                 position: 'relative',
                 overflow: 'hidden',
@@ -54,34 +53,37 @@ const VideoWall = () => {
                     <Grid item xs={12} md={6} display={'flex'} justifyContent={'center'}>
                         <Box
                             onClick={() => setYoutubeDialog(video)}
+                            className="hover-parent"
                             sx={{
-                                width: { xs: '94%', md: '100%' },
-                                height: 'auto',
-                                aspectRatio: '16 / 9',
-                                flexShrink: 0,
-                                borderRadius: 2,
-                                overflow: 'hidden',
-                                mb: { xs: 2, md: 0 },
-                                backgroundColor: '#eee',
                                 position: 'relative',
-                                transition: 'all 400ms ease',
-                                '.MuiCard-root:hover &': {
-                                    width: '110%',
-                                    height: '110%'
-                                },
+                                width: '100%',
+                                pt: '56.25%', // 16:9 aspect ratio
+                                overflow: 'hidden',
+                                borderRadius: 2,
+                                cursor: 'pointer',
                             }}
                         >
-                            <img
+                            <Box
+                                component="img"
                                 src={video.thumbnail}
                                 alt={video.title}
-                                // onLoad={() => setImgLoaded(true)}
-                                style={{
+                                sx={{
+                                    position: 'absolute',
                                     width: '100%',
                                     height: '100%',
+                                    top: '50%',
+                                    left: '50%',
                                     objectFit: 'cover',
-                                    display: 'block',
+                                    transform: 'translate(-50%, -50%)',
+                                    transition: 'all 400ms ease',
+                                    '.hover-parent:hover &': {
+                                        width: '105%',
+                                        height: '105%'
+                                    },
                                 }}
                             />
+
+                            {/* Play icon overlay */}
                             <IconButton
                                 disableRipple
                                 color="secondary"
@@ -101,7 +103,7 @@ const VideoWall = () => {
                                         position: 'absolute',
                                         transition: 'opacity 400ms ease, transform 400ms ease',
                                         opacity: 1,
-                                        '.MuiCard-root:hover &': {
+                                        '.hover-parent:hover &': {
                                             opacity: 0,
                                         },
                                     }}
@@ -113,7 +115,7 @@ const VideoWall = () => {
                                         position: 'absolute',
                                         transition: 'opacity 400ms ease, transform 400ms ease',
                                         opacity: 0,
-                                        '.MuiCard-root:hover &': {
+                                        '.hover-parent:hover &': {
                                             opacity: 1,
                                         },
                                     }}
@@ -127,12 +129,12 @@ const VideoWall = () => {
                         <Typography variant="h6" fontWeight={600} mb={2} mx={2} >
                             Featured Video
                         </Typography>
-                        <Typography variant="body1" fontSize={'1.2rem'} mx={2} >
+                        <Typography variant="body1" fontSize={{ xs: '1.4rem', md: '1.2rem' }} mx={2} >
                             {video.category === 'live' || video.category === 'studio'
-                                ? `Enjoy our ${video.category} performance of ${video.title}, part of our ${video.program} program.`
-                                : `Enjoy our live full concert recording of our ${video.program} program`}
+                                ? <>Enjoy our {video.category} performance of <strong>{video.title},</strong> recorded as part of our {video.program} program.</>
+                                : <>Enjoy the complete live concert recording of our {video.program} program.</>}
                         </Typography>
-                        <Link to={'/videos'}>
+                        <Link to={'/media/videos'}>
                             <Button variant="outlined" sx={{ my: 3, mx: 2 }}>
                                 {'More Videos'}
                             </Button>
