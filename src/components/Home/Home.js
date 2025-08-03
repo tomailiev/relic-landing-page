@@ -12,6 +12,8 @@ import banners from '../../data/banners';
 import VideoWall from "./VideoWall";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import EventCardNew from "../Events/EventCardNew";
+import InternalLink from "./InternalLink";
+import ExternalLink from "./ExternalLink";
 
 const Home = () => {
 
@@ -43,10 +45,9 @@ const Home = () => {
                     </Typography>
                     <EventCardNew event={nextEvent} />
                 </>}
-                <Typography variant="h3" textAlign={'center'} my={6}>
+                {/* <Typography variant="h3" textAlign={'center'} my={6}>
                     Watch & Listen
-                </Typography>
-                <VideoWall />
+                </Typography> */}
                 {/* <MediaSection /> */}
                 {/* <ContentSection
                     key={text.eventCardInfoTitle}
@@ -54,17 +55,30 @@ const Home = () => {
                     infoTitle={text.eventCardInfoTitle}
                     infoText={text.eventCardInfoText}
                     cardImage={text.eventCardImage}
-                /> */}
-                <Typography variant="h3" textAlign={'center'} my={6}>
+                    /> */}
+                <Typography variant="h3" textAlign={'center'} fontWeight={600} my={6}>
                     Discover
                 </Typography>
-                <ContentSection
-                    key={text.musicianCardInfoTitle}
-                    route={text.musicianCardRoute}
-                    infoTitle={text.musicianCardInfoTitle}
-                    infoText={text.aboutBio.split('\\n')[0]}
-                    cardImage={text.musicianCardImage}
-                />
+                <ExternalLink route={text.reviewCardRoute}>
+                    <ContentSection
+                        key={text.reviewCardInfoTitle}
+                        infoText={text.reviewCardInfoText}
+                        infoTitle={text.reviewCardInfoTitle}
+                        cardImage={text.reviewCardImage}
+                        textCss={{ fontStyle: 'italic' }}
+                        buttonText={'Full Review'}
+                    />
+                </ExternalLink>
+                <VideoWall />
+                <InternalLink route={text.musicianCardRoute}>
+                    <ContentSection
+                        key={text.musicianCardInfoTitle}
+                        // route={text.musicianCardRoute}
+                        infoTitle={text.musicianCardInfoTitle}
+                        infoText={text.aboutBioShort}
+                        cardImage={text.musicianCardImage}
+                    />
+                </InternalLink>
             </Container>
         </>
     );
