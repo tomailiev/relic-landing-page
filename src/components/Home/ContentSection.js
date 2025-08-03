@@ -1,5 +1,4 @@
-import { Box, Button, Card, CardActionArea, Grid, Paper, Typography } from "@mui/material";
-import { Link, Link as RouterLink } from "react-router-dom";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import images from "../../data/images";
 // import CustomDivider from "./CustomDivider";
 
