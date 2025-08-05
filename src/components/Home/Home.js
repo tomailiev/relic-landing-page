@@ -13,7 +13,6 @@ import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import EventCardNew from "../Events/EventCardNew";
 import ReviewSection from "./ReviewSection";
 import AboutSection from "./AboutSection";
-import { bgs } from "../../data/images";
 
 const Home = () => {
 
