@@ -37,7 +37,7 @@ const VideoWall = () => {
             <Paper elevation={0} sx={{
                 // my: 2,
                 px: 1,
-                py: 10,
+                py: {xs: 0, md: 12},
                 borderRadius: 0,
                 background: `center / cover url(${bgs.videoBg})`,
                 transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
@@ -57,6 +57,7 @@ const VideoWall = () => {
                             onClick={() => setYoutubeDialog(video)}
                             className="hover-parent"
                             sx={{
+                                mx: 1,
                                 position: 'relative',
                                 width: '100%',
                                 pt: '56.25%', // 16:9 aspect ratio
@@ -129,10 +130,10 @@ const VideoWall = () => {
                         {/* </Card> */}
                     </Grid>
                     <Grid item xs={12} md={7} textAlign={'left'} color={'secondary.main'}>
-                        <Typography variant="h6" fontWeight={600} mb={2} mx={2} fontSize={'1.4rem'} >
+                        <Typography variant="h6" fontWeight={600} mb={2} mx={2} fontSize={'1.4em'} >
                             Featured Video
                         </Typography>
-                        <Typography variant="body1" fontSize={{ xs: '1.4rem', md: '1.2rem' }} mx={2} >
+                        <Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={2} >
                             {video?.category === 'live' || video?.category === 'studio'
                                 ? <>Enjoy our {video?.category} performance of <strong>{video?.title},</strong> recorded as part of our {video?.program} program.</>
                                 : <>Enjoy the complete live concert recording of our {video?.program} program.</>}

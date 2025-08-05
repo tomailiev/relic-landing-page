@@ -17,7 +17,7 @@ const Banner = ({ bgPic, children }) => {
     // const dimensions = useDimensions();
 
     return (
-        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `-${headerHeight}px`, position: 'relative', overflow: 'hidden' }} >
+        <Container disableGutters maxWidth={false} sx={{ top: `-${headerHeight}px`, position: 'relative', height: `100vh`, overflow: 'hidden', mb: `-${headerHeight}px` }} >
             <Box
                 sx={{
                     position: 'absolute',

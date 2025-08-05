@@ -13,6 +13,7 @@ import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import EventCardNew from "../Events/EventCardNew";
 import ReviewSection from "./ReviewSection";
 import AboutSection from "./AboutSection";
+import { bgs } from "../../data/images";
 
 const Home = () => {
 
@@ -36,18 +37,22 @@ const Home = () => {
 
     return (
         <Box
-            // sx={{ background: `center / cover url(${bgs.generalBg})` }}
+        // sx={{ background: `center / cover url(${bgs.generalBg})` }}
         >
             <Banner bgPic={banners.groupBanner} children={<Title />} />
-            <Container maxWidth="false" disableGutters>
+            <Container maxWidth="false" disableGutters >
+                {/* <Typography variant="h3" textAlign={'center'} color={'#000000'} fontWeight={600} my={6}>
+                    Discover
+                </Typography> */}
                 {nextEvent && <>
                     {/* <Typography variant="h3" textAlign={'center'} my={6}>
                         Upcoming
                     </Typography> */}
                     <Paper elevation={0} sx={{
-                        // my: 2,
+                        pb: 5,
                         borderRadius: 0,
-                        backgroundColor: '#244458',
+                        px: {xs: 3, md: 8},
+                        background: `center / cover url(${bgs.videoBg})`,
                         position: 'relative',
                         overflow: 'hidden',
                         height: '100%',
@@ -55,14 +60,11 @@ const Home = () => {
                         textAlign: 'center'
 
                     }}>
-                        <Typography my={1} variant="h6" fontWeight={600} color={'#ffffff'}>Next event coming up soon!</Typography>
+                        <Typography my={1} variant="h6" fontWeight={600} color={'#ffffff'} sx={{my: 4}}>Next event coming up soon!</Typography>
+                        <EventCardNew event={nextEvent} />
                     </Paper>
-                    <EventCardNew event={nextEvent} />
 
                 </>}
-                <Typography variant="h3" textAlign={'center'} color={'#000000'} fontWeight={600} my={6}>
-                    Discover
-                </Typography>
                 <ReviewSection
                     key={text.reviewCardInfoTitle}
                     infoText={text.reviewCardInfoText}

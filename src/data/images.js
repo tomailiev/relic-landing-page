@@ -6,6 +6,7 @@ import logo_gold from '../assets/logos/Relic-logo_gold.png';
 import logo_black from '../assets/logos/Relic-logo_black.png';
 import logo_blue from '../assets/logos/Relic-logo_blue.png';
 import reviewBg from '../assets/imgs/review_bg.jpg';
+import reviewBgV from '../assets/imgs/Nat_img.jpg';
 import videoBg from '../assets/imgs/bg_video.jpg';
 import aboutBgH from '../assets/imgs/about_bg_h.jpg';
 import aboutbgV from '../assets/imgs/about_bg_v.jpg';
@@ -23,7 +24,8 @@ export const bgs = {
     videoBg,
     aboutBgH,
     aboutbgV,
-    generalBg
+    generalBg,
+    reviewBgV
 };
 
 export default images;
