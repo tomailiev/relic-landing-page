@@ -45,6 +45,7 @@ const VideoWall = () => {
                 overflow: 'hidden',
                 height: '100%',
                 width: '100%',
+                minHeight: '90vh'
                 // '&:hover': {
                 //     transform: 'translateY(-2px)',
                 //     boxShadow: 4,

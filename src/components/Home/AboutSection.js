@@ -16,6 +16,7 @@ const AboutSection = ({ infoTitle, infoText, buttonText, route }) => {
                 position: 'relative',
                 overflow: 'hidden',
                 height: '100%',
+                minHeight: '90vh',
                 width: '100%',
                 // '&:hover': {
                 //     transform: 'translateY(-2px)',

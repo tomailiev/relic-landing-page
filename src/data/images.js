@@ -11,6 +11,7 @@ import videoBg from '../assets/imgs/bg_video.jpg';
 import aboutBgH from '../assets/imgs/about_bg_h.jpg';
 import aboutbgV from '../assets/imgs/about_bg_v.jpg';
 import generalBg from '../assets/imgs/general_bg.jpg';
+import goldBg from '../assets/imgs/gold_bg.jpg';
 
 
 const images = {
@@ -25,7 +26,8 @@ export const bgs = {
     aboutBgH,
     aboutbgV,
     generalBg,
-    reviewBgV
+    reviewBgV,
+    goldBg
 };
 
 export default images;
