@@ -1,10 +1,11 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import PhotoItem from "./PhotoItem";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import VideoItemSkeleton from "../Videos/VideoItemSkeleton";
 import DialogContext from "../../context/DialogContext";
 import PhotoCarousel from "./PhotoCarousel";
+import { bgs } from "../../data/images";
 
 const Photos = () => {
 
@@ -26,19 +27,21 @@ const Photos = () => {
     }
 
     return (
-        <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
-            <Typography variant="h3" my={8}>
-                Photos
-            </Typography>
-            {photos?.length
-                ? <Grid container spacing={6} mb={3}>
-                    {photos.map((photo, index) => {
-                        return <PhotoItem key={photo.id} photo={photo} setPhotoDialog={() => setPhotoDialog(index, photo)} />
-                    })}
-                </Grid>
-                : <Grid container spacing={6} my={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton key={i} />)}</Grid>
-            }
-        </Container>
+        <Box sx={{background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2}}>
+            <Container maxWidth="lg" sx={{textAlign: 'center' }}>
+                <Typography variant="h3" my={8} fontWeight={'600'} color={'secondary.main'}>
+                    Photos
+                </Typography>
+                {photos?.length
+                    ? <Grid container spacing={6} mb={3}>
+                        {photos.map((photo, index) => {
+                            return <PhotoItem key={photo.id} photo={photo} setPhotoDialog={() => setPhotoDialog(index, photo)} />
+                        })}
+                    </Grid>
+                    : <Grid container spacing={6} my={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton key={i} />)}</Grid>
+                }
+            </Container>
+        </Box>
 
     );
 };

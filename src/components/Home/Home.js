@@ -3,8 +3,7 @@ import Banner from "./Banner";
 import Title from "./Title";
 // import eventsImage from '../../assets/imgs/ev_img.webp';
 // import musicianImage from '../../assets/imgs/IMG_3983.webp';
-import ContentSection from "./ContentSection";
-import { Container, Paper, Typography, } from "@mui/material";
+import { Box, Container, Paper, Typography, } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
@@ -12,8 +11,9 @@ import banners from '../../data/banners';
 import VideoWall from "./VideoWall";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import EventCardNew from "../Events/EventCardNew";
-import InternalLink from "./InternalLink";
-import ExternalLink from "./ExternalLink";
+import ReviewSection from "./ReviewSection";
+import AboutSection from "./AboutSection";
+import { bgs } from "../../data/images";
 
 const Home = () => {
 
@@ -36,9 +36,11 @@ const Home = () => {
     }, []);
 
     return (
-        <>
+        <Box
+            // sx={{ background: `center / cover url(${bgs.generalBg})` }}
+        >
             <Banner bgPic={banners.groupBanner} children={<Title />} />
-            <Container maxWidth="lg" >
+            <Container maxWidth="false" disableGutters>
                 {nextEvent && <>
                     {/* <Typography variant="h3" textAlign={'center'} my={6}>
                         Upcoming
@@ -57,44 +59,30 @@ const Home = () => {
                         <Typography my={1} variant="h6" fontWeight={600} color={'#ffffff'}>Next event coming up soon!</Typography>
                     </Paper>
                     <EventCardNew event={nextEvent} />
-                    
+
                 </>}
-                {/* <Typography variant="h3" textAlign={'center'} my={6}>
-                    Watch & Listen
-                </Typography> */}
-                {/* <MediaSection /> */}
-                {/* <ContentSection
-                    key={text.eventCardInfoTitle}
-                    route={text.eventCardRoute}
-                    infoTitle={text.eventCardInfoTitle}
-                    infoText={text.eventCardInfoText}
-                    cardImage={text.eventCardImage}
-                    /> */}
-                <Typography variant="h3" textAlign={'center'} fontWeight={600} my={6}>
+                <Typography variant="h3" textAlign={'center'} color={'#000000'} fontWeight={600} my={6}>
                     Discover
                 </Typography>
-                <ExternalLink route={text.reviewCardRoute}>
-                    <ContentSection
-                        key={text.reviewCardInfoTitle}
-                        infoText={text.reviewCardInfoText}
-                        infoTitle={text.reviewCardInfoTitle}
-                        cardImage={text.reviewCardImage}
-                        textCss={{ fontStyle: 'italic' }}
-                        buttonText={'Full Review'}
-                    />
-                </ExternalLink>
+                <ReviewSection
+                    key={text.reviewCardInfoTitle}
+                    infoText={text.reviewCardInfoText}
+                    infoTitle={text.reviewCardInfoTitle}
+                    buttonText={'Full Review'}
+                    route={text.reviewCardRoute}
+                    reviewSource={text.reviewCardSource}
+                />
                 <VideoWall />
-                <InternalLink route={text.musicianCardRoute}>
-                    <ContentSection
-                        key={text.musicianCardInfoTitle}
-                        // route={text.musicianCardRoute}
-                        infoTitle={text.musicianCardInfoTitle}
-                        infoText={text.aboutBioShort}
-                        cardImage={text.musicianCardImage}
-                    />
-                </InternalLink>
+                <AboutSection
+                    key={text.musicianCardInfoTitle}
+                    // route={text.musicianCardRoute}
+                    infoTitle={text.musicianCardInfoTitle}
+                    infoText={text.aboutBioShort}
+                    cardImage={text.musicianCardImage}
+                    route={text.musicianCardRoute}
+                />
             </Container>
-        </>
+        </Box>
     );
 };
 

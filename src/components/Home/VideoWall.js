@@ -5,6 +5,7 @@ import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
 import { PlayCircleFilled, PlayCircleOutline } from "@mui/icons-material";
 import DialogContext from "../../context/DialogContext";
+import { bgs } from "../../data/images";
 
 
 const VideoWall = () => {
@@ -28,29 +29,30 @@ const VideoWall = () => {
     }, []);
 
     function setYoutubeDialog(video) {
-        const component = <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} sx={{ width: '100%', height: '100%', background: '#000000' }}><YouTube videoId={video.youtubeId} opts={{ playerVars: { autoplay: 1 }, width: '100%', height: '370px', }} /></Box>
+        const component = <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} sx={{ width: '100%', height: '100%', background: '#000000' }}><YouTube videoId={video?.youtubeId} opts={{ playerVars: { autoplay: 1 }, width: '100%', height: '370px', }} /></Box>
         setDialog({ type: 'video', title: video.title, component })
     }
     return (
         <>
             <Paper elevation={0} sx={{
                 // my: 2,
-                p: 1,
+                px: 1,
+                py: 10,
                 borderRadius: 0,
-                backgroundColor: '#f9f9f9',
+                background: `center / cover url(${bgs.videoBg})`,
                 transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                 position: 'relative',
                 overflow: 'hidden',
                 height: '100%',
                 width: '100%',
-                '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: 4,
-                    backgroundColor: '#ffffff'
-                },
+                // '&:hover': {
+                //     transform: 'translateY(-2px)',
+                //     boxShadow: 4,
+                //     backgroundColor: '#ffffff'
+                // },
             }}>
                 <Grid container spacing={2} justifyContent="center" my={4}>
-                    <Grid item xs={12} md={6} display={'flex'} justifyContent={'center'}>
+                    <Grid item xs={12} md={5} display={'flex'} justifyContent={'center'}>
                         <Box
                             onClick={() => setYoutubeDialog(video)}
                             className="hover-parent"
@@ -59,14 +61,15 @@ const VideoWall = () => {
                                 width: '100%',
                                 pt: '56.25%', // 16:9 aspect ratio
                                 overflow: 'hidden',
-                                borderRadius: 2,
+                                borderRadius: 0,
+                                border: '1px solid #e7d4a0',
                                 cursor: 'pointer',
                             }}
                         >
                             <Box
                                 component="img"
-                                src={video.thumbnail}
-                                alt={video.title}
+                                src={video?.thumbnail}
+                                alt={video?.title}
                                 sx={{
                                     position: 'absolute',
                                     width: '100%',
@@ -125,17 +128,27 @@ const VideoWall = () => {
                         {/* </CardActionArea> */}
                         {/* </Card> */}
                     </Grid>
-                    <Grid item xs={12} md={6} textAlign={'left'}>
-                        <Typography variant="h6" fontWeight={600} mb={2} mx={2} >
+                    <Grid item xs={12} md={7} textAlign={'left'} color={'secondary.main'}>
+                        <Typography variant="h6" fontWeight={600} mb={2} mx={2} fontSize={'1.4rem'} >
                             Featured Video
                         </Typography>
                         <Typography variant="body1" fontSize={{ xs: '1.4rem', md: '1.2rem' }} mx={2} >
-                            {video.category === 'live' || video.category === 'studio'
-                                ? <>Enjoy our {video.category} performance of <strong>{video.title},</strong> recorded as part of our {video.program} program.</>
-                                : <>Enjoy the complete live concert recording of our {video.program} program.</>}
+                            {video?.category === 'live' || video?.category === 'studio'
+                                ? <>Enjoy our {video?.category} performance of <strong>{video?.title},</strong> recorded as part of our {video?.program} program.</>
+                                : <>Enjoy the complete live concert recording of our {video?.program} program.</>}
                         </Typography>
                         <Link to={'/media/videos'}>
-                            <Button variant="outlined" sx={{ my: 3, mx: 2 }}>
+                            <Button variant="outlined" sx={{
+                                my: 3,
+                                mx: 2,
+                                color: 'secondary.main',
+                                borderColor: 'secondary.main',
+                                '&:hover': {
+                                    backgroundColor: 'secondary.main',
+                                    color: 'secondary.contrastText',
+                                    borderColor: 'secondary.main',
+                                },
+                            }}>
                                 {'More Videos'}
                             </Button>
                         </Link>
