@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { downloadDocsV2, getLink } from "../../utils/firebase/firestore-funcs";
 // import EventSkeleton from "./EventSkeleton";
@@ -8,6 +8,7 @@ import { useTheme } from "@emotion/react";
 // import Event from "./Event";
 import EventCardNew from "./EventCardNew";
 import EventCardSkeleton from "./EventCardSkeleton";
+import { currentSeason } from "../../data/currentSeason";
 
 
 const Events = () => {
@@ -17,17 +18,21 @@ const Events = () => {
     const [pastEvents, setPastEvents] = useState([]);
     const [currentEvents, setCurrentEvents] = useState([]);
     const [hasUpdated, setHasUpdated] = useState(false);
-    let { year } = useParams();
+    const { season } = useParams();
     const theme = useTheme();
     const smMatch = useMediaQuery(theme.breakpoints.down('md'));
-    year = Number(year.substring(0, 4));
+    const year = season === 'past' ? Number(currentSeason.substring(0, 4)) : Number(season.substring(0, 4));
     const seasonStart = `${year}-08-01`;
-    const seasonEnd = `${year + 1}-08-01`;
+    const seasonEnd = `${year + 1}-07-31`;
 
     useEffect(() => {
+        const condition = season === 'past'
+            ? { value: ['dateDone', '<', new Date(seasonStart)], type: 'condition' }
+            : { value: ['dateDone', '>', new Date(seasonStart)], type: 'condition' };
+
         downloadDocsV2('events', [
-            { value: ['dateDone', '>', new Date(seasonStart)], type: 'condition' },
-            { type: 'sorting', value: ['dateDone', 'asc'] }
+            condition,
+            { type: 'sorting', value: ['dateDone', season === 'past' ? 'desc' : 'asc'] }
         ])
             .then(docs => {
                 const current = [];
@@ -53,13 +58,13 @@ const Events = () => {
                 setHasUpdated(true);
                 console.error(e);
             })
-    }, [seasonStart, year, seasonEnd]);
+    }, [seasonStart, year, seasonEnd, season]);
 
     return (
         <>
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={8} fontWeight={'600'}>
-                    {`${year}-${(year + 1) % 2000}`} Concert Season
+                    {season === 'past' ? 'Past Events' : `${year}-${(year + 1) % 2000} Concert Season`}
                 </Typography>
                 <Container sx={{ pb: 6 }}>
                     <Grid container spacing={4} direction="column">
@@ -88,7 +93,9 @@ const Events = () => {
                             {/* <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography> */}
                             {seasonAnnouncementPic
                                 ? <img src={seasonAnnouncementPic} alt={text.seasonAnnouncementText} height={'auto'} width={smMatch ? '95%' : '65%'} />
-                                : <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
+                                : <Box minHeight={'50vh'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+                                    <Typography variant="h4">{text.seasonAnnouncementText}</Typography>
+                                </Box>
                             }
                         </Container>
                         : Array.from({ length: 3 }).map((_, i) => <EventCardSkeleton key={i} />)

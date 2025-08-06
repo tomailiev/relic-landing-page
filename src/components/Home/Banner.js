@@ -4,6 +4,7 @@ import '@fontsource/lato/400-italic.css';
 // import useDimensions from "../../hooks/useDimensions";
 import { useContext } from "react";
 import HeaderHeightContext from "../../context/HeatherHeightContext";
+import Title from "./Title";
 
 const Banner = ({ bgPic, children }) => {
 
@@ -17,7 +18,7 @@ const Banner = ({ bgPic, children }) => {
     // const dimensions = useDimensions();
 
     return (
-        <Container disableGutters maxWidth={false} sx={{ height: `100vh`, top: `-${headerHeight}px`, position: 'relative', overflow: 'hidden' }} >
+        <Container disableGutters maxWidth={false} sx={{ top: `-${headerHeight}px`, position: 'relative', height: `100vh`, overflow: 'hidden', mb: `-${headerHeight}px` }} >
             <Box
                 sx={{
                     position: 'absolute',
@@ -37,7 +38,7 @@ const Banner = ({ bgPic, children }) => {
                         background: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), center/cover no-repeat url(${bgPic})`, opacity: 1
                     }}
                 >
-                    {children}
+                    <Title />
                 </Box>
             </Box>
         </Container>

@@ -41,11 +41,7 @@ const Support = () => {
             </Typography>
             <Box mt={2} mb={5}>
                 <Container maxWidth={'lg'}>
-                    {/* <Typography variant="h5" textAlign={'left'} my={2} textTransform={'uppercase'}>
-                        {text.supportSectionDonateTitle}
-                    </Typography> */}
                     <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
-                    {/* <Button variant="contained" size="large" href={links.gems} target={'_blank'} onClick={() => analyze('select_content', {content_type: 'donate_button'})}>Donate</Button> */}
                     <Card variant="outlined" sx={{ mb: 3 }}>
                         <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'603px'} frameborder="0" scrolling="auto" marginHeight="0" marginWidth="0" allowtransparency="true" ></iframe>
                     </Card>
@@ -63,16 +59,10 @@ const Support = () => {
                             <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
                         </CardActions>
                     </Card>
-                    <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText} />
-                    <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText} />
+                    <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                    <TypographyCombo title={text.supportOtherTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                 </Container>
-                {/* </Box>
-            <Divider />
-            <Box mt={2} my={10} textAlign="left"> */}
                 <Container maxWidth={'lg'}>
-                    {/* <Typography variant="h5" my={2} textTransform={'uppercase'}>
-                        {text.supportSectionJoinTitle}
-                    </Typography> */}
                     <TypographyCombo title={text.supportJoinTitle} text={joinText} />
                     <TypographyCombo title={text.supportVolunteersTitle} text={volunteerText} />
                 </Container>

@@ -74,6 +74,7 @@ const EventCardNew = ({ event, past }) => {
                     cursor: 'pointer',
                     transition: 'transform 0.2s, box-shadow 0.2s',
                     position: 'relative',
+                    textAlign: 'center',
                     overflow: 'hidden',
                     '&:hover': {
                         transform: 'translateY(-4px)',

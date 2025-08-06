@@ -1,5 +1,5 @@
-import { Button, Divider, Grid, Typography } from "@mui/material"
-import { Container } from "@mui/system"
+import { Button, Grid, Paper, Typography, Box, Divider } from "@mui/material"
+// import { Box } from "@mui/system"
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
 import TextContext from "../../context/TextContext";
@@ -23,25 +23,65 @@ const ActionCenter = () => {
     return (
         <>
             <Divider />
-            <Container maxWidth={'md'} sx={{ py: 4, my: 5, }}>
-                <Typography variant="h5" textAlign={'center'}>
+            <Box sx={{ pt: 5, }}>
+                <Typography variant="h6" textAlign={'center'} fontWeight={600} fontSize={'1.6em'} sx={{ mb: 4 }}>
                     {text.actionCenterTitle}
                 </Typography>
-                <Grid container my={6}>
-                    <Grid item md={6} xs={12} textAlign="center" my={2}>
-                        <Button variant="contained" size="large" onClick={handleDonateButtonClick}>Donate</Button>
-                        <Typography variant="body1" mt={3}>
-                            {text.actionCenterDonate}
-                        </Typography>
+                <Grid container>
+                    <Grid item md={6} xs={12} textAlign="center" height={'300px'}>
+                        <Paper onClick={handleDonateButtonClick} elevation={0} sx={{
+                            transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            height: '100%',
+                            cursor: 'pointer',
+                            background: 'transparent',
+                            width: '100%',
+                            display: 'flex',
+                            borderRadius: 0,
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            borderRight: { xs: 'none', md: '1px solid #244458' },
+                            borderBottom: { xs: '1px solid #244458', md: 'none' },
+                            '&:hover': {
+                                transform: 'translateY(-2px)',
+                                boxShadow: 4,
+                                // backgroundColor: '#ffffff'
+                            }
+                        }} >
+                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Donate</Button>
+                            <Typography variant="subtitle1" mt={3}>
+                                {text.actionCenterDonate}
+                            </Typography>
+                        </Paper>
                     </Grid>
-                    <Grid item md={6} xs={12} textAlign="center" my={2}>
-                        <Button variant="contained" size="large" onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>Subscribe</Button>
-                        <Typography variant="body1" mt={3}>
-                            {text.actionCenterSubscribe}
-                        </Typography>
+                    <Grid item md={6} xs={12} textAlign="center" height={'300px'}>
+                        <Paper onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })} elevation={0} sx={{
+                            transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            height: '100%',
+                            cursor: 'pointer',
+                            background: 'transparent',
+                            width: '100%',
+                            display: 'flex',
+                            borderRadius: 0,
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            '&:hover': {
+                                transform: 'translateY(-2px)',
+                                boxShadow: 4,
+                                // backgroundColor: '#ffffff'
+                            }
+                        }} >
+                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Subscribe</Button>
+                            <Typography variant="subtitle1" mt={3}>
+                                {text.actionCenterSubscribe}
+                            </Typography>
+                        </Paper>
                     </Grid>
                 </Grid>
-            </Container>
+            </Box>
         </>
     );
 };

@@ -1,17 +1,21 @@
-import Banner from "./Banner";
+// import Banner from "./Banner";
 // import SubscribeForm from "./SubscribeForm";
-import Title from "./Title";
+// import Title from "./Title";
 // import eventsImage from '../../assets/imgs/ev_img.webp';
 // import musicianImage from '../../assets/imgs/IMG_3983.webp';
-import ContentSection from "./ContentSection";
-import { Container, Typography, } from "@mui/material";
+import { Box, Container, } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
 // import MediaSection from "../Common/MediaSection";
 import VideoWall from "./VideoWall";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
-import Event from "../Events/Event";
+// import EventCardNew from "../Events/EventCardNew";
+import ReviewSection from "./ReviewSection";
+import AboutSection from "./AboutSection";
+// import { bgs } from "../../data/images";
+import BannerParallax from "./BannerParallax";
+import EventSection from "./EventSection";
 
 const Home = () => {
 
@@ -34,39 +38,41 @@ const Home = () => {
     }, []);
 
     return (
-        <>
-            <Banner bgPic={banners.groupBanner} children={<Title />} />
-            <Container maxWidth="lg" >
-                {nextEvent && <>
-                    <Typography variant="h3" textAlign={'center'} my={6}>
-                        Upcoming
-                    </Typography>
-                    <Event event={nextEvent} />
-                </>}
-                <Typography variant="h3" textAlign={'center'} my={6}>
-                    Watch & Listen
-                </Typography>
-                <VideoWall />
-                {/* <MediaSection /> */}
-                {/* <ContentSection
-                    key={text.eventCardInfoTitle}
-                    route={text.eventCardRoute}
-                    infoTitle={text.eventCardInfoTitle}
-                    infoText={text.eventCardInfoText}
-                    cardImage={text.eventCardImage}
-                /> */}
-                <Typography variant="h3" textAlign={'center'} my={6}>
+        <Box
+        // sx={{ background: `center / cover url(${bgs.generalBg})` }}
+        >
+            {/* <Banner bgPic={banners.groupBanner} /> */}
+            <BannerParallax bgPic={banners.groupBanner} />
+            <Container maxWidth="false" disableGutters >
+                {/* <Typography variant="h3" textAlign={'center'} color={'#000000'} fontWeight={600} my={6}>
                     Discover
-                </Typography>
-                <ContentSection
+                </Typography> */}
+                {nextEvent && <>
+                    {/* <Typography variant="h3" textAlign={'center'} my={6}>
+                        Upcoming
+                    </Typography> */}
+                    <EventSection event={nextEvent} />
+
+                </>}
+                <ReviewSection
+                    key={text.reviewCardInfoTitle}
+                    infoText={text.reviewCardInfoText}
+                    infoTitle={text.reviewCardInfoTitle}
+                    buttonText={'Full Review'}
+                    route={text.reviewCardRoute}
+                    reviewSource={text.reviewCardSource}
+                />
+                <VideoWall />
+                <AboutSection
                     key={text.musicianCardInfoTitle}
-                    route={text.musicianCardRoute}
+                    // route={text.musicianCardRoute}
                     infoTitle={text.musicianCardInfoTitle}
-                    infoText={text.musicianCardInfoText}
+                    infoText={text.aboutBioShort}
                     cardImage={text.musicianCardImage}
+                    route={text.musicianCardRoute}
                 />
             </Container>
-        </>
+        </Box>
     );
 };
 
