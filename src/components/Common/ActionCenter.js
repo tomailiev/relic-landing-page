@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, Typography, Box } from "@mui/material"
+import { Button, Grid, Paper, Typography, Box, Divider } from "@mui/material"
 // import { Box } from "@mui/system"
 import { useContext } from "react";
 import DialogContext from "../../context/DialogContext";
@@ -22,7 +22,7 @@ const ActionCenter = () => {
 
     return (
         <>
-            {/* <Divider /> */}
+            <Divider />
             <Box sx={{ pt: 4, }}>
                 <Typography variant="h6" textAlign={'center'} fontWeight={600} fontSize={'1.6em'} sx={{ mb: 2 }}>
                     {text.actionCenterTitle}

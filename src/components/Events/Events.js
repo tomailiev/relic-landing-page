@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { downloadDocsV2, getLink } from "../../utils/firebase/firestore-funcs";
 // import EventSkeleton from "./EventSkeleton";
@@ -93,7 +93,9 @@ const Events = () => {
                             {/* <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography> */}
                             {seasonAnnouncementPic
                                 ? <img src={seasonAnnouncementPic} alt={text.seasonAnnouncementText} height={'auto'} width={smMatch ? '95%' : '65%'} />
-                                : <Typography variant="h4" my={5}>{text.seasonAnnouncementText}</Typography>
+                                : <Box minHeight={'50vh'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+                                    <Typography variant="h4">{text.seasonAnnouncementText}</Typography>
+                                </Box>
                             }
                         </Container>
                         : Array.from({ length: 3 }).map((_, i) => <EventCardSkeleton key={i} />)
