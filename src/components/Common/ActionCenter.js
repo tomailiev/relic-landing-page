@@ -23,8 +23,8 @@ const ActionCenter = () => {
     return (
         <>
             <Divider />
-            <Box sx={{ pt: 4, }}>
-                <Typography variant="h6" textAlign={'center'} fontWeight={600} fontSize={'1.6em'} sx={{ mb: 2 }}>
+            <Box sx={{ pt: 5, }}>
+                <Typography variant="h6" textAlign={'center'} fontWeight={600} fontSize={'1.6em'} sx={{ mb: 4 }}>
                     {text.actionCenterTitle}
                 </Typography>
                 <Grid container>
