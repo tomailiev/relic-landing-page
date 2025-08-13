@@ -22,10 +22,10 @@ const EventSection = ({ event, past }) => {
     const [imgLoaded, setImgLoaded] = useState(false);
 
     useEffect(() => {
-        getLink(event?.homeBanner ? event?.homeBanner : event.imageUrl)
+        getLink(event?.bannerHome ? event?.bannerHome : event.imageUrl)
             .then(val => setSrc(val))
             .catch(console.error);
-    }, [event?.imageUrl, event?.homeBanner]);
+    }, [event?.imageUrl, event?.bannerHome]);
 
     const sortedPerformances = [...event.performances].sort(
         (a, b) => Number(a.id) - Number(b.id)
@@ -62,7 +62,7 @@ const EventSection = ({ event, past }) => {
     const locationsString = uniqueLocations.join(' • ');
 
     return (
-        event?.homeBanner
+        event?.bannerHome
             ? <Box
                 sx={{
                     height: '928px',           // fixed height instead of 100vh
