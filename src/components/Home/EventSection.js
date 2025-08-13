@@ -129,7 +129,7 @@ const EventSection = ({ event, past }) => {
                                     color: 'secondary.contrastText',
                                     borderColor: '#ffffff',
                                 },
-                                mb: 9,
+                                mb: { xs: 6, md: 9 },
                             }}>
                                 More info & Tickets
                             </Button>
