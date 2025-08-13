@@ -1,19 +1,12 @@
 // import Banner from "./Banner";
-// import SubscribeForm from "./SubscribeForm";
-// import Title from "./Title";
-// import eventsImage from '../../assets/imgs/ev_img.webp';
-// import musicianImage from '../../assets/imgs/IMG_3983.webp';
 import { Box, Container, } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import TextContext from "../../context/TextContext";
 import banners from '../../data/banners';
-// import MediaSection from "../Common/MediaSection";
 import VideoWall from "./VideoWall";
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
-// import EventCardNew from "../Events/EventCardNew";
 import ReviewSection from "./ReviewSection";
 import AboutSection from "./AboutSection";
-// import { bgs } from "../../data/images";
 import BannerParallax from "./BannerParallax";
 import EventSection from "./EventSection";
 
@@ -38,19 +31,12 @@ const Home = () => {
     }, []);
 
     return (
-        <Box
-        // sx={{ background: `center / cover url(${bgs.generalBg})` }}
-        >
+        <Box>
             {/* <Banner bgPic={banners.groupBanner} /> */}
             <BannerParallax bgPic={banners.groupBanner} />
             <Container maxWidth="false" disableGutters >
-                {/* <Typography variant="h3" textAlign={'center'} color={'#000000'} fontWeight={600} my={6}>
-                    Discover
-                </Typography> */}
+
                 {nextEvent && <>
-                    {/* <Typography variant="h3" textAlign={'center'} my={6}>
-                        Upcoming
-                    </Typography> */}
                     <EventSection event={nextEvent} />
 
                 </>}
