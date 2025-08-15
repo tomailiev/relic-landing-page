@@ -1,4 +1,4 @@
-import eventsImage from '../assets/imgs/IMG_1397.JPG';
+// import eventsImage from '../assets/imgs/IMG_1397.JPG';
 import musicianImage from '../assets/imgs/IMG_2261.JPG';
 import reviewImage from '../assets/imgs/Nat_img.jpg'
 import logo_white from "../assets/logos/Relic-logo_white.png";
@@ -15,7 +15,7 @@ import goldBg from '../assets/imgs/gold_bg.jpg';
 
 
 const images = {
-    eventsImage,
+    // eventsImage,
     musicianImage,
     reviewImage
 };
