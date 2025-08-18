@@ -23,7 +23,12 @@ const EventSection = ({ event, past }) => {
 
     useEffect(() => {
         getLink(event?.bannerHome ? event?.bannerHome : event.imageUrl)
-            .then(val => setSrc(val))
+            .then(val => {
+                const img = new Image();
+                img.src = val;
+                img.onload = () => setSrc(val);
+                setImgLoaded(true);
+            })
             .catch(console.error);
     }, [event?.imageUrl, event?.bannerHome]);
 
@@ -68,7 +73,7 @@ const EventSection = ({ event, past }) => {
                     height: '928px',           // fixed height instead of 100vh
                     width: "100%",
                     backgroundColor: "#000000", // fallback color for extra-wide space
-                    background: `center / cover url(${src})`,
+                    background: src ? `center / cover url(${src})` : '#000000',
                     // backgroundSize: "auto 100%", // height fixed, width adjusts
                     // backgroundRepeat: "no-repeat",
                     // backgroundPosition: "center center",
@@ -89,10 +94,11 @@ const EventSection = ({ event, past }) => {
                         color: '#ffffff'
                     }}
                 >
+                    {!imgLoaded && <Typography my={3} textAlign={'center'} variant='h3' color={'#ffffff'}>{event?.title}</Typography>}
                     <Box textAlign={'center'} mx={{ xs: 1, md: 0 }}>
                         {/* <Typography variant="h6" fontWeight={600} mt={{ xs: 3, md: 0 }} mb={{ xs: 3, md: 2 }} mx={{ xs: 4, md: 1 }} fontSize={'1.4em'}>
                         {event.title}
-                    </Typography> */}
+                        </Typography> */}
 
 
                         <Typography variant="body1" fontWeight={600} fontSize={{ xs: '1.5em', md: '1.8em' }}  >
