@@ -176,6 +176,9 @@ const EventPage = () => {
                     </Grid>
                 </Grid>
                 <Box textAlign={'center'} mt={2}>
+                    {event?.additionalInfo && <Typography variant='subtitle1' fontFamily={'Cochin'} fontStyle={'normal'} my={6} >
+                        {event.additionalInfo}
+                    </Typography>}
                     <Link to={`/events/${currentSeason}`}>
                         <Button variant='text' startIcon={<ArrowLeft />}>All events</Button>
                     </Link>
