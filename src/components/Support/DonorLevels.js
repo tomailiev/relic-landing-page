@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import TypographyCombo from "./TypographyCombo";
+import { bgs } from "../../data/images";
 
 const DonorLevels = () => {
     const { text } = useContext(TextContext);
@@ -21,18 +22,34 @@ const DonorLevels = () => {
         }, []);
 
     return (
-        <>
-            <Typography variant="h3" textAlign={'center'} mt={8} mb={10}>
+        <Box
+            sx={{
+                width: '100%',
+                // height: { xs: 300, sm: 400, md: 500 },
+                // background: '#e2d3a0',
+                background: `center center / auto 100% no-repeat url(${bgs.pantheonBg}), #e2d3a0`,
+                // backgroundSize: 'cover',
+                // backgroundPosition: 'center',
+                pb: 3,
+            }}>
+            <Typography variant="h3" textAlign={'center'} fontWeight={600} pt={8} mb={10} mt={0}>
                 The Relic Pantheon
             </Typography>
-            <Box mb={5}>
-                <Container maxWidth={'md'}>
-                    {
-                        tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} />)
-                    }
-                </Container>
+            <Box sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end',
+                '& > *': {
+                    width: {xs: '100%', md: '51%'},
+                },
+            }}
+            >
+                {
+                    tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} />)
+                }
             </Box>
-        </>
+        </Box>
     );
 };
 

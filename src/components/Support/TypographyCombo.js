@@ -1,16 +1,16 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const TypographyCombo = ({ title, text }) => {
 
     return (
-        <>
-            <Typography variant="h6" fontSize={'1.2em'}>
+        <Box sx={{background: 'rgba(247, 244, 235, 0.9)', borderBottom: '2px dashed #252745', p: 3,}}>
+            <Typography variant="h6" fontSize={'1.4em'} fontWeight={600}>
                 {title}
             </Typography>
-            <Typography mb={3} fontSize={'1.2em'}>
+            <Typography fontSize={'1.4em'}>
                 {text}
             </Typography>
-        </>
+        </Box>
     );
 };
 
