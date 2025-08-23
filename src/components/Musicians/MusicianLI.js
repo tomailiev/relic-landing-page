@@ -20,7 +20,7 @@ const MusicianLI = ({ name, picUrl, bio, id, chair, title }) => {
         <Link
             onClick={() => setDialog({ type: 'bio', component: <MusicianDialog name={name} src={src} bio={bio} />, title: name })}
             color="inherit"
-            width={'100%%'}
+            width={'100%'}
             style={{
                 transition: '0.3s',
                 '&:hover': { opacity: 0.95 },
