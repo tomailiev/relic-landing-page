@@ -7,7 +7,7 @@ const MusicianDialog = ({ src, name, bio }) => {
     return (
         <>
             <Box display={'flex'} justifyContent={'center'} sx={{ px: { xs: 0, sm: 3 } }}>
-                <img src={src} height="auto" width="88%" alt={name} style={{ borderRadius: 3 }} />
+                <img src={src} height="auto" width="88%" alt={name} style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }} />
             </Box>
             <Box sx={{ px: { xs: 1, sm: 3 } }}>
                 <Typography sx={{ m: { xs: 1, sm: 4 } }}>

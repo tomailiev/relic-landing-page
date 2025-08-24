@@ -15,7 +15,7 @@ const ReviewSection = ({ infoTitle, infoText, buttonText, reviewSource, route })
                 transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                 position: 'relative',
                 overflow: 'hidden',
-                minHeight: { xs: '100vh', md: '100%' },
+                minHeight: { xs: '100vh', md: '100%', xl: '80vh' },
                 width: '100%',
                 // '&:hover': {
                 //     transform: 'translateY(-2px)',

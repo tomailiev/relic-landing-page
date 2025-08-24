@@ -12,6 +12,7 @@ import aboutBgH from '../assets/imgs/about_bg_h.jpg';
 import aboutbgV from '../assets/imgs/about_bg_v.jpg';
 import generalBg from '../assets/imgs/general_bg.jpg';
 import goldBg from '../assets/imgs/gold_bg.jpg';
+import pantheonBg from '../assets/imgs/pantheon_bg.jpg';
 
 
 const images = {
@@ -27,7 +28,8 @@ export const bgs = {
     aboutbgV,
     generalBg,
     reviewBgV,
-    goldBg
+    goldBg,
+    pantheonBg
 };
 
 export default images;
