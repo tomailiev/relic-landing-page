@@ -6,7 +6,7 @@ import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
 // import MusicianGroup from "./MusicianGroup";
 import MusicianLI from "./MusicianLI";
 import banners from "../../data/banners";
-import { bgs } from "../../data/images";
+// import { bgs } from "../../data/images";
 
 const Musicians = () => {
 
@@ -37,15 +37,15 @@ const Musicians = () => {
                     // mb: 3,
                 }}
             />
-            <Box sx={{ background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2 }}>
+            <Box sx={{  py: 2 }}>
                 <Container maxWidth="xl" sx={{ my: 5, px: { xs: 2, sm: 10 }, textAlign: 'center' }}>
-                    <Typography variant="h3" my={8} fontWeight={600} color={'secondary.main'}>
+                    <Typography variant="h3" my={8} fontWeight={600} >
                         Musicians
                     </Typography>
                     <Grid container spacing={4} display={'flex'} alignItems={'stretch'}>
                         {musicians.length
-                            ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} xs={12} sm={6} md={4} lg={3} xl={2} display={'flex'}><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
-                            : Array.from({ length: 9 }).map((_, i) => <Grid item key={i} xs={12} sm={6} md={4} lg={3} xl={2} display={'flex'}>
+                            ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} xs={12} sm={6} md={4} lg={3} display={'flex'}><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
+                            : Array.from({ length: 9 }).map((_, i) => <Grid item key={i} xs={12} sm={6} md={4} lg={3} display={'flex'}>
                                 <Skeleton variant="rectangular" width="100%" height={414} sx={{ borderRadius: 3, }} />
                             </Grid>)
                         }
