@@ -17,7 +17,9 @@ const DonorLevels = () => {
             }
             valueType === 'Value'
                 ? a[index].title = value
-                : a[index].description = value;
+                : valueType === 'Description'
+                    ? a[index].description = value
+                    : a[index].perks = value;
             return a;
         }, []);
 
@@ -41,12 +43,12 @@ const DonorLevels = () => {
                 flexDirection: 'column',
                 alignItems: 'flex-end',
                 '& > *': {
-                    width: {xs: '100%', md: '51%'},
+                    width: { xs: '100%', md: '51%' },
                 },
             }}
             >
                 {
-                    tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} />)
+                    tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} additional={tier.perks} />)
                 }
             </Box>
         </Box>
