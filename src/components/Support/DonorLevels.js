@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import { Box, Typography } from "@mui/material";
-import TypographyCombo from "./TypographyCombo";
+// import TypographyCombo from "./TypographyCombo";
 import { bgs } from "../../data/images";
+import DonorTierItem from "./DonorTierItem";
 
 const DonorLevels = () => {
     const { text } = useContext(TextContext);
@@ -48,7 +49,7 @@ const DonorLevels = () => {
             }}
             >
                 {
-                    tiers.reverse().map(tier => <TypographyCombo key={tier.title} title={tier.title} text={tier.description} additional={tier.perks} />)
+                    tiers.reverse().map(tier => <DonorTierItem key={tier.title} title={tier.title} text={tier.description} additional={tier.perks} />)
                 }
             </Box>
         </Box>
