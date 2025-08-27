@@ -18,6 +18,7 @@ const texts = {
     musicianCardRoute: '/musicians',
     siteSubtitle: 'The period chamber orchestra dedicated to bringing early music to all 50 states',
     aboutBio: 'Lauded as “stylish and innovative” (New York Classical Review), Relic is a period instrument chamber orchestra that brings early music to life through intimate, dramatic, and boldly imaginative performances. With a goal to share historically informed performance with audiences in all 50 states, Relic creates immersive concerts that captivate both seasoned listeners and new audiences alike.\\nFounded in 2022, Relic has developed a distinctive narrative-driven approach to programming. Each performance is structured around thematic “chapters” that unite diverse repertoire into a compelling musical journey, offering audiences both emotional impact and historical insight. This creative framework has become a signature of the ensemble\'s identity, garnering a growing national reputation for originality and accessibility.\\nIn just a few seasons, Relic has self-produced concerts across the country, bringing its unique vision of early music to cities including Washington, D.C., New York City, Kalamazoo (MI), Richmond (VA), Greenbelt (MD), Appleton (WI), Batavia (IL). The ensemble has also appeared on leading concert series, festivals, and presenter stages such as Chamber Music Detroit, the Academy of Early Music, The Cleveland Museum of Art, Indianapolis Early Music Festival, Western Michigan University, and Gotham Early Music Scene. Relic\'s 2025-2026 concert season features performances throughout New York, Michigan, Washington, D.C., Maryland, Virginia, Louisiana, and Ohio.\nEducation and community engagement are integral to Relic\'s mission. Ensemble members regularly lead workshops, masterclasses, and side-by-side performances for students of all ages. Recent educational residencies include the University of Maryland, Washington International School, Kalamazoo College, and Western Michigan University. Beyond traditional venues, Relic deepens its connection to communities through family-friendly programs, open rehearsals, and performances in alternative spaces.\\nWith its fresh approach to early music, commitment to national reach, and passion for connecting with diverse audiences, Relic is redefining how historical performance can engage and inspire in the 21st century.',
+    aboutBioShort: 'Relic is a period instrument chamber orchestra that brings early music to life through intimate, dramatic, and boldly imaginative performances. With a goal to share historically informed performance with audiences in all 50 states, Relic creates immersive concerts that captivate both seasoned listeners and new audiences alike.',
     aboutStory: 'Once upon a time, six musicians encountered each other frequently at various concerts, rehearsals, and social gatherings across the United States. Through the sharing of ideas and aspirations, they recognized a mutual spark: an impulse to contribute to the accessibility and expansion of early music in small and large communities around the country. Backstage chats, onstage synergy and shared commutes led to the foundation of strong friendships and deep musical bonds. In a heartbeat, Relic was born.',
     aboutMission: 'Relic’s mission is to present captivating live performances to communities across the country, especially those with little access to live early music. Relic strives to make early music accessible to people from all backgrounds through free concerts, open rehearsals, and educational events for students with no prior knowledge of early music.',
     aboutValues: 'We believe in working in a democratic, tolerant, and accepting environment, and we deeply value our supporters, audiences, volunteers, and fellow musicians. We are committed to bringing people from all backgrounds into our community.',
@@ -37,6 +38,25 @@ const texts = {
     supportJoinTitle: "Don't Miss A Beat",
     supportVolunteersTitle: 'Volunteers',
     seasonAnnouncementText: 'Season announcement pending. Stay tuned!',
+    tier0Description: 'The Muses were champions of the arts. Your support inspires us to continue our quest to create beauty!',
+    tier0Value: 'The Muses Circle: Under $250',
+    tier1Description: 'Dionysus was the god of wine, fruits, and vegetation. Your donation helps us supply a post-concert reception or feed our musicians during a long day of rehearsal.',
+    tier1Perks: 'Receive a Relic memorabilia item.',
+    tier1Value: 'Dionysus Circle: $250+',
+    tier2Description: 'Artemis was the goddess of the hunt, and we’re always on the hunt for beautiful venues and exciting new music. Your donation helps us pay venue rental costs or purchase musical scores.',
+    tier2Perks: 'Receive exclusive invitations to donor-only events and a Relic memorabilia item.',
+    tier2Value: 'Artemis Circle: $500+',
+    tier3Description: 'Hermes was the god of travel and communication. Your donation helps us cover travel costs, audio/video recordings, or promotional materials.',
+    tier3Perks: 'Receive exclusive access to our database of full-concert live video recordings and all perks from lower tiers.',
+    tier3Value: 'Hermes Circle: $1000+',
+    tier5Description: 'Apollo was the god of music. Your donation helps us pay our world-class artists.',
+    tier5Perks: 'Receive a section (continuo/violins) sponsor recognition in our program book for a project of your choice, complimentary Premium seats for you and your party for 1 season, and all perks from lower tiers.',
+    tier5Value: 'Apollo Circle: $5000+',
+    tier6Description: 'King and Queen! Your donation sponsors an entire project.',
+    tier6Perks: 'Receive project sponsor recognition in our program book for a project of your choice, a musician’s chair named in your honor for a full season, and all perks from lower tiers.',
+    tier6Value: 'Zeus and Hera Circle: $10,000+',
+    tiersTitle: 'The Relic Pantheon'
+    
 };
 
 export default texts;
