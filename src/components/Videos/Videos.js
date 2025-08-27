@@ -192,7 +192,7 @@ const Videos = () => {
                 {hasCheckedDonorTier && videoCategory === 'full concert' && (hasPassedVerification
                     ? <Typography color={'secondary.main'} fontSize={'1.4em'} textAlign={'center'}>Thank you for your support! Enjoy our live concert archive!</Typography>
                     : <Box textAlign={'center'}>
-                        <Typography color={'secondary.main'} fontSize={'1.4em'}>Our system indicates you don't have access to this feature at this time. If you would like to enjoy our archive of full live concerts, consider becoming a Hermes tier donor or higher. If you believe there's an error with your access, contact us for assistance.</Typography>
+                        <Typography color={'secondary.main'} fontSize={'1.4em'}>Our system indicates you don't have access to this feature at this time. If you would like to enjoy our archive of full live concerts, consider becoming a Hermes circle donor or higher. If you believe there's an error with your access, contact us for assistance.</Typography>
                         <ButtonGroup variant="outlined" sx={{ my: 3, }}>
                             <Button sx={{
                                 borderTopRightRadius: 0, borderBottomRightRadius: 0, color: 'secondary.main',
