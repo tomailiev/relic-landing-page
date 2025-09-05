@@ -10,7 +10,7 @@ const Story = ({ content, pageTitle }) => {
             <Box
                 sx={{
                     width: '100%',
-                    height: { xs: 300, sm: 380, },
+                    height: { xs: 300, sm: 500, },
                     backgroundImage: `url(${banners.story.storyBanner})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
