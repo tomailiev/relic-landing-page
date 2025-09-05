@@ -49,10 +49,10 @@ const ActionCenter = () => {
                                 // backgroundColor: '#ffffff'
                             }
                         }} >
-                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Donate</Button>
-                            <Typography variant="subtitle1" mt={3}>
+                            <Typography variant="subtitle1" mb={3}>
                                 {text.actionCenterDonate}
                             </Typography>
+                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Donate</Button>
                         </Paper>
                     </Grid>
                     <Grid item md={6} xs={12} textAlign="center" height={'300px'}>
@@ -74,10 +74,10 @@ const ActionCenter = () => {
                                 // backgroundColor: '#ffffff'
                             }
                         }} >
-                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Subscribe</Button>
-                            <Typography variant="subtitle1" mt={3}>
+                            <Typography variant="subtitle1" mb={3}>
                                 {text.actionCenterSubscribe}
                             </Typography>
+                            <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Subscribe</Button>
                         </Paper>
                     </Grid>
                 </Grid>

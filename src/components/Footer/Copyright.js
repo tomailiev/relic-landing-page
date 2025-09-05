@@ -6,12 +6,7 @@ const Copyright = () => {
     return (
         <Box sx={{mb: 3}}>
             <Typography variant="body2" color="secondary" align="center" paddingBottom={2}>
-                {'Copyright © '}
-                <Link color="inherit" href="https://relicensemble.org">
-                    Relic
-                </Link>{' '}
-                {year}
-                {'.'}
+                 © Relic {year}
             </Typography>
         </Box>
     );

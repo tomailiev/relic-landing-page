@@ -23,8 +23,8 @@ const Footer = () => {
                 <Instagram />
             </Fab> */}
             <Container disableGutters>
-                <Box justifyContent={'center'} mx={5}>
-                    <Typography color="white" align="center" paddingBottom={2}>
+                <Box justifyContent={'center'} mx={{xs: 5, lg: 18}}>
+                    <Typography color="white" align="center" fontStyle={'italic'} paddingBottom={2}>
                         {text.footerGemsNote}
                     </Typography>
                 </Box>
