@@ -1,4 +1,4 @@
-import { Paper, Typography, useMediaQuery, useTheme, } from "@mui/material";
+import { Typography, useMediaQuery, useTheme, } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { createRef, useContext, useEffect, useState } from "react";
 import loader from '../../utils/gmaps/gmapsInit';
@@ -95,7 +95,7 @@ const Journey = () => {
                 Relic's journey
             </Typography>
             <Container maxWidth={'lg'}>
-                <Typography textAlign={'left'}>
+                <Typography textAlign={'left'} fontSize={'1.2em'}>
                     {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
                         const state = c.locationName.substring(c.locationName.length - 3);
                         if (!a.includes(state) && state !== '.C.') {
@@ -105,10 +105,10 @@ const Journey = () => {
                     }, []).length : 1)}
                 </Typography>
             </Container>
-            <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}>
+            {/* <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}> */}
                 <Container maxWidth={'lg'} />
-                <Container ref={mapRef} sx={{ width: '100%', height: '500px', borderRadius: '4px', my: 5 }} />
-            </Paper>
+                <Container ref={mapRef} sx={{ width: {xs: '90%', md: '95%'}, height: '500px', borderRadius: '4px', my: 7, }} />
+            {/* </Paper> */}
         </Container>
     );
 };
