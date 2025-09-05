@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { checkVideoAccess, downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
-import { Box, Button, ButtonGroup, Container, FormControl, Grid, InputLabel, Link, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Container, Grid, Link, TextField, Typography } from "@mui/material";
 import VideoItem from "./VideoItem";
 import { donorEmailSchema } from "../../utils/yup/schemas";
 import { Link as RouterLink, useLocation } from "react-router-dom";
@@ -26,18 +26,20 @@ const Videos = () => {
         const searchParams = new URLSearchParams(location.search);
         if (searchParams.has('category')) {
             const category = searchParams.get('category');
-            if (['live', 'studio', 'full concert'].includes(category)) {
+            if (['clip', 'full concert'].includes(category)) {
                 setVideoCategory(category);
             }
         } else {
-            setVideoCategory('live');
+            setVideoCategory('clip');
         }
     }, [location.search]);
 
     useEffect(() => {
         if (videoCategory !== 'full concert' || hasPassedVerification) {
+            if (videoCategory !== 'clip') return;
+            
             downloadDocsV2('videos', [
-                { type: 'condition', value: ['category', '==', videoCategory] },
+                { type: 'condition', value: videoCategory === 'full concert' ? ['category', '==', videoCategory] : ['category', 'in', ['live', 'studio']] },
                 { type: 'sorting', value: ['featured', 'desc'] }
             ])
                 .then(docs => setVideos(docs))
@@ -46,9 +48,9 @@ const Videos = () => {
         }
     }, [videoCategory, hasPassedVerification]);
 
-    function handleSelectChange(event) {
+    function handleSelectChange(cat) {
         setVideos([]);
-        setVideoCategory(event.target.value)
+        setVideoCategory(cat)
     }
 
     function checkEmailAddress(e) {
@@ -81,153 +83,176 @@ const Videos = () => {
     }
 
     return (
-        <Box textAlign={'center'} sx={{ background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2 }}>
+        <Box textAlign={'center'} sx={{ background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2, minHeight: '100vh' }}>
             <Typography variant="h3" my={8} fontWeight={'600'} color={'secondary.main'}>
                 Videos
             </Typography>
-            <Container maxWidth={'lg'} sx={{ textAlign: 'left', }}>
-                <FormControl fullWidth>
-                    <InputLabel
-                        id="video-category-select"
-                        sx={{
-                            // color: 'secondary.main',
-                            backgroundColor: '#ffffff',
-                            px: 0.5, // small padding so the background extends beyond text
-                            borderRadius: 3
-                        }}
-                    >
-                        Category
-                    </InputLabel>
-                    <Select
-                        labelId="video-category-select"
-                        id="video-category"
-                        value={videoCategory}
-                        onChange={handleSelectChange}
-                        sx={{ background: '#ffffff' }}
-                        MenuProps={{
-                            MenuListProps: {
-                                sx: { background: '#ffffff' }
-                            }
-                        }}
-                    >
-                        <MenuItem value="live">Live recording</MenuItem>
-                        <MenuItem value="studio">Studio recording</MenuItem>
-                        <MenuItem value="full concert">Full concert</MenuItem>
-                    </Select>
-                </FormControl>
-
-                {videoCategory === 'full concert' && <Box my={3} >
-                    <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'}>Full concert videos are only available for our <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/tiers'}>Hermes circle</Link> donors and higher. Please enter your email below for access.</Typography>
-                    <Box
-                        component="form"
-                        my={3}
-                        onSubmit={checkEmailAddress}
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            width: '100%',
-                            maxWidth: 400,
-                            position: 'relative',
-                            left: '50%',
-                            transform: 'translate(-50%)'
-                        }}
-                    >
-                        <TextField
-                            variant="outlined"
-                            label="Email"
-                            size="small"
-                            fullWidth
-                            value={userEmail}
-                            error={!!valError}
-                            helperText={valError}
-                            onFocus={() => setValError('')}
-                            onChange={(e) => setUserEmail(e.target.value)}
-                            InputProps={{
-                                sx: {
-                                    backgroundColor: '#ffffff',
-                                }
-                            }}
-                            InputLabelProps={{
-                                sx: {
-                                    // color: 'secondary.main',
-                                    backgroundColor: '#ffffff',
-                                    borderRadius: 3,
-                                    px: 0.5,
-                                }
-                            }}
-                            sx={{
-                                '& fieldset': {
-                                    border: '2px solid',
-                                    borderColor: 'secondary.main',
-                                    borderTopRightRadius: 0,
-                                    borderBottomRightRadius: 0,
-                                    borderRight: 'none',
-                                },
-                            }}
-                        />
+            <Container maxWidth={'xl'} sx={{ textAlign: 'left', }}>
+                <Grid container>
+                    <Grid item xs={12} md={3} display={'flex'} flexDirection={{ xs: 'row', md: 'column' }} alignItems={'flex-start'} justifyContent={{ xs: 'center', md: 'flex-start' }} mb={{ xs: 5, md: 0 }}>
+                        
                         <Button
-                            variant={'outlined'}
-                            type="submit"
-                            disabled={loading}
+                            variant="text"
+                            onClick={() => handleSelectChange('clip')}
+                            disabled={videoCategory === 'clip'}
                             sx={{
-                                height: '40px',
-                                borderTopLeftRadius: 0,
-                                borderBottomLeftRadius: 0,
-                                whiteSpace: 'nowrap',
+                                display: 'block',
                                 color: 'secondary.main',
-                                borderColor: 'secondary.main',
-                                borderWidth: '2px',
+                                textTransform: 'capitalize',
+                                fontSize: '1.4em',
                                 '&:hover': {
-                                    backgroundColor: 'secondary.main',
-                                    color: 'secondary.contrastText',
-                                    borderColor: 'secondary.main',
-                                    borderWidth: '2px'
+                                    backgroundColor: 'transparent',
+                                    color: '#f9e9b3', // light gold shade
+                                },
+                                '&.Mui-disabled': {
+                                    color: '#ccc4c496',
+                                    textDecoration: 'underline'
                                 },
                             }}
                         >
-                            Submit
+                            Clips
                         </Button>
-                    </Box>
-                </Box>}
-                {hasCheckedDonorTier && videoCategory === 'full concert' && (hasPassedVerification
-                    ? <Typography color={'secondary.main'} fontSize={'1.4em'} textAlign={'center'}>Thank you for your support! Enjoy our live concert archive!</Typography>
-                    : <Box textAlign={'center'}>
-                        <Typography color={'secondary.main'} fontSize={'1.4em'}>Our system indicates you don't have access to this feature at this time. If you would like to enjoy our archive of full live concerts, consider becoming a Hermes circle donor or higher. If you believe there's an error with your access, contact us for assistance.</Typography>
-                        <ButtonGroup variant="outlined" sx={{ my: 3, }}>
-                            <Button sx={{
-                                borderTopRightRadius: 0, borderBottomRightRadius: 0, color: 'secondary.main',
-                                borderColor: 'secondary.main',
+                        <Button
+                            variant="text"
+                            onClick={() => handleSelectChange('full concert')}
+                            disabled={videoCategory === 'full concert'}
+                            sx={{
+                                display: 'block',
+                                color: 'secondary.main',
+                                textTransform: 'capitalize',
+                                fontSize: '1.4em',
+
                                 '&:hover': {
-                                    backgroundColor: 'secondary.main',
-                                    color: 'secondary.contrastText',
-                                    borderColor: 'secondary.main',
+                                    backgroundColor: 'transparent',
+                                    color: '#f9e9b3', // light gold shade
                                 },
-                            }} onClick={handleDonateButtonClick}>Donate</Button>
-                            <RouterLink to={'/contact'}>
-                                <Button sx={{
-                                    borderTopLeftRadius: 0, borderBottomLeftRadius: 0, color: 'secondary.main',
-                                    borderColor: 'secondary.main',
-                                    '&:hover': {
-                                        backgroundColor: 'secondary.main',
-                                        color: 'secondary.contrastText',
-                                        borderColor: 'secondary.main',
-                                    },
-                                }}>Contact</Button>
-                            </RouterLink>
-                        </ButtonGroup>
-                    </Box>
-                )
-                }
-                {videos?.length
-                    ? <Grid container spacing={6} my={3}>
-                        {videos.map(video => {
-                            return <VideoItem key={video.youtubeId} video={video} />
-                        })}
+                                '&.Mui-disabled': {
+                                    color: '#ccc4c496',
+                                    textDecoration: 'underline'
+
+                                },
+                            }}
+                        >
+                            Full Concerts
+                        </Button>
+                        
                     </Grid>
-                    : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && hasPassedVerification && videoCategory === 'full concert')
-                        ? <Grid container spacing={6} my={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton playIcon={true} key={i} />)}</Grid>
-                        : <Box height={'350px'} />
-                }
+                    <Grid item xs={12} md={9}>
+
+                        {videoCategory === 'full concert' && <Box mb={3} >
+                            <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'}>Full concert videos are only available for our <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/tiers'}>Hermes circle</Link> donors and higher. Please enter your email below for access.</Typography>
+                            <Box
+                                component="form"
+                                my={3}
+                                onSubmit={checkEmailAddress}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: '100%',
+                                    maxWidth: 400,
+                                    position: 'relative',
+                                    justifyContent: 'flex-start'
+                                }}
+                            >
+                                <TextField
+                                    variant="outlined"
+                                    label="Email"
+                                    size="small"
+                                    fullWidth
+                                    value={userEmail}
+                                    error={!!valError}
+                                    helperText={valError}
+                                    onFocus={() => setValError('')}
+                                    onChange={(e) => setUserEmail(e.target.value)}
+                                    InputProps={{
+                                        sx: {
+                                            backgroundColor: '#ffffff',
+                                        }
+                                    }}
+                                    InputLabelProps={{
+                                        sx: {
+                                            // color: 'secondary.main',
+                                            backgroundColor: '#ffffff',
+                                            borderRadius: 3,
+                                            px: 0.5,
+                                        }
+                                    }}
+                                    sx={{
+                                        '& fieldset': {
+                                            border: '2px solid',
+                                            borderColor: 'secondary.main',
+                                            borderTopRightRadius: 0,
+                                            borderBottomRightRadius: 0,
+                                            borderRight: 'none',
+                                        },
+                                    }}
+                                />
+                                <Button
+                                    variant={'outlined'}
+                                    type="submit"
+                                    disabled={loading}
+                                    sx={{
+                                        height: '40px',
+                                        borderTopLeftRadius: 0,
+                                        borderBottomLeftRadius: 0,
+                                        whiteSpace: 'nowrap',
+                                        color: 'secondary.main',
+                                        borderColor: 'secondary.main',
+                                        borderWidth: '2px',
+                                        '&:hover': {
+                                            backgroundColor: 'secondary.main',
+                                            color: 'secondary.contrastText',
+                                            borderColor: 'secondary.main',
+                                            borderWidth: '2px'
+                                        },
+                                    }}
+                                >
+                                    Submit
+                                </Button>
+                            </Box>
+                        </Box>}
+                        {hasCheckedDonorTier && videoCategory === 'full concert' && (hasPassedVerification
+                            ? <Typography color={'secondary.main'} fontSize={'1.4em'} mb={3}>Thank you for your support! Enjoy our live concert archive!</Typography>
+                            : <Box>
+                                <Typography color={'secondary.main'} fontSize={'1.4em'}>Our system indicates you don't have access to this feature at this time. If you would like to enjoy our archive of full live concerts, consider becoming a Hermes circle donor or higher. If you believe there's an error with your access, contact us for assistance.</Typography>
+                                <ButtonGroup variant="outlined" sx={{ my: 3, }}>
+                                    <Button sx={{
+                                        borderTopRightRadius: 0, borderBottomRightRadius: 0, color: 'secondary.main',
+                                        borderColor: 'secondary.main',
+                                        '&:hover': {
+                                            backgroundColor: 'secondary.main',
+                                            color: 'secondary.contrastText',
+                                            borderColor: 'secondary.main',
+                                        },
+                                    }} onClick={handleDonateButtonClick}>Donate</Button>
+                                    <RouterLink to={'/contact'}>
+                                        <Button sx={{
+                                            borderTopLeftRadius: 0, borderBottomLeftRadius: 0, color: 'secondary.main',
+                                            borderColor: 'secondary.main',
+                                            '&:hover': {
+                                                backgroundColor: 'secondary.main',
+                                                color: 'secondary.contrastText',
+                                                borderColor: 'secondary.main',
+                                            },
+                                        }}>Contact</Button>
+                                    </RouterLink>
+                                </ButtonGroup>
+                            </Box>
+                        )
+                        }
+                        {videos?.length
+                            ? <Grid container spacing={6} mb={3}>
+                                {videos.map(video => {
+                                    return <VideoItem key={video.youtubeId} video={video} />
+                                })}
+                            </Grid>
+                            : (!hasCheckedDonorTier && videoCategory !== 'full concert') || (hasCheckedDonorTier && hasPassedVerification && videoCategory === 'full concert')
+                                ? <Grid container spacing={6} mb={3}>{[1, 2, 3, 4, 5, 6].map(i => <VideoItemSkeleton playIcon={true} key={i} />)}</Grid>
+                                : <Box height={'350px'} />
+                        }
+                    </Grid>
+                </Grid>
+
             </Container>
         </Box>
     );
