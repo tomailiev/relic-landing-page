@@ -19,7 +19,7 @@ const NavMenuItem = ({ menuTitle, menu, path }) => {
 
     return (
         <Box onMouseOver={handleClick} onMouseOut={handleClose}>
-            <MenuItem ref={anchorEl} key={menuTitle} component={menu ? Box : RouterLink} to={path} sx={{ my: 2.2, mx: 1.2, }}>
+            <MenuItem ref={anchorEl} key={menuTitle} component={RouterLink} to={menu ? menu[0].path : path} sx={{ my: 2.2, mx: 1.2, }}>
                 <Typography variant="h6" fontWeight={700} textAlign="center" color={'white'} >{menuTitle}</Typography>
             </MenuItem>
             {menu && (
