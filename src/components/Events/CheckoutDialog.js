@@ -1,10 +1,9 @@
-import { useEffect, useRef } from "react";
-import useEventbriteScript from "../../hooks/useEventbriteScript";
+import { useContext, useEffect, useRef } from "react";
+import NotificationContext from "../../context/NotificationContext";
 
-const  CheckoutDialog = ({ eventId }) => {
+const CheckoutDialog = ({ eventId }) => {
   const containerRef = useRef(null);
-
-  useEventbriteScript();
+  const { setNotification } = useContext(NotificationContext);
 
   useEffect(() => {
     if (!window.EBWidgets) return;
@@ -13,10 +12,10 @@ const  CheckoutDialog = ({ eventId }) => {
       widgetType: "checkout",
       eventId,
       iframeContainerId: "eventbrite-widget-container",
-      iframeContainerHeight: 600,
-      onOrderComplete: () => console.log("Order complete!"),
+      // iframeContainerHeight: 600,
+      onOrderComplete: () => setNotification({ type: 'success', message: 'Thank you for your order!' }),
     });
-  }, [eventId]);
+  }, [eventId, setNotification]);
 
   return <div id="eventbrite-widget-container" ref={containerRef} />;
 };

@@ -21,7 +21,7 @@ import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
 import MapDialog from './MapDialog';
 import { sortByNewTitle } from '../../data/musicianSorter';
-import { Add, ArrowLeft } from '@mui/icons-material';
+import { Add, ArrowLeft, OpenInNew } from '@mui/icons-material';
 import { currentSeason } from '../../data/currentSeason';
 import CheckoutDialog from './CheckoutDialog';
 
@@ -195,8 +195,8 @@ const EventPage = () => {
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
                                                         {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
-                                                            ? <Button variant='contained' onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog eventId={perf.url.includes('?') ? perf.url.substring(perf.url.lastIndexOf('tickets-') + 8, perf.url.indexOf('?')) : perf.url.substring(perf.url.lastIndexOf('tickets-') + 8)} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
-                                                            : <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
+                                                            ? <Button variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url} onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog eventId={perf.url.includes('?') ? perf.url.substring(perf.url.lastIndexOf('tickets-') + 8, perf.url.indexOf('?')) : perf.url.substring(perf.url.lastIndexOf('tickets-') + 8)} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
+                                                            : <Button startIcon={<OpenInNew />} href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
                                                                 Tickets
                                                             </Button>
                                                         }
