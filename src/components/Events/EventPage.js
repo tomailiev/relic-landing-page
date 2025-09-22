@@ -8,6 +8,9 @@ import {
     ListItem,
     ListItemText,
     Skeleton,
+    Menu,
+    ButtonGroup,
+    MenuItem,
 } from '@mui/material';
 
 // import banner from '../../assets/imgs/WO_02232023-b.png';
@@ -18,8 +21,9 @@ import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
 import MapDialog from './MapDialog';
 import { sortByNewTitle } from '../../data/musicianSorter';
-import { ArrowLeft } from '@mui/icons-material';
+import { Add, ArrowLeft } from '@mui/icons-material';
 import { currentSeason } from '../../data/currentSeason';
+import CheckoutDialog from './CheckoutDialog';
 
 const EventPage = () => {
 
@@ -28,6 +32,7 @@ const EventPage = () => {
     const [event, setEvent] = useState(null);
     const [pdfFile, setPdfFile] = useState(null);
     const [eventBanner, setEventBanner] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     useEffect(() => {
         if (event?.program) {
@@ -51,6 +56,45 @@ const EventPage = () => {
                 setEvent(doc)
             });
     }, [eventId]);
+
+
+    const open = Boolean(anchorEl);
+
+    const handleMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleCalendarOption = (option) => {
+        handleMenuClose();
+        if (!event) return;
+
+        if (option === 'google') {
+            // Example Google Calendar URL (adjust fields as needed)
+            const googleUrl = `https://calendar.google.com/calendar/r/eventedit?text=${encodeURIComponent(
+                event.title
+            )}&details=${encodeURIComponent(event.description || '')}`;
+            window.open(googleUrl, '_blank');
+        } else if (option === 'ical') {
+            // Example iCal download (you would generate .ics file normally)
+            const icsContent = `
+                             BEGIN:VCALENDAR
+                             VERSION:2.0
+                             BEGIN:VEVENT
+                             SUMMARY:${event.title}
+                             DESCRIPTION:${event.description || ''}
+                             END:VEVENT
+                             END:VCALENDAR
+                                   `;
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `${event.title}.ics`;
+            link.click();
+        }
+    };
 
 
     return (
@@ -150,9 +194,13 @@ const EventPage = () => {
                                                     {perf.presenter && <Typography color={'primary'} fontSize={'1.1em'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
-                                                        <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
-                                                            Tickets
-                                                        </Button>
+                                                        {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
+                                                            ? <Button variant='contained' onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog eventId={perf.url.includes('?') ? perf.url.substring(perf.url.lastIndexOf('tickets-') + 8, perf.url.indexOf('?')) : perf.url.substring(perf.url.lastIndexOf('tickets-') + 8)} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
+                                                            : <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
+                                                                Tickets
+                                                            </Button>
+                                                        }
+
                                                         {perf.geocode && <Button
                                                             variant="outlined"
                                                             size={'small'}
@@ -160,6 +208,40 @@ const EventPage = () => {
                                                                 setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
                                                             }}
                                                         >View Map</Button>}
+                                                        <ButtonGroup variant="outlined" size="small">
+                                                            <Button
+                                                                startIcon={<Add />}
+                                                                onClick={handleMenuOpen}
+                                                            >
+                                                                Calendar
+                                                            </Button>
+
+                                                        </ButtonGroup>
+                                                        <Menu
+                                                            disableScrollLock
+                                                            anchorEl={anchorEl}
+                                                            open={open}
+                                                            onClose={handleMenuClose}
+                                                            PaperProps={{
+                                                                sx: {
+                                                                    backgroundColor: '#ffffff', // force white background
+                                                                    '& .MuiMenuItem-root': {
+                                                                        color: 'primary.main',
+                                                                        '&:hover': {
+                                                                            bgcolor: 'primary.light',
+                                                                            color: '#fff',
+                                                                        },
+                                                                    },
+                                                                },
+                                                            }}
+                                                        >
+                                                            <MenuItem onClick={() => handleCalendarOption('google')}>
+                                                                Google
+                                                            </MenuItem>
+                                                            <MenuItem onClick={() => handleCalendarOption('ical')}>
+                                                                iCal
+                                                            </MenuItem>
+                                                        </Menu>
                                                     </Box>
                                                 </>
                                             }
