@@ -1,15 +1,15 @@
 import { useContext, useEffect, useRef } from "react";
 import NotificationContext from "../../context/NotificationContext";
-import LoadingContext from "../../context/LoadingContext";
+// import LoadingContext from "../../context/LoadingContext";
 
 const CheckoutDialog = ({ eventId }) => {
   const containerRef = useRef(null);
   const { setNotification } = useContext(NotificationContext);
-  const {setLoading} = useContext(LoadingContext);
+  // const { setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     if (!window.EBWidgets) return;
-    setLoading(true);
+    // setLoading(true);
     window.EBWidgets.createWidget({
       widgetType: "checkout",
       eventId,
@@ -18,27 +18,29 @@ const CheckoutDialog = ({ eventId }) => {
       onOrderComplete: () => setNotification({ type: 'success', message: 'Thank you for your order!' }),
     });
 
-    const container = document.getElementById("eventbrite-widget-container");
-    const observer = new MutationObserver(() => {
-      const iframe = container.querySelector("iframe");
-      if (iframe) {
-        iframe.addEventListener("load", () => {
-          setLoading(false);
-          console.log("Eventbrite widget iframe loaded");
-        });
-        iframe.addEventListener('', () => {
-          setLoading(false);
-          console.log('iframe errored out');
+    // const iframe = document.querySelector("#eventbrite-widget-container iframe");
+    // const observer = new MutationObserver(() => {
+    //   if (iframe) {
+    //     console.log(iframe.innerHTML);
+        
+    //     iframe.addEventListener("load", () => {
+    //       setLoading(false);
+    //       console.log("Eventbrite widget iframe loaded");
+    //     });
+    //     iframe.addEventListener('', () => {
+    //       setLoading(false);
+    //       console.log('iframe errored out');
 
-        })
-        observer.disconnect();
-      }
-    });
+    //     })
+    //     // observer.disconnect();
+    //   }
+    //   setLoading(false);
+    // });
 
-    observer.observe(container, { childList: true });
+    // observer.observe(iframe, { childList: true });
 
-    return () => observer.disconnect();
-  }, [eventId, setNotification, setLoading]);
+    // return () => observer.disconnect();
+  }, [eventId, setNotification]);
 
   return <div id="eventbrite-widget-container" ref={containerRef} />;
 };
