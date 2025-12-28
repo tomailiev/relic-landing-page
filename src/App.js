@@ -10,7 +10,7 @@ import '@fontsource/julius-sans-one/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import NotificationContext from './context/NotificationContext';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Notification from './components/Common/Notification';
 import Events from './components/Events/Events';
 import ActionCenter from './components/Common/ActionCenter';
@@ -77,6 +77,8 @@ function App() {
   const bioTexts = text.aboutBio.split('\\n').map(item => ({ textContent: item }));
 
   const location = useLocation();
+
+  const nodeRef = useRef(null);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -147,27 +149,29 @@ function App() {
                   <CssBaseline />
                   <Header location={location} />
                   <TransitionGroup component={null}>
-                    <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                      <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
-                        <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Relic'} />} />
-                        <Route path="/about/musicians" element={<Musicians />} />
-                        <Route path='/about/journey' element={<Journey />} />
-                        <Route path="/events/:season" element={<Events />} />
-                        <Route path='/support/donate' element={<Support />} />
-                        <Route path={'/support/tiers'} element={<DonorLevels />} />
-                        {/* <Route path={'/support/host'} element={<Host />} /> */}
-                        <Route path={'/media/photos'} element={<Photos />} />
-                        <Route path='/media/videos' element={<Videos />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
-                        <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
-                        <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
-                        <Route path='/event/:eventId' element={<EventPage />} />
-                        <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
-                        <Route path="*" element={<NoMatch />} />
-                      </Routes>
+                    <CSSTransition key={location.pathname} classNames="fade" timeout={300} nodeRef={nodeRef} >
+                      <div ref={nodeRef}>
+                        <Routes location={location}>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
+                          <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Relic'} />} />
+                          <Route path="/about/musicians" element={<Musicians />} />
+                          <Route path='/about/journey' element={<Journey />} />
+                          <Route path="/events/:season" element={<Events />} />
+                          <Route path='/support/donate' element={<Support />} />
+                          <Route path={'/support/tiers'} element={<DonorLevels />} />
+                          {/* <Route path={'/support/host'} element={<Host />} /> */}
+                          <Route path={'/media/photos'} element={<Photos />} />
+                          <Route path='/media/videos' element={<Videos />} />
+                          <Route path="/contact" element={<Contact />} />
+                          <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
+                          <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
+                          <Route path="/events" element={<Navigate to={`/events/${currentSeason}`} />} />
+                          <Route path='/event/:eventId' element={<EventPage />} />
+                          <Route path="/event" element={<Navigate to={`/events/${currentSeason}`} />} />
+                          <Route path="*" element={<NoMatch />} />
+                        </Routes>
+                      </div>
                     </CSSTransition>
                   </TransitionGroup>
                   {location.pathname !== '/support' && <ActionCenter />}
