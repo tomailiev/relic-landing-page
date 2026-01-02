@@ -24,9 +24,9 @@ const AboutSection = ({ infoTitle, infoText, buttonText, route }) => {
                 // },
             }}>
                 <Grid container spacing={2} justifyContent="start" my={4}>
-                    <Grid item xs={12} md={7} display={'flex'} justifyContent={'center'} minHeight={'430px'} />
-                    <Grid item xs={12} md={5} textAlign={'left'} color={'secondary.main'}>
-                        <Typography variant="h6" fontWeight={600} pt={{sx: 2, sm: 0}} mb={2} mx={{ xs: 2, sm: 5, md: 2 }} fontSize={'1.4em'}>
+                    <Grid item xs={12} md={7} size={{ xs: 12, md: 7 }} display={'flex'} justifyContent={'center'} minHeight={'430px'} />
+                    <Grid item xs={12} md={5} size={{ xs: 12, md: 5 }} textAlign={'left'} color={'secondary.main'}>
+                        <Typography variant="h6" fontWeight={600} pt={{ sx: 2, sm: 0 }} mb={2} mx={{ xs: 2, sm: 5, md: 2 }} fontSize={'1.4em'}>
                             {infoTitle}
                         </Typography>
                         <Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={{ xs: 2, sm: 5, md: 2 }}>

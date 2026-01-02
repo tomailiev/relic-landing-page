@@ -25,7 +25,7 @@ const ReviewSection = ({ infoTitle, infoText, buttonText, reviewSource, route })
             }}>
                 <Grid container spacing={2} justifyContent="start" my={4}>
 
-                    <Grid item xs={12} sm={10} md={6} textAlign={'left'}>
+                    <Grid item xs={12} sm={10} md={6} size={{ xs: 12, sm: 10, md: 6 }} textAlign={'left'}>
                         <Typography variant="h6" fontWeight={600} mb={2} mx={2} sx={{ color: 'secondary.main', fontSize: '1.2em', pt: { xs: 0, md: 6 } }}>
                             {infoTitle}
                         </Typography>

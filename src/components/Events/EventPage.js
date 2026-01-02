@@ -88,7 +88,7 @@ const EventPage = () => {
             <Container>
                 <Grid container spacing={6}>
                     {/* Overview */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
                         <Typography variant="h5" gutterBottom fontWeight={'bold'}>
                             Overview
                         </Typography>
@@ -126,7 +126,7 @@ const EventPage = () => {
                     </Grid>
 
                     {/* Performances */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
                         <Typography variant="h5" fontWeight={'bold'} >
                             Performances
                         </Typography>
