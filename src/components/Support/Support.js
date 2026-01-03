@@ -60,7 +60,7 @@ const Support = () => {
                         </CardActions>
                     </Card>
                     <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
-                    <TypographyCombo title={text.supportOtherTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                    <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                 </Container>
                 <Container maxWidth={'lg'}>
                     <TypographyCombo title={text.supportJoinTitle} text={joinText} />

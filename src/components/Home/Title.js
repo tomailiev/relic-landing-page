@@ -26,7 +26,7 @@ const Title = () => {
             }}
         >
             {/* {text.siteHeading || 'RELIC'} */}
-            <img width={'100%'} src={logos.logo_white} alt={'logo'} />
+                <img width={'100%'} src={logos.logo_white} alt={'Relic Ensemble'} />
         </Typography>
     )
 };

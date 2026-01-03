@@ -158,7 +158,7 @@ const EventSection = ({ event, past }) => {
             }}>
                 <Typography my={{ xs: 3, md: 1 }} variant="h3" mb={3} fontWeight={600} color={'secondary.main'} letterSpacing={3.5}>Relic Presents</Typography>
                 <Grid container spacing={2} justifyContent="center" my={4}>
-                    <Grid item xs={12} md={5} display={'flex'} justifyContent={{ xs: 'center', md: 'end' }}>
+                    <Grid item xs={12} md={5} size={{ xs: 12, md: 5 }} display={'flex'} justifyContent={{ xs: 'center', md: 'end' }}>
                         <Box
                             sx={{
                                 width: { xs: '90%', md: 350 },
@@ -203,7 +203,7 @@ const EventSection = ({ event, past }) => {
                             )}
                         </Box>
                     </Grid>
-                    <Grid item xs={12} md={6} textAlign={'left'} color={'secondary.main'}>
+                    <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }} textAlign={'left'} color={'secondary.main'}>
 
                         {/* Text content */}
                         <Box

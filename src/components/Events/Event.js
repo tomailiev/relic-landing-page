@@ -27,11 +27,11 @@ const Event = ({ event, past }) => {
         <Paper key={event.id} elevation={3} sx={{ py: 3, px: 3, mb: 4, position: 'relative' }}>
             {past && <img src={diagonalBanner} style={{ position: "absolute", zIndex: 100, left: 0, top: 0, width: `${smMatch ? '35%' : '20%'}` }} alt="past event banner" />}
             <Grid container spacing={6} justifyContent={'center'}>
-                <Grid item sm={10} md={5} textAlign={'center'}>
+                <Grid item sm={10} md={5} size={{ xs: 10, md: 5 }} textAlign={'center'}>
                     <EventCard id={event.id} imageUrl={event.imageUrl} title={event.title} url={event.eventUrl} past={past} />
                     {pdfFile && <Button sx={{ mt: 2 }} size={'large'} variant={'text'} onClick={() => setDialog({ title: event.title, component: <ProgramDialog file={pdfFile} />, type: 'program' })}>View Program Book</Button>}
                 </Grid>
-                <Grid item sm={10} md={7} textAlign={'left'}>
+                <Grid item sm={10} md={7} size={{ xs: 10, md: 7 }} textAlign={'left'}>
                     <EventInfo event={event} />
                 </Grid>
             </Grid>

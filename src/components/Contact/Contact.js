@@ -28,7 +28,7 @@ const ContactPage = () => {
             </Typography>
 
             <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
                     <Paper
                         elevation={3}
                         sx={{
@@ -57,7 +57,7 @@ const ContactPage = () => {
                     </Paper>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
                     <Paper
                         elevation={3}
                         sx={{

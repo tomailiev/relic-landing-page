@@ -19,25 +19,21 @@ const PhotoItem = ({ photo, setPhotoDialog }) => {
 
 
     return (
-        <Grid item xs={12} sm={6} md={4} display={'flex'}>
-            <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <Grid item xs={12} sm={6} md={4} size={{xs: 12, sm: 6, md: 4}} sx={{ display: 'flex' }}>
+            <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column', flex: 1, width: '100$' }}>
                 <Card
                     sx={{
-                        flexGrow: 1,
+                        flex: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
                         position: 'relative',
                         overflow: 'hidden',
+                        width: '100%'
                     }}
                 >
-                    <Box
-                        sx={{
-                            position: 'relative',
-                            width: '100%',
-                            pt: '56.25%', // 16:9 aspect ratio
-                            overflow: 'hidden',
-                        }}
-                    >
-                        {thumbSrc
-                            ? <Box
+                    <Box sx={{ position: 'relative', width: '100%', pt: '56.25%', overflow: 'hidden' }}>
+                        {thumbSrc ? (
+                            <Box
                                 component="img"
                                 src={thumbSrc}
                                 alt={photo.title}
@@ -47,37 +43,42 @@ const PhotoItem = ({ photo, setPhotoDialog }) => {
                                     height: '100%',
                                     top: '50%',
                                     left: '50%',
-                                    objectFit: 'cover',
                                     transform: 'translate(-50%, -50%)',
+                                    objectFit: 'cover',
                                     transition: 'all 400ms ease',
                                     '.MuiCard-root:hover &': {
                                         width: '110%',
-                                        height: '110%'
+                                        height: '110%',
                                     },
                                 }}
                             />
-                            : <Skeleton
+                        ) : (
+                            <Skeleton
                                 variant="rectangular"
                                 animation="wave"
                                 sx={{
                                     position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    width: '100%',
-                                    height: '100%',
-                                    transformOrigin: 'center',
+                                    inset: 0,
                                 }}
-                            />}
+                            />
+                        )}
                     </Box>
+
                     <CardContent>
                         <Typography variant="body1" fontWeight="bold">
                             {photo.title}
                         </Typography>
                     </CardContent>
-                    <Button sx={{ width: '100%', height: '100%', left: 0, top: 0, position: 'absolute' }} onClick={setPhotoDialog} aria-label="open gallery" />
+
+                    <Button
+                        sx={{ position: 'absolute', inset: 0 }}
+                        onClick={setPhotoDialog}
+                        aria-label="open gallery"
+                    />
                 </Card>
             </Paper>
         </Grid>
+
     );
 };
 
