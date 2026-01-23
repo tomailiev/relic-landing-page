@@ -28,7 +28,7 @@ const ActionCenter = () => {
                     {text.actionCenterTitle}
                 </Typography>
                 <Grid container>
-                    <Grid item md={6} xs={12} textAlign="center" height={'300px'}>
+                    <Grid item md={6} xs={12} size={{ xs: 12, md: 6 }} textAlign="center" height={'300px'}>
                         <Paper onClick={handleDonateButtonClick} elevation={0} sx={{
                             transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                             position: 'relative',
@@ -55,7 +55,7 @@ const ActionCenter = () => {
                             <Button variant="contained" sx={{ textUnderlineOffset: '6px', fontFamily: 'Cochin', fontSize: '1.2em', mx: { xs: 8, sm: 12 } }}>Donate</Button>
                         </Paper>
                     </Grid>
-                    <Grid item md={6} xs={12} textAlign="center" height={'300px'}>
+                    <Grid item md={6} xs={12} size={{ xs: 12, md: 6 }} textAlign="center" height={'300px'}>
                         <Paper onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })} elevation={0} sx={{
                             transition: 'transform 0.2s, box-shadow 0.2s, background-color 0.2s',
                             position: 'relative',
