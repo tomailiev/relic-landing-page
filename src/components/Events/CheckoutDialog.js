@@ -17,14 +17,22 @@ const CheckoutDialog = ({ eventId }) => {
       iframeContainerHeight: 600,
       onOrderComplete: () => setNotification({ type: 'success', message: 'Thank you for your order!' }),
     });
-    function handler() {
+    function handler(event) {
 
+      if (event.origin === 'https://www.eventbrite.com' || event.origin === 'https://eventbrite.com') {
+        if (event.data.type === 'checkout-loaded') {
+          console.log('Eventbrite iframe is fully loaded!');
+          setLoading(false);
+        }
+        console.log(event.data.type);
+        
+      }
+      console.log(event.origin);
+      
       setLoading(false);
     }
-    const iframe = document.querySelector("#eventbrite-widget-container iframe");
-    iframe.addEventListener('load', handler);
-    iframe.addEventListener('error', handler);
-    return [iframe.removeEventListener('load', handler), iframe.removeEventListener('error', handler)];
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
 
   }, [eventId, setNotification, setLoading]);
 
