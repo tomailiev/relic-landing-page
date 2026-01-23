@@ -20,11 +20,12 @@ const CheckoutDialog = ({ eventId }) => {
     function handler(event) {
 
       if (event.origin === 'https://www.eventbrite.com' || event.origin === 'https://eventbrite.com') {
+        setLoading(false);
+        console.log(event.data.type);
+        
         if (event.data.type === 'checkout-loaded') {
           console.log('Eventbrite iframe is fully loaded!');
-          setLoading(false);
         }
-        console.log(event.data.type);
         
       }
       console.log(event.origin);
