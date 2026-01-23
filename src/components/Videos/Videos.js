@@ -37,7 +37,7 @@ const Videos = () => {
     useEffect(() => {
         if (videoCategory !== 'full concert' || hasPassedVerification) {
             if (videoCategory !== 'clip') return;
-            
+
             downloadDocsV2('videos', [
                 { type: 'condition', value: videoCategory === 'full concert' ? ['category', '==', videoCategory] : ['category', 'in', ['live', 'studio']] },
                 { type: 'sorting', value: ['featured', 'desc'] }
@@ -89,8 +89,8 @@ const Videos = () => {
             </Typography>
             <Container maxWidth={'xl'} sx={{ textAlign: 'left', }}>
                 <Grid container>
-                    <Grid item xs={12} md={3} display={'flex'} flexDirection={{ xs: 'row', md: 'column' }} alignItems={'flex-start'} justifyContent={{ xs: 'center', md: 'flex-start' }} mb={{ xs: 5, md: 0 }}>
-                        
+                    <Grid item size={{ xs: 12, md: 3 }} display={'flex'} flexDirection={{ xs: 'row', md: 'column' }} alignItems={'flex-start'} justifyContent={{ xs: 'center', md: 'flex-start' }} mb={{ xs: 5, md: 0 }}>
+
                         <Button
                             variant="text"
                             onClick={() => handleSelectChange('clip')}
@@ -99,6 +99,7 @@ const Videos = () => {
                                 display: 'block',
                                 color: 'secondary.main',
                                 textTransform: 'capitalize',
+                                textDecoration: 'underline',
                                 fontSize: '1.4em',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
@@ -106,7 +107,7 @@ const Videos = () => {
                                 },
                                 '&.Mui-disabled': {
                                     color: '#ccc4c496',
-                                    textDecoration: 'underline'
+                                    textDecoration: 'none'
                                 },
                             }}
                         >
@@ -120,6 +121,7 @@ const Videos = () => {
                                 display: 'block',
                                 color: 'secondary.main',
                                 textTransform: 'capitalize',
+                                textDecoration: 'underline',
                                 fontSize: '1.4em',
 
                                 '&:hover': {
@@ -128,19 +130,21 @@ const Videos = () => {
                                 },
                                 '&.Mui-disabled': {
                                     color: '#ccc4c496',
-                                    textDecoration: 'underline'
+                                    textDecoration: 'none'
 
                                 },
                             }}
                         >
                             Full Concerts
                         </Button>
-                        
+
                     </Grid>
-                    <Grid item xs={12} md={9}>
+                    <Grid item size={{ xs: 12, md: 9 }}>
 
                         {videoCategory === 'full concert' && <Box mb={3} >
-                            <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'}>Full concert videos are only available for our <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/tiers'}>Hermes circle</Link> donors and higher. Please enter your email below for access.</Typography>
+                            <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'} fontWeight={'bold'}>Full concert videos are only available for our donors within our <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/tiers'}>Hermes circle</Link> ($1000+ annualy) and above. To learn more about supporting Relic and our sustained giving program <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/donate'}>click here</Link>.</Typography>
+                            <br />
+                            <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'}>If you are a member of the Hermes circle or above, enter your email below to access our full concert videos.</Typography>
                             <Box
                                 component="form"
                                 my={3}

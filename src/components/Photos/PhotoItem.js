@@ -19,7 +19,7 @@ const PhotoItem = ({ photo, setPhotoDialog }) => {
 
 
     return (
-        <Grid item xs={12} sm={6} md={4} size={{xs: 12, sm: 6, md: 4}} sx={{ display: 'flex' }}>
+        <Grid item size={{xs: 12, sm: 6, md: 4}} sx={{ display: 'flex' }}>
             <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column', flex: 1, width: '100$' }}>
                 <Card
                     sx={{
