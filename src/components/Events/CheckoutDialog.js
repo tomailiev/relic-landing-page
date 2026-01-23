@@ -29,7 +29,7 @@ const CheckoutDialog = ({ eventId }) => {
       }
       console.log(event.origin);
       
-      setLoading(false);
+      // setLoading(false);
     }
     window.addEventListener('message', handler);
     return () => window.removeEventListener('message', handler);
