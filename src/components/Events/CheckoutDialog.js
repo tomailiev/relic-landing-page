@@ -17,21 +17,15 @@ const CheckoutDialog = ({ eventId }) => {
       iframeContainerHeight: 600,
       onOrderComplete: () => setNotification({ type: 'success', message: 'Thank you for your order!' }),
     });
+    function handler() {
 
+      setLoading(false);
+    }
     const iframe = document.querySelector("#eventbrite-widget-container iframe");
-    
-    const observer = new MutationObserver(() => {
-      if (iframe) {
+    iframe.addEventListener('load', handler);
+    iframe.addEventListener('error', handler);
+    return [iframe.removeEventListener('load', handler), iframe.removeEventListener('error', handler)];
 
-        // observer.disconnect();
-        setLoading(false);
-      }
-
-    });
-
-    observer.observe(iframe, { childList: true });
-
-    return () => observer.disconnect();
   }, [eventId, setNotification, setLoading]);
 
   return <div id="eventbrite-widget-container" ref={containerRef} />;
