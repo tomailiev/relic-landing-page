@@ -1,15 +1,14 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
-import LoadingContext from "../../context/LoadingContext";
+import { Box, Skeleton } from "@mui/material";
 
 const CheckoutDialog = ({ eventId }) => {
   const containerRef = useRef(null);
   const { setNotification } = useContext(NotificationContext);
-  const { setLoading } = useContext(LoadingContext);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   useEffect(() => {
     if (!window.EBWidgets) return;
-    setLoading(true);
     window.EBWidgets.createWidget({
       widgetType: "checkout",
       eventId,
@@ -20,23 +19,27 @@ const CheckoutDialog = ({ eventId }) => {
     function handler(event) {
 
       if (event.origin === 'https://www.eventbrite.com' || event.origin === 'https://eventbrite.com') {
-        setLoading(false);
-        console.log(event.data.type);
-        
+        setIframeLoaded(true);
+        console.log(event.data);
+
         if (event.data.type === 'checkout-loaded') {
           console.log('Eventbrite iframe is fully loaded!');
         }
-        
+
       }
       console.log(event.origin);
-      
-      // setLoading(false);
+
     }
     window.addEventListener('message', handler);
     return () => window.removeEventListener('message', handler);
 
-  }, [eventId, setNotification, setLoading]);
+  }, [eventId, setNotification]);
 
-  return <div id="eventbrite-widget-container" ref={containerRef} />;
+  return iframeLoaded
+    ? <div id="eventbrite-widget-container" ref={containerRef} />
+    : <Box pt={3}>
+      <Skeleton variant="rectangular" height={'30px'} width={'100%'} />
+      <Skeleton width={'100%'} height={'300px'} />
+    </Box>;
 };
 export default CheckoutDialog;
