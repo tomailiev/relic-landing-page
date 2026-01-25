@@ -49,7 +49,8 @@ const Header = ({ location }) => {
         {
             path: '/media', title: 'Media', menu: [
                 { path: '/media/photos', title: 'Photos' },
-                { path: '/media/videos', title: 'Videos' }
+                { path: '/media/videos', title: 'Videos' },
+                { path: '/media/concerts', title: 'Full Concerts' }
             ]
         },
         { path: '/contact', title: 'Contact' },
