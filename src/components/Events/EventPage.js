@@ -179,6 +179,7 @@ const EventPage = () => {
                                 ? event.performances.map((perf) => (
                                     <ListItem disableGutters key={perf.id} alignItems="flex-start" sx={{ mb: 2 }}>
                                         <ListItemText
+                                            disableTypography
                                             primary={
                                                 <>
                                                     <Typography variant="body1" fontWeight={'600'}>
@@ -222,17 +223,19 @@ const EventPage = () => {
                                                             anchorEl={anchorEl}
                                                             open={open}
                                                             onClose={handleMenuClose}
-                                                            PaperProps={{
-                                                                sx: {
-                                                                    backgroundColor: '#ffffff', // force white background
-                                                                    '& .MuiMenuItem-root': {
-                                                                        color: 'primary.main',
-                                                                        '&:hover': {
-                                                                            bgcolor: 'primary.light',
-                                                                            color: '#fff',
+                                                            slotProps={{
+                                                                paper: {
+                                                                    sx: {
+                                                                        '& .MuiMenuItem-root': {
+                                                                            bgcolor: '#ffffff',
+                                                                            color: 'primary.main',
+                                                                            '&:hover': {
+                                                                                bgcolor: 'primary.light',
+                                                                                color: '#fff',
+                                                                            },
                                                                         },
-                                                                    },
-                                                                },
+                                                                    }
+                                                                }
                                                             }}
                                                         >
                                                             <MenuItem onClick={() => handleCalendarOption('google')}>
