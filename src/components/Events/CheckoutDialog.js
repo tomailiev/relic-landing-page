@@ -21,15 +21,13 @@ const CheckoutDialog = ({ url }) => {
     function handler(event) {
 
       if (event.origin === 'https://www.eventbrite.com' || event.origin === 'https://eventbrite.com') {
-        setIframeLoaded(true);
-        console.log(event.data);
-
-        if (event.data.type === 'checkout-loaded') {
+        
+        if (event.data.messageName === "widgetRenderComplete") {
+          setIframeLoaded(true);
           console.log('Eventbrite iframe is fully loaded!');
         }
 
       }
-      console.log(event.origin);
 
     }
     window.addEventListener('message', handler);
