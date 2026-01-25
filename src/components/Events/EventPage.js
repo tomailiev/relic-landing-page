@@ -195,7 +195,7 @@ const EventPage = () => {
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
                                                         {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
-                                                            ? <Button variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url} onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog eventId={perf.url.includes('?') ? perf.url.substring(perf.url.lastIndexOf('tickets-') + 8, perf.url.indexOf('?')) : perf.url.substring(perf.url.lastIndexOf('tickets-') + 8)} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
+                                                            ? <Button variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url} onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog url={perf.url} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
                                                             : <Button startIcon={<OpenInNew />} href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
                                                                 Tickets
                                                             </Button>
