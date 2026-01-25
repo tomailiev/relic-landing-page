@@ -16,6 +16,7 @@ const CheckoutDialog = ({ eventId }) => {
       iframeContainerHeight: 600,
       onOrderComplete: () => setNotification({ type: 'success', message: 'Thank you for your order!' }),
     });
+
     function handler(event) {
 
       if (event.origin === 'https://www.eventbrite.com' || event.origin === 'https://eventbrite.com') {
@@ -35,11 +36,13 @@ const CheckoutDialog = ({ eventId }) => {
 
   }, [eventId, setNotification]);
 
-  return iframeLoaded
-    ? <div id="eventbrite-widget-container" ref={containerRef} />
-    : <Box pt={3}>
+  return <Box>
+    <div id="eventbrite-widget-container" ref={containerRef} />
+    {!iframeLoaded && <Box pt={3}>
       <Skeleton variant="rectangular" height={'30px'} width={'100%'} />
-      <Skeleton width={'100%'} height={'300px'} />
-    </Box>;
+      <Skeleton variant="rectangular" width={'100%'} height={'350px'} sx={{ my: 2 }} />
+    </Box>
+    }
+  </Box>;
 };
 export default CheckoutDialog;
