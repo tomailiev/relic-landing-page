@@ -8,7 +8,6 @@ import {
     ListItem,
     ListItemText,
     Skeleton,
-    ButtonGroup,
 } from '@mui/material';
 
 // import banner from '../../assets/imgs/WO_02232023-b.png';
@@ -151,7 +150,7 @@ const EventPage = () => {
                                             }
                                             secondary={
                                                 <>
-                                                    {perf.presenter && <Typography color={'primary'} fontSize={'1.1em'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
+                                                    {perf.presenter && <Typography color={'primary'} fontWeight={'bold'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
                                                     <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
                                                         {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
@@ -161,22 +160,22 @@ const EventPage = () => {
                                                             </Button>
                                                         }
 
-                                                        {perf.geocode && <Button
+                                                        {perf.geocode && perf.place_id && <Button
                                                             variant="outlined"
                                                             size={'small'}
                                                             onClick={() => {
                                                                 setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
                                                             }}
                                                         >View Map</Button>}
-                                                        <ButtonGroup variant="outlined" size="small">
-                                                            <Button
-                                                                startIcon={<Add />}
-                                                                onClick={() => setDialog({ type: 'calendar', component: <CalendarDialog event={event} perf={perf} />, title: 'Choose calendar option' })}
-                                                            >
-                                                                Calendar
-                                                            </Button>
+                                                        {perf.start_utc_compact && perf.end_utc_compact && <Button
+                                                            startIcon={<Add />}
+                                                            variant='outlined'
+                                                            size='small'
+                                                            onClick={() => setDialog({ type: 'calendar', component: <CalendarDialog event={event} perf={perf} />, title: 'Choose calendar option' })}
+                                                        >
+                                                            Calendar
+                                                        </Button>}
 
-                                                        </ButtonGroup>
 
                                                     </Box>
                                                 </>
