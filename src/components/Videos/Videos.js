@@ -88,7 +88,7 @@ const Videos = () => {
             <Typography variant="h3" my={8} fontWeight={'600'} color={'secondary.main'}>
                 {location.pathname === '/media/concerts' ? 'Full Concerts' : 'Videos'}
             </Typography>
-            <Container maxWidth={'xl'} sx={{ textAlign: 'left', }}>
+            <Container maxWidth={'lg'} sx={{ textAlign: 'left', }}>
 
                 {location.pathname === '/media/concerts' && <Box mb={3} >
                     <Typography variant="body1" fontSize={'1.4em'} color={'secondary.main'} fontWeight={'bold'}>Full concert videos are only available for our donors within our <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/tiers'}>Hermes circle</Link> ($1000+ annualy) and above. To learn more about supporting Relic and our sustained giving program <Link component={RouterLink} color="secondary.main" style={{ '&:visited': { color: 'secondary.main' } }} to={'/support/donate'}>click here</Link>.</Typography>
