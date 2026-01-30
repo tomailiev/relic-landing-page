@@ -8,9 +8,7 @@ import {
     ListItem,
     ListItemText,
     Skeleton,
-    Menu,
     ButtonGroup,
-    MenuItem,
 } from '@mui/material';
 
 // import banner from '../../assets/imgs/WO_02232023-b.png';
@@ -33,7 +31,6 @@ const EventPage = () => {
     const [event, setEvent] = useState(null);
     const [pdfFile, setPdfFile] = useState(null);
     const [eventBanner, setEventBanner] = useState(null);
-    const [anchorEl, setAnchorEl] = useState(null);
 
     useEffect(() => {
         if (event?.program) {

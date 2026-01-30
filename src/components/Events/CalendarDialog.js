@@ -1,4 +1,5 @@
 import { Button, Grid } from "@mui/material"
+import { buildICS } from "../../utils/iCal/buildICS";
 
 const CalendarDialog = ({ event, perf }) => {
 
@@ -7,24 +8,21 @@ const CalendarDialog = ({ event, perf }) => {
 
         if (option === 'google') {
             // Example Google Calendar URL (adjust fields as needed)
-            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Relic: ' + event.title)}&dates=${perf.start_utc_compact}/${perf.end_utc_compact}&location=${encodeURIComponent(perf.calendar_location)}&details=${encodeURIComponent(event.description)}`;
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Relic: ' + event.title)}&dates=${perf.start_utc_compact}/${perf.end_utc_compact}&location=${encodeURIComponent(perf.calendar_location)}&details=${encodeURIComponent(event.description + perf.url ? 'Tickets: ' + perf.url : '')}`;
             window.open(googleUrl, '_blank');
-        } else if (option === 'ical') {
+        } else {
             // Example iCal download (you would generate .ics file normally)
-            const icsContent = `
-                            BEGIN:VEVENT
-                            DTSTART:${event.start_utc_compact}
-                            DTEND:${event.end_utc_compact}
-                            SUMMARY:${'Relic: ' + event.title}
-                            LOCATION:${event.calendar_location}
-                            END:VEVENT
+            const icsContent = buildICS(event, perf);
 
-                                   `;
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
+            const blob = new Blob([icsContent], {
+                type: "text/calendar;charset=utf-8",
+            });
+
+            const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = `Relic: ${event.title}.ics`;
+            link.download = `Relic-${event.title}.ics`; // avoid :
             link.click();
+
         }
     };
 
