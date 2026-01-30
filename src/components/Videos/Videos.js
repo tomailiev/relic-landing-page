@@ -42,7 +42,6 @@ const Videos = () => {
                 .then(docs => setVideos(docs))
         }
         else if (location.pathname === '/media/concerts' && hasPassedVerification) {
-            console.log('entering correctly');
 
             downloadDocsV2('videos', [
                 { type: 'condition', value: ['category', '==', 'full concert'] },

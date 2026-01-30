@@ -24,6 +24,7 @@ import { sortByNewTitle } from '../../data/musicianSorter';
 import { Add, ArrowLeft, OpenInNew } from '@mui/icons-material';
 import { currentSeason } from '../../data/currentSeason';
 import CheckoutDialog from './CheckoutDialog';
+import CalendarDialog from './CalendarDialog';
 
 const EventPage = () => {
 
@@ -56,45 +57,6 @@ const EventPage = () => {
                 setEvent(doc)
             });
     }, [eventId]);
-
-
-    const open = Boolean(anchorEl);
-
-    const handleMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
-
-    const handleCalendarOption = (option) => {
-        handleMenuClose();
-        if (!event) return;
-
-        if (option === 'google') {
-            // Example Google Calendar URL (adjust fields as needed)
-            const googleUrl = `https://calendar.google.com/calendar/r/eventedit?text=${encodeURIComponent(
-                event.title
-            )}&details=${encodeURIComponent(event.description || '')}`;
-            window.open(googleUrl, '_blank');
-        } else if (option === 'ical') {
-            // Example iCal download (you would generate .ics file normally)
-            const icsContent = `
-                             BEGIN:VCALENDAR
-                             VERSION:2.0
-                             BEGIN:VEVENT
-                             SUMMARY:${event.title}
-                             DESCRIPTION:${event.description || ''}
-                             END:VEVENT
-                             END:VCALENDAR
-                                   `;
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `${event.title}.ics`;
-            link.click();
-        }
-    };
 
 
     return (
@@ -212,39 +174,13 @@ const EventPage = () => {
                                                         <ButtonGroup variant="outlined" size="small">
                                                             <Button
                                                                 startIcon={<Add />}
-                                                                onClick={handleMenuOpen}
+                                                                onClick={() => setDialog({ type: 'calendar', component: <CalendarDialog event={event} perf={perf} />, title: 'Choose calendar option' })}
                                                             >
                                                                 Calendar
                                                             </Button>
 
                                                         </ButtonGroup>
-                                                        <Menu
-                                                            disableScrollLock
-                                                            anchorEl={anchorEl}
-                                                            open={open}
-                                                            onClose={handleMenuClose}
-                                                            slotProps={{
-                                                                paper: {
-                                                                    sx: {
-                                                                        '& .MuiMenuItem-root': {
-                                                                            bgcolor: '#ffffff',
-                                                                            color: 'primary.main',
-                                                                            '&:hover': {
-                                                                                bgcolor: 'primary.light',
-                                                                                color: '#fff',
-                                                                            },
-                                                                        },
-                                                                    }
-                                                                }
-                                                            }}
-                                                        >
-                                                            <MenuItem onClick={() => handleCalendarOption('google')}>
-                                                                Google
-                                                            </MenuItem>
-                                                            <MenuItem onClick={() => handleCalendarOption('ical')}>
-                                                                iCal
-                                                            </MenuItem>
-                                                        </Menu>
+
                                                     </Box>
                                                 </>
                                             }
