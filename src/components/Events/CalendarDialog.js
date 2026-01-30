@@ -8,7 +8,7 @@ const CalendarDialog = ({ event, perf }) => {
 
         if (option === 'google') {
             // Example Google Calendar URL (adjust fields as needed)
-            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Relic: ' + event.title)}&dates=${perf.start_utc_compact}/${perf.end_utc_compact}&location=${encodeURIComponent(perf.calendar_location)}&details=${encodeURIComponent(event.description + perf.url ? 'Tickets: ' + perf.url : '')}`;
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Relic: ' + event.title)}&dates=${perf.start_utc_compact}/${perf.end_utc_compact}&location=${encodeURIComponent(perf.calendar_location)}&details=${encodeURIComponent(event.description + (perf.url ? 'Tickets: ' + perf.url : ''))}`;
             window.open(googleUrl, '_blank');
         } else {
             // Example iCal download (you would generate .ics file normally)
@@ -27,10 +27,16 @@ const CalendarDialog = ({ event, perf }) => {
     };
 
     return <Grid container>
-        <Grid item size={{ xs: 12, sm: 6 }} textAlign={'center'} sx={{ my: 3 }}>
+        <Grid item size={{ xs: 12, sm: 3 }} textAlign={'center'} sx={{ my: 3 }}>
             <Button variant={'outlined'} onClick={() => handleCalendarOption('google')}>Google</Button>
         </Grid>
-        <Grid item size={{ xs: 12, sm: 6 }} textAlign={'center'} sx={{ my: 3 }}>
+        <Grid item size={{ xs: 12, sm: 3 }} textAlign={'center'} sx={{ my: 3 }}>
+            <Button variant='outlined' onClick={() => handleCalendarOption('apple')}>Apple</Button>
+        </Grid>
+        <Grid item size={{ xs: 12, sm: 3 }} textAlign={'center'} sx={{ my: 3 }}>
+            <Button variant='outlined' onClick={() => handleCalendarOption('outlook')}>Outlook</Button>
+        </Grid>
+        <Grid item size={{ xs: 12, sm: 3 }} textAlign={'center'} sx={{ my: 3 }}>
             <Button variant='outlined' onClick={() => handleCalendarOption('ical')}>iCal</Button>
         </Grid>
     </Grid>
