@@ -152,7 +152,7 @@ const EventPage = () => {
                                                 <>
                                                     {perf.presenter && <Typography color={'primary'} fontWeight={'bold'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
-                                                    <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
+                                                    {new Date() <= event.dateDone.toDate() && <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
                                                         {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
                                                             ? <Button variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url} onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog url={perf.url} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
                                                             : <Button startIcon={<OpenInNew />} href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
@@ -160,7 +160,7 @@ const EventPage = () => {
                                                             </Button>
                                                         }
 
-                                                        {perf.geocode && perf.place_id && <Button
+                                                        {perf.geocode && <Button
                                                             variant="outlined"
                                                             size={'small'}
                                                             onClick={() => {
@@ -177,7 +177,7 @@ const EventPage = () => {
                                                         </Button>}
 
 
-                                                    </Box>
+                                                    </Box>}
                                                 </>
                                             }
                                         />
