@@ -26,26 +26,26 @@ const Footer = () => {
             </Fab> */}
             <Container disableGutters maxWidth={false}>
                 <Container sx={{ textAlign: 'center' }}>
-                    <Typography variant="h4" my={4} fontWeight={'bold'} color="secondary">Supporting Partners</Typography>
+                    <Typography variant="h5" mt={1} mb={4} fontWeight={'bold'} color="secondary">Supporting Partners</Typography>
                 </Container>
                 <Grid container justifyContent={'space-evenly'}>
                     <Grid mx={2} size={{ xs: 10, sm: 4 }} >
-                        <Box maxWidth={'370px'} maxHeight={'120px'}>
+                        <Box maxWidth={{ xs: '175px', sm: '250px' }} maxHeight={'100px'}>
                             <img src={NYSCALogo} alt="NYSCA logo" style={{ maxWidth: '100%' }} />
                         </Box>
                         <Box>
-                            <Typography color="secondary" fontSize={'0.9em'} paddingBottom={2}>
+                            <Typography color="secondary" fontSize={{ xs: '0.8em', sm: '0.9em' }} paddingBottom={2}>
                                 Relic's New York concerts are made possible in part by the New York State Council on the Arts with the support of the Office of the Governor and the New York State Legislature.
                             </Typography>
                         </Box>
 
                     </Grid>
                     <Grid mx={2} size={{ xs: 10, sm: 4 }} my={{ xs: 3, sm: 0 }}>
-                        <Box maxWidth={'370px'} maxHeight={'120px'}>
+                        <Box maxWidth={{ xs: '175px', sm: '250px' }} maxHeight={'100px'}>
                             <img src={GEMSLogo} alt="GEMS logo" style={{ maxWidth: '100%' }} />
                         </Box>
                         <Box>
-                            <Typography color="secondary" fontSize={'0.9em'} paddingBottom={2}>
+                            <Typography color="secondary" fontSize={{ xs: '0.8em', sm: '0.9em' }} paddingBottom={2}>
                                 {text.footerGemsNote}
                             </Typography>
                         </Box>
