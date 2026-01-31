@@ -21,18 +21,6 @@ const Videos = () => {
     const [hasCheckedDonorTier, setHasCheckedDonorTier] = useState(false);
     const location = useLocation();
 
-    // useEffect(() => {
-    //     const searchParams = new URLSearchParams(location.search);
-    //     if (searchParams.has('category')) {
-    //         const category = searchParams.get('category');
-    //         if (['clip', 'full concert'].includes(category)) {
-    //             setVideoCategory(category);
-    //         }
-    //     } else {
-    //         setVideoCategory('clip');
-    //     }
-    // }, [location.search]);
-
     useEffect(() => {
         if (location.pathname === '/media/videos') {
             downloadDocsV2('videos', [
