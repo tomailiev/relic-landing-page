@@ -41,7 +41,6 @@ const SubscribeForm = () => {
                     imported: 'subscribe_btn',
                     email: val.email.toLowerCase(),
                     status: 1,
-                    location: '',
                     tags: arrayUnion('website')
                 };
                 return uploadDocWithId(Object.assign(val, nonInputData), 'subscribers', val.email.toLowerCase());
