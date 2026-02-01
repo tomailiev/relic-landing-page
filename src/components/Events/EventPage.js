@@ -18,8 +18,10 @@ import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
 import MapDialog from './MapDialog';
 import { sortByNewTitle } from '../../data/musicianSorter';
-import { ArrowLeft } from '@mui/icons-material';
+import { Add, ArrowLeft, OpenInNew } from '@mui/icons-material';
 import { currentSeason } from '../../data/currentSeason';
+import CheckoutDialog from './CheckoutDialog';
+import CalendarDialog from './CalendarDialog';
 
 const EventPage = () => {
 
@@ -88,7 +90,7 @@ const EventPage = () => {
             <Container>
                 <Grid container spacing={6}>
                     {/* Overview */}
-                    <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
+                    <Grid item size={{ xs: 12, md: 6 }}>
                         <Typography variant="h5" gutterBottom fontWeight={'bold'}>
                             Overview
                         </Typography>
@@ -126,7 +128,7 @@ const EventPage = () => {
                     </Grid>
 
                     {/* Performances */}
-                    <Grid item xs={12} md={6} size={{ xs: 12, md: 6 }}>
+                    <Grid item size={{ xs: 12, md: 6 }}>
                         <Typography variant="h5" fontWeight={'bold'} >
                             Performances
                         </Typography>
@@ -135,6 +137,7 @@ const EventPage = () => {
                                 ? event.performances.map((perf) => (
                                     <ListItem disableGutters key={perf.id} alignItems="flex-start" sx={{ mb: 2 }}>
                                         <ListItemText
+                                            disableTypography
                                             primary={
                                                 <>
                                                     <Typography variant="body1" fontWeight={'600'}>
@@ -147,12 +150,16 @@ const EventPage = () => {
                                             }
                                             secondary={
                                                 <>
-                                                    {perf.presenter && <Typography color={'primary'} fontSize={'1.1em'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
+                                                    {perf.presenter && <Typography color={'primary'} fontWeight={'bold'} variant={'subtitle2'} >Presented by {perf.presenter}</Typography>}
                                                     {perf.caption && <Typography color={'primary'} variant={'subtitle2'} >{perf.caption}</Typography>}
-                                                    <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
-                                                        <Button href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
-                                                            Tickets
-                                                        </Button>
+                                                    {new Date() <= event.dateDone.toDate() && <Box sx={{ mt: 1, display: 'flex', gap: 1 }}>
+                                                        {perf.url && perf.url.startsWith('https://www.eventbrite.com/')
+                                                            ? <Button variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url} onClick={() => setDialog({ type: 'tickets', component: <CheckoutDialog url={perf.url} />, title: `${event.title} - ${perf.location}` })}>Tickets</Button>
+                                                            : <Button startIcon={<OpenInNew />} href={perf.url} target='_blank' rel='noopener' variant='contained' disabled={new Date() > event.dateDone.toDate() || !perf.url}>
+                                                                Tickets
+                                                            </Button>
+                                                        }
+
                                                         {perf.geocode && <Button
                                                             variant="outlined"
                                                             size={'small'}
@@ -160,7 +167,17 @@ const EventPage = () => {
                                                                 setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
                                                             }}
                                                         >View Map</Button>}
-                                                    </Box>
+                                                        {perf.start_utc_compact && perf.end_utc_compact && <Button
+                                                            startIcon={<Add />}
+                                                            variant='outlined'
+                                                            size='small'
+                                                            onClick={() => setDialog({ type: 'calendar', component: <CalendarDialog event={event} perf={perf} />, title: 'Choose calendar option' })}
+                                                        >
+                                                            Calendar
+                                                        </Button>}
+
+
+                                                    </Box>}
                                                 </>
                                             }
                                         />

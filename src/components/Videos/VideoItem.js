@@ -13,7 +13,7 @@ const VideoItem = ({ video }) => {
     }
 
     return (
-        <Grid key={video.id} item xs={12} sm={6} md={4} size={{ xs: 12, sm: 6, md: 4 }} display={'flex'}>
+        <Grid key={video.id} item size={{ xs: 12, sm: 6, md: 4 }} display={'flex'}>
             <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <Card
                     sx={{

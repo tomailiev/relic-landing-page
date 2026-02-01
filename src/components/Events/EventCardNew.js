@@ -176,7 +176,7 @@ const EventCardNew = ({ event, past }) => {
 
                     <Box>
                         <Button variant="contained" color="primary">
-                            More info & Tickets
+                            {past ? 'More info' : 'Tickets & Info'}
                         </Button>
                     </Box>
                 </Box>

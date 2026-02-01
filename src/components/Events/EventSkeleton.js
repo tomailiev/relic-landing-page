@@ -6,7 +6,7 @@ const EventSkeleton = () => {
     return (
         <Paper elevation={3} sx={{ p: 2 }}>
             <Grid container spacing={6}>
-                <Grid item xs={12} md={5} size={{ xs: 12, md: 5 }}>
+                <Grid item size={{ xs: 12, md: 5 }}>
                     <Card raised sx={{ width: '100%' }}>
                         <CardActionArea sx={{ width: '100%' }}>
                             {/* <div style={{ maxHeight: 800, minWidth: 250, display: 'flex', justifyContent: 'center', background: '#d7d4cf' }}> */}
@@ -28,7 +28,7 @@ const EventSkeleton = () => {
                         </CardActionArea>
                     </Card>
                 </Grid>
-                <Grid item xs={12} md={7} size={{ xs: 12, md: 7 }} textAlign={'left'} >
+                <Grid item size={{ xs: 12, md: 7 }} textAlign={'left'} >
                     <Typography variant="h4" mb={2} width={'100%'}>
                         <Skeleton variant={'rectangular'} height={30} />
                     </Typography>

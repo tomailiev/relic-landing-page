@@ -52,7 +52,7 @@ const VideoWall = () => {
                 // },
             }}>
                 <Grid container spacing={2} justifyContent="center" my={4}>
-                    <Grid item xs={12} md={5} size={{ xs: 12, md: 5 }} display={'flex'} justifyContent={'center'}>
+                    <Grid item size={{ xs: 12, md: 5 }} display={'flex'} justifyContent={'center'}>
                         <Box
                             onClick={() => setYoutubeDialog(video)}
                             className="hover-parent"
@@ -129,7 +129,7 @@ const VideoWall = () => {
                         {/* </CardActionArea> */}
                         {/* </Card> */}
                     </Grid>
-                    <Grid item xs={12} md={7} size={{ xs: 12, md: 7 }} textAlign={'left'} color={'secondary.main'}>
+                    <Grid item size={{ xs: 12, md: 7 }} textAlign={'left'} color={'secondary.main'}>
                         <Typography variant="h6" fontWeight={600} mb={2} mx={2} fontSize={'1.4em'} >
                             Featured Video
                         </Typography>

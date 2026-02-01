@@ -44,8 +44,8 @@ const Musicians = () => {
                     </Typography>
                     <Grid container spacing={4} display={'flex'} alignItems={'stretch'}>
                         {musicians.length
-                            ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} xs={12} sm={6} md={4} lg={3} size={{ xs: 12, sm: 6, md: 4, lg: 3 }} display={'flex'}><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
-                            : Array.from({ length: 9 }).map((_, i) => <Grid item key={i} xs={12} sm={6} md={4} lg={3} size={{ xs: 12, sm: 6, md: 4, lg: 3 }} display={'flex'}>
+                            ? musicians.map(({ name, pic, bio, id, chair, newTitle }) => <Grid item key={id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }} display={'flex'}><MusicianLI name={name} picUrl={pic} bio={bio} chair={chair} title={newTitle} /></Grid>)
+                            : Array.from({ length: 9 }).map((_, i) => <Grid item key={i} size={{ xs: 12, sm: 6, md: 4, lg: 3 }} display={'flex'}>
                                 <Skeleton variant="rectangular" width="100%" height={414} sx={{ borderRadius: 3, }} />
                             </Grid>)
                         }

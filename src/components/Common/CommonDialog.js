@@ -30,7 +30,7 @@ const CommonDialog = () => {
             maxWidth={dialog?.type === 'donation' || dialog?.type === 'photo' ? 'lg' : 'sm'}
             open={hasContent}
             onClose={closeDialog}
-            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'video' || dialog?.type === 'photo' || dialog?.type === 'map') && smMatch)}
+            fullScreen={isFullScreen || ((dialog?.type === 'program' || dialog?.type === 'donation' || dialog?.type === 'tickets' || dialog?.type === 'video' || dialog?.type === 'photo' || dialog?.type === 'map') && smMatch)}
             sx={{ my: 0 }}
         >
             <DialogTitle sx={{ mr: 4 }}>

@@ -11,12 +11,14 @@ const fields = {
     firstName: '',
     lastName: '',
     email: '',
+    location: ''
 };
 
 const fieldsArray = [
     { label: 'First name', id: 'firstName' },
     { label: 'Last name', id: 'lastName' },
     { label: 'Email', id: 'email' },
+    { label: 'Location, e.g. New York, NY', id: 'location' }
 ];
 
 const SubscribeForm = () => {
@@ -39,7 +41,6 @@ const SubscribeForm = () => {
                     imported: 'subscribe_btn',
                     email: val.email.toLowerCase(),
                     status: 1,
-                    location: '',
                     tags: arrayUnion('website')
                 };
                 return uploadDocWithId(Object.assign(val, nonInputData), 'subscribers', val.email.toLowerCase());
@@ -93,6 +94,7 @@ const SubscribeForm = () => {
                             rows={4}
                         />
                     ))}
+                    <Typography variant="subtitle2">Enter your location if you want to receive location-specific concert ticket offers and promos.</Typography>
                     <Button
                         variant="contained"
                         color="primary"

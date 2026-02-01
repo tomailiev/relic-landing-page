@@ -1,10 +1,12 @@
-import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
+import { Box, Grid, IconButton, Link, Typography, useTheme } from "@mui/material";
 import { FacebookRounded, Instagram, YouTube } from '@mui/icons-material';
 import Copyright from "./Copyright";
 import { Container } from "@mui/system";
 import { useContext } from "react";
 import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
+import NYSCALogo from '../../assets/logos/NYS_CouncilontheArts_Horizontal_WHITE.png';
+import GEMSLogo from '../../assets/logos/GEMS-web_white-horiz.png';
 
 const Footer = () => {
 
@@ -22,12 +24,33 @@ const Footer = () => {
             <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
                 <Instagram />
             </Fab> */}
-            <Container disableGutters>
-                <Box justifyContent={'center'} mx={5}>
-                    <Typography color="white" align="center" paddingBottom={2}>
-                        {text.footerGemsNote}
-                    </Typography>
-                </Box>
+            <Container disableGutters maxWidth={false}>
+                <Container sx={{ textAlign: 'center' }}>
+                    <Typography variant="h5" mt={1} mb={4} fontWeight={'bold'} color="secondary">Supporting Partners</Typography>
+                </Container>
+                <Grid container justifyContent={'space-evenly'}>
+                    <Grid mx={2} size={{ xs: 10, sm: 4 }} >
+                        <Box maxWidth={{ xs: '175px', sm: '250px' }} maxHeight={'100px'}>
+                            <img src={NYSCALogo} alt="NYSCA logo" style={{ maxWidth: '100%' }} />
+                        </Box>
+                        <Box>
+                            <Typography color="secondary" fontSize={{ xs: '0.8em', sm: '0.9em' }} paddingBottom={2}>
+                                Relic's New York concerts are made possible in part by the New York State Council on the Arts with the support of the Office of the Governor and the New York State Legislature.
+                            </Typography>
+                        </Box>
+
+                    </Grid>
+                    <Grid mx={2} size={{ xs: 10, sm: 4 }} my={{ xs: 3, sm: 0 }}>
+                        <Box maxWidth={{ xs: '175px', sm: '250px' }} maxHeight={'100px'}>
+                            <img src={GEMSLogo} alt="GEMS logo" style={{ maxWidth: '100%' }} />
+                        </Box>
+                        <Box>
+                            <Typography color="secondary" fontSize={{ xs: '0.8em', sm: '0.9em' }} paddingBottom={2}>
+                                {text.footerGemsNote}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                </Grid>
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href={links.facebook} target={"_blank"}>

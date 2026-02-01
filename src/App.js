@@ -163,6 +163,7 @@ function App() {
                           {/* <Route path={'/support/host'} element={<Host />} /> */}
                           <Route path={'/media/photos'} element={<Photos />} />
                           <Route path='/media/videos' element={<Videos />} />
+                          <Route path='/media/concerts' element={<Videos />} />
                           <Route path="/contact" element={<Contact />} />
                           <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                           <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
