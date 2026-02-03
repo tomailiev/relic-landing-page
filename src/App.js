@@ -42,6 +42,7 @@ import { currentSeason } from './data/currentSeason';
 import { HeaderHeightProvider } from './components/Header/HeatherHeightProvider';
 import EventPage from './components/Events/EventPage';
 import { theme } from './data/theme';
+import About from './components/About/About';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -154,7 +155,7 @@ function App() {
                         <Routes location={location}>
                           <Route path="/" element={<Home />} />
                           <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
-                          <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Relic'} />} />
+                          <Route path="/about/bio" element={<About content={bioTexts} pageTitle={'About Relic'} />} />
                           <Route path="/about/musicians" element={<Musicians />} />
                           <Route path='/about/journey' element={<Journey />} />
                           <Route path="/events/:season" element={<Events />} />
