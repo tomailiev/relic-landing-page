@@ -9,6 +9,9 @@ import DialogContext from "../../context/DialogContext";
 import DonateForm from "../Common/DonateForm";
 import VideoItemSkeleton from "./VideoItemSkeleton";
 import { bgs } from "../../data/images";
+import { links } from "../../data/links";
+import { SubscriptionsOutlined } from "@mui/icons-material";
+import Seo from "../Common/SEO";
 
 const Videos = () => {
 
@@ -73,9 +76,13 @@ const Videos = () => {
 
     return (
         <Box textAlign={'center'} sx={{ background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2, minHeight: '100vh' }}>
+            <Seo title={location.pathname === '/media/videos' ? 'Videos' : 'Full Concert Videos'} description={location.pathname === '/media/videos' ? 'Recent video releases. Subscribe to Relic on YouTube.' : 'Full concert archive, available to yearly donors above $1000'} />
             <Typography variant="h3" my={8} fontWeight={'600'} color={'secondary.main'}>
                 {location.pathname === '/media/concerts' ? 'Full Concerts' : 'Videos'}
             </Typography>
+            {location.pathname === '/media/videos' && <Button variant="contained" sx={{ background: '#f60000', '&:hover': { background: '#a90000' }, mb: 5 }} endIcon={<SubscriptionsOutlined />} href={links.ytSubscribe} target="_blank">
+                {'Subscribe'}
+            </Button>}
             <Container maxWidth={'lg'} sx={{ textAlign: 'left', }}>
 
                 {location.pathname === '/media/concerts' && <Box mb={3} >

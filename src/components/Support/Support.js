@@ -8,6 +8,7 @@ import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
 import SubscribeForm from "../Common/SubscribeForm";
 import TypographyCombo from "./TypographyCombo";
+import Seo from "../Common/SEO";
 // import { analyze } from "../../utils/firebase/firestore-funcs";
 
 
@@ -36,6 +37,7 @@ const Support = () => {
 
     return (
         <>
+            <Seo title={'Support Relic'} description={'Consider joining our Circle of Supporters and make a contribution today.'} />
             <Typography variant="h3" textAlign={'center'} mt={8} mb={10}>
                 Support Relic
             </Typography>

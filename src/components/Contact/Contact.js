@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography, Paper, useTheme } from '@mui/material
 import ContactForm from './ContactForm'; // Your existing component
 import { useContext } from 'react';
 import TextContext from '../../context/TextContext';
+import Seo from '../Common/SEO';
 
 const ContactPage = () => {
 
@@ -10,6 +11,7 @@ const ContactPage = () => {
 
     return (
         <Container maxWidth="md" sx={{ pb: { xs: 5, md: 10 } }}>
+            <Seo title={'Contact Us'} description={'Get in touch for additional information and inquiries.'} />
             <Typography variant="h3" align="center" my={8}>
                 Get in Touch
             </Typography>

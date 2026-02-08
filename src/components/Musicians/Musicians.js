@@ -6,6 +6,7 @@ import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
 // import MusicianGroup from "./MusicianGroup";
 import MusicianLI from "./MusicianLI";
 import banners from "../../data/banners";
+import Seo from "../Common/SEO";
 // import { bgs } from "../../data/images";
 
 const Musicians = () => {
@@ -27,6 +28,7 @@ const Musicians = () => {
 
     return (
         <>
+            <Seo title={"Musicians"} description={"Relic was founded in 2022 by Juilliard graduates Kako Boga, Aniela Eddy, Toma Iliev, Natalie Kress, Rebecca Nelson, and Cullen O'Neil."} />
             <Box
                 sx={{
                     width: '100%',

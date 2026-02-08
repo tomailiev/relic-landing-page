@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 // import TypographyCombo from "./TypographyCombo";
 import { bgs } from "../../data/images";
 import DonorTierItem from "./DonorTierItem";
+import Seo from "../Common/SEO";
 
 const DonorLevels = () => {
     const { text } = useContext(TextContext);
@@ -35,6 +36,7 @@ const DonorLevels = () => {
                 // backgroundPosition: 'center',
                 pb: 3,
             }}>
+                <Seo title={'The Relic Pantheon'} description={'Donor tiers and benefits.'} />
             <Typography variant="h3" textAlign={'center'} fontWeight={600} pt={8} mb={10} mt={0}>
                 The Relic Pantheon
             </Typography>

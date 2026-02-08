@@ -9,6 +9,7 @@ import { useTheme } from "@emotion/react";
 import EventCardNew from "./EventCardNew";
 import EventCardSkeleton from "./EventCardSkeleton";
 import { currentSeason } from "../../data/currentSeason";
+import Seo from "../Common/SEO";
 
 
 const Events = () => {
@@ -62,6 +63,7 @@ const Events = () => {
 
     return (
         <>
+            <Seo title={season === 'past' ? 'Past Events' : `${year}-${(year + 1) % 2000} Concert Season`} description={season === 'past' ? `Relic's past concerts` : `Relic's upcoming performances. Find a concert near you!`} />
             <Container maxWidth="lg" sx={{ my: 5, textAlign: 'center' }}>
                 <Typography variant="h3" my={8} fontWeight={'600'}>
                     {season === 'past' ? 'Past Events' : `${year}-${(year + 1) % 2000} Concert Season`}

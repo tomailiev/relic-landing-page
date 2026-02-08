@@ -6,6 +6,7 @@ import VideoItemSkeleton from "../Videos/VideoItemSkeleton";
 import DialogContext from "../../context/DialogContext";
 import PhotoCarousel from "./PhotoCarousel";
 import { bgs } from "../../data/images";
+import Seo from "../Common/SEO";
 
 const Photos = () => {
 
@@ -28,6 +29,7 @@ const Photos = () => {
 
     return (
         <Box sx={{background: `center / cover url(${bgs.generalBg}) repeat-y`, py: 2}}>
+            <Seo title={'Photos'} description={'Photos from recent performances'} />
             <Container maxWidth="lg" sx={{textAlign: 'center' }}>
                 <Typography variant="h3" my={8} fontWeight={'600'} color={'secondary.main'}>
                     Photos

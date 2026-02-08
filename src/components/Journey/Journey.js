@@ -6,6 +6,7 @@ import markerIcon from '../../assets/imgs/maps-marker-32.png'
 import { downloadDocsV2 } from "../../utils/firebase/firestore-funcs";
 import TextContext from "../../context/TextContext";
 import banners from "../../data/banners";
+import Seo from "../Common/SEO";
 
 //revise if international engagements!!
 const Journey = () => {
@@ -81,6 +82,7 @@ const Journey = () => {
 
     return (
         <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+            <Seo title={`Relic's Journey`} description={`View Relic's concert history on a map.`} />
             <Box
                 sx={{
                     width: '100%',
@@ -106,8 +108,8 @@ const Journey = () => {
                 </Typography>
             </Container>
             {/* <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}> */}
-                <Container maxWidth={'lg'} />
-                <Container ref={mapRef} sx={{ width: {xs: '90%', md: '95%'}, height: '500px', borderRadius: '4px', my: 7, }} />
+            <Container maxWidth={'lg'} />
+            <Container ref={mapRef} sx={{ width: { xs: '90%', md: '95%' }, height: '500px', borderRadius: '4px', my: 7, }} />
             {/* </Paper> */}
         </Container>
     );
