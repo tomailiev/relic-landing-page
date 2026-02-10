@@ -81,37 +81,39 @@ const Journey = () => {
 
 
     return (
-        <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+        <>
             <Seo title={`Relic's Journey`} description={`View Relic's concert history on a map.`} />
-            <Box
-                sx={{
-                    width: '100%',
-                    height: { xs: 300, sm: 350, },
-                    backgroundImage: `url(${banners.journeyBanner})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    mb: 3,
-                }}
-            />
-            <Typography variant="h3" my={8} mx={3} >
-                Relic's journey
-            </Typography>
-            <Container maxWidth={'lg'}>
-                <Typography textAlign={'left'} fontSize={'1.2em'}>
-                    {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
-                        const state = c.locationName.substring(c.locationName.length - 3);
-                        if (!a.includes(state) && state !== '.C.') {
-                            return a.concat(state);
-                        }
-                        return a;
-                    }, []).length : 1)}
+            <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+                <Box
+                    sx={{
+                        width: '100%',
+                        height: { xs: 300, sm: 350, },
+                        backgroundImage: `url(${banners.journeyBanner})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        mb: 3,
+                    }}
+                />
+                <Typography variant="h3" my={8} mx={3} >
+                    Relic's journey
                 </Typography>
+                <Container maxWidth={'lg'}>
+                    <Typography textAlign={'left'} fontSize={'1.2em'}>
+                        {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
+                            const state = c.locationName.substring(c.locationName.length - 3);
+                            if (!a.includes(state) && state !== '.C.') {
+                                return a.concat(state);
+                            }
+                            return a;
+                        }, []).length : 1)}
+                    </Typography>
+                </Container>
+                {/* <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}> */}
+                <Container maxWidth={'lg'} />
+                <Container ref={mapRef} sx={{ width: { xs: '90%', md: '95%' }, height: '500px', borderRadius: '4px', my: 7, }} />
+                {/* </Paper> */}
             </Container>
-            {/* <Paper elevation={3} sx={{ my: 2, mx: 2, py: 5, px: 1 }}> */}
-            <Container maxWidth={'lg'} />
-            <Container ref={mapRef} sx={{ width: { xs: '90%', md: '95%' }, height: '500px', borderRadius: '4px', my: 7, }} />
-            {/* </Paper> */}
-        </Container>
+        </>
     );
 };
 
