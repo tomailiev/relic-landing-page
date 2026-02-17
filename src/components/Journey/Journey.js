@@ -80,7 +80,7 @@ const Journey = () => {
 
 
     return (
-        <Container maxWidth="false" disableGutters sx={{ mb: 5, textAlign: 'center' }}>
+        <Container maxWidth="false" disableGutters sx={{ pb: 5, textAlign: 'center', }}>
             <Box
                 sx={{
                     width: '100%',
@@ -91,11 +91,11 @@ const Journey = () => {
                     mb: 3,
                 }}
             />
-            <Typography variant="h3" my={8} mx={3} >
+            <Typography variant="h3" textAlign={'center'} fontWeight={600} my={8} mx={3} >
                 Relic's journey
             </Typography>
             <Container maxWidth={'lg'}>
-                <Typography textAlign={'left'} fontSize={'1.2em'}>
+                <Typography textAlign={'justify'} variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }} mx={{ xs: 2, sm: 5, md: 2 }} mb={8}>
                     {text.mapText.replace('{statesNum}', events.length ? events.reduce((a, c) => {
                         const state = c.locationName.substring(c.locationName.length - 3);
                         if (!a.includes(state) && state !== '.C.') {

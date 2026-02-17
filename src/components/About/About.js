@@ -1,16 +1,16 @@
 import { Typography, Container, Box, Grid, } from "@mui/material";
 // import band from '../../assets/imgs/fndrs_grad.jpg';
 import prog from '../../assets/imgs/portrait_co_grad.jpg';
-import vert from '../../assets/imgs/sue_ed_grad.jpg';
+import vert from '../../assets/imgs/education.jpg';
 
 const About = ({ content, pageTitle }) => {
 
     const imgs = [
         undefined,
         prog,
-        vert,
         undefined,
-
+        vert,
+        undefined
     ];
 
     return (
@@ -21,14 +21,14 @@ const About = ({ content, pageTitle }) => {
             <Container maxWidth={'lg'}>
                 {content.map(({ textContent }, i) => {
                     return imgs[i]
-                        ? <Grid container spacing={3} key={i}>
-                            <Grid size={{ xs: 12, md: 6 }} order={{ xs: 0, md: i % 2 ? 1 : 0 }} mb={5}>
+                        ? <Grid container spacing={3} key={i} mb={5} mx={{ xs: 2, sm: 5, md: 2 }}>
+                            <Grid size={{ xs: 12, md: 6 }} order={{ xs: 0, md: i % 3 ? 1 : 0 }}>
                                 <Box maxHeight={'100%'}>
                                     <img src={imgs[i]} alt="Relic founders" style={{ maxWidth: '100%' }} />
                                 </Box>
                             </Grid>
                             <Grid size={{ xs: 12, md: 6 }}>
-                                <Typography textAlign={'justify'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }} mx={{ xs: 2, sm: 5, md: 2 }}>
+                                <Typography textAlign={'justify'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }}>
                                     {textContent}
                                 </Typography>
                             </Grid>
