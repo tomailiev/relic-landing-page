@@ -13,7 +13,7 @@
     "rewrites": [
       {
         "source":"/sitemap.xml",
-        "function": "serveSitemap"
+        "function": "serveSitemapV2"
       },
       {
         "source": "**",

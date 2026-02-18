@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 // import { useTheme } from '@emotion/react';
 // import diagonalBanner from '../../assets/banners/ribbon_past.png';
 import { bgs } from '../../data/images';
+import { performanceDateExtractor, performanceLocationExtractor } from '../../data/performanceDataExtractor';
 // import bgImg from '../../assets/imgs/the_spheres_hb.jpg';
 // import bgFull from '../../assets/imgs/the_spheres_1920_1080.jpg';
 
@@ -32,39 +33,7 @@ const EventSection = ({ event, past }) => {
             .catch(console.error);
     }, [event?.imageUrl, event?.bannerHome]);
 
-    const sortedPerformances = [...event.performances].sort(
-        (a, b) => Number(a.id) - Number(b.id)
-    );
 
-    const startDate = new Date(sortedPerformances[0].date);
-    const endDate = new Date(sortedPerformances[sortedPerformances.length - 1].date);
-
-    const formattedDateRange = startDate.toDateString() === endDate.toDateString()
-        ? `${startDate.toLocaleDateString('en-US', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-        })}`
-        : startDate.getMonth() === endDate.getMonth()
-            ? `${startDate.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'long'
-            })} - ${endDate.getUTCDate()}, ${endDate.getUTCFullYear()}`
-            : `${startDate.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-            })} - ${endDate.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-            })}`;
-
-    const uniqueLocations = [
-        ...new Set(sortedPerformances.map((p) => p.location)),
-    ];
-
-    const locationsString = uniqueLocations.join(' • ');
 
     return (
         event?.bannerHome
@@ -101,12 +70,12 @@ const EventSection = ({ event, past }) => {
                         </Typography> */}
 
 
-                        <Typography variant="body1" fontWeight={600} fontSize={{ xs: '1.5em', md: '1.8em' }}  >
-                            {formattedDateRange}
+                        {event?.performances && <><Typography variant="body1" fontWeight={600} fontSize={{ xs: '1.5em', md: '1.8em' }}  >
+                            {performanceDateExtractor(event.performances)}
                         </Typography>
-                        <Typography variant="body1" fontWeight={600} fontSize={{ xs: '1.5em', md: '1.8em' }}  >
-                            {locationsString}
-                        </Typography>
+                            <Typography variant="body1" fontWeight={600} fontSize={{ xs: '1.5em', md: '1.8em' }}  >
+                                {performanceLocationExtractor(event.performances)}
+                            </Typography></>}
                         {/* <Typography variant="body1" fontSize={{ xs: '1em', sm: '1.2em' }} mx={2} mb={3} sx={{ fontStyle: 'italic', color: 'secondary.main' }} >
                                     {event.intro}
                                 </Typography> */}
@@ -222,12 +191,12 @@ const EventSection = ({ event, past }) => {
                                 </Typography>
 
 
-                                <Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={{ xs: 4, md: 1 }} >
-                                    {formattedDateRange}
+                                {event?.performances && <><Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={{ xs: 4, md: 1 }} >
+                                    {performanceDateExtractor(event.performances)}
                                 </Typography>
-                                <Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={{ xs: 4, md: 1 }} mt={2} >
-                                    {locationsString}
-                                </Typography>
+                                    <Typography variant="body1" fontSize={{ xs: '1.4em', md: '1.2em' }} mx={{ xs: 4, md: 1 }} mt={2} >
+                                        {performanceLocationExtractor(event.performances)}
+                                    </Typography></>}
                                 {/* <Typography variant="body1" fontSize={{ xs: '1em', sm: '1.2em' }} mx={2} mb={3} sx={{ fontStyle: 'italic', color: 'secondary.main' }} >
                                     {event.intro}
                                 </Typography> */}
