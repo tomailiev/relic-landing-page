@@ -28,12 +28,12 @@ const About = ({ content, pageTitle }) => {
                                 </Box>
                             </Grid>
                             <Grid size={{ xs: 12, md: 6 }}>
-                                <Typography textAlign={'justify'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }}>
+                                <Typography textAlign={'left'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }}>
                                     {textContent}
                                 </Typography>
                             </Grid>
                         </Grid>
-                        : <Typography key={i} textAlign={'justify'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }} mx={{ xs: 2, sm: 5, md: 2 }} mb={8} >
+                        : <Typography key={i} textAlign={'left'} color="secondary" variant="body1" fontWeight={600} fontSize={{ xs: '1.4em', md: '1.3em' }} mx={{ xs: 2, sm: 5, md: 2 }} mb={8} >
                             {textContent}
                         </Typography>
                 })}
