@@ -17,7 +17,7 @@ import ActionCenter from './components/Common/ActionCenter';
 import DialogContext from './context/DialogContext';
 import CommonDialog from './components/Common/CommonDialog';
 import Musicians from './components/Musicians/Musicians';
-import Story from './components/About/Story';
+// import Story from './components/About/Story';
 import texts from './data/texts';
 import TextContext from './context/TextContext';
 import { useEffect } from 'react';
@@ -42,6 +42,8 @@ import { currentSeason } from './data/currentSeason';
 import { HeaderHeightProvider } from './components/Header/HeatherHeightProvider';
 import EventPage from './components/Events/EventPage';
 import { theme } from './data/theme';
+import About from './components/About/About';
+import Mission from './components/About/Mission';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -153,8 +155,8 @@ function App() {
                       <div ref={nodeRef}>
                         <Routes location={location}>
                           <Route path="/" element={<Home />} />
-                          <Route path="/about/mission" element={<Story content={missionTexts} pageTitle={'Mission & Values'} />} />
-                          <Route path="/about/bio" element={<Story content={bioTexts} pageTitle={'About Relic'} />} />
+                          <Route path="/about/mission" element={<Mission content={missionTexts} pageTitle={'Mission & Values'} />} />
+                          <Route path="/about/bio" element={<About content={bioTexts} pageTitle={'About Relic'} />} />
                           <Route path="/about/musicians" element={<Musicians />} />
                           <Route path='/about/journey' element={<Journey />} />
                           <Route path="/events/:season" element={<Events />} />
