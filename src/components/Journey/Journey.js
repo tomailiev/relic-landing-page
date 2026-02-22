@@ -94,7 +94,7 @@ const Journey = () => {
                         mb: 3,
                     }}
                 />
-                <Typography variant="h3" my={8} mx={3} >
+                <Typography variant="h3" my={8} mx={3} sx={{fontWeight: 600}}>
                     Relic's journey
                 </Typography>
                 <Container maxWidth={'lg'}>
