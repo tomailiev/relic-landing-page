@@ -24,7 +24,7 @@ const Forward = () => {
     return (
         <Container sx={{ height: '450px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Typography variant="h5" textAlign={'center'}>
-                You will be redirected to our <Link href={links.gems}>donation page</Link> in {seconds} seconds
+                You will be redirected to our <Link href={links.zeffy}>donation page</Link> in {seconds} seconds
             </Typography>
         </Container>
     );

@@ -49,12 +49,12 @@
 
 <body>
   <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
-  <script src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
-    onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
-    </script>
   <noscript>Welcome to Relic — Early music ensemble performing across the United States. Please enable JavaScript to
     access the full website content.</noscript>
   <div id="root"></div>
+  <script src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
+    onError="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
+    </script>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -5,4 +5,5 @@ export const links = {
     gems: "https://gemsny.thundertix.com/donations/new?campaign_id=2809",
     gemsWebsite: 'https://gemsny.org',
     ytSubscribe: 'http://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA?sub_confirmation=1',
+    zeffy: 'https://www.zeffy.com/en-US/donation-form/donate-to-relic-2',
 };
