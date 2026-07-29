@@ -4,5 +4,5 @@ export const links = {
     youtube: "https://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA",
     gems: "https://gemsny.thundertix.com/donations/new?campaign_id=2809",
     gemsWebsite: 'https://gemsny.org',
-    ytSubscribe: 'http://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA?sub_confirmation=1'
+    ytSubscribe: 'http://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA?sub_confirmation=1',
 };
