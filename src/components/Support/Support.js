@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Link, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Grid, Link, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useContext, useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -34,7 +34,7 @@ const Support = () => {
 
 
     function handleTextCopy() {
-        navigator.clipboard.writeText(text.supportGemsAddress?.replaceAll('\\n', '\n'))
+        navigator.clipboard.writeText(text.supportRelicAddress?.replaceAll('\\n', '\n'))
             .then(() => {
                 setCopyButton('Copied!');
                 setNotification({ type: 'success', message: 'Address copied to clipboard' });
@@ -48,38 +48,44 @@ const Support = () => {
     return (
         <>
             <Seo title={'Support Relic'} description={'Consider joining our Circle of Supporters and make a contribution today.'} />
-            <Typography variant="h3" textAlign={'center'} mt={8} mb={10}>
+            <Typography variant="h3" textAlign={'center'} mt={8} mb={10} fontWeight={'bold'}>
                 Support Relic
             </Typography>
             <Box mt={2} mb={5}>
                 <Container maxWidth={'lg'}>
-                    <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
-                    {/* <Card variant="outlined" sx={{ mb: 3 }}> */}
-                        <div style={{width: '100%'}}>
-                            <div data-zeffy-embed data-form-url="/embed/donation-form/donate-to-relic-2" style={{width: '1200px', height: '600px'}}></div>
-                            {/* <div data-zeffy-embed-fallback >
-                                <div style={{ position: 'relative', overflow: 'hidden', height: '450px', width: '100%' }}>
-                                    <iframe title='Donation form powered by Zeffy' style={{ position: 'absolute', border: 0, top: 0, left: 0, bottom: 0, right: 0, minWidth: '100%', height: '100%' }} data-zeffy-embed-src='https://www.zeffy.com/embed/donation-form/donate-to-relic-2' allowpaymentrequest="true" onLoad={console.log('started')}></iframe>
-                                </div>
-                            </div> */}
-                        </div>
-                    {/* </Card> */}
-                    <Typography variant="body2" fontStyle={'italic'} mb={5}>
-                        Form not loading? <Link href={links.zeffy} target="_blank" referrerPolicy="no-referrer">Click here</Link>
-                    </Typography>
-                    <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckText} />
-                    <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
-                        <CardContent>
-                            <Typography whiteSpace={'pre'}>
-                                {text.supportGemsAddress?.replaceAll('\\n', '\n')}
+                    {/* <Typography variant="h6" fontSize={'1.2em'} fontWeight={'bold'}>
+                        {text.supportDonateNowTitle}
+                    </Typography> */}
+                    <Grid container>
+                        <Grid size={{ xs: 10, md: 8 }} >
+                            <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNPText} />
+                            {/* <Typography mb={3} fontSize={'1.2em'}>
+                                {text.supportDonateNowText}
+                            </Typography> */}
+                            <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckNPText} />
+                            <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
+                                <CardContent>
+                                    <Typography whiteSpace={'pre'}>
+                                        {text.supportRelicAddress?.replaceAll('\\n', '\n')}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
+                                </CardActions>
+                            </Card>
+                            <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                            <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                        </Grid>
+                        <Grid size={{ xs: 10, md: 4 }}>
+                            <iframe title="donate-form-donorbox" src="https://donorbox.org/embed/donate-to-relic?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style={{ maxWidth: '550px', minWidth: '300px', maxHeight: 'none !important' }} allow="payment"></iframe>
+
+                            <Typography variant="body2" fontStyle={'italic'} mb={5}>
+                                Form not loading? <Link href={links.donorBox} target="_blank" referrerPolicy="no-referrer">Click here</Link>
                             </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
-                        </CardActions>
-                    </Card>
-                    <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
-                    <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                        </Grid>
+                    </Grid>
+                    {/* <Card variant="outlined" sx={{ mb: 3 }}> */}
+                    {/* </Card> */}
                 </Container>
                 <Container maxWidth={'lg'}>
                     <TypographyCombo title={text.supportJoinTitle} text={joinText} />

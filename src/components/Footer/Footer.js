@@ -7,7 +7,7 @@ import TextContext from "../../context/TextContext";
 import { links } from "../../data/links";
 import NYSCALogo from '../../assets/logos/NYS_CouncilontheArts_Horizontal_WHITE.png';
 // import GEMSLogo from '../../assets/logos/GEMS-web_white-horiz.png';
-// import RELICLogo from '../../assets/logos/Relic-logo_white.png';
+import RELICLogo from '../../assets/logos/Relic-logo_white.png';
 
 const Footer = () => {
 
@@ -25,12 +25,28 @@ const Footer = () => {
             <Fab size="small" sx={{ position: 'fixed', right: '25px', bottom: '50px' }}>
                 <Instagram />
             </Fab> */}
-            <Container disableGutters maxWidth={false}>
-                <Container sx={{ textAlign: 'center' }}>
-                    <Typography variant="h5" mt={1} mb={4} fontWeight={'bold'} color="secondary">Supporting Partners</Typography>
-                </Container>
+            <Container disableGutters maxWidth={false} sx={{mt: 5}}>
+
                 <Grid container justifyContent={'space-evenly'}>
+                    <Grid mx={2} size={{ xs: 10, sm: 4 }} mb={{xs: 6, sm: 0}} >
+                        <Box maxWidth={{ xs: '155px', sm: '230px' }} maxHeight={'100px'}>
+                            <img src={RELICLogo} alt="Relic logo" style={{ maxWidth: '100%' }} />
+                        </Box>
+                        <Typography color="secondary" fontWeight={'bold'} fontSize={{ xs: '0.8em', sm: '0.9em' }} mt={1}>
+                            {text.contactAddressStreet}<br />
+                            {text.contactAddressCity}<br />
+                        </Typography>
+                        <Typography color="secondary" fontWeight={'bold'} fontSize={{ xs: '0.8em', sm: '0.9em' }} mt={2}>
+                            info@relicensemble.org
+                        </Typography>
+                        <Typography color="secondary" fontSize={{ xs: '0.8em', sm: '0.9em' }} mt={2}>
+                            {text.footerNPNote}
+                        </Typography>
+                    </Grid>
                     <Grid mx={2} size={{ xs: 10, sm: 4 }} >
+                        <Container disableGutters >
+                            <Typography variant="h5" mt={1} mb={4} fontWeight={'bold'} color="secondary">Supporting Partners</Typography>
+                        </Container>
                         <Box maxWidth={{ xs: '175px', sm: '250px' }} maxHeight={'100px'}>
                             <img src={NYSCALogo} alt="NYSCA logo" style={{ maxWidth: '100%' }} />
                         </Box>
@@ -58,11 +74,7 @@ const Footer = () => {
                         </Box>
                         </Grid> */}
                 </Grid>
-                <Box sx={{textAlign: 'center'}}>
-                    <Typography color="secondary" fontSize={{ xs: '1em', sm: '1.2em' }} fontWeight={600} paddingBottom={2}>
-                        {text.footerNPNote}
-                    </Typography>
-                </Box>
+
                 <Box display="flex" flexDirection="row" justifyContent={"center"} alignItems="center" marginBottom={0}>
                     <IconButton size="large" color="secondary">
                         <Link color={'inherit'} href={links.facebook} target={"_blank"}>

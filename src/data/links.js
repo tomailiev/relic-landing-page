@@ -6,4 +6,5 @@ export const links = {
     gemsWebsite: 'https://gemsny.org',
     ytSubscribe: 'http://www.youtube.com/channel/UCo6idH2C9IkvGEjluWbOqZA?sub_confirmation=1',
     zeffy: 'https://www.zeffy.com/en-US/donation-form/donate-to-relic-2',
+    donorBox: 'https://donorbox.org/donate-to-relic?',
 };
