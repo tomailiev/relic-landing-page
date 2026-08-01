@@ -48,8 +48,8 @@ const Support = () => {
                     {/* <Typography variant="h6" fontSize={'1.2em'} fontWeight={'bold'}>
                         {text.supportDonateNowTitle}
                     </Typography> */}
-                    <Grid container>
-                        <Grid size={{ xs: 10, md: 8 }} order={{xs: 2, md: 1}} >
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 10, md: 8 }} order={{ xs: 2, md: 1 }} >
                             <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNPText} />
                             {/* <Typography mb={3} fontSize={'1.2em'}>
                                 {text.supportDonateNowText}
@@ -68,9 +68,10 @@ const Support = () => {
                             <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                             <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                         </Grid>
-                        <Grid size={{ xs: 10, md: 4 }} order={{xs: 1, md: 2}}>
-                            <iframe title="donate-form-donorbox" src="https://donorbox.org/embed/donate-to-relic?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style={{ maxWidth: '550px', minWidth: '300px', maxHeight: 'none !important' }} allow="payment"></iframe>
-
+                        <Grid size={{ xs: 12, md: 4 }} order={{ xs: 1, md: 2 }} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                                <Box maxWidth={'100%'} width={'450px'} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                                    <iframe title="donate-form-donorbox" src="https://donorbox.org/embed/donate-to-relic?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style={{ maxWidth: '550px', minWidth: '300px', maxHeight: 'none !important' }} allow="payment"></iframe>
+                                </Box>
                             <Typography variant="body2" fontStyle={'italic'} mb={5}>
                                 Form not loading? <Link href={links.donorBox} target="_blank" referrerPolicy="no-referrer">Click here</Link>
                             </Typography>
