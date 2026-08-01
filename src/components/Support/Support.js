@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, Grid, Link, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import DialogContext from "../../context/DialogContext";
 import NotificationContext from "../../context/NotificationContext";
@@ -19,14 +19,6 @@ const Support = () => {
     const { setNotification } = useContext(NotificationContext);
     const [copyButton, setCopyButton] = useState('Copy');
 
-    useEffect(() => {
-        // Zeffy exposes a global initializer
-        if (window.Zeffy && window.Zeffy.embed) {
-            console.log('init');
-
-            window.Zeffy.embed.init();
-        }
-    }, []);
 
     const joinText = <><Link onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>Join our mailing list</Link> to receive the most up-to-date Relic-related news! Follow us on social media (<Link href={links.insta} target={"_blank"}>Instagram</Link>/<Link href={links.facebook} target={'_blank'}>Facebook</Link>) for fun anecdotes and subscribe to our <Link href={links.youtube} target={'_blank'}>YouTube channel</Link> to listen to us wherever you go.</>;
 
@@ -57,7 +49,7 @@ const Support = () => {
                         {text.supportDonateNowTitle}
                     </Typography> */}
                     <Grid container>
-                        <Grid size={{ xs: 10, md: 8 }} >
+                        <Grid size={{ xs: 10, md: 8 }} order={{xs: 2, md: 1}} >
                             <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNPText} />
                             {/* <Typography mb={3} fontSize={'1.2em'}>
                                 {text.supportDonateNowText}
@@ -76,7 +68,7 @@ const Support = () => {
                             <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                             <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
                         </Grid>
-                        <Grid size={{ xs: 10, md: 4 }}>
+                        <Grid size={{ xs: 10, md: 4 }} order={{xs: 1, md: 2}}>
                             <iframe title="donate-form-donorbox" src="https://donorbox.org/embed/donate-to-relic?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style={{ maxWidth: '550px', minWidth: '300px', maxHeight: 'none !important' }} allow="payment"></iframe>
 
                             <Typography variant="body2" fontStyle={'italic'} mb={5}>
