@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Link, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Grid, Link, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useContext, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -19,13 +19,14 @@ const Support = () => {
     const { setNotification } = useContext(NotificationContext);
     const [copyButton, setCopyButton] = useState('Copy');
 
+
     const joinText = <><Link onClick={() => setDialog({ type: 'subscription', component: <SubscribeForm /> })}>Join our mailing list</Link> to receive the most up-to-date Relic-related news! Follow us on social media (<Link href={links.insta} target={"_blank"}>Instagram</Link>/<Link href={links.facebook} target={'_blank'}>Facebook</Link>) for fun anecdotes and subscribe to our <Link href={links.youtube} target={'_blank'}>YouTube channel</Link> to listen to us wherever you go.</>;
 
     const volunteerText = <>Relic is seeking volunteers, on an ongoing basis, to help with a variety of activities. If you possess a special skill and/or have a keen interest in becoming more deeply involved, please <Link component={RouterLink} to={'/contact'}>contact us</Link> for more information.</>;
 
 
     function handleTextCopy() {
-        navigator.clipboard.writeText(text.supportGemsAddress?.replaceAll('\\n', '\n'))
+        navigator.clipboard.writeText(text.supportRelicAddress?.replaceAll('\\n', '\n'))
             .then(() => {
                 setCopyButton('Copied!');
                 setNotification({ type: 'success', message: 'Address copied to clipboard' });
@@ -35,34 +36,49 @@ const Support = () => {
             })
     }
 
+
     return (
         <>
             <Seo title={'Support Relic'} description={'Consider joining our Circle of Supporters and make a contribution today.'} />
-            <Typography variant="h3" textAlign={'center'} mt={8} mb={10}>
+            <Typography variant="h3" textAlign={'center'} mt={8} mb={10} fontWeight={'bold'}>
                 Support Relic
             </Typography>
             <Box mt={2} mb={5}>
                 <Container maxWidth={'lg'}>
-                    <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNowText} />
-                    <Card variant="outlined" sx={{ mb: 3 }}>
-                        <iframe title="donation-frame" className="iframe-class" src={links.gems} width="100%" height={'603px'} frameBorder="0" scrolling="auto" marginHeight="0" marginWidth="0" allowtransparency="true" ></iframe>
-                    </Card>
-                    <Typography variant="body2" fontStyle={'italic'} mb={5}>
-                        Form not loading? <Link href={links.gems} target="_blank" referrerPolicy="no-referrer">Click here</Link>
-                    </Typography>
-                    <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckText} />
-                    <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
-                        <CardContent>
-                            <Typography whiteSpace={'pre'}>
-                                {text.supportGemsAddress?.replaceAll('\\n', '\n')}
+                    {/* <Typography variant="h6" fontSize={'1.2em'} fontWeight={'bold'}>
+                        {text.supportDonateNowTitle}
+                    </Typography> */}
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 10, md: 8 }} order={{ xs: 2, md: 1 }} >
+                            <TypographyCombo title={text.supportDonateNowTitle} text={text.supportDonateNPText} />
+                            {/* <Typography mb={3} fontSize={'1.2em'}>
+                                {text.supportDonateNowText}
+                            </Typography> */}
+                            <TypographyCombo title={text.supportDonateCheckTitle} text={text.supportDonateCheckNPText} />
+                            <Card variant="outlined" sx={{ width: '250px', mb: 3 }}>
+                                <CardContent>
+                                    <Typography whiteSpace={'pre'}>
+                                        {text.supportRelicAddress?.replaceAll('\\n', '\n')}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
+                                </CardActions>
+                            </Card>
+                            <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                            <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }} order={{ xs: 1, md: 2 }} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                                <Box maxWidth={'100%'} width={'450px'} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                                    <iframe title="donate-form-donorbox" src="https://donorbox.org/embed/donate-to-relic?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style={{ maxWidth: '550px', minWidth: '300px', maxHeight: 'none !important' }} allow="payment"></iframe>
+                                </Box>
+                            <Typography variant="body2" fontStyle={'italic'} mb={5}>
+                                Form not loading? <Link href={links.donorBox} target="_blank" referrerPolicy="no-referrer">Click here</Link>
                             </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button variant="outlined" onClick={handleTextCopy}>{copyButton}</Button>
-                        </CardActions>
-                    </Card>
-                    <TypographyCombo title={text.supportMatchingTitle} text={text.supportMatchingText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
-                    <TypographyCombo title={text.supportOtherTitle} text={text.supportOtherText.replaceAll('Aniela Eddy at aniela@relicensemble.org', `${text.contactDevName} at ${text.contactDevEmail}`)} />
+                        </Grid>
+                    </Grid>
+                    {/* <Card variant="outlined" sx={{ mb: 3 }}> */}
+                    {/* </Card> */}
                 </Container>
                 <Container maxWidth={'lg'}>
                     <TypographyCombo title={text.supportJoinTitle} text={joinText} />

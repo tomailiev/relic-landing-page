@@ -6,7 +6,7 @@ const Copyright = () => {
     return (
         <Box sx={{mb: 1}}>
             <Typography variant="body2" color="secondary" align="center" paddingBottom={2}>
-                 © Relic {year}
+                 © Relic Ensemble Inc. {year}
             </Typography>
         </Box>
     );
