@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const functions = getFunctions(app);
+const functions = getFunctions(app, "us-central1");
 
 if (process.env.REACT_APP_EMULATORS) {
   connectFunctionsEmulator(functions, "127.0.0.1", 5001);
