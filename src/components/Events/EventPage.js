@@ -16,7 +16,7 @@ import { Link, useParams } from 'react-router-dom';
 import { downloadOneDoc, getLink } from '../../utils/firebase/firestore-funcs';
 import DialogContext from '../../context/DialogContext';
 import ProgramDialog from './ProgramDialog';
-import MapDialog from './MapDialog';
+// import MapDialog from './MapDialog';
 import { sortByNewTitle } from '../../data/musicianSorter';
 import { Add, ArrowLeft, OpenInNew } from '@mui/icons-material';
 import { currentSeason } from '../../data/currentSeason';
@@ -164,13 +164,13 @@ const EventPage = () => {
                                                                 </Button>
                                                             }
 
-                                                            {perf.geocode && <Button
+                                                            {/* {perf.geocode && <Button
                                                                 variant="outlined"
                                                                 size={'small'}
                                                                 onClick={() => {
                                                                     setDialog({ type: 'map', component: <MapDialog location={perf.geocode} query={`${perf.venue}, ${perf.location}`} />, title: perf.venue })
                                                                 }}
-                                                            >View Map</Button>}
+                                                            >View Map</Button>} */}
                                                             {perf.start_utc_compact && perf.end_utc_compact && <Button
                                                                 startIcon={<Add />}
                                                                 variant='outlined'
