@@ -44,9 +44,9 @@ const ContactForm = () => {
 
     }, []);
 
-    useEffect(() => {
-        window.turnstile.remove();
-    }, [])
+    // useEffect(() => {
+    //     return window.turnstile.remove();
+    // }, [])
 
 
 
