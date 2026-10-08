@@ -1,5 +1,5 @@
 import { Box, Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
 // import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -30,10 +30,35 @@ const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [hasError, setHasError] = useState(fields);
     const [willSubscribe, setWillSubscribe] = useState(true);
+    const [turnstileToken, setTurnstileToken] = useState(null);
+
+    const turnstileRef = useRef(null);
+
+    useEffect(() => {
+        if (window.turnstile && turnstileRef.current) {
+            window.turnstile.render(turnstileRef.current, {
+                sitekey: "0x4AAAAAAFOusgR4gCpJ1KhB",
+                callback: (token) => setTurnstileToken(token),
+            });
+        }
+
+    }, []);
+
+    useEffect(() => {
+        window.turnstile.remove();
+    }, [])
+
 
 
     function handleSubscribe(e) {
         e.preventDefault();
+        if (!turnstileToken) {
+            setNotification({
+                type: "error",
+                message: "Please verify you're human before submitting."
+            });
+            return;
+        }
         setLoading(true);
         setIsSubmitting(true);
         contactFormSchema.validate(userFields, { abortEarly: false })
@@ -50,7 +75,7 @@ const ContactForm = () => {
                         lastName: val.lastName,
                     };
                     return Promise.all([
-                        uploadDoc({ ...val, subscriber: willSubscribe }, 'messages'),
+                        uploadDoc({ ...val, subscriber: willSubscribe, turnstileToken }, 'messages'),
                         uploadDocWithId(subscriberData, 'subscribers', val.email.toLowerCase())
                     ])
                 }
@@ -112,6 +137,14 @@ const ContactForm = () => {
                         />}
                         label={'Subscribe to our mailing list'}
                     />
+                    <div
+                        ref={turnstileRef}
+                        className="cf-turnstile"
+                    // data-sitekey="0x4AAAAAAFOusgR4gCpJ1KhB"
+                    // data-execution="execute"
+                    // data-callback={(token) => setTurnstileToken(token)}
+                    ></div>
+
                     <Button
                         variant="contained"
                         color="primary"
