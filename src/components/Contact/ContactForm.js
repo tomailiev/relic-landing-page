@@ -2,8 +2,6 @@ import { Box, Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/
 import { useContext, useEffect, useRef, useState } from "react";
 import NotificationContext from "../../context/NotificationContext";
 import { contactFormSchema } from "../../utils/yup/schemas";
-// import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-// import Favorite from '@mui/icons-material/Favorite';
 import { uploadDoc, uploadDocWithId } from "../../utils/firebase/firestore-funcs";
 import LoadingContext from "../../context/LoadingContext";
 import { arrayUnion } from "firebase/firestore";
@@ -33,15 +31,22 @@ const ContactForm = () => {
     const [turnstileToken, setTurnstileToken] = useState(null);
 
     const turnstileRef = useRef(null);
+    const widgetIdRef = useRef(null); 
 
     useEffect(() => {
         if (window.turnstile && turnstileRef.current) {
-            window.turnstile.render(turnstileRef.current, {
+            widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
                 sitekey: "0x4AAAAAAFOusgR4gCpJ1KhB",
                 callback: (token) => setTurnstileToken(token),
             });
         }
 
+        return () => {
+            if (widgetIdRef.current) {
+                window.turnstile.remove(widgetIdRef.current);
+                widgetIdRef.current = null;
+            }
+        };
     }, []);
 
     // useEffect(() => {
@@ -140,15 +145,12 @@ const ContactForm = () => {
                     <div
                         ref={turnstileRef}
                         className="cf-turnstile"
-                    // data-sitekey="0x4AAAAAAFOusgR4gCpJ1KhB"
-                    // data-execution="execute"
-                    // data-callback={(token) => setTurnstileToken(token)}
                     ></div>
 
                     <Button
                         variant="contained"
                         color="primary"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !turnstileToken}
                         type="submit"
                     >
                         Send
