@@ -10,14 +10,15 @@ const MapDialog = ({ placeId, location, displayName, formattedAddress }) => {
 
         loader.load().then(async (google) => {
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
-            const { Marker } = await google.maps.importLibrary('marker')
+            const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
             // Initialize map
             map = new Map(mapRef.current, {
                 zoom: 16,
                 center: location,
+                mapId: 'c8691c741c1290c76bfc4219'
             });
 
-            const marker = new Marker({
+            const marker = new AdvancedMarkerElement({
                 position: location,
                 map,
             });
