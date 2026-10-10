@@ -91,7 +91,6 @@ const ContactForm = () => {
                 setIsSubmitting(false);
                 setLoading(false);
                 setNotification({ type: 'success', message: 'Message sent! We\'ll get back to you shortly' });
-                window.turnstile.reset(widgetIdRef.current);
             })
             .catch(e => {
                 setIsSubmitting(false);
