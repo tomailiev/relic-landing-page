@@ -68,6 +68,7 @@ const ContactForm = () => {
         setIsSubmitting(true);
         contactFormSchema.validate(userFields, { abortEarly: false })
             .then(val => {
+                
                 if (willSubscribe) {
                     const subscriberData = {
                         id: val.email.toLowerCase(),
@@ -84,13 +85,13 @@ const ContactForm = () => {
                         uploadDocWithId(subscriberData, 'subscribers', val.email.toLowerCase())
                     ])
                 }
-                return uploadDoc({ ...val, subscriber: willSubscribe }, 'messages')
+                return uploadDoc({ ...val, subscriber: willSubscribe, turnstileToken }, 'messages')
             })
             .then(() => {
                 setUserFields(fields);
                 setIsSubmitting(false);
-                setNotification({ type: 'success', message: 'Message sent! We\'ll get back to you shortly' });
                 setLoading(false);
+                setNotification({ type: 'success', message: 'Message sent! We\'ll get back to you shortly' });
             })
             .catch(e => {
                 setIsSubmitting(false);
