@@ -2,7 +2,7 @@ import { Grid, Skeleton, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
-import { fetchCurrentMusicians } from "../../utils/firebase/firestore-funcs";
+import { downloadDocsV2, } from "../../utils/firebase/firestore-funcs";
 // import MusicianGroup from "./MusicianGroup";
 import MusicianLI from "./MusicianLI";
 import banners from "../../data/banners";
@@ -14,8 +14,8 @@ const Musicians = () => {
     const [musicians, setMusicians] = useState([]);
 
     useEffect(() => {
-        fetchCurrentMusicians({ sorting: 'name', order: 'asc' })
-            .then(({ data }) => {
+        downloadDocsV2('musicians', [{ type: 'condition', value: ['isCurrent', '==', 1] }, { type: 'sorting', value: ['name', 'asc'] }])
+            .then((data) => {
                 if (data) {
                     setMusicians(data);
                 }
