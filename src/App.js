@@ -44,6 +44,7 @@ import EventPage from './components/Events/EventPage';
 import { theme } from './data/theme';
 import About from './components/About/About';
 import Mission from './components/About/Mission';
+import Album from './components/Album/Album';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -166,6 +167,7 @@ function App() {
                           <Route path={'/media/photos'} element={<Photos />} />
                           <Route path='/media/videos' element={<Videos />} />
                           <Route path='/media/concerts' element={<Videos />} />
+                          <Route path='/media/album' element={<Album />} />
                           <Route path="/contact" element={<Contact />} />
                           <Route path={'/support/levels'} element={<Navigate to={'/support/tiers'} />} />
                           <Route path="/donate" element={<Navigate to={'/support/donate'} />} />
